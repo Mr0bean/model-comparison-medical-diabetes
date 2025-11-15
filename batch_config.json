@@ -1,0 +1,13 @@
+{
+  "prompts_file": "多个Prompt.json",
+  "records_dir": "测试输入问答记录",
+  "output_dir": "./output/raw",
+  "models": [
+    "gpt-4o-mini",
+    "gpt-5.1"
+  ],
+  "max_retries": 5,
+  "max_tokens": 2000,
+  "log_file": "batch_process_new.log",
+  "log_level": "INFO"
+}
