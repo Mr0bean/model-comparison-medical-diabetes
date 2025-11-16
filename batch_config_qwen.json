@@ -1,0 +1,17 @@
+{
+  "prompts_file": "多个Prompt.json",
+  "records_dir": "测试输入问答记录",
+  "output_dir": "./output/raw_qwen",
+  "api_config": {
+    "api_key": "sk-a1a521e0139f470087a1fd8cb717be1f",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  },
+  "models": [
+    "qwen3-max"
+  ],
+  "max_retries": 5,
+  "max_tokens": 2000,
+  "log_file": "batch_process_qwen.log",
+  "log_level": "INFO",
+  "_comment": "通义千问 API 配置 - https://help.aliyun.com/zh/dashscope/developer-reference/api-details"
+}

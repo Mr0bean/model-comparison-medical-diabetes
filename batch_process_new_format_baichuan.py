@@ -125,13 +125,14 @@ class BaichuanBatchProcessor:
         patient_name: str,
         model: str
     ) -> Dict[str, Any]:
-        """处理单个对话（一个Prompt），支持自动重试"""
+        """处理单个对话（一个Prompt），支持自动重试，如果返回为空则无限重试"""
         conversation_num = str(prompt_index + 1)
         logger.info(f"[{model}][{patient_name}] 开始处理对话 {conversation_num}")
 
         user_input = f"{prompt} \n {patient_chat}"
 
-        for attempt in range(self.max_retries):
+        attempt = 0
+        while True:  # 无限重试直到获得非空结果
             try:
                 start_time = datetime.now()
 
@@ -145,8 +146,17 @@ class BaichuanBatchProcessor:
                     temperature=0.3
                 )
 
-                response = completion.choices[0].message.content
+                response = completion.choices[0].message.content or ""
 
+                # 如果返回为空，记录警告并重试
+                if not response or response.strip() == "":
+                    logger.warning(f"[{model}][{patient_name}] 对话 {conversation_num} API返回空内容 (第{attempt+1}次尝试)，将重试...")
+                    wait_time = min(2 ** attempt, 10)  # 最多等待10秒
+                    await asyncio.sleep(wait_time)
+                    attempt += 1
+                    continue  # 继续重试
+
+                # 获得非空结果，成功
                 end_time = datetime.now()
                 duration = (end_time - start_time).total_seconds()
 
@@ -172,11 +182,13 @@ class BaichuanBatchProcessor:
             except Exception as e:
                 error_msg = str(e)
 
+                # 异常情况：达到最大重试次数后才报错
                 if attempt < self.max_retries - 1:
-                    wait_time = 2 ** attempt
+                    wait_time = min(2 ** attempt, 10)
                     logger.warning(f"[{model}][{patient_name}] 对话 {conversation_num} 失败 (第{attempt+1}次尝试): {error_msg}")
                     logger.info(f"[{model}][{patient_name}] 将在 {wait_time} 秒后重试...")
                     await asyncio.sleep(wait_time)
+                    attempt += 1
                 else:
                     logger.error(f"[{model}][{patient_name}] 对话 {conversation_num} 最终失败 (已重试{self.max_retries}次): {error_msg}")
                     return {
@@ -207,14 +219,13 @@ class BaichuanBatchProcessor:
         logger.info(f"[{model}][{patient_name}] 开始处理，共 {len(prompts)} 个对话")
         start_time = datetime.now()
 
-        tasks = [
-            self.process_single_conversation(
+        # 顺序处理所有对话（不并发）
+        results = []
+        for idx, prompt in enumerate(prompts):
+            result = await self.process_single_conversation(
                 prompt, idx, patient_chat, patient_name, model
             )
-            for idx, prompt in enumerate(prompts)
-        ]
-
-        results = await asyncio.gather(*tasks)
+            results.append(result)
 
         end_time = datetime.now()
         total_duration = (end_time - start_time).total_seconds()
@@ -250,14 +261,13 @@ class BaichuanBatchProcessor:
         total_tasks = len(self.models) * len(patients)
         logger.info(f"开始批量处理: {len(self.models)} 个模型 × {len(patients)} 个患者 = {total_tasks} 个文件")
 
-        tasks = []
+        # 顺序处理所有(模型, 患者)组合（不并发）
+        results = []
         for model in self.models:
             for patient in patients:
-                tasks.append(
-                    self.process_model_patient(model, patient, prompts)
-                )
+                result = await self.process_model_patient(model, patient, prompts)
+                results.append(result)
 
-        results = await asyncio.gather(*tasks)
         logger.info(f"所有任务处理完成，共生成 {len(results)} 个文件")
         return results
 

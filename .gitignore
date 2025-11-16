@@ -1,4 +1,4 @@
-# Environment variables
+# Environment Variables
 .env
 
 # Python
@@ -19,26 +19,52 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Virtual environments
+# Virtual Environment
 venv/
 ENV/
 env/
+.venv
 
-# IDE
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.DS_Store
 
 # Logs
 *.log
 logs/
 
-# OS
-.DS_Store
-Thumbs.db
+# Test coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Output files (optional - uncomment if you don't want to commit outputs)
+# output/raw/*
+# output/markdown/*
+# output/comparison_data.json
+
+# Temporary files
+*.tmp
+*.bak
+*.swp

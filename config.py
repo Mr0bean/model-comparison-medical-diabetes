@@ -12,7 +12,7 @@ class Settings(BaseSettings):
 
     # API 配置
     jiekou_api_key: str = Field(
-        default="sk_gHMVuBjTy-tOthkSNWXA5CqwC1ZWon7OarOY6t9es3g",
+        default="your_api_key_here",
         description="JieKou AI API Key"
     )
     jiekou_base_url: str = Field(

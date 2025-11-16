@@ -165,7 +165,7 @@ class NewFormatBatchProcessor:
                 start_time = datetime.now()
 
                 # 创建客户端
-                client = ChatClient()
+                client = ChatClient(model=model)
 
                 # 调用API
                 response = client.chat(
@@ -252,15 +252,13 @@ class NewFormatBatchProcessor:
         logger.info(f"[{model}][{patient_name}] 开始处理，共 {len(prompts)} 个对话")
         start_time = datetime.now()
 
-        # 并发处理所有对话
-        tasks = [
-            self.process_single_conversation(
+        # 顺序处理所有对话（不并发）
+        results = []
+        for idx, prompt in enumerate(prompts):
+            result = await self.process_single_conversation(
                 prompt, idx, patient_chat, patient_name, model
             )
-            for idx, prompt in enumerate(prompts)
-        ]
-
-        results = await asyncio.gather(*tasks)
+            results.append(result)
 
         end_time = datetime.now()
         total_duration = (end_time - start_time).total_seconds()
@@ -303,15 +301,12 @@ class NewFormatBatchProcessor:
         total_tasks = len(self.models) * len(patients)
         logger.info(f"开始批量处理: {len(self.models)} 个模型 × {len(patients)} 个患者 = {total_tasks} 个文件")
 
-        # 并发处理所有(模型, 患者)组合
-        tasks = []
+        # 顺序处理所有(模型, 患者)组合（不并发）
+        results = []
         for model in self.models:
             for patient in patients:
-                tasks.append(
-                    self.process_model_patient(model, patient, prompts)
-                )
-
-        results = await asyncio.gather(*tasks)
+                result = await self.process_model_patient(model, patient, prompts)
+                results.append(result)
 
         logger.info(f"所有任务处理完成，共生成 {len(results)} 个文件")
 
@@ -325,8 +320,11 @@ class NewFormatBatchProcessor:
             model = result['model']
             people = result['people']
 
+            # 替换模型名称中的特殊字符（避免路径问题）
+            safe_model = model.replace('/', '_').replace('\\', '_')
+
             # 文件名：{model}-{people}.json
-            filename = f"{model}-{people}.json"
+            filename = f"{safe_model}-{people}.json"
             filepath = os.path.join(self.output_dir, filename)
 
             # 保存JSON

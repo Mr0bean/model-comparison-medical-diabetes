@@ -1,0 +1,6943 @@
+[
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者1",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 84.21052631578947,
+    "entity_details": {
+      "score": 84.21052631578947,
+      "total_found": 16,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高甘油三酯"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 6,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "司美格鲁肽",
+            "格列齐特",
+            "多格列艾汀"
+          ],
+          "count": 4,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "甘油三酯",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 4,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 50.0,
+    "format_details": {
+      "score": 50.0,
+      "passed": 2,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": false,
+        "has_lists": true,
+        "proper_markdown": false
+      }
+    },
+    "length_metrics": {
+      "total_chars": 667,
+      "content_chars": 647,
+      "total_lines": 22,
+      "content_lines": 21,
+      "avg_line_length": 30.80952380952381
+    },
+    "overall_score": 69.01315789473684
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者10",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 63.1578947368421,
+    "entity_details": {
+      "score": 63.1578947368421,
+      "total_found": 12,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素",
+            "司美格鲁肽"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 775,
+      "content_chars": 718,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 35.9
+    },
+    "overall_score": 70.19736842105263
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者2",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "手麻",
+            "脚麻"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 494,
+      "content_chars": 438,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 21.9
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者3",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 795,
+      "content_chars": 739,
+      "total_lines": 26,
+      "content_lines": 22,
+      "avg_line_length": 33.59090909090909
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者4",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 6,
+          "total": 6
+        },
+        "药物": {
+          "found": [],
+          "count": 0,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 581,
+      "content_chars": 525,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 26.25
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者5",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "司美格鲁肽"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 557,
+      "content_chars": 501,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 25.05
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者6",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 36.84210526315789,
+    "entity_details": {
+      "score": 36.84210526315789,
+      "total_found": 7,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻"
+          ],
+          "count": 2,
+          "total": 6
+        },
+        "药物": {
+          "found": [],
+          "count": 0,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 477,
+      "content_chars": 421,
+      "total_lines": 25,
+      "content_lines": 21,
+      "avg_line_length": 20.047619047619047
+    },
+    "overall_score": 62.30263157894737
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者7",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 708,
+      "content_chars": 652,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 32.6
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者8",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 587,
+      "content_chars": 531,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 26.55
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "Baichuan-M2",
+    "patient": "患者9",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "餐后血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 826,
+      "content_chars": 771,
+      "total_lines": 27,
+      "content_lines": 23,
+      "avg_line_length": 33.52173913043478
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者1",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 89.47368421052632,
+    "entity_details": {
+      "score": 89.47368421052632,
+      "total_found": 17,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高甘油三酯"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 6,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素",
+            "司美格鲁肽",
+            "格列齐特",
+            "多格列艾汀"
+          ],
+          "count": 5,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "甘油三酯",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 4,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 642,
+      "content_chars": 575,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 23.0
+    },
+    "overall_score": 78.09210526315789
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者10",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素",
+            "司美格鲁肽"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 695,
+      "content_chars": 627,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 25.08
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者2",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 42.10526315789473,
+    "entity_details": {
+      "score": 42.10526315789473,
+      "total_found": 8,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病"
+          ],
+          "count": 1,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 568,
+      "content_chars": 501,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 20.04
+    },
+    "overall_score": 57.63157894736842
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者3",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 754,
+      "content_chars": 687,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 27.48
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者4",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [],
+          "count": 0,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 589,
+      "content_chars": 522,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 20.88
+    },
+    "overall_score": 59.21052631578947
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者5",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 42.10526315789473,
+    "entity_details": {
+      "score": 42.10526315789473,
+      "total_found": 8,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病"
+          ],
+          "count": 1,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "司美格鲁肽"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 535,
+      "content_chars": 468,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 18.72
+    },
+    "overall_score": 63.88157894736842
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者6",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 31.57894736842105,
+    "entity_details": {
+      "score": 31.57894736842105,
+      "total_found": 6,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻"
+          ],
+          "count": 2,
+          "total": 6
+        },
+        "药物": {
+          "found": [],
+          "count": 0,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 497,
+      "content_chars": 430,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 17.2
+    },
+    "overall_score": 60.723684210526315
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者7",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 63.1578947368421,
+    "entity_details": {
+      "score": 63.1578947368421,
+      "total_found": 12,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 782,
+      "content_chars": 715,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 28.6
+    },
+    "overall_score": 63.94736842105263
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者8",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 615,
+      "content_chars": 548,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 21.92
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "deepseek_deepseek-v3.1",
+    "patient": "患者9",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖"
+          ],
+          "count": 1,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 875,
+      "content_chars": 808,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 32.32
+    },
+    "overall_score": 60.78947368421052
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者1",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 78.94736842105263,
+    "entity_details": {
+      "score": 78.94736842105263,
+      "total_found": 15,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高甘油三酯"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素",
+            "司美格鲁肽",
+            "格列齐特",
+            "多格列艾汀"
+          ],
+          "count": 5,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "甘油三酯",
+            "空腹血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 758,
+      "content_chars": 692,
+      "total_lines": 26,
+      "content_lines": 22,
+      "avg_line_length": 31.454545454545453
+    },
+    "overall_score": 74.93421052631578
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者10",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素",
+            "司美格鲁肽"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 633,
+      "content_chars": 566,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 28.3
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者2",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "手麻",
+            "脚麻"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 613,
+      "content_chars": 547,
+      "total_lines": 26,
+      "content_lines": 22,
+      "avg_line_length": 24.863636363636363
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者3",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 806,
+      "content_chars": 740,
+      "total_lines": 26,
+      "content_lines": 22,
+      "avg_line_length": 33.63636363636363
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者4",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [],
+          "count": 0,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 659,
+      "content_chars": 593,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 29.65
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者5",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 42.10526315789473,
+    "entity_details": {
+      "score": 42.10526315789473,
+      "total_found": 8,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "司美格鲁肽"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 702,
+      "content_chars": 636,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 31.8
+    },
+    "overall_score": 63.88157894736842
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者6",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 31.57894736842105,
+    "entity_details": {
+      "score": 31.57894736842105,
+      "total_found": 6,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻"
+          ],
+          "count": 2,
+          "total": 6
+        },
+        "药物": {
+          "found": [],
+          "count": 0,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 491,
+      "content_chars": 425,
+      "total_lines": 25,
+      "content_lines": 21,
+      "avg_line_length": 20.238095238095237
+    },
+    "overall_score": 60.723684210526315
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者7",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 761,
+      "content_chars": 695,
+      "total_lines": 26,
+      "content_lines": 22,
+      "avg_line_length": 31.59090909090909
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者8",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 696,
+      "content_chars": 630,
+      "total_lines": 24,
+      "content_lines": 20,
+      "avg_line_length": 31.5
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "doubao-seed-1-6-251015",
+    "patient": "患者9",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖"
+          ],
+          "count": 1,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 1039,
+      "content_chars": 973,
+      "total_lines": 33,
+      "content_lines": 29,
+      "avg_line_length": 33.55172413793103
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者1",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 89.47368421052632,
+    "entity_details": {
+      "score": 89.47368421052632,
+      "total_found": 17,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高甘油三酯"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素",
+            "司美格鲁肽",
+            "格列齐特",
+            "多格列艾汀"
+          ],
+          "count": 5,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "甘油三酯",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 4,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 1013,
+      "content_chars": 961,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 38.44
+    },
+    "overall_score": 71.84210526315789
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者10",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素",
+            "司美格鲁肽"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 1133,
+      "content_chars": 1080,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 43.2
+    },
+    "overall_score": 60.78947368421052
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者2",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 812,
+      "content_chars": 760,
+      "total_lines": 30,
+      "content_lines": 26,
+      "avg_line_length": 29.23076923076923
+    },
+    "overall_score": 60.78947368421052
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者3",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 1119,
+      "content_chars": 1067,
+      "total_lines": 33,
+      "content_lines": 29,
+      "avg_line_length": 36.793103448275865
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者4",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 1011,
+      "content_chars": 959,
+      "total_lines": 31,
+      "content_lines": 27,
+      "avg_line_length": 35.51851851851852
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者5",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素",
+            "司美格鲁肽"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 930,
+      "content_chars": 878,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 35.12
+    },
+    "overall_score": 62.368421052631575
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者6",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 848,
+      "content_chars": 796,
+      "total_lines": 30,
+      "content_lines": 26,
+      "avg_line_length": 30.615384615384617
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者7",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 68.42105263157895,
+    "entity_details": {
+      "score": 68.42105263157895,
+      "total_found": 13,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 1162,
+      "content_chars": 1110,
+      "total_lines": 32,
+      "content_lines": 28,
+      "avg_line_length": 39.642857142857146
+    },
+    "overall_score": 65.52631578947368
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者8",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 939,
+      "content_chars": 887,
+      "total_lines": 31,
+      "content_lines": 27,
+      "avg_line_length": 32.851851851851855
+    },
+    "overall_score": 59.21052631578947
+  },
+  {
+    "model": "gpt-5.1",
+    "patient": "患者9",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖"
+          ],
+          "count": 1,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 1252,
+      "content_chars": 1200,
+      "total_lines": 35,
+      "content_lines": 31,
+      "avg_line_length": 38.70967741935484
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者1",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 78.94736842105263,
+    "entity_details": {
+      "score": 78.94736842105263,
+      "total_found": 15,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高甘油三酯"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素",
+            "司美格鲁肽",
+            "格列齐特",
+            "多格列艾汀"
+          ],
+          "count": 5,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "甘油三酯",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 4,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 815,
+      "content_chars": 760,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 30.4
+    },
+    "overall_score": 74.93421052631578
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者10",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素",
+            "司美格鲁肽"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 701,
+      "content_chars": 645,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 25.8
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者2",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 42.10526315789473,
+    "entity_details": {
+      "score": 42.10526315789473,
+      "total_found": 8,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "视物模糊"
+          ],
+          "count": 2,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 581,
+      "content_chars": 526,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 21.04
+    },
+    "overall_score": 63.88157894736842
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者3",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 740,
+      "content_chars": 685,
+      "total_lines": 31,
+      "content_lines": 27,
+      "avg_line_length": 25.37037037037037
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者4",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 636,
+      "content_chars": 581,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 23.24
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者5",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 2,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素",
+            "司美格鲁肽"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 567,
+      "content_chars": 512,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 20.48
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者6",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 42.10526315789473,
+    "entity_details": {
+      "score": 42.10526315789473,
+      "total_found": 8,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 519,
+      "content_chars": 464,
+      "total_lines": 31,
+      "content_lines": 27,
+      "avg_line_length": 17.185185185185187
+    },
+    "overall_score": 63.88157894736842
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者7",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 63.1578947368421,
+    "entity_details": {
+      "score": 63.1578947368421,
+      "total_found": 12,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 648,
+      "content_chars": 593,
+      "total_lines": 30,
+      "content_lines": 26,
+      "avg_line_length": 22.807692307692307
+    },
+    "overall_score": 70.19736842105263
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者8",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 637,
+      "content_chars": 582,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 23.28
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "grok-4-0709",
+    "patient": "患者9",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖"
+          ],
+          "count": 1,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 783,
+      "content_chars": 728,
+      "total_lines": 32,
+      "content_lines": 28,
+      "avg_line_length": 26.0
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者1",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 78.94736842105263,
+    "entity_details": {
+      "score": 78.94736842105263,
+      "total_found": 15,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高甘油三酯"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "司美格鲁肽",
+            "格列齐特",
+            "多格列艾汀"
+          ],
+          "count": 4,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "甘油三酯",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 4,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 660,
+      "content_chars": 592,
+      "total_lines": 32,
+      "content_lines": 28,
+      "avg_line_length": 21.142857142857142
+    },
+    "overall_score": 74.93421052631578
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者10",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "司美格鲁肽"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 681,
+      "content_chars": 612,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 24.48
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者2",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 690,
+      "content_chars": 623,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 24.92
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者3",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 803,
+      "content_chars": 736,
+      "total_lines": 31,
+      "content_lines": 27,
+      "avg_line_length": 27.25925925925926
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者4",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 42.10526315789473,
+    "entity_details": {
+      "score": 42.10526315789473,
+      "total_found": 8,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病"
+          ],
+          "count": 1,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [],
+          "count": 0,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 622,
+      "content_chars": 554,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 22.16
+    },
+    "overall_score": 63.88157894736842
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者5",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病"
+          ],
+          "count": 1,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "司美格鲁肽"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 597,
+      "content_chars": 530,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 21.2
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者6",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 42.10526315789473,
+    "entity_details": {
+      "score": 42.10526315789473,
+      "total_found": 8,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 566,
+      "content_chars": 498,
+      "total_lines": 30,
+      "content_lines": 26,
+      "avg_line_length": 19.153846153846153
+    },
+    "overall_score": 63.88157894736842
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者7",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 827,
+      "content_chars": 759,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 30.36
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者8",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 696,
+      "content_chars": 628,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 25.12
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "moonshotai_kimi-k2-0905",
+    "patient": "患者9",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 827,
+      "content_chars": 759,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 30.36
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者1",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 73.68421052631578,
+    "entity_details": {
+      "score": 73.68421052631578,
+      "total_found": 14,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高甘油三酯"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "司美格鲁肽",
+            "格列齐特",
+            "多格列艾汀"
+          ],
+          "count": 4,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "甘油三酯",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 4,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 768,
+      "content_chars": 714,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 28.56
+    },
+    "overall_score": 73.35526315789474
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者10",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素",
+            "司美格鲁肽"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 777,
+      "content_chars": 722,
+      "total_lines": 30,
+      "content_lines": 26,
+      "avg_line_length": 27.76923076923077
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者2",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "手麻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 4,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 599,
+      "content_chars": 545,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 21.8
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者3",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 839,
+      "content_chars": 785,
+      "total_lines": 31,
+      "content_lines": 27,
+      "avg_line_length": 29.074074074074073
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者4",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [],
+          "count": 0,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 717,
+      "content_chars": 663,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 26.52
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者5",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 57.89473684210527,
+    "entity_details": {
+      "score": 57.89473684210527,
+      "total_found": 11,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "司美格鲁肽"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 666,
+      "content_chars": 612,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 24.48
+    },
+    "overall_score": 68.61842105263158
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者6",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 52.63157894736842,
+    "entity_details": {
+      "score": 52.63157894736842,
+      "total_found": 10,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖"
+          ],
+          "count": 2,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 531,
+      "content_chars": 477,
+      "total_lines": 30,
+      "content_lines": 26,
+      "avg_line_length": 18.346153846153847
+    },
+    "overall_score": 67.03947368421052
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者7",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 63.1578947368421,
+    "entity_details": {
+      "score": 63.1578947368421,
+      "total_found": 12,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "二甲双胍",
+            "胰岛素"
+          ],
+          "count": 2,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 769,
+      "content_chars": 715,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 28.6
+    },
+    "overall_score": 70.19736842105263
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者8",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 47.368421052631575,
+    "entity_details": {
+      "score": 47.368421052631575,
+      "total_found": 9,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压"
+          ],
+          "count": 2,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "脚麻",
+            "视物模糊"
+          ],
+          "count": 3,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 25.0,
+    "numeric_details": {
+      "score": 25.0,
+      "passed": 2,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": true,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": true
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 736,
+      "content_chars": 682,
+      "total_lines": 29,
+      "content_lines": 25,
+      "avg_line_length": 27.28
+    },
+    "overall_score": 65.46052631578948
+  },
+  {
+    "model": "qwen3-max",
+    "patient": "患者9",
+    "structure_score": 100.0,
+    "structure_details": {
+      "score": 100.0,
+      "found_count": 9,
+      "total_count": 9,
+      "details": {
+        "基本信息": true,
+        "性别": true,
+        "年龄": true,
+        "身高": true,
+        "体重": true,
+        "主诉": true,
+        "现病史": true,
+        "既往病史": true,
+        "家族病史": true
+      }
+    },
+    "entity_score": 63.1578947368421,
+    "entity_details": {
+      "score": 63.1578947368421,
+      "total_found": 12,
+      "total_entities": 19,
+      "by_category": {
+        "疾病": {
+          "found": [
+            "糖尿病",
+            "高血压",
+            "高脂血症"
+          ],
+          "count": 3,
+          "total": 4
+        },
+        "症状": {
+          "found": [
+            "泡沫",
+            "体重下降",
+            "体重减轻",
+            "手麻",
+            "视物模糊"
+          ],
+          "count": 5,
+          "total": 6
+        },
+        "药物": {
+          "found": [
+            "胰岛素"
+          ],
+          "count": 1,
+          "total": 5
+        },
+        "检查": {
+          "found": [
+            "血糖",
+            "空腹血糖",
+            "餐后血糖"
+          ],
+          "count": 3,
+          "total": 4
+        }
+      }
+    },
+    "numeric_score": 0.0,
+    "numeric_details": {
+      "score": 0.0,
+      "passed": 0,
+      "total": 8,
+      "details": {
+        "has_age": false,
+        "has_height": false,
+        "has_weight": false,
+        "has_glucose": false,
+        "age_reasonable": false,
+        "height_reasonable": false,
+        "weight_reasonable": false,
+        "glucose_reasonable": false
+      }
+    },
+    "format_score": 100.0,
+    "format_details": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "details": {
+        "has_title": true,
+        "has_sections": true,
+        "has_lists": true,
+        "proper_markdown": true
+      }
+    },
+    "length_metrics": {
+      "total_chars": 981,
+      "content_chars": 927,
+      "total_lines": 32,
+      "content_lines": 28,
+      "avg_line_length": 33.107142857142854
+    },
+    "overall_score": 63.94736842105263
+  }
+]
