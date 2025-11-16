@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>模型横评对比系统</title>
+    <title>模型评分系统</title>
     <style>
         * {
             margin: 0;
@@ -44,6 +44,92 @@
         .header p {
             font-size: 16px;
             opacity: 0.9;
+        }
+
+        /* 评分相关样式 */
+        .rating-panel {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .rating-dimensions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .rating-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .rating-item label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 5px;
+        }
+
+        .star {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+            user-select: none;
+        }
+
+        .star.selected {
+            color: #ffc107;
+        }
+
+        .star:hover {
+            color: #ffb300;
+        }
+
+        .rating-comment {
+            margin-top: 10px;
+        }
+
+        .rating-comment textarea {
+            width: 100%;
+            min-height: 60px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 13px;
+            resize: vertical;
+        }
+
+        .export-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
         .controls {
@@ -420,8 +506,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏥 医疗模型横评对比系统</h1>
-            <p>对比不同AI模型在病历生成任务中的表现</p>
+            <h1>📊 医疗模型评分系统</h1>
+            <p>对不同AI模型的病历生成进行专业评分</p>
         </div>
 
         <div class="controls">
@@ -462,7 +548,11 @@
         </div>
     </div>
 
+    <button class="export-btn" onclick="exportRatings()">💾 导出评分数据</button>
+
     <script>
+        // 评分数据存储
+        let ratingsData = {};
         let comparisonData = null;
         let selectedPatients = new Set();
         let selectedModels = new Set();
@@ -870,7 +960,7 @@
                     const sortedModels = Array.from(selectedModels).sort();
                     sortedModels.forEach(model => {
                         if (convData[model]) {
-                            const card = createModelCard(model, convData[model], patient);
+                            const card = createModelCard(model, convData[model], patient, convId);
                             grid.appendChild(card);
                         }
                     });
@@ -922,7 +1012,7 @@
         }
 
         // 创建模型卡片
-        function createModelCard(model, data, patient) {
+        function createModelCard(model, data, patient, convId) {
             const card = document.createElement('div');
             card.className = 'model-card';
 
@@ -941,10 +1031,108 @@
             const formattedOutput = formatOutput(data.output);
             body.innerHTML = formattedOutput;
 
+            // 创建评分面板
+            const ratingPanel = createRatingPanel(model, patient, convId);
+
             card.appendChild(header);
             card.appendChild(body);
+            card.appendChild(ratingPanel);
 
             return card;
+        }
+
+        // 创建评分面板
+        function createRatingPanel(model, patient, convId) {
+            const panel = document.createElement('div');
+            panel.className = 'rating-panel';
+
+            const ratingKey = `${patient}_${convId}_${model}`;
+
+            // 评分维度
+            const dimensions = [
+                { id: 'accuracy', label: '准确性' },
+                { id: 'completeness', label: '完整性' },
+                { id: 'format', label: '格式规范' },
+                { id: 'language', label: '语言表达' },
+                { id: 'logic', label: '逻辑性' }
+            ];
+
+            const dimensionsDiv = document.createElement('div');
+            dimensionsDiv.className = 'rating-dimensions';
+
+            dimensions.forEach(dim => {
+                const item = document.createElement('div');
+                item.className = 'rating-item';
+
+                const label = document.createElement('label');
+                label.textContent = dim.label;
+
+                const stars = document.createElement('div');
+                stars.className = 'rating-stars';
+                stars.innerHTML = Array(5).fill(0).map((_, i) =>
+                    `<span class="star" data-rating="${i + 1}" onclick="setRating('${ratingKey}', '${dim.id}', ${i + 1})">★</span>`
+                ).join('');
+
+                item.appendChild(label);
+                item.appendChild(stars);
+                dimensionsDiv.appendChild(item);
+            });
+
+            // 评论框
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'rating-comment';
+            commentDiv.innerHTML = `
+                <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px;">备注</label>
+                <textarea placeholder="请输入评分备注..." onchange="setComment('${ratingKey}', this.value)"></textarea>
+            `;
+
+            panel.appendChild(dimensionsDiv);
+            panel.appendChild(commentDiv);
+
+            return panel;
+        }
+
+        // 设置评分
+        function setRating(ratingKey, dimension, score) {
+            if (!ratingsData[ratingKey]) {
+                ratingsData[ratingKey] = { dimensions: {}, comment: '' };
+            }
+            ratingsData[ratingKey].dimensions[dimension] = score;
+
+            // 更新星星显示
+            updateStarDisplay(ratingKey, dimension, score);
+        }
+
+        // 更新星星显示
+        function updateStarDisplay(ratingKey, dimension, score) {
+            const stars = document.querySelectorAll(`.rating-panel .star`);
+            stars.forEach(star => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                const parentDim = star.closest('.rating-item');
+                if (parentDim && parentDim.querySelector('label').textContent === getDimensionLabel(dimension)) {
+                    star.classList.toggle('selected', rating <= score);
+                }
+            });
+        }
+
+        // 获取维度标签
+        function getDimensionLabel(dimId) {
+            const labels = {
+                'accuracy': '准确性',
+                'completeness': '完整性',
+                'format': '格式规范',
+                'language': '语言表达',
+                'logic': '逻辑性'
+            };
+            return labels[dimId] || dimId;
+        }
+
+        // 设置评论
+        function setComment(ratingKey, comment) {
+            if (!ratingsData[ratingKey]) {
+                ratingsData[ratingKey] = { dimensions: {}, comment: '' };
+            }
+            ratingsData[ratingKey].comment = comment;
         }
 
         // 格式化输出内容
@@ -1000,6 +1188,96 @@
 
             // 重新渲染对比区域
             updateComparison();
+        }
+
+        // 导出评分数据
+        function exportRatings() {
+            if (Object.keys(ratingsData).length === 0) {
+                alert('⚠️ 还没有任何评分数据！请先对模型进行评分。');
+                return;
+            }
+
+            // 整理导出数据
+            const exportData = [];
+
+            Object.keys(ratingsData).forEach(key => {
+                const [patient, convId, model] = key.split('_');
+                const rating = ratingsData[key];
+
+                // 获取对话类型标题
+                let convTitle = '未知';
+                if (comparisonData && comparisonData.data[patient] && comparisonData.data[patient][convId]) {
+                    const convData = comparisonData.data[patient][convId];
+                    Object.values(convData).forEach(data => {
+                        if (data.title) {
+                            convTitle = data.title;
+                        }
+                    });
+                }
+
+                // 计算平均分
+                const scores = Object.values(rating.dimensions);
+                const avgScore = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2) : 0;
+
+                exportData.push({
+                    '患者': patient,
+                    '对话类型': `${convTitle} (${convId})`,
+                    '模型': model,
+                    '准确性': rating.dimensions.accuracy || 0,
+                    '完整性': rating.dimensions.completeness || 0,
+                    '格式规范': rating.dimensions.format || 0,
+                    '语言表达': rating.dimensions.language || 0,
+                    '逻辑性': rating.dimensions.logic || 0,
+                    '平均分': avgScore,
+                    '备注': rating.comment || ''
+                });
+            });
+
+            // 转换为CSV
+            const csv = convertToCSV(exportData);
+            downloadCSV(csv, `模型评分数据_${new Date().toISOString().split('T')[0]}.csv`);
+
+            alert(`✅ 评分数据导出成功！\n共导出 ${exportData.length} 条评分记录。`);
+        }
+
+        // 转换为CSV格式
+        function convertToCSV(data) {
+            if (data.length === 0) return '';
+
+            const headers = Object.keys(data[0]);
+            const csvRows = [];
+
+            // 添加 BOM 以支持 Excel 打开中文
+            csvRows.push('\ufeff' + headers.join(','));
+
+            data.forEach(row => {
+                const values = headers.map(header => {
+                    const value = row[header];
+                    // 处理包含逗号、换行或引号的字段
+                    if (typeof value === 'string' && (value.includes(',') || value.includes('\n') || value.includes('"'))) {
+                        return `"${value.replace(/"/g, '""')}"`;
+                    }
+                    return value;
+                });
+                csvRows.push(values.join(','));
+            });
+
+            return csvRows.join('\n');
+        }
+
+        // 下载CSV文件
+        function downloadCSV(csv, filename) {
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
         }
 
         // 页面加载时执行
