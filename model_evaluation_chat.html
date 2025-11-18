@@ -552,6 +552,80 @@
             justify-content: space-between;
             align-items: center;
             cursor: move;
+        }
+
+        /* 填写进度提示区域 */
+        .eval-progress-bar {
+            background: #f8f9fa;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e9ecef;
+            display: none;
+        }
+
+        .eval-progress-bar.show {
+            display: block;
+        }
+
+        .progress-title {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-percentage {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .progress-track {
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .incomplete-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .incomplete-tag {
+            font-size: 11px;
+            padding: 3px 8px;
+            background: #fff3cd;
+            color: #856404;
+            border-radius: 10px;
+            border: 1px solid #ffc107;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .incomplete-tag:hover {
+            background: #ffc107;
+            color: white;
+        }
+
+        /* 未填写的评分项高亮 */
+        .eval-section.incomplete {
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            background: #fff9e6;
+        }
+
+        .eval-section.incomplete .eval-section-title {
+            color: #856404;
             user-select: none;
             border-radius: 12px 12px 0 0;
             position: relative;
@@ -903,6 +977,21 @@
                 <button class="eval-control-btn" onclick="closeEvalWindow()" title="关闭">×</button>
             </div>
         </div>
+
+        <!-- 填写进度条 -->
+        <div class="eval-progress-bar" id="evalProgressBar">
+            <div class="progress-title">
+                <span>📝 评测进度</span>
+                <span class="progress-percentage" id="progressPercentage">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+            <div class="incomplete-items" id="incompleteItems">
+                <!-- 未填项标签将动态生成 -->
+            </div>
+        </div>
+
         <div class="eval-content">
             <!-- 总分显示 -->
             <div class="eval-total">
@@ -1094,6 +1183,18 @@
 
         // 上一个模型
         function previousModel() {
+            // 检查当前模型评测是否完成
+            if (!checkCompletionStatus()) {
+                alert('⚠️ 请先完成当前模型的评测！\n\n未填写项会在上方显示，请点击修改分数后再切换模型。');
+                // 滚动到评测窗口
+                const evalWindow = document.getElementById('evalWindow');
+                if (evalWindow.classList.contains('active')) {
+                    document.getElementById('evalProgressBar').classList.add('show');
+                    document.getElementById('evalProgressBar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                return;
+            }
+
             if (currentModelIndex > 0) {
                 currentModelIndex--;
                 updateView();
@@ -1102,6 +1203,18 @@
 
         // 下一个模型
         function nextModel() {
+            // 检查当前模型评测是否完成
+            if (!checkCompletionStatus()) {
+                alert('⚠️ 请先完成当前模型的评测！\n\n未填写项会在上方显示，请点击修改分数后再切换模型。');
+                // 滚动到评测窗口
+                const evalWindow = document.getElementById('evalWindow');
+                if (evalWindow.classList.contains('active')) {
+                    document.getElementById('evalProgressBar').classList.add('show');
+                    document.getElementById('evalProgressBar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                return;
+            }
+
             if (currentModelIndex < availableModels.length - 1) {
                 currentModelIndex++;
                 updateView();
@@ -1114,6 +1227,7 @@
             updateReportView();
             updateNavigator();
             loadSavedEval(); // 加载已保存的评测
+            checkCompletionStatus(); // 检查新模型的完成度
         }
 
         // 更新对话视图
@@ -1446,6 +1560,7 @@
                 evalWindow.classList.add('active');
                 evalBtn.classList.add('hidden');
                 calculateTotal(); // 打开时计算一次总分
+                checkCompletionStatus(); // 检查完成度
 
                 // 首次打开时显示使用提示
                 const hasShownHint = localStorage.getItem('eval_hint_shown');
@@ -1486,6 +1601,60 @@
             }
         }
 
+        // 检查某个评分项是否已填写（不是默认满分）
+        function isScoreCompleted(scoreId, maxScore) {
+            const value = parseInt(document.getElementById(scoreId).value) || maxScore;
+            return value !== maxScore; // 只要不是满分就算已填写
+        }
+
+        // 计算填写完成度
+        function checkCompletionStatus() {
+            const scoreItems = [
+                { id: 'score-accuracy', max: 30, name: '信息准确性', sectionId: 'section-accuracy' },
+                { id: 'score-completeness', max: 25, name: '信息完整性', sectionId: 'section-completeness' },
+                { id: 'score-clinical', max: 20, name: '临床实用性', sectionId: 'section-clinical' },
+                { id: 'score-structure', max: 15, name: '结构清晰度', sectionId: 'section-structure' },
+                { id: 'score-language', max: 10, name: '语言专业性', sectionId: 'section-language' }
+            ];
+
+            let completedCount = 0;
+            const incompleteItems = [];
+
+            scoreItems.forEach(item => {
+                const section = document.querySelector(`#${item.id}`).closest('.eval-section');
+                if (isScoreCompleted(item.id, item.max)) {
+                    completedCount++;
+                    section.classList.remove('incomplete');
+                } else {
+                    section.classList.add('incomplete');
+                    incompleteItems.push(item.name);
+                }
+            });
+
+            const percentage = Math.round((completedCount / scoreItems.length) * 100);
+            const isComplete = completedCount === scoreItems.length;
+
+            // 更新进度条
+            document.getElementById('progressPercentage').textContent = percentage + '%';
+            document.getElementById('progressFill').style.width = percentage + '%';
+
+            // 更新未填项标签
+            const incompleteItemsContainer = document.getElementById('incompleteItems');
+            if (incompleteItems.length > 0) {
+                incompleteItemsContainer.innerHTML = incompleteItems.map(name =>
+                    `<span class="incomplete-tag">⚠️ ${name}</span>`
+                ).join('');
+                document.getElementById('evalProgressBar').classList.add('show');
+            } else {
+                incompleteItemsContainer.innerHTML = '<span style="color: #52c41a; font-size: 12px;">✅ 所有项已填写完成</span>';
+                setTimeout(() => {
+                    document.getElementById('evalProgressBar').classList.remove('show');
+                }, 2000); // 2秒后隐藏进度条
+            }
+
+            return isComplete;
+        }
+
         // 计算总分
         function calculateTotal() {
             const accuracy = parseInt(document.getElementById('score-accuracy').value) || 0;
@@ -1508,6 +1677,9 @@
             } else {
                 scoreElement.style.color = '#f5222d';
             }
+
+            // 检查完成度
+            checkCompletionStatus();
 
             // 触发自动保存
             autoSaveEval();
@@ -1620,6 +1792,22 @@
                 document.getElementById('comment-structure').value = evalData.scores.structure.comment || '';
                 document.getElementById('comment-language').value = evalData.scores.language.comment || '';
                 document.getElementById('overall-comment').value = evalData.overall_comment || '';
+
+                calculateTotal();
+            } else {
+                // 如果没有保存的数据，重置为默认值
+                document.getElementById('score-accuracy').value = 30;
+                document.getElementById('score-completeness').value = 25;
+                document.getElementById('score-clinical').value = 20;
+                document.getElementById('score-structure').value = 15;
+                document.getElementById('score-language').value = 10;
+
+                document.getElementById('comment-accuracy').value = '';
+                document.getElementById('comment-completeness').value = '';
+                document.getElementById('comment-clinical').value = '';
+                document.getElementById('comment-structure').value = '';
+                document.getElementById('comment-language').value = '';
+                document.getElementById('overall-comment').value = '';
 
                 calculateTotal();
             }
