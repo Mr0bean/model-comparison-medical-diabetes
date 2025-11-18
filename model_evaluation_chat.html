@@ -1827,7 +1827,7 @@
         }
 
         // 保存评测结果
-        function saveEval(silent = false) {
+        async function saveEval(silent = false) {
             if (!currentPatient || !availableModels[currentModelIndex]) return;
 
             const evalData = {
@@ -1877,7 +1877,17 @@
                 history.push(evalData);
                 localStorage.setItem('eval_history', JSON.stringify(history));
 
-                alert('评测已保存！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
+                // 提交到服务器（如果已验证身份）
+                if (window.submitEvaluationToServer) {
+                    const success = await window.submitEvaluationToServer(evalData);
+                    if (success) {
+                        alert('✅ 评测已保存并提交到服务器！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
+                    } else {
+                        alert('⚠️ 评测已保存到本地，但提交服务器失败\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
+                    }
+                } else {
+                    alert('评测已保存！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
+                }
                 console.log('评测数据已保存:', evalData);
             }
         }
@@ -2089,5 +2099,8 @@
         initAutoSave(); // 初始化自动保存
         applyFontSize(); // 应用保存的字体大小
     </script>
+
+    <!-- 身份验证模块 -->
+    <script src="evaluation-auth.js"></script>
 </body>
 </html>
