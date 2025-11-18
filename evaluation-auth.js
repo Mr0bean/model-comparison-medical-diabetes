@@ -8,23 +8,40 @@ let currentUserId = null;
 let isVerified = false;
 
 // 页面加载时验证ID
-(function initAuth() {
+(async function initAuth() {
     // 从URL参数获取ID
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
 
-    if (!id) {
-        showCodeInput();
+    if (id) {
+        // 如果URL有id参数，直接验证
+        if (!/^[a-z0-9]{4}$/.test(id)) {
+            showAuthError('ID格式错误', 'ID必须是4位小写字母或数字');
+            return;
+        }
+        currentUserId = id;
+        await verifyCode(id);
         return;
     }
 
-    if (!/^[a-z0-9]{4}$/.test(id)) {
-        showAuthError('ID格式错误', 'ID必须是4位小写字母或数字');
-        return;
+    // 尝试从缓存读取完成码
+    const cachedCode = localStorage.getItem('completion_code');
+    if (cachedCode && /^[a-z0-9]{4}$/.test(cachedCode)) {
+        console.log('检测到缓存的完成码，正在验证...');
+        currentUserId = cachedCode;
+        const isValid = await verifyCode(cachedCode);
+        if (isValid) {
+            console.log('缓存的完成码验证成功');
+            return;
+        } else {
+            // 缓存的完成码无效，清除缓存
+            console.log('缓存的完成码已失效，清除缓存');
+            localStorage.removeItem('completion_code');
+        }
     }
 
-    currentUserId = id;
-    verifyCode(id);
+    // 没有有效的完成码，显示输入框
+    showCodeInput();
 })();
 
 // 显示完成码输入框
@@ -154,6 +171,11 @@ async function verifyCode(code) {
 
         if (data.valid) {
             isVerified = true;
+
+            // 保存完成码到缓存
+            localStorage.setItem('completion_code', code);
+            console.log('完成码已缓存到localStorage');
+
             // 移除输入对话框
             const overlay = document.querySelector('.auth-overlay');
             if (overlay) {
@@ -185,11 +207,28 @@ function showAuthSuccess(code, status) {
     const badge = document.createElement('div');
     badge.className = 'id-badge verified';
     badge.innerHTML = `
-        <span style="opacity: 0.8;">ID:</span> ${code}
-        ${status === 'used' ? '<br><small style="font-size: 12px;">已使用</small>' : ''}
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div>
+                <span style="opacity: 0.8;">ID:</span> ${code}
+                ${status === 'used' ? '<br><small style="font-size: 12px;">已使用</small>' : ''}
+            </div>
+            <button id="clearCodeBtn" title="清除完成码缓存"
+                    style="background: rgba(255,255,255,0.2); border: none; color: white;
+                           padding: 4px 8px; border-radius: 4px; cursor: pointer;
+                           font-size: 12px;">✕</button>
+        </div>
     `;
 
     document.querySelector('.header').appendChild(badge);
+
+    // 绑定清除按钮事件
+    document.getElementById('clearCodeBtn').addEventListener('click', () => {
+        if (confirm('确定要清除完成码缓存吗？\n下次访问需要重新输入完成码。')) {
+            localStorage.removeItem('completion_code');
+            alert('完成码缓存已清除！\n页面将刷新。');
+            location.reload();
+        }
+    });
 
     // 添加CSS样式
     if (!document.getElementById('auth-styles')) {
@@ -209,6 +248,9 @@ function showAuthSuccess(code, status) {
                 font-weight: 600;
                 color: white;
                 text-align: center;
+            }
+            #clearCodeBtn:hover {
+                background: rgba(255,255,255,0.4) !important;
             }
             .auth-overlay {
                 position: fixed;
