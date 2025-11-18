@@ -891,6 +891,20 @@
             return html;
         }
 
+        // 键盘事件监听 - 左右键切换模型
+        document.addEventListener('keydown', function(event) {
+            // 左箭头键
+            if (event.key === 'ArrowLeft' || event.keyCode === 37) {
+                event.preventDefault();
+                previousModel();
+            }
+            // 右箭头键
+            else if (event.key === 'ArrowRight' || event.keyCode === 39) {
+                event.preventDefault();
+                nextModel();
+            }
+        });
+
         // 页面加载时执行
         loadData();
     </script>
