@@ -140,7 +140,56 @@ app.get('/api/verify-code/:code', async (req, res) => {
     }
 });
 
-// 2. 提交评测数据
+// 2. 申请完成码（用户自助申请）
+app.post('/api/apply-code', async (req, res) => {
+    try {
+        // 生成唯一完成码
+        let newCode;
+        let attempts = 0;
+        const maxAttempts = 10;
+
+        while (attempts < maxAttempts) {
+            newCode = generateCode();
+            const existing = await Code.findOne({ code: newCode });
+            if (!existing) {
+                break;
+            }
+            attempts++;
+        }
+
+        if (attempts >= maxAttempts) {
+            return res.status(500).json({
+                success: false,
+                message: '生成完成码失败，请稍后重试'
+            });
+        }
+
+        // 创建完成码记录
+        const codeDoc = new Code({
+            code: newCode,
+            description: '用户自助申请',
+            batchId: `apply_${Date.now()}`
+        });
+
+        await codeDoc.save();
+
+        console.log(`✅ 新申请的完成码: ${newCode}`);
+
+        res.json({
+            success: true,
+            code: newCode,
+            message: '完成码申请成功'
+        });
+    } catch (error) {
+        console.error('申请完成码失败:', error);
+        res.status(500).json({
+            success: false,
+            message: '服务器错误'
+        });
+    }
+});
+
+// 3. 提交评测数据
 app.post('/api/submit-evaluation', async (req, res) => {
     try {
         const { code, ...evaluationData } = req.body;

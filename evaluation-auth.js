@@ -46,12 +46,16 @@ let isVerified = false;
 
 // 显示完成码输入框
 function showCodeInput() {
+    // 检查是否已申请过
+    const hasApplied = localStorage.getItem('has_applied_code');
+    const appliedCode = localStorage.getItem('applied_code');
+
     const overlay = document.createElement('div');
     overlay.className = 'auth-overlay';
     overlay.innerHTML = `
         <div class="auth-dialog">
             <h2 style="color: #1890ff; margin-bottom: 20px;">🔐 请输入完成码</h2>
-            <p style="color: #666; margin-bottom: 20px;">请输入管理员分配给您的4位完成码</p>
+            <p style="color: #666; margin-bottom: 20px;">请输入管理员分配给您的4位完成码，或点击下方申请</p>
             <input type="text" id="codeInput"
                    placeholder="请输入4位完成码"
                    maxlength="4"
@@ -60,14 +64,26 @@ function showCodeInput() {
                           font-family: monospace; letter-spacing: 4px;
                           text-transform: lowercase; margin-bottom: 10px;">
             <div id="codeError" style="color: #f5222d; font-size: 14px; min-height: 20px; margin-bottom: 10px;"></div>
-            <button id="verifyBtn"
-                    style="padding: 12px 40px; background: #1890ff; color: white;
-                           border: none; border-radius: 8px; font-size: 16px;
-                           cursor: pointer; font-weight: 600;">
-                验证
-            </button>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="verifyBtn"
+                        style="padding: 12px 40px; background: #1890ff; color: white;
+                               border: none; border-radius: 8px; font-size: 16px;
+                               cursor: pointer; font-weight: 600;">
+                    验证
+                </button>
+                <button id="applyBtn"
+                        ${hasApplied ? 'disabled' : ''}
+                        style="padding: 12px 40px; background: ${hasApplied ? '#d9d9d9' : '#52c41a'}; color: white;
+                               border: none; border-radius: 8px; font-size: 16px;
+                               cursor: ${hasApplied ? 'not-allowed' : 'pointer'}; font-weight: 600;">
+                    ${hasApplied ? '已申请' : '申请完成码'}
+                </button>
+            </div>
+            ${hasApplied ? `<p style="margin-top: 15px; font-size: 14px; color: #52c41a;">
+                您已申请过完成码：<span style="font-family: monospace; font-weight: 600;">${appliedCode || '****'}</span>
+            </p>` : ''}
             <p style="margin-top: 20px; font-size: 14px; color: #999;">
-                如需获取完成码，请联系管理员
+                ${hasApplied ? '每台设备只能申请一次完成码' : '如需获取完成码，请联系管理员'}
             </p>
         </div>
     `;
@@ -121,6 +137,12 @@ function showCodeInput() {
     // 绑定验证按钮
     document.getElementById('verifyBtn').addEventListener('click', handleCodeSubmit);
 
+    // 绑定申请按钮
+    const applyBtn = document.getElementById('applyBtn');
+    if (applyBtn && !hasApplied) {
+        applyBtn.addEventListener('click', handleApplyCode);
+    }
+
     // 绑定回车键
     document.getElementById('codeInput').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -160,6 +182,63 @@ async function handleCodeSubmit() {
         errorDiv.textContent = '验证失败，请检查完成码是否正确';
         input.value = '';
         input.focus();
+    }
+}
+
+// 处理申请完成码
+async function handleApplyCode() {
+    const errorDiv = document.getElementById('codeError');
+    const applyBtn = document.getElementById('applyBtn');
+
+    // 检查是否已申请过
+    if (localStorage.getItem('has_applied_code')) {
+        errorDiv.textContent = '该设备已申请过完成码，不能重复申请';
+        errorDiv.style.color = '#faad14';
+        return;
+    }
+
+    // 禁用按钮
+    applyBtn.disabled = true;
+    applyBtn.textContent = '申请中...';
+    applyBtn.style.cursor = 'not-allowed';
+    errorDiv.textContent = '正在申请完成码...';
+    errorDiv.style.color = '#1890ff';
+
+    try {
+        const response = await fetch(`${API_BASE}/apply-code`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (data.success && data.code) {
+            // 保存申请标记和完成码
+            localStorage.setItem('has_applied_code', 'true');
+            localStorage.setItem('applied_code', data.code);
+
+            errorDiv.textContent = `✅ 申请成功！您的完成码是：${data.code}`;
+            errorDiv.style.color = '#52c41a';
+
+            // 自动填充完成码
+            document.getElementById('codeInput').value = data.code;
+
+            // 3秒后自动验证
+            setTimeout(() => {
+                handleCodeSubmit();
+            }, 2000);
+        } else {
+            throw new Error(data.message || '申请失败');
+        }
+    } catch (error) {
+        console.error('申请失败:', error);
+        errorDiv.textContent = '申请失败：' + error.message;
+        errorDiv.style.color = '#f5222d';
+        applyBtn.disabled = false;
+        applyBtn.textContent = '申请完成码';
+        applyBtn.style.cursor = 'pointer';
     }
 }
 
