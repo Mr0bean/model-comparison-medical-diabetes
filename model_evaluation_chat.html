@@ -505,8 +505,15 @@
         }
 
         .eval-window.minimized {
-            height: 50px;
-            resize: none;
+            height: 50px !important;
+            min-height: 50px !important;
+            max-height: 50px !important;
+            resize: none !important;
+        }
+
+        .eval-window.dragging {
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
         }
 
         /* 窗口标题栏 */
@@ -1463,6 +1470,9 @@
             evalWindow.style.bottom = 'auto';
             evalWindow.style.left = initialX + 'px';
             evalWindow.style.top = initialY + 'px';
+
+            // 添加拖动状态类（透明效果）
+            evalWindow.classList.add('dragging');
         });
 
         document.addEventListener('mousemove', function(e) {
@@ -1499,6 +1509,9 @@
                 const rect = evalWindow.getBoundingClientRect();
                 initialX = rect.left;
                 initialY = rect.top;
+
+                // 移除拖动状态类（恢复不透明）
+                evalWindow.classList.remove('dragging');
             }
         });
 
