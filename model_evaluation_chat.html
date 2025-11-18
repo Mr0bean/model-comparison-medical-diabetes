@@ -448,6 +448,260 @@
             padding: 50px 20px;
             font-size: 16px;
         }
+
+        /* 评测窗口浮动按钮 */
+        .eval-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .eval-float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .eval-float-btn.hidden {
+            display: none;
+        }
+
+        /* 评测窗口容器 */
+        .eval-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 420px;
+            height: 600px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            resize: both;
+            overflow: hidden;
+            min-width: 350px;
+            min-height: 400px;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .eval-window.active {
+            display: flex;
+        }
+
+        .eval-window.minimized {
+            height: 50px;
+            resize: none;
+        }
+
+        /* 窗口标题栏 */
+        .eval-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            user-select: none;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .eval-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .eval-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .eval-control-btn {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .eval-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 窗口内容区 */
+        .eval-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .eval-window.minimized .eval-content {
+            display: none;
+        }
+
+        /* 评分项 */
+        .eval-section {
+            margin-bottom: 20px;
+        }
+
+        .eval-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .eval-section-max {
+            font-size: 12px;
+            color: #999;
+            font-weight: normal;
+        }
+
+        .eval-input-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .eval-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            transition: border-color 0.2s;
+        }
+
+        .eval-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .eval-input.score-input {
+            width: 70px;
+            text-align: center;
+            flex: none;
+        }
+
+        .eval-textarea {
+            width: 100%;
+            min-height: 60px;
+            padding: 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .eval-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* 总分显示 */
+        .eval-total {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .eval-total-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .eval-total-score {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        /* 按钮组 */
+        .eval-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .eval-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .eval-btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .eval-btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .eval-btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .eval-btn-secondary:hover {
+            background: #e5e5e5;
+        }
+
+        /* 滚动条样式 */
+        .eval-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .eval-content::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .eval-content::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        .eval-content::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
     </style>
 </head>
 <body>
@@ -484,6 +738,120 @@
             </div>
             <div class="report-content" id="reportContent">
                 <div class="loading">正在加载报告...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 评测浮动按钮 -->
+    <button class="eval-float-btn" id="evalFloatBtn" onclick="toggleEvalWindow()">
+        📝
+    </button>
+
+    <!-- 评测窗口 -->
+    <div class="eval-window" id="evalWindow">
+        <div class="eval-header" id="evalHeader">
+            <div class="eval-title">模型输出评测</div>
+            <div class="eval-controls">
+                <button class="eval-control-btn" onclick="toggleMinimize()" title="最小化">
+                    <span id="minimizeIcon">−</span>
+                </button>
+                <button class="eval-control-btn" onclick="closeEvalWindow()" title="关闭">×</button>
+            </div>
+        </div>
+        <div class="eval-content">
+            <!-- 总分显示 -->
+            <div class="eval-total">
+                <div class="eval-total-label">总分</div>
+                <div class="eval-total-score" id="totalScore">0</div>
+                <div class="eval-total-label">/100</div>
+            </div>
+
+            <!-- 1. 信息准确性 (30分) -->
+            <div class="eval-section">
+                <div class="eval-section-title">
+                    1. 信息准确性
+                    <span class="eval-section-max">满分 30</span>
+                </div>
+                <div class="eval-input-group">
+                    <input type="number" class="eval-input score-input" id="score-accuracy"
+                           min="0" max="30" value="30" onchange="calculateTotal()">
+                    <span style="font-size: 12px; color: #999;">分</span>
+                </div>
+                <textarea class="eval-textarea" id="comment-accuracy"
+                          placeholder="扣分说明：数值错误、药名错误、无中生有等..."></textarea>
+            </div>
+
+            <!-- 2. 信息完整性 (25分) -->
+            <div class="eval-section">
+                <div class="eval-section-title">
+                    2. 信息完整性
+                    <span class="eval-section-max">满分 25</span>
+                </div>
+                <div class="eval-input-group">
+                    <input type="number" class="eval-input score-input" id="score-completeness"
+                           min="0" max="25" value="25" onchange="calculateTotal()">
+                    <span style="font-size: 12px; color: #999;">分</span>
+                </div>
+                <textarea class="eval-textarea" id="comment-completeness"
+                          placeholder="缺失信息：主诉、用药方案、检查结果等..."></textarea>
+            </div>
+
+            <!-- 3. 临床实用性 (20分) -->
+            <div class="eval-section">
+                <div class="eval-section-title">
+                    3. 临床实用性
+                    <span class="eval-section-max">满分 20</span>
+                </div>
+                <div class="eval-input-group">
+                    <input type="number" class="eval-input score-input" id="score-clinical"
+                           min="0" max="20" value="20" onchange="calculateTotal()">
+                    <span style="font-size: 12px; color: #999;">分</span>
+                </div>
+                <textarea class="eval-textarea" id="comment-clinical"
+                          placeholder="是否突出血糖控制、体重变化、用药方案、并发症线索等..."></textarea>
+            </div>
+
+            <!-- 4. 结构清晰度 (15分) -->
+            <div class="eval-section">
+                <div class="eval-section-title">
+                    4. 结构清晰度
+                    <span class="eval-section-max">满分 15</span>
+                </div>
+                <div class="eval-input-group">
+                    <input type="number" class="eval-input score-input" id="score-structure"
+                           min="0" max="15" value="15" onchange="calculateTotal()">
+                    <span style="font-size: 12px; color: #999;">分</span>
+                </div>
+                <textarea class="eval-textarea" id="comment-structure"
+                          placeholder="章节划分、标题层级、信息归类、时间线等..."></textarea>
+            </div>
+
+            <!-- 5. 语言专业性 (10分) -->
+            <div class="eval-section">
+                <div class="eval-section-title">
+                    5. 语言专业性
+                    <span class="eval-section-max">满分 10</span>
+                </div>
+                <div class="eval-input-group">
+                    <input type="number" class="eval-input score-input" id="score-language"
+                           min="0" max="10" value="10" onchange="calculateTotal()">
+                    <span style="font-size: 12px; color: #999;">分</span>
+                </div>
+                <textarea class="eval-textarea" id="comment-language"
+                          placeholder="冗余表达、口语化、不专业表达等..."></textarea>
+            </div>
+
+            <!-- 综合评价 -->
+            <div class="eval-section">
+                <div class="eval-section-title">综合评价</div>
+                <textarea class="eval-textarea" id="overall-comment"
+                          placeholder="整体优缺点、改进建议..." style="min-height: 80px;"></textarea>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="eval-actions">
+                <button class="eval-btn eval-btn-secondary" onclick="resetEval()">重置</button>
+                <button class="eval-btn eval-btn-primary" onclick="saveEval()">保存评测</button>
             </div>
         </div>
     </div>
@@ -600,6 +968,7 @@
             updateChatView();
             updateReportView();
             updateNavigator();
+            loadSavedEval(); // 加载已保存的评测
         }
 
         // 更新对话视图
@@ -890,6 +1259,219 @@
 
             return html;
         }
+
+        // ==================== 评测窗口相关功能 ====================
+
+        // 切换评测窗口显示/隐藏
+        function toggleEvalWindow() {
+            const evalWindow = document.getElementById('evalWindow');
+            const evalBtn = document.getElementById('evalFloatBtn');
+
+            if (evalWindow.classList.contains('active')) {
+                evalWindow.classList.remove('active');
+                evalBtn.classList.remove('hidden');
+            } else {
+                evalWindow.classList.add('active');
+                evalBtn.classList.add('hidden');
+                calculateTotal(); // 打开时计算一次总分
+            }
+        }
+
+        // 关闭评测窗口
+        function closeEvalWindow() {
+            const evalWindow = document.getElementById('evalWindow');
+            const evalBtn = document.getElementById('evalFloatBtn');
+
+            evalWindow.classList.remove('active');
+            evalWindow.classList.remove('minimized');
+            evalBtn.classList.remove('hidden');
+            document.getElementById('minimizeIcon').textContent = '−';
+        }
+
+        // 最小化/恢复窗口
+        function toggleMinimize() {
+            const evalWindow = document.getElementById('evalWindow');
+            const minimizeIcon = document.getElementById('minimizeIcon');
+
+            if (evalWindow.classList.contains('minimized')) {
+                evalWindow.classList.remove('minimized');
+                minimizeIcon.textContent = '−';
+            } else {
+                evalWindow.classList.add('minimized');
+                minimizeIcon.textContent = '□';
+            }
+        }
+
+        // 计算总分
+        function calculateTotal() {
+            const accuracy = parseInt(document.getElementById('score-accuracy').value) || 0;
+            const completeness = parseInt(document.getElementById('score-completeness').value) || 0;
+            const clinical = parseInt(document.getElementById('score-clinical').value) || 0;
+            const structure = parseInt(document.getElementById('score-structure').value) || 0;
+            const language = parseInt(document.getElementById('score-language').value) || 0;
+
+            const total = accuracy + completeness + clinical + structure + language;
+            document.getElementById('totalScore').textContent = total;
+
+            // 根据分数改变颜色
+            const scoreElement = document.getElementById('totalScore');
+            if (total >= 90) {
+                scoreElement.style.color = '#52c41a';
+            } else if (total >= 80) {
+                scoreElement.style.color = '#667eea';
+            } else if (total >= 70) {
+                scoreElement.style.color = '#faad14';
+            } else {
+                scoreElement.style.color = '#f5222d';
+            }
+        }
+
+        // 重置评测表单
+        function resetEval() {
+            if (!confirm('确定要重置所有评分吗？')) return;
+
+            document.getElementById('score-accuracy').value = 30;
+            document.getElementById('score-completeness').value = 25;
+            document.getElementById('score-clinical').value = 20;
+            document.getElementById('score-structure').value = 15;
+            document.getElementById('score-language').value = 10;
+
+            document.getElementById('comment-accuracy').value = '';
+            document.getElementById('comment-completeness').value = '';
+            document.getElementById('comment-clinical').value = '';
+            document.getElementById('comment-structure').value = '';
+            document.getElementById('comment-language').value = '';
+            document.getElementById('overall-comment').value = '';
+
+            calculateTotal();
+        }
+
+        // 保存评测结果
+        function saveEval() {
+            const evalData = {
+                timestamp: new Date().toISOString(),
+                patient: currentPatient,
+                model: availableModels[currentModelIndex],
+                scores: {
+                    accuracy: {
+                        score: parseInt(document.getElementById('score-accuracy').value) || 0,
+                        max: 30,
+                        comment: document.getElementById('comment-accuracy').value
+                    },
+                    completeness: {
+                        score: parseInt(document.getElementById('score-completeness').value) || 0,
+                        max: 25,
+                        comment: document.getElementById('comment-completeness').value
+                    },
+                    clinical: {
+                        score: parseInt(document.getElementById('score-clinical').value) || 0,
+                        max: 20,
+                        comment: document.getElementById('comment-clinical').value
+                    },
+                    structure: {
+                        score: parseInt(document.getElementById('score-structure').value) || 0,
+                        max: 15,
+                        comment: document.getElementById('comment-structure').value
+                    },
+                    language: {
+                        score: parseInt(document.getElementById('score-language').value) || 0,
+                        max: 10,
+                        comment: document.getElementById('comment-language').value
+                    }
+                },
+                total_score: parseInt(document.getElementById('totalScore').textContent),
+                overall_comment: document.getElementById('overall-comment').value
+            };
+
+            // 保存到localStorage
+            const storageKey = `eval_${currentPatient}_${availableModels[currentModelIndex]}`;
+            localStorage.setItem(storageKey, JSON.stringify(evalData));
+
+            // 同时保存到历史记录
+            let history = JSON.parse(localStorage.getItem('eval_history') || '[]');
+            history.push(evalData);
+            localStorage.setItem('eval_history', JSON.stringify(history));
+
+            alert('评测已保存！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
+
+            console.log('评测数据已保存:', evalData);
+        }
+
+        // 加载已保存的评测（如果存在）
+        function loadSavedEval() {
+            if (!currentPatient || !availableModels[currentModelIndex]) return;
+
+            const storageKey = `eval_${currentPatient}_${availableModels[currentModelIndex]}`;
+            const saved = localStorage.getItem(storageKey);
+
+            if (saved) {
+                const evalData = JSON.parse(saved);
+
+                document.getElementById('score-accuracy').value = evalData.scores.accuracy.score;
+                document.getElementById('score-completeness').value = evalData.scores.completeness.score;
+                document.getElementById('score-clinical').value = evalData.scores.clinical.score;
+                document.getElementById('score-structure').value = evalData.scores.structure.score;
+                document.getElementById('score-language').value = evalData.scores.language.score;
+
+                document.getElementById('comment-accuracy').value = evalData.scores.accuracy.comment || '';
+                document.getElementById('comment-completeness').value = evalData.scores.completeness.comment || '';
+                document.getElementById('comment-clinical').value = evalData.scores.clinical.comment || '';
+                document.getElementById('comment-structure').value = evalData.scores.structure.comment || '';
+                document.getElementById('comment-language').value = evalData.scores.language.comment || '';
+                document.getElementById('overall-comment').value = evalData.overall_comment || '';
+
+                calculateTotal();
+            }
+        }
+
+        // 窗口拖拽功能
+        let isDragging = false;
+        let currentX, currentY, initialX, initialY;
+
+        document.getElementById('evalHeader').addEventListener('mousedown', function(e) {
+            if (e.target.classList.contains('eval-control-btn') || e.target.closest('.eval-control-btn')) {
+                return; // 不在控制按钮上拖拽
+            }
+
+            isDragging = true;
+            const evalWindow = document.getElementById('evalWindow');
+            const rect = evalWindow.getBoundingClientRect();
+
+            initialX = rect.left;
+            initialY = rect.top;
+            currentX = e.clientX;
+            currentY = e.clientY;
+
+            evalWindow.style.right = 'auto';
+            evalWindow.style.bottom = 'auto';
+            evalWindow.style.left = initialX + 'px';
+            evalWindow.style.top = initialY + 'px';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+
+            e.preventDefault();
+            const evalWindow = document.getElementById('evalWindow');
+
+            const dx = e.clientX - currentX;
+            const dy = e.clientY - currentY;
+
+            evalWindow.style.left = (initialX + dx) + 'px';
+            evalWindow.style.top = (initialY + dy) + 'px';
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                const evalWindow = document.getElementById('evalWindow');
+                const rect = evalWindow.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+            }
+        });
+
+        // ==================== 原有键盘事件监听 ====================
 
         // 键盘事件监听 - 方向键导航
         document.addEventListener('keydown', function(event) {
