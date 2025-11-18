@@ -301,7 +301,7 @@
 
         .model-card-body {
             padding: 20px;
-            max-height: 600px;
+            max-height: 800px;
             overflow-y: auto;
             font-size: 14px;
             line-height: 1.8;
@@ -839,89 +839,82 @@
                 patientTitle.textContent = `📋 ${patient}`;
                 comparisonArea.appendChild(patientTitle);
 
-                // 为每个选中的对话类型创建一个区块
-                selectedConvTypes.forEach(convId => {
-                    const convData = patientData[convId];
-                    if (!convData) return;
-
-                    // 获取对话类型标题
-                    let convTitle = '未知类型';
-                    Object.values(convData).forEach(data => {
-                        if (data.title) {
-                            convTitle = data.title;
-                        }
-                    });
-
-                    // 创建分组标题
-                    const sectionTitle = document.createElement('h2');
-                    sectionTitle.style.cssText = 'font-size: 18px; margin: 25px 0 15px 0; color: #333; border-left: 4px solid #764ba2; padding-left: 15px;';
-                    sectionTitle.textContent = `${convTitle} (对话 ${convId})`;
-                    comparisonArea.appendChild(sectionTitle);
-
-                    // 创建模型卡片网格
-                    const grid = document.createElement('div');
-                    grid.className = 'comparison-grid';
-                    if (currentLayout === 'horizontal') {
-                        grid.classList.add('horizontal-layout');
-                        grid.dataset.convId = convId; // 标记对话类型ID用于同步滚动
-                    }
-
-                    // 按照模型选择的顺序创建卡片，确保不同患者的相同对话类型中模型顺序一致
-                    const sortedModels = Array.from(selectedModels).sort();
-                    sortedModels.forEach(model => {
-                        if (convData[model]) {
-                            const card = createModelCard(model, convData[model], patient);
-                            grid.appendChild(card);
-                        }
-                    });
-
-                    comparisonArea.appendChild(grid);
-                });
-            });
-
-            // 在横向布局模式下，为相同对话类型的区块添加同步滚动
-            if (currentLayout === 'horizontal') {
-                syncHorizontalScroll();
-            }
-        }
-
-        // 同步横向滚动
-        function syncHorizontalScroll() {
-            const horizontalGrids = document.querySelectorAll('.comparison-grid.horizontal-layout');
-
-            // 按对话类型分组
-            const gridsByConvId = {};
-            horizontalGrids.forEach(grid => {
-                const convId = grid.dataset.convId;
-                if (!gridsByConvId[convId]) {
-                    gridsByConvId[convId] = [];
+                // 创建模型卡片网格（所有对话类型合并在一起）
+                const grid = document.createElement('div');
+                grid.className = 'comparison-grid';
+                if (currentLayout === 'horizontal') {
+                    grid.classList.add('horizontal-layout');
                 }
-                gridsByConvId[convId].push(grid);
-            });
 
-            // 为每组相同对话类型的grid添加同步滚动
-            Object.values(gridsByConvId).forEach(grids => {
-                if (grids.length <= 1) return; // 只有一个grid不需要同步
-
-                grids.forEach(grid => {
-                    // 移除之前的滚动监听（避免重复绑定）
-                    grid.onscroll = null;
-
-                    grid.addEventListener('scroll', function() {
-                        const scrollLeft = this.scrollLeft;
-
-                        // 同步其他相同对话类型的grid
-                        grids.forEach(otherGrid => {
-                            if (otherGrid !== this) {
-                                otherGrid.scrollLeft = scrollLeft;
-                            }
-                        });
+                // 按照模型选择的顺序创建卡片
+                const sortedModels = Array.from(selectedModels).sort();
+                sortedModels.forEach(model => {
+                    // 收集该模型在所有选中对话类型中的数据
+                    const modelConvData = [];
+                    selectedConvTypes.forEach(convId => {
+                        const convData = patientData[convId];
+                        if (convData && convData[model]) {
+                            modelConvData.push({
+                                convId: convId,
+                                data: convData[model]
+                            });
+                        }
                     });
+
+                    // 如果该模型在至少一个对话类型中有数据，创建合并的卡片
+                    if (modelConvData.length > 0) {
+                        const card = createMergedModelCard(model, modelConvData, patient);
+                        grid.appendChild(card);
+                    }
                 });
+
+                comparisonArea.appendChild(grid);
             });
         }
 
-        // 创建模型卡片
+
+        // 创建合并多个对话类型的模型卡片
+        function createMergedModelCard(model, modelConvData, patient) {
+            const card = document.createElement('div');
+            card.className = 'model-card';
+
+            const header = document.createElement('div');
+            header.className = 'model-card-header';
+            header.textContent = model;
+
+            // 应用模型特定的颜色
+            const colors = getModelColor(model);
+            header.style.background = `linear-gradient(135deg, ${colors.start} 0%, ${colors.end} 100%)`;
+
+            const body = document.createElement('div');
+            body.className = 'model-card-body';
+
+            // 合并所有对话类型的内容
+            let mergedContent = '';
+            modelConvData.forEach((convItem, index) => {
+                // 如果不是第一个对话类型，添加分隔线
+                if (index > 0) {
+                    mergedContent += '<div style="border-top: 2px solid #e0e0e0; margin: 20px 0;"></div>';
+                }
+
+                // 添加对话类型标题
+                const convTitle = convItem.data.title || `对话 ${convItem.convId}`;
+                mergedContent += `<h3 style="color: #667eea; font-size: 16px; margin: 15px 0 10px 0; font-weight: 600;">${convTitle}</h3>`;
+
+                // 格式化并添加输出内容
+                const formattedOutput = formatOutput(convItem.data.output);
+                mergedContent += formattedOutput;
+            });
+
+            body.innerHTML = mergedContent;
+
+            card.appendChild(header);
+            card.appendChild(body);
+
+            return card;
+        }
+
+        // 创建模型卡片（保留用于向后兼容）
         function createModelCard(model, data, patient) {
             const card = document.createElement('div');
             card.className = 'model-card';
