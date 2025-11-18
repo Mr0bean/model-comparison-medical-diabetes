@@ -502,15 +502,29 @@
         // 加载数据
         async function loadData() {
             try {
+                console.log('开始加载数据...');
                 const response = await fetch('output/comparison_data.json');
+                console.log('响应状态:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
                 comparisonData = await response.json();
+                console.log('数据加载成功:', comparisonData);
+
+                if (!comparisonData || !comparisonData.patients || !comparisonData.models) {
+                    throw new Error('数据格式不正确');
+                }
+
                 initializePage();
             } catch (error) {
                 console.error('数据加载失败:', error);
+                const errorMsg = `❌ 数据加载失败: ${error.message}`;
                 document.getElementById('chatContent').innerHTML =
-                    '<div class="no-data">❌ 数据加载失败</div>';
+                    `<div class="no-data">${errorMsg}</div>`;
                 document.getElementById('reportContent').innerHTML =
-                    '<div class="no-data">❌ 数据加载失败</div>';
+                    `<div class="no-data">${errorMsg}</div>`;
             }
         }
 
