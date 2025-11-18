@@ -482,10 +482,13 @@
         /* 评测窗口容器 */
         .eval-window {
             position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 420px;
-            height: 600px;
+            /* 居中显示，上下留10% */
+            top: 10vh;
+            left: 50%;
+            transform: translateX(-50%);
+            /* 高度80vh，宽度保持0.7的宽高比 */
+            width: 56vh;
+            height: 80vh;
             background: white;
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -556,6 +559,15 @@
         .eval-controls {
             display: flex;
             gap: 8px;
+            align-items: center;
+        }
+
+        .eval-font-controls {
+            display: flex;
+            gap: 4px;
+            margin-right: 12px;
+            padding-right: 12px;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .eval-control-btn {
@@ -574,6 +586,26 @@
         }
 
         .eval-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .eval-font-btn {
+            width: 28px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .eval-font-btn:hover {
             background: rgba(255, 255, 255, 0.3);
         }
 
@@ -836,6 +868,10 @@
         <div class="eval-header" id="evalHeader">
             <div class="eval-title">模型输出评测</div>
             <div class="eval-controls">
+                <div class="eval-font-controls">
+                    <button class="eval-font-btn" onclick="decreaseFontSize()" title="缩小字体">A−</button>
+                    <button class="eval-font-btn" onclick="increaseFontSize()" title="放大字体">A+</button>
+                </div>
                 <button class="eval-control-btn" onclick="toggleMinimize()" title="最小化">
                     <span id="minimizeIcon">−</span>
                 </button>
@@ -1346,6 +1382,32 @@
 
         // ==================== 评测窗口相关功能 ====================
 
+        // 字体大小控制
+        let currentFontSize = parseInt(localStorage.getItem('eval_font_size')) || 13;
+
+        function applyFontSize() {
+            const evalContent = document.getElementById('evalWindow');
+            if (evalContent) {
+                evalContent.style.fontSize = currentFontSize + 'px';
+            }
+        }
+
+        function increaseFontSize() {
+            if (currentFontSize < 18) {
+                currentFontSize++;
+                applyFontSize();
+                localStorage.setItem('eval_font_size', currentFontSize);
+            }
+        }
+
+        function decreaseFontSize() {
+            if (currentFontSize > 10) {
+                currentFontSize--;
+                applyFontSize();
+                localStorage.setItem('eval_font_size', currentFontSize);
+            }
+        }
+
         // 切换评测窗口显示/隐藏
         function toggleEvalWindow() {
             const evalWindow = document.getElementById('evalWindow');
@@ -1543,7 +1605,8 @@
         let currentX, currentY, initialX, initialY;
 
         document.getElementById('evalHeader').addEventListener('mousedown', function(e) {
-            if (e.target.classList.contains('eval-control-btn') || e.target.closest('.eval-control-btn')) {
+            if (e.target.classList.contains('eval-control-btn') || e.target.closest('.eval-control-btn') ||
+                e.target.classList.contains('eval-font-btn') || e.target.closest('.eval-font-btn')) {
                 return; // 不在控制按钮上拖拽
             }
 
@@ -1556,8 +1619,8 @@
             currentX = e.clientX;
             currentY = e.clientY;
 
-            evalWindow.style.right = 'auto';
-            evalWindow.style.bottom = 'auto';
+            // 移除transform，改用left/top定位
+            evalWindow.style.transform = 'none';
             evalWindow.style.left = initialX + 'px';
             evalWindow.style.top = initialY + 'px';
 
@@ -1686,6 +1749,7 @@
         // 页面加载时执行
         loadData();
         initAutoSave(); // 初始化自动保存
+        applyFontSize(); // 应用保存的字体大小
     </script>
 </body>
 </html>
