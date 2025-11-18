@@ -1889,6 +1889,12 @@
                     alert('评测已保存！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
                 }
                 console.log('评测数据已保存:', evalData);
+
+                // 关闭评测弹窗
+                const evalWindow = document.getElementById('evalWindow');
+                if (evalWindow && evalWindow.classList.contains('active')) {
+                    evalWindow.classList.remove('active');
+                }
             }
         }
 
