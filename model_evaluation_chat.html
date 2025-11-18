@@ -778,6 +778,39 @@
             transition: border-color 0.2s;
         }
 
+        /* 星星评分 */
+        .star-rating {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .star {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ddd;
+            transition: all 0.15s;
+            user-select: none;
+        }
+
+        .star.filled {
+            color: #ffc107;
+            text-shadow: 0 0 3px rgba(255, 193, 7, 0.3);
+        }
+
+        .star:hover {
+            transform: scale(1.15);
+        }
+
+        .star-score {
+            margin-left: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #667eea;
+            min-width: 70px;
+        }
+
         .eval-input:focus {
             outline: none;
             border-color: #667eea;
@@ -817,12 +850,26 @@
         .eval-total-label {
             font-size: 13px;
             color: #666;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
 
         .eval-total-score {
             font-size: 32px;
             font-weight: 700;
+            color: #ffc107;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .eval-total-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .eval-total-number {
+            font-size: 20px;
             color: #667eea;
         }
 
@@ -995,84 +1042,108 @@
         <div class="eval-content">
             <!-- 总分显示 -->
             <div class="eval-total">
-                <div class="eval-total-label">总分</div>
-                <div class="eval-total-score" id="totalScore">0</div>
-                <div class="eval-total-label">/100</div>
+                <div class="eval-total-label">平均评分</div>
+                <div class="eval-total-score">
+                    <div class="eval-total-stars" id="totalStars">
+                        ★★★★★
+                    </div>
+                    <span class="eval-total-number" id="totalScore">0.0</span>
+                </div>
             </div>
 
-            <!-- 1. 信息准确性 (30分) -->
+            <!-- 1. 信息准确性 -->
             <div class="eval-section">
                 <div class="eval-section-title">
                     1. 信息准确性
-                    <span class="eval-section-max">满分 30</span>
+                    <span class="eval-section-max">满分 5⭐</span>
                 </div>
-                <div class="eval-input-group">
-                    <input type="number" class="eval-input score-input" id="score-accuracy"
-                           min="0" max="30" value="30" onchange="calculateTotal()">
-                    <span style="font-size: 12px; color: #999;">分</span>
+                <div class="star-rating">
+                    <span class="star" data-score="1" data-category="accuracy" onclick="setRating('accuracy', 1)">★</span>
+                    <span class="star" data-score="2" data-category="accuracy" onclick="setRating('accuracy', 2)">★</span>
+                    <span class="star" data-score="3" data-category="accuracy" onclick="setRating('accuracy', 3)">★</span>
+                    <span class="star" data-score="4" data-category="accuracy" onclick="setRating('accuracy', 4)">★</span>
+                    <span class="star" data-score="5" data-category="accuracy" onclick="setRating('accuracy', 5)">★</span>
+                    <span class="star-score" id="score-accuracy-display">未评分</span>
                 </div>
+                <input type="hidden" id="score-accuracy" value="0">
                 <textarea class="eval-textarea" id="comment-accuracy"
-                          placeholder="扣分说明：数值错误、药名错误、无中生有等..."></textarea>
+                          placeholder="评分说明：数值错误、药名错误、无中生有等..."></textarea>
             </div>
 
             <!-- 2. 信息完整性 (25分) -->
             <div class="eval-section">
                 <div class="eval-section-title">
                     2. 信息完整性
-                    <span class="eval-section-max">满分 25</span>
+                    <span class="eval-section-max">满分 5⭐</span>
                 </div>
-                <div class="eval-input-group">
-                    <input type="number" class="eval-input score-input" id="score-completeness"
-                           min="0" max="25" value="25" onchange="calculateTotal()">
-                    <span style="font-size: 12px; color: #999;">分</span>
+                <div class="star-rating">
+                    <span class="star" data-score="1" data-category="completeness" onclick="setRating('completeness', 1)">★</span>
+                    <span class="star" data-score="2" data-category="completeness" onclick="setRating('completeness', 2)">★</span>
+                    <span class="star" data-score="3" data-category="completeness" onclick="setRating('completeness', 3)">★</span>
+                    <span class="star" data-score="4" data-category="completeness" onclick="setRating('completeness', 4)">★</span>
+                    <span class="star" data-score="5" data-category="completeness" onclick="setRating('completeness', 5)">★</span>
+                    <span class="star-score" id="score-completeness-display">未评分</span>
                 </div>
+                <input type="hidden" id="score-completeness" value="0">
                 <textarea class="eval-textarea" id="comment-completeness"
-                          placeholder="缺失信息：主诉、用药方案、检查结果等..."></textarea>
+                          placeholder="评分说明：缺失信息、主诉、用药方案、检查结果等..."></textarea>
             </div>
 
             <!-- 3. 临床实用性 (20分) -->
             <div class="eval-section">
                 <div class="eval-section-title">
                     3. 临床实用性
-                    <span class="eval-section-max">满分 20</span>
+                    <span class="eval-section-max">满分 5⭐</span>
                 </div>
-                <div class="eval-input-group">
-                    <input type="number" class="eval-input score-input" id="score-clinical"
-                           min="0" max="20" value="20" onchange="calculateTotal()">
-                    <span style="font-size: 12px; color: #999;">分</span>
+                <div class="star-rating">
+                    <span class="star" data-score="1" data-category="clinical" onclick="setRating('clinical', 1)">★</span>
+                    <span class="star" data-score="2" data-category="clinical" onclick="setRating('clinical', 2)">★</span>
+                    <span class="star" data-score="3" data-category="clinical" onclick="setRating('clinical', 3)">★</span>
+                    <span class="star" data-score="4" data-category="clinical" onclick="setRating('clinical', 4)">★</span>
+                    <span class="star" data-score="5" data-category="clinical" onclick="setRating('clinical', 5)">★</span>
+                    <span class="star-score" id="score-clinical-display">未评分</span>
                 </div>
+                <input type="hidden" id="score-clinical" value="0">
                 <textarea class="eval-textarea" id="comment-clinical"
-                          placeholder="是否突出血糖控制、体重变化、用药方案、并发症线索等..."></textarea>
+                          placeholder="评分说明：是否突出血糖控制、体重变化、用药方案、并发症线索等..."></textarea>
             </div>
 
             <!-- 4. 结构清晰度 (15分) -->
             <div class="eval-section">
                 <div class="eval-section-title">
                     4. 结构清晰度
-                    <span class="eval-section-max">满分 15</span>
+                    <span class="eval-section-max">满分 5⭐</span>
                 </div>
-                <div class="eval-input-group">
-                    <input type="number" class="eval-input score-input" id="score-structure"
-                           min="0" max="15" value="15" onchange="calculateTotal()">
-                    <span style="font-size: 12px; color: #999;">分</span>
+                <div class="star-rating">
+                    <span class="star" data-score="1" data-category="structure" onclick="setRating('structure', 1)">★</span>
+                    <span class="star" data-score="2" data-category="structure" onclick="setRating('structure', 2)">★</span>
+                    <span class="star" data-score="3" data-category="structure" onclick="setRating('structure', 3)">★</span>
+                    <span class="star" data-score="4" data-category="structure" onclick="setRating('structure', 4)">★</span>
+                    <span class="star" data-score="5" data-category="structure" onclick="setRating('structure', 5)">★</span>
+                    <span class="star-score" id="score-structure-display">未评分</span>
                 </div>
+                <input type="hidden" id="score-structure" value="0">
                 <textarea class="eval-textarea" id="comment-structure"
-                          placeholder="章节划分、标题层级、信息归类、时间线等..."></textarea>
+                          placeholder="评分说明：章节划分、标题层级、信息归类、时间线等..."></textarea>
             </div>
 
             <!-- 5. 语言专业性 (10分) -->
             <div class="eval-section">
                 <div class="eval-section-title">
                     5. 语言专业性
-                    <span class="eval-section-max">满分 10</span>
+                    <span class="eval-section-max">满分 5⭐</span>
                 </div>
-                <div class="eval-input-group">
-                    <input type="number" class="eval-input score-input" id="score-language"
-                           min="0" max="10" value="10" onchange="calculateTotal()">
-                    <span style="font-size: 12px; color: #999;">分</span>
+                <div class="star-rating">
+                    <span class="star" data-score="1" data-category="language" onclick="setRating('language', 1)">★</span>
+                    <span class="star" data-score="2" data-category="language" onclick="setRating('language', 2)">★</span>
+                    <span class="star" data-score="3" data-category="language" onclick="setRating('language', 3)">★</span>
+                    <span class="star" data-score="4" data-category="language" onclick="setRating('language', 4)">★</span>
+                    <span class="star" data-score="5" data-category="language" onclick="setRating('language', 5)">★</span>
+                    <span class="star-score" id="score-language-display">未评分</span>
                 </div>
+                <input type="hidden" id="score-language" value="0">
                 <textarea class="eval-textarea" id="comment-language"
-                          placeholder="冗余表达、口语化、不专业表达等..."></textarea>
+                          placeholder="评分说明：冗余表达、口语化、不专业表达等..."></textarea>
             </div>
 
             <!-- 综合评价 -->
@@ -1601,20 +1672,44 @@
             }
         }
 
-        // 检查某个评分项是否已填写（不是默认满分）
+        // 设置星星评分
+        function setRating(category, score) {
+            // 更新隐藏的输入框
+            document.getElementById(`score-${category}`).value = score;
+
+            // 更新星星显示
+            const stars = document.querySelectorAll(`.star[data-category="${category}"]`);
+            stars.forEach(star => {
+                const starScore = parseInt(star.getAttribute('data-score'));
+                if (starScore <= score) {
+                    star.classList.add('filled');
+                } else {
+                    star.classList.remove('filled');
+                }
+            });
+
+            // 更新分数显示
+            const ratingLabels = ['', '很差 (1⭐)', '较差 (2⭐)', '一般 (3⭐)', '良好 (4⭐)', '优秀 (5⭐)'];
+            document.getElementById(`score-${category}-display`).textContent = ratingLabels[score] || '未评分';
+
+            // 计算总分
+            calculateTotal();
+        }
+
+        // 检查某个评分项是否已填写（评分>0）
         function isScoreCompleted(scoreId, maxScore) {
-            const value = parseInt(document.getElementById(scoreId).value) || maxScore;
-            return value !== maxScore; // 只要不是满分就算已填写
+            const value = parseInt(document.getElementById(scoreId).value) || 0;
+            return value > 0; // 只要评分>0就算已填写
         }
 
         // 计算填写完成度
         function checkCompletionStatus() {
             const scoreItems = [
-                { id: 'score-accuracy', max: 30, name: '信息准确性', sectionId: 'section-accuracy' },
-                { id: 'score-completeness', max: 25, name: '信息完整性', sectionId: 'section-completeness' },
-                { id: 'score-clinical', max: 20, name: '临床实用性', sectionId: 'section-clinical' },
-                { id: 'score-structure', max: 15, name: '结构清晰度', sectionId: 'section-structure' },
-                { id: 'score-language', max: 10, name: '语言专业性', sectionId: 'section-language' }
+                { id: 'score-accuracy', max: 5, name: '信息准确性', sectionId: 'section-accuracy' },
+                { id: 'score-completeness', max: 5, name: '信息完整性', sectionId: 'section-completeness' },
+                { id: 'score-clinical', max: 5, name: '临床实用性', sectionId: 'section-clinical' },
+                { id: 'score-structure', max: 5, name: '结构清晰度', sectionId: 'section-structure' },
+                { id: 'score-language', max: 5, name: '语言专业性', sectionId: 'section-language' }
             ];
 
             let completedCount = 0;
@@ -1655,7 +1750,7 @@
             return isComplete;
         }
 
-        // 计算总分
+        // 计算总分（平均星数）
         function calculateTotal() {
             const accuracy = parseInt(document.getElementById('score-accuracy').value) || 0;
             const completeness = parseInt(document.getElementById('score-completeness').value) || 0;
@@ -1663,19 +1758,42 @@
             const structure = parseInt(document.getElementById('score-structure').value) || 0;
             const language = parseInt(document.getElementById('score-language').value) || 0;
 
-            const total = accuracy + completeness + clinical + structure + language;
-            document.getElementById('totalScore').textContent = total;
+            // 计算平均分
+            const scores = [accuracy, completeness, clinical, structure, language];
+            const validScores = scores.filter(s => s > 0);
+            const average = validScores.length > 0 ? validScores.reduce((a, b) => a + b, 0) / validScores.length : 0;
+
+            // 更新数字显示
+            document.getElementById('totalScore').textContent = average.toFixed(1);
+
+            // 更新星星显示
+            const totalStars = document.getElementById('totalStars');
+            const fullStars = Math.floor(average);
+            const hasHalfStar = (average - fullStars) >= 0.5;
+            let starsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    starsHTML += '★';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    starsHTML += '⭐';
+                } else {
+                    starsHTML += '☆';
+                }
+            }
+            totalStars.innerHTML = starsHTML;
 
             // 根据分数改变颜色
             const scoreElement = document.getElementById('totalScore');
-            if (total >= 90) {
-                scoreElement.style.color = '#52c41a';
-            } else if (total >= 80) {
-                scoreElement.style.color = '#667eea';
-            } else if (total >= 70) {
-                scoreElement.style.color = '#faad14';
+            if (average >= 4.5) {
+                scoreElement.style.color = '#52c41a'; // 绿色
+            } else if (average >= 3.5) {
+                scoreElement.style.color = '#ffc107'; // 黄色
+            } else if (average >= 2.5) {
+                scoreElement.style.color = '#ff9800'; // 橙色
+            } else if (average > 0) {
+                scoreElement.style.color = '#f5222d'; // 红色
             } else {
-                scoreElement.style.color = '#f5222d';
+                scoreElement.style.color = '#999'; // 灰色（未评分）
             }
 
             // 检查完成度
@@ -1689,11 +1807,14 @@
         function resetEval() {
             if (!confirm('确定要重置所有评分吗？')) return;
 
-            document.getElementById('score-accuracy').value = 30;
-            document.getElementById('score-completeness').value = 25;
-            document.getElementById('score-clinical').value = 20;
-            document.getElementById('score-structure').value = 15;
-            document.getElementById('score-language').value = 10;
+            // 重置所有星星评分
+            ['accuracy', 'completeness', 'clinical', 'structure', 'language'].forEach(category => {
+                document.getElementById(`score-${category}`).value = 0;
+                document.getElementById(`score-${category}-display`).textContent = '未评分';
+                document.querySelectorAll(`.star[data-category="${category}"]`).forEach(star => {
+                    star.classList.remove('filled');
+                });
+            });
 
             document.getElementById('comment-accuracy').value = '';
             document.getElementById('comment-completeness').value = '';
@@ -1716,31 +1837,31 @@
                 scores: {
                     accuracy: {
                         score: parseInt(document.getElementById('score-accuracy').value) || 0,
-                        max: 30,
+                        max: 5,
                         comment: document.getElementById('comment-accuracy').value
                     },
                     completeness: {
                         score: parseInt(document.getElementById('score-completeness').value) || 0,
-                        max: 25,
+                        max: 5,
                         comment: document.getElementById('comment-completeness').value
                     },
                     clinical: {
                         score: parseInt(document.getElementById('score-clinical').value) || 0,
-                        max: 20,
+                        max: 5,
                         comment: document.getElementById('comment-clinical').value
                     },
                     structure: {
                         score: parseInt(document.getElementById('score-structure').value) || 0,
-                        max: 15,
+                        max: 5,
                         comment: document.getElementById('comment-structure').value
                     },
                     language: {
                         score: parseInt(document.getElementById('score-language').value) || 0,
-                        max: 10,
+                        max: 5,
                         comment: document.getElementById('comment-language').value
                     }
                 },
-                total_score: parseInt(document.getElementById('totalScore').textContent),
+                total_score: parseFloat(document.getElementById('totalScore').textContent),
                 overall_comment: document.getElementById('overall-comment').value
             };
 
@@ -1780,11 +1901,13 @@
             if (saved) {
                 const evalData = JSON.parse(saved);
 
-                document.getElementById('score-accuracy').value = evalData.scores.accuracy.score;
-                document.getElementById('score-completeness').value = evalData.scores.completeness.score;
-                document.getElementById('score-clinical').value = evalData.scores.clinical.score;
-                document.getElementById('score-structure').value = evalData.scores.structure.score;
-                document.getElementById('score-language').value = evalData.scores.language.score;
+                // 加载星星评分
+                ['accuracy', 'completeness', 'clinical', 'structure', 'language'].forEach(category => {
+                    const score = evalData.scores[category].score;
+                    if (score > 0) {
+                        setRating(category, score);
+                    }
+                });
 
                 document.getElementById('comment-accuracy').value = evalData.scores.accuracy.comment || '';
                 document.getElementById('comment-completeness').value = evalData.scores.completeness.comment || '';
@@ -1795,12 +1918,14 @@
 
                 calculateTotal();
             } else {
-                // 如果没有保存的数据，重置为默认值
-                document.getElementById('score-accuracy').value = 30;
-                document.getElementById('score-completeness').value = 25;
-                document.getElementById('score-clinical').value = 20;
-                document.getElementById('score-structure').value = 15;
-                document.getElementById('score-language').value = 10;
+                // 如果没有保存的数据，重置为默认值（0星）
+                ['accuracy', 'completeness', 'clinical', 'structure', 'language'].forEach(category => {
+                    document.getElementById(`score-${category}`).value = 0;
+                    document.getElementById(`score-${category}-display`).textContent = '未评分';
+                    document.querySelectorAll(`.star[data-category="${category}"]`).forEach(star => {
+                        star.classList.remove('filled');
+                    });
+                });
 
                 document.getElementById('comment-accuracy').value = '';
                 document.getElementById('comment-completeness').value = '';
