@@ -52,9 +52,28 @@
 
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
             margin-bottom: 40px;
+        }
+
+        .card.small {
+            padding: 24px;
+        }
+
+        .card.small .card-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .card.small .card-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .card.small .card-description {
+            font-size: 13px;
+            margin-bottom: 12px;
         }
 
         .card {
@@ -230,6 +249,20 @@
                     <li>可拖动、调整大小的评测窗口</li>
                 </ul>
                 <span class="card-button">开始评测 →</span>
+            </a>
+
+            <a href="model_scoring_form.html" class="card small">
+                <span class="card-icon">📋</span>
+                <h2 class="card-title">评分表单</h2>
+                <p class="card-description">传统表单式评分界面，适合详细记录评测结果</p>
+                <span class="card-button">打开表单 →</span>
+            </a>
+
+            <a href="cross_evaluation_viewer.html" class="card small">
+                <span class="card-icon">🔄</span>
+                <h2 class="card-title">交叉评测查看器</h2>
+                <p class="card-description">查看模型间的交叉评测结果和对比数据</p>
+                <span class="card-button">查看结果 →</span>
             </a>
         </div>
 

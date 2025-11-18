@@ -33,6 +33,30 @@
             color: white;
             padding: 30px 40px;
             text-align: center;
+            position: relative;
+        }
+
+        .home-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .home-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) translateX(-2px);
         }
 
         .header h1 {
@@ -775,6 +799,7 @@
 
     <div class="container">
         <div class="header">
+            <a href="index.html" class="home-button">← 返回主页</a>
             <h1>🏥 医疗模型横评对比系统</h1>
             <p>对比不同AI模型在病历生成任务中的表现</p>
         </div>
