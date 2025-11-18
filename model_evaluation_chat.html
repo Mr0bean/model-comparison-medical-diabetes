@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗模型评测 - 对话视图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f7fa;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            min-height: 80px;
+        }
+
+        .patient-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .patient-selector-label {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .patient-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .patient-tab {
+            padding: 8px 20px;
+            font-size: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .patient-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .patient-tab.active {
+            background: white;
+            color: #667eea;
+            border-color: white;
+            font-weight: 600;
+        }
+
+        .main-container {
+            display: flex;
+            height: calc(100vh - 80px);
+            gap: 0;
+        }
+
+        /* 左侧对话区域 */
+        .chat-panel {
+            flex: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .chat-header {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .chat-header h2 {
+            color: #667eea;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .chat-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+
+        .chat-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-content::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .chat-content::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+
+        /* 聊天气泡样式 */
+        .chat-message {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-message.patient {
+            align-items: flex-start;
+        }
+
+        .chat-message.doctor {
+            align-items: flex-end;
+        }
+
+        .chat-message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .chat-message.patient .chat-message-header {
+            flex-direction: row;
+        }
+
+        .chat-message.doctor .chat-message-header {
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .chat-message.patient .chat-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .chat-message.doctor .chat-avatar {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .chat-role {
+            font-weight: 600;
+        }
+
+        .chat-bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            line-height: 1.6;
+            font-size: 14px;
+            word-wrap: break-word;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .chat-message.patient .chat-bubble {
+            background: white;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.doctor .chat-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .patient-info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .patient-info-card h4 {
+            color: #667eea;
+            font-size: 14px;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .patient-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .patient-info-item {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .patient-info-item strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .chat-section-title {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin: 30px 0 20px 0;
+            position: relative;
+        }
+
+        .chat-section-title::before,
+        .chat-section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .chat-section-title::before {
+            left: 0;
+        }
+
+        .chat-section-title::after {
+            right: 0;
+        }
+
+        /* 右侧报告区域 */
+        .report-panel {
+            flex: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .report-header {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .report-title {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .report-title h2 {
+            color: #667eea;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .model-name {
+            font-size: 13px;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .model-name.hidden {
+            display: none;
+        }
+
+        .model-navigator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .nav-button:hover {
+            background: #764ba2;
+            transform: scale(1.1);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .model-indicator {
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .report-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .report-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .report-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .report-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .report-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .report-section {
+            margin-bottom: 30px;
+        }
+
+        .report-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .report-section-content {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        .report-section-content p {
+            margin-bottom: 12px;
+        }
+
+        .report-section-content strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .report-section-content ul,
+        .report-section-content ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .report-section-content li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .report-section-content h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #764ba2;
+            margin: 18px 0 10px 0;
+            padding-left: 12px;
+            border-left: 3px solid #764ba2;
+        }
+
+        .report-section-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            margin: 15px 0 8px 0;
+        }
+
+        .report-section-content code {
+            background: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #e83e8c;
+        }
+
+        .report-section-content .info-row {
+            display: flex;
+            margin-bottom: 8px;
+            align-items: baseline;
+        }
+
+        .report-section-content .info-label {
+            font-weight: 600;
+            color: #667eea;
+            min-width: 100px;
+            margin-right: 10px;
+        }
+
+        .report-section-content .info-value {
+            color: #333;
+            flex: 1;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #999;
+            padding: 50px 20px;
+            font-size: 15px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            padding: 50px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="patient-selector">
+            <span class="patient-selector-label">👤 选择患者：</span>
+            <div class="patient-tabs" id="patientTabs"></div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- 左侧对话区域 -->
+        <div class="chat-panel">
+            <div class="chat-header">
+                <h2>💬 患者对话记录</h2>
+            </div>
+            <div class="chat-content" id="chatContent">
+                <div class="loading">正在加载对话...</div>
+            </div>
+        </div>
+
+        <!-- 右侧报告区域 -->
+        <div class="report-panel">
+            <div class="report-header">
+                <div class="report-title">
+                    <h2>📋 医疗报告</h2>
+                    <div class="model-name" id="modelName">模型: 加载中...</div>
+                </div>
+                <div class="model-navigator">
+                    <button class="nav-button" id="prevModel" onclick="previousModel()" disabled>◀</button>
+                    <span class="model-indicator" id="modelIndicator">-/-</span>
+                    <button class="nav-button" id="nextModel" onclick="nextModel()" disabled>▶</button>
+                </div>
+            </div>
+            <div class="report-content" id="reportContent">
+                <div class="loading">正在加载报告...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let comparisonData = null;
+        let currentPatient = null;
+        let currentModelIndex = 0;
+        let availableModels = [];
+        let debugMode = false;
+
+        // 检查debug模式
+        const urlParams = new URLSearchParams(window.location.search);
+        debugMode = urlParams.get('debug') === 'true';
+
+        // 加载数据
+        async function loadData() {
+            try {
+                const response = await fetch('output/comparison_data.json');
+                comparisonData = await response.json();
+                initializePage();
+            } catch (error) {
+                console.error('数据加载失败:', error);
+                document.getElementById('chatContent').innerHTML =
+                    '<div class="no-data">❌ 数据加载失败</div>';
+                document.getElementById('reportContent').innerHTML =
+                    '<div class="no-data">❌ 数据加载失败</div>';
+            }
+        }
+
+        // 初始化页面
+        function initializePage() {
+            availableModels = comparisonData.models;
+
+            // 初始化患者选择器
+            const patientTabs = document.getElementById('patientTabs');
+            comparisonData.patients.forEach((patient, index) => {
+                const tab = document.createElement('div');
+                tab.className = 'patient-tab';
+                tab.textContent = patient;
+                tab.onclick = () => selectPatient(patient);
+
+                // 第一个患者默认选中
+                if (index === 0) {
+                    tab.classList.add('active');
+                }
+
+                patientTabs.appendChild(tab);
+            });
+
+            // 选择第一个患者
+            if (comparisonData.patients.length > 0) {
+                currentPatient = comparisonData.patients[0];
+                currentModelIndex = 0;
+                updateView();
+            }
+
+            // 设置模型名称显示/隐藏
+            const modelNameElement = document.getElementById('modelName');
+            if (!debugMode) {
+                modelNameElement.classList.add('hidden');
+            }
+        }
+
+        // 选择患者
+        function selectPatient(patient) {
+            currentPatient = patient;
+            currentModelIndex = 0;
+
+            // 更新标签样式
+            document.querySelectorAll('.patient-tab').forEach(tab => {
+                if (tab.textContent === patient) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            updateView();
+        }
+
+        // 上一个模型
+        function previousModel() {
+            if (currentModelIndex > 0) {
+                currentModelIndex--;
+                updateView();
+            }
+        }
+
+        // 下一个模型
+        function nextModel() {
+            if (currentModelIndex < availableModels.length - 1) {
+                currentModelIndex++;
+                updateView();
+            }
+        }
+
+        // 更新视图
+        function updateView() {
+            updateChatView();
+            updateReportView();
+            updateNavigator();
+        }
+
+        // 更新对话视图
+        function updateChatView() {
+            const chatContent = document.getElementById('chatContent');
+
+            if (!currentPatient || !comparisonData.data[currentPatient]) {
+                chatContent.innerHTML = '<div class="no-data">暂无对话数据</div>';
+                return;
+            }
+
+            // 获取第一个对话记录（通常是主诉对话，包含完整的对话历史）
+            const patientData = comparisonData.data[currentPatient];
+            const firstConvId = Object.keys(patientData).sort()[0];
+            const firstConv = patientData[firstConvId];
+
+            // 获取任意一个模型的对话数据（所有模型的对话历史应该是相同的）
+            let chatData = null;
+            for (const model in firstConv) {
+                if (firstConv[model].chat) {
+                    chatData = firstConv[model].chat;
+                    break;
+                }
+            }
+
+            if (!chatData) {
+                chatContent.innerHTML = '<div class="no-data">暂无对话记录</div>';
+                return;
+            }
+
+            // 解析并渲染对话
+            const messages = parseChatContent(chatData);
+            let html = '';
+            messages.forEach(msg => {
+                if (msg.type === 'patient-info') {
+                    // 渲染患者信息卡片
+                    html += '<div class="patient-info-card"><h4>👤 患者基本信息</h4><div class="patient-info-grid">';
+                    for (const [key, value] of Object.entries(msg.data)) {
+                        html += `<div class="patient-info-item"><strong>${key}:</strong> ${value}</div>`;
+                    }
+                    html += '</div></div>';
+                } else if (msg.type === 'section') {
+                    html += `<div class="chat-section-title">${msg.content}</div>`;
+                } else {
+                    const role = msg.role === 'patient' ? 'patient' : 'doctor';
+                    const avatar = msg.role === 'patient' ? '👤' : '👨‍⚕️';
+                    const roleName = msg.role === 'patient' ? '患者' : '医助';
+
+                    html += `
+                        <div class="chat-message ${role}">
+                            <div class="chat-message-header">
+                                <div class="chat-avatar">${avatar}</div>
+                                <div class="chat-role">${roleName}</div>
+                            </div>
+                            <div class="chat-bubble">${escapeHtml(msg.content)}</div>
+                        </div>
+                    `;
+                }
+            });
+
+            chatContent.innerHTML = html;
+            chatContent.scrollTop = 0;
+        }
+
+        // 解析对话内容
+        function parseChatContent(content) {
+            const messages = [];
+            const lines = content.split('\n');
+
+            let inDialogSection = false;
+            let inBasicInfo = false;
+            let currentMessage = null;
+            let patientInfo = {};
+
+            for (let line of lines) {
+                line = line.trim();
+
+                if (line.startsWith('====') || line.startsWith('----') || line === '') {
+                    continue;
+                }
+
+                if (line.includes('患者基本信息')) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                        currentMessage = null;
+                    }
+                    inBasicInfo = true;
+                    inDialogSection = false;
+                    continue;
+                }
+
+                if (line.includes('预问诊对话记录')) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                        currentMessage = null;
+                    }
+                    if (Object.keys(patientInfo).length > 0) {
+                        messages.push({ type: 'patient-info', data: patientInfo });
+                    }
+                    messages.push({ type: 'section', content: '预问诊对话记录' });
+                    inBasicInfo = false;
+                    inDialogSection = true;
+                    continue;
+                }
+
+                if (inBasicInfo) {
+                    const infoMatch = line.match(/^(.+?)[:：]\s*(.+)$/);
+                    if (infoMatch) {
+                        const key = infoMatch[1].trim();
+                        const value = infoMatch[2].trim();
+                        patientInfo[key] = value;
+                    }
+                    continue;
+                }
+
+                const patientMatch = line.match(/^\d+\.\s*患者:\s*(.+)$/);
+                const doctorMatch = line.match(/^\d+\.\s*医助:\s*(.+)$/);
+
+                if (patientMatch) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                    }
+                    currentMessage = {
+                        type: 'message',
+                        role: 'patient',
+                        content: patientMatch[1].trim()
+                    };
+                } else if (doctorMatch) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                    }
+                    currentMessage = {
+                        type: 'message',
+                        role: 'doctor',
+                        content: doctorMatch[1].trim()
+                    };
+                } else if (currentMessage && line) {
+                    currentMessage.content += '\n' + line;
+                }
+            }
+
+            if (currentMessage) {
+                messages.push(currentMessage);
+            }
+
+            return messages;
+        }
+
+        // 更新报告视图
+        function updateReportView() {
+            const reportContent = document.getElementById('reportContent');
+            const modelNameElement = document.getElementById('modelName');
+
+            if (!currentPatient || !comparisonData.data[currentPatient]) {
+                reportContent.innerHTML = '<div class="no-data">暂无报告数据</div>';
+                return;
+            }
+
+            const currentModel = availableModels[currentModelIndex];
+            modelNameElement.textContent = `模型: ${currentModel}`;
+
+            const patientData = comparisonData.data[currentPatient];
+
+            // 定义报告顺序
+            const reportOrder = ['主诉', '现病史', '既往史', '医疗总结', '家族史'];
+
+            let html = '';
+            let hasData = false;
+
+            // 按顺序收集报告
+            reportOrder.forEach(title => {
+                // 查找匹配的对话ID
+                for (const convId in patientData) {
+                    const convData = patientData[convId][currentModel];
+                    if (convData && convData.title === title) {
+                        hasData = true;
+                        html += `
+                            <div class="report-section">
+                                <div class="report-section-title">${title}</div>
+                                <div class="report-section-content">${renderMarkdown(convData.output)}</div>
+                            </div>
+                        `;
+                        break;
+                    }
+                }
+            });
+
+            if (!hasData) {
+                reportContent.innerHTML = '<div class="no-data">该模型暂无报告数据</div>';
+            } else {
+                reportContent.innerHTML = html;
+                reportContent.scrollTop = 0;
+            }
+        }
+
+        // 更新导航器
+        function updateNavigator() {
+            const prevButton = document.getElementById('prevModel');
+            const nextButton = document.getElementById('nextModel');
+            const indicator = document.getElementById('modelIndicator');
+
+            prevButton.disabled = currentModelIndex === 0;
+            nextButton.disabled = currentModelIndex === availableModels.length - 1;
+            indicator.textContent = `${currentModelIndex + 1}/${availableModels.length}`;
+        }
+
+        // HTML转义函数
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\n/g, '<br>');
+        }
+
+        // Markdown渲染函数
+        function renderMarkdown(text) {
+            if (!text) return '';
+
+            let html = text;
+
+            // 转义HTML标签
+            html = html.replace(/&/g, '&amp;')
+                      .replace(/</g, '&lt;')
+                      .replace(/>/g, '&gt;');
+
+            // 处理三级标题 ### Title
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+
+            // 处理四级标题 #### Title
+            html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
+
+            // 处理加粗 **text** 或 __text__
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+            // 处理行内代码 `code`
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+            // 处理键值对格式（如："性别：** 男"）
+            html = html.replace(/^- \*\*(.+?)[：:]\*\*\s*(.+)$/gm, function(match, label, value) {
+                return `<div class="info-row"><span class="info-label">${label}:</span><span class="info-value">${value}</span></div>`;
+            });
+
+            // 处理列表项 - item 或 * item
+            const lines = html.split('\n');
+            let inList = false;
+            let processedLines = [];
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i];
+
+                // 检测列表项
+                if (/^[-*•]\s+/.test(line)) {
+                    if (!inList) {
+                        processedLines.push('<ul>');
+                        inList = true;
+                    }
+                    // 移除列表标记并创建列表项
+                    line = '<li>' + line.replace(/^[-*•]\s+/, '') + '</li>';
+                    processedLines.push(line);
+                } else {
+                    if (inList && line.trim() === '') {
+                        processedLines.push('</ul>');
+                        inList = false;
+                    }
+                    if (line.trim() !== '' || !inList) {
+                        processedLines.push(line);
+                    }
+                }
+            }
+
+            // 关闭可能未关闭的列表
+            if (inList) {
+                processedLines.push('</ul>');
+            }
+
+            html = processedLines.join('\n');
+
+            // 处理段落：连续的非标签行合并为段落
+            html = html.replace(/^(?!<[hul]|<div|<li)(.+)$/gm, function(match) {
+                if (match.trim() === '') return '';
+                return '<p>' + match + '</p>';
+            });
+
+            // 清理多余的空段落
+            html = html.replace(/<p>\s*<\/p>/g, '');
+            html = html.replace(/<p>(<[hul])/g, '$1');
+            html = html.replace(/(<\/[hul][^>]*>)<\/p>/g, '$1');
+
+            return html;
+        }
+
+        // 页面加载时执行
+        loadData();
+    </script>
+</body>
+</html>

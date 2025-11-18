@@ -9,16 +9,17 @@ from pathlib import Path
 
 def extract_conversation_title(prompt):
     """从 prompt 中提取对话类型作为标题"""
-    if "主诉" in prompt:
-        return "主诉"
+    # 优先检查总结类型，避免被"主诉"误判
+    if "预问诊情况总结" in prompt or ("总结" in prompt and "模板" not in prompt):
+        return "医疗总结"
     elif "现病史" in prompt:
         return "现病史"
     elif "既往史" in prompt or "即往史" in prompt:
         return "既往史"
     elif "家族史" in prompt:
         return "家族史"
-    elif "预问诊情况总结" in prompt or "总结" in prompt:
-        return "预问诊情况总结"
+    elif "主诉" in prompt:
+        return "主诉"
     else:
         return "其他"
 

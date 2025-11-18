@@ -42,7 +42,29 @@ def parse_markdown_file(md_file):
     }
 
 
-def organize_data_for_comparison(markdown_dir):
+def load_raw_conversations(raw_dir):
+    """从raw目录加载原始对话数据"""
+    conversations_map = {}
+    raw_path = Path(raw_dir)
+
+    for json_file in raw_path.glob("*.json"):
+        try:
+            with open(json_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+
+            model = data.get("model", "")
+            patient = data.get("people", "")
+            conversations = data.get("conversations", {})
+
+            key = f"{model}-{patient}"
+            conversations_map[key] = conversations
+        except Exception as e:
+            print(f"警告: 无法读取 {json_file}: {e}")
+
+    return conversations_map
+
+
+def organize_data_for_comparison(markdown_dir, raw_dir="output/raw"):
     """组织数据以便于对比"""
     # 数据结构: {patient: {conv_id: {model: output}}}
     comparison_data = defaultdict(lambda: defaultdict(dict))
@@ -50,6 +72,11 @@ def organize_data_for_comparison(markdown_dir):
     # 收集所有模型和患者信息
     all_models = set()
     all_patients = set()
+
+    # 加载原始对话数据
+    print(f"加载原始对话数据从: {raw_dir}")
+    conversations_map = load_raw_conversations(raw_dir)
+    print(f"  - 加载了 {len(conversations_map)} 个原始对话文件")
 
     markdown_path = Path(markdown_dir)
 
@@ -63,10 +90,19 @@ def organize_data_for_comparison(markdown_dir):
         all_models.add(model)
         all_patients.add(patient)
 
+        # 获取原始对话数据
+        conv_key = f"{model}-{patient}"
+        raw_conversations = conversations_map.get(conv_key, {})
+
         for conv_id, conv_data in data["conversations"].items():
+            # 从原始数据中获取对话内容
+            raw_conv = raw_conversations.get(conv_id, {})
+            chat_content = raw_conv.get("chat", "")
+
             comparison_data[patient][conv_id][model] = {
                 "title": conv_data["title"],
-                "output": conv_data["output"]
+                "output": conv_data["output"],
+                "chat": chat_content  # 添加对话内容
             }
 
     return {
