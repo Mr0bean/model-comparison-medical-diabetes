@@ -26,18 +26,42 @@ let isVerified = false;
 
     // 尝试从缓存读取完成码
     const cachedCode = localStorage.getItem('completion_code');
-    if (cachedCode && /^[a-z0-9]{4}$/.test(cachedCode)) {
-        console.log('检测到缓存的完成码，正在验证...');
-        currentUserId = cachedCode;
-        const isValid = await verifyCode(cachedCode);
-        if (isValid) {
-            console.log('缓存的完成码验证成功');
-            return;
+    console.log('='.repeat(50));
+    console.log('🔍 检查缓存的完成码');
+    console.log('='.repeat(50));
+
+    if (cachedCode) {
+        console.log(`✅ 发现缓存完成码: ${cachedCode}`);
+
+        if (/^[a-z0-9]{4}$/.test(cachedCode)) {
+            console.log(`✓ 格式验证通过`);
+            console.log(`⏳ 正在向服务器验证完成码...`);
+
+            currentUserId = cachedCode;
+            const isValid = await verifyCode(cachedCode);
+
+            if (isValid) {
+                console.log(`✅ 验证成功！完成码 "${cachedCode}" 有效`);
+                console.log(`👤 已登录，用户ID: ${cachedCode}`);
+                console.log('='.repeat(50));
+                return;
+            } else {
+                // 缓存的完成码无效，清除缓存
+                console.warn(`❌ 完成码 "${cachedCode}" 验证失败（可能已过期或被删除）`);
+                console.log(`🗑️ 清除缓存...`);
+                localStorage.removeItem('completion_code');
+                console.log('='.repeat(50));
+            }
         } else {
-            // 缓存的完成码无效，清除缓存
-            console.log('缓存的完成码已失效，清除缓存');
+            console.error(`❌ 完成码格式错误: "${cachedCode}"`);
+            console.log(`ℹ️ 完成码必须是4位小写字母或数字`);
             localStorage.removeItem('completion_code');
+            console.log('='.repeat(50));
         }
+    } else {
+        console.log('ℹ️ 未找到缓存的完成码');
+        console.log('📝 需要手动输入或申请新的完成码');
+        console.log('='.repeat(50));
     }
 
     // 没有有效的完成码，显示输入框
@@ -162,23 +186,39 @@ async function handleCodeSubmit() {
     const errorDiv = document.getElementById('codeError');
     const code = input.value.trim();
 
+    console.log('='.repeat(50));
+    console.log('🔑 手动验证完成码');
+    console.log('='.repeat(50));
+
     if (!code) {
+        console.warn('⚠️ 未输入完成码');
+        console.log('='.repeat(50));
         errorDiv.textContent = '请输入完成码';
         return;
     }
 
+    console.log(`📝 输入的完成码: ${code}`);
+
     if (!/^[a-z0-9]{4}$/.test(code)) {
+        console.error('❌ 格式验证失败');
+        console.log('ℹ️ 完成码必须是4位小写字母或数字');
+        console.log('='.repeat(50));
         errorDiv.textContent = '完成码必须是4位小写字母或数字';
         return;
     }
 
+    console.log('✓ 格式验证通过');
     errorDiv.textContent = '验证中...';
+    console.log('⏳ 正在向服务器验证...');
 
     // 验证完成码
     currentUserId = code;
     const result = await verifyCode(code);
 
     if (!result) {
+        console.error('❌ 验证失败');
+        console.log('ℹ️ 请检查完成码是否正确');
+        console.log('='.repeat(50));
         errorDiv.textContent = '验证失败，请检查完成码是否正确';
         input.value = '';
         input.focus();
@@ -190,8 +230,17 @@ async function handleApplyCode() {
     const errorDiv = document.getElementById('codeError');
     const applyBtn = document.getElementById('applyBtn');
 
+    console.log('='.repeat(50));
+    console.log('📝 申请完成码');
+    console.log('='.repeat(50));
+
     // 检查是否已申请过
     if (localStorage.getItem('has_applied_code')) {
+        const appliedCode = localStorage.getItem('applied_code');
+        console.warn('⚠️ 该设备已申请过完成码');
+        console.log(`📌 已申请的完成码: ${appliedCode || '未记录'}`);
+        console.log('ℹ️ 每台设备只能申请一次');
+        console.log('='.repeat(50));
         errorDiv.textContent = '该设备已申请过完成码，不能重复申请';
         errorDiv.style.color = '#faad14';
         return;
@@ -204,6 +253,8 @@ async function handleApplyCode() {
     errorDiv.textContent = '正在申请完成码...';
     errorDiv.style.color = '#1890ff';
 
+    console.log('⏳ 正在向服务器申请完成码...');
+
     try {
         const response = await fetch(`${API_BASE}/apply-code`, {
             method: 'POST',
@@ -215,17 +266,25 @@ async function handleApplyCode() {
         const data = await response.json();
 
         if (data.success && data.code) {
+            console.log('✅ 申请成功！');
+            console.log(`🎫 新完成码: ${data.code}`);
+
             // 保存申请标记和完成码
             localStorage.setItem('has_applied_code', 'true');
             localStorage.setItem('applied_code', data.code);
+            console.log('💾 完成码已保存到缓存');
 
             errorDiv.textContent = `✅ 申请成功！您的完成码是：${data.code}`;
             errorDiv.style.color = '#52c41a';
 
             // 自动填充完成码
             document.getElementById('codeInput').value = data.code;
+            console.log('📝 完成码已自动填充到输入框');
 
-            // 3秒后自动验证
+            console.log('⏱️ 2秒后自动验证并登录...');
+            console.log('='.repeat(50));
+
+            // 2秒后自动验证
             setTimeout(() => {
                 handleCodeSubmit();
             }, 2000);
@@ -233,7 +292,8 @@ async function handleApplyCode() {
             throw new Error(data.message || '申请失败');
         }
     } catch (error) {
-        console.error('申请失败:', error);
+        console.error('❌ 申请失败:', error.message);
+        console.log('='.repeat(50));
         errorDiv.textContent = '申请失败：' + error.message;
         errorDiv.style.color = '#f5222d';
         applyBtn.disabled = false;
@@ -249,11 +309,14 @@ async function verifyCode(code) {
         const data = await response.json();
 
         if (data.valid) {
+            console.log('✅ 服务器验证通过');
+            console.log(`📊 状态: ${data.status === 'used' ? '已使用（可继续编辑）' : '首次使用'}`);
+
             isVerified = true;
 
             // 保存完成码到缓存
             localStorage.setItem('completion_code', code);
-            console.log('完成码已缓存到localStorage');
+            console.log('💾 完成码已缓存到localStorage');
 
             // 移除输入对话框
             const overlay = document.querySelector('.auth-overlay');
@@ -262,6 +325,9 @@ async function verifyCode(code) {
             }
             // 恢复页面交互
             document.body.style.pointerEvents = 'auto';
+
+            console.log('🎉 登录成功！欢迎使用评测系统');
+            console.log('='.repeat(50));
 
             showAuthSuccess(code, data.status);
 
@@ -272,10 +338,15 @@ async function verifyCode(code) {
 
             return true;
         } else {
+            console.error('❌ 服务器验证失败');
+            console.log(`📝 原因: ${data.message || '未知'}`);
+            console.log('='.repeat(50));
             return false;
         }
     } catch (error) {
-        console.error('验证失败:', error);
+        console.error('❌ 验证请求失败:', error.message);
+        console.log('ℹ️ 请检查网络连接或后端服务是否启动');
+        console.log('='.repeat(50));
         return false;
     }
 }
@@ -302,10 +373,23 @@ function showAuthSuccess(code, status) {
 
     // 绑定清除按钮事件
     document.getElementById('clearCodeBtn').addEventListener('click', () => {
+        console.log('='.repeat(50));
+        console.log('🗑️ 清除完成码缓存');
+        console.log('='.repeat(50));
+        console.log(`📌 当前缓存的完成码: ${code}`);
+
         if (confirm('确定要清除完成码缓存吗？\n下次访问需要重新输入完成码。')) {
+            console.log('✓ 用户确认清除');
+            console.log('🗑️ 删除 completion_code...');
             localStorage.removeItem('completion_code');
+            console.log('✅ 缓存已清除');
+            console.log('🔄 页面即将刷新...');
+            console.log('='.repeat(50));
             alert('完成码缓存已清除！\n页面将刷新。');
             location.reload();
+        } else {
+            console.log('✕ 用户取消操作');
+            console.log('='.repeat(50));
         }
     });
 
