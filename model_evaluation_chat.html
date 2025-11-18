@@ -1324,6 +1324,9 @@
             } else {
                 scoreElement.style.color = '#f5222d';
             }
+
+            // 触发自动保存
+            autoSaveEval();
         }
 
         // 重置评测表单
@@ -1347,7 +1350,9 @@
         }
 
         // 保存评测结果
-        function saveEval() {
+        function saveEval(silent = false) {
+            if (!currentPatient || !availableModels[currentModelIndex]) return;
+
             const evalData = {
                 timestamp: new Date().toISOString(),
                 patient: currentPatient,
@@ -1387,14 +1392,26 @@
             const storageKey = `eval_${currentPatient}_${availableModels[currentModelIndex]}`;
             localStorage.setItem(storageKey, JSON.stringify(evalData));
 
-            // 同时保存到历史记录
-            let history = JSON.parse(localStorage.getItem('eval_history') || '[]');
-            history.push(evalData);
-            localStorage.setItem('eval_history', JSON.stringify(history));
+            // 同时保存到历史记录（仅在手动保存时）
+            if (!silent) {
+                let history = JSON.parse(localStorage.getItem('eval_history') || '[]');
+                // 移除同一患者-模型的旧记录
+                history = history.filter(h => !(h.patient === currentPatient && h.model === availableModels[currentModelIndex]));
+                history.push(evalData);
+                localStorage.setItem('eval_history', JSON.stringify(history));
 
-            alert('评测已保存！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
+                alert('评测已保存！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
+                console.log('评测数据已保存:', evalData);
+            }
+        }
 
-            console.log('评测数据已保存:', evalData);
+        // 自动保存（防抖）
+        let autoSaveTimer = null;
+        function autoSaveEval() {
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                saveEval(true); // 静默保存
+            }, 500); // 500ms后自动保存
         }
 
         // 加载已保存的评测（如果存在）
@@ -1453,12 +1470,26 @@
 
             e.preventDefault();
             const evalWindow = document.getElementById('evalWindow');
+            const rect = evalWindow.getBoundingClientRect();
 
             const dx = e.clientX - currentX;
             const dy = e.clientY - currentY;
 
-            evalWindow.style.left = (initialX + dx) + 'px';
-            evalWindow.style.top = (initialY + dy) + 'px';
+            // 计算新位置
+            let newLeft = initialX + dx;
+            let newTop = initialY + dy;
+
+            // 边界限制 - 确保窗口标题栏始终可见
+            const minTop = 0;
+            const maxTop = window.innerHeight - 50; // 至少保留50px标题栏高度
+            const minLeft = -rect.width + 100; // 至少保留100px宽度可见
+            const maxLeft = window.innerWidth - 100;
+
+            newTop = Math.max(minTop, Math.min(newTop, maxTop));
+            newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
+
+            evalWindow.style.left = newLeft + 'px';
+            evalWindow.style.top = newTop + 'px';
         });
 
         document.addEventListener('mouseup', function() {
@@ -1510,8 +1541,48 @@
             }
         });
 
+        // 初始化评测表单自动保存
+        function initAutoSave() {
+            // 为所有分数输入框添加自动保存
+            const scoreInputs = [
+                'score-accuracy',
+                'score-completeness',
+                'score-clinical',
+                'score-structure',
+                'score-language'
+            ];
+
+            scoreInputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', autoSaveEval);
+                    input.addEventListener('change', autoSaveEval);
+                }
+            });
+
+            // 为所有评论文本框添加自动保存
+            const commentInputs = [
+                'comment-accuracy',
+                'comment-completeness',
+                'comment-clinical',
+                'comment-structure',
+                'comment-language',
+                'overall-comment'
+            ];
+
+            commentInputs.forEach(id => {
+                const textarea = document.getElementById(id);
+                if (textarea) {
+                    textarea.addEventListener('input', autoSaveEval);
+                }
+            });
+
+            console.log('评测表单自动保存已启用');
+        }
+
         // 页面加载时执行
         loadData();
+        initAutoSave(); // 初始化自动保存
     </script>
 </body>
 </html>
