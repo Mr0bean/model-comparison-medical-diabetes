@@ -644,14 +644,29 @@
             font-size: 15px;
             font-weight: 600;
             margin-left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .eval-title::after {
-            content: '（可拖动）';
-            font-size: 11px;
-            opacity: 0.7;
-            margin-left: 6px;
-            font-weight: 400;
+        .eval-completion {
+            font-size: 13px;
+            font-weight: 500;
+            padding: 2px 8px;
+            background: rgba(76, 175, 80, 0.15);
+            color: #4caf50;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .eval-completion.incomplete {
+            background: rgba(255, 152, 0, 0.15);
+            color: #ff9800;
+        }
+
+        .eval-completion.complete {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
         }
 
         .eval-controls {
@@ -1012,7 +1027,10 @@
     <div class="eval-window" id="evalWindow">
         <div class="eval-hint" id="evalHint">💡 拖动标题栏移动 | 右下角调整大小</div>
         <div class="eval-header" id="evalHeader">
-            <div class="eval-title">模型输出评测</div>
+            <div class="eval-title">
+                <span>模型输出评测</span>
+                <span class="eval-completion" id="evalCompletion">0%</span>
+            </div>
             <div class="eval-controls">
                 <div class="eval-font-controls">
                     <button class="eval-font-btn" onclick="decreaseFontSize()" title="缩小字体">A−</button>
@@ -1728,6 +1746,16 @@
 
             const percentage = Math.round((completedCount / scoreItems.length) * 100);
             const isComplete = completedCount === scoreItems.length;
+
+            // 更新标题栏完成度
+            const evalCompletion = document.getElementById('evalCompletion');
+            evalCompletion.textContent = percentage + '%';
+            evalCompletion.classList.remove('incomplete', 'complete');
+            if (isComplete) {
+                evalCompletion.classList.add('complete');
+            } else if (percentage > 0) {
+                evalCompletion.classList.add('incomplete');
+            }
 
             // 更新进度条
             document.getElementById('progressPercentage').textContent = percentage + '%';
