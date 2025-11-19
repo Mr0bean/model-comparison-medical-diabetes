@@ -3,7 +3,8 @@
  * 在 model_evaluation_chat.html 中引入此文件
  */
 
-const API_BASE = 'http://localhost:3001/api';
+// 使用全局配置的 API 地址
+const API_BASE = window.API_CONFIG ? window.API_CONFIG.BASE_URL : 'http://localhost:5001/api';
 let currentUserId = null;
 let isVerified = false;
 

@@ -25,13 +25,63 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             min-height: 80px;
             position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .home-button {
+        .header-progress {
+            position: absolute;
+            right: 180px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-label {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .progress-numbers {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        .progress-bar-container {
+            width: 120px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: white;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .header-left-buttons {
             position: absolute;
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .home-button, .guide-button {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             text-decoration: none;
@@ -45,9 +95,9 @@
             gap: 6px;
         }
 
-        .home-button:hover {
+        .home-button:hover, .guide-button:hover {
             background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-50%) translateX(-2px);
+            transform: translateX(-2px);
         }
 
         .patient-selector {
@@ -981,10 +1031,20 @@
 </head>
 <body>
     <div class="header">
-        <a href="index.html" class="home-button">← 返回主页</a>
+        <div class="header-left-buttons">
+            <a href="index.html" class="home-button">← 返回主页</a>
+            <a href="user-guide.html" class="guide-button" target="_blank">📚 使用手册</a>
+        </div>
         <div class="patient-selector">
             <span class="patient-selector-label">👤 选择患者：</span>
             <div class="patient-tabs" id="patientTabs"></div>
+        </div>
+        <div class="header-progress">
+            <div class="progress-label">总体完成进度</div>
+            <div class="progress-numbers" id="progressNumbers">0/80</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
+            </div>
         </div>
     </div>
 
@@ -1644,10 +1704,17 @@
 
             if (evalWindow.classList.contains('active')) {
                 evalWindow.classList.remove('active');
-                evalBtn.classList.remove('hidden');
+                if (evalBtn) {
+                    evalBtn.classList.remove('hidden');
+                    // 强制显示，确保可见性
+                    evalBtn.style.display = 'flex';
+                }
             } else {
                 evalWindow.classList.add('active');
-                evalBtn.classList.add('hidden');
+                if (evalBtn) {
+                    evalBtn.classList.add('hidden');
+                    evalBtn.style.display = 'none';
+                }
                 calculateTotal(); // 打开时计算一次总分
                 checkCompletionStatus(); // 检查完成度
 
@@ -1672,7 +1739,14 @@
 
             evalWindow.classList.remove('active');
             evalWindow.classList.remove('minimized');
-            evalBtn.classList.remove('hidden');
+
+            // 确保浮动按钮显示
+            if (evalBtn) {
+                evalBtn.classList.remove('hidden');
+                // 强制显示，确保可见性
+                evalBtn.style.display = 'flex';
+            }
+
             document.getElementById('minimizeIcon').textContent = '−';
         }
 
@@ -1910,6 +1984,8 @@
                     const success = await window.submitEvaluationToServer(evalData);
                     if (success) {
                         alert('✅ 评测已保存并提交到服务器！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
+                        // 更新完成进度
+                        updateProgress();
                     } else {
                         alert('⚠️ 评测已保存到本地，但提交服务器失败\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
                     }
@@ -1918,11 +1994,8 @@
                 }
                 console.log('评测数据已保存:', evalData);
 
-                // 关闭评测弹窗
-                const evalWindow = document.getElementById('evalWindow');
-                if (evalWindow && evalWindow.classList.contains('active')) {
-                    evalWindow.classList.remove('active');
-                }
+                // 关闭评测弹窗并显示浮动按钮
+                closeEvalWindow();
             }
         }
 
@@ -2128,11 +2201,54 @@
             console.log('评测表单自动保存已启用');
         }
 
+        // 更新完成进度显示
+        async function updateProgress() {
+            try {
+                // 从 evaluation-auth.js 获取当前完成码
+                const completionCode = window.currentUserId || localStorage.getItem('completion_code');
+
+                if (!completionCode) {
+                    console.log('未找到完成码，无法更新进度');
+                    return;
+                }
+
+                // 从服务器获取该完成码的评测数量
+                const apiBase = window.API_CONFIG ? window.API_CONFIG.BASE_URL : 'http://localhost:5001/api';
+                const response = await fetch(`${apiBase}/evaluations/${completionCode}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const completedCount = data.count || 0;
+                    const totalCount = 80; // 10个患者 × 8个模型 = 80份
+                    const percentage = Math.round((completedCount / totalCount) * 100);
+
+                    // 更新显示
+                    document.getElementById('progressNumbers').textContent = `${completedCount}/${totalCount}`;
+                    document.getElementById('progressBarFill').style.width = `${percentage}%`;
+
+                    console.log(`📊 完成进度已更新: ${completedCount}/${totalCount} (${percentage}%)`);
+                } else {
+                    console.warn('获取进度失败:', data.message);
+                }
+            } catch (error) {
+                console.error('更新进度失败:', error);
+            }
+        }
+
+        // 定期刷新进度（每30秒）
+        setInterval(updateProgress, 30000);
+
         // 页面加载时执行
         loadData();
         initAutoSave(); // 初始化自动保存
         applyFontSize(); // 应用保存的字体大小
+
+        // 延迟更新进度，等待 evaluation-auth.js 初始化
+        setTimeout(updateProgress, 1000);
     </script>
+
+    <!-- 环境配置 -->
+    <script src="config.js"></script>
 
     <!-- 身份验证模块 -->
     <script src="evaluation-auth.js"></script>

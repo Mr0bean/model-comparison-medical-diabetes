@@ -18,7 +18,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
@@ -28,12 +28,21 @@
             border-radius: 12px;
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .header h1 {
             font-size: 28px;
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
         .stats-grid {
@@ -48,6 +57,18 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
         }
 
         .stat-label {
@@ -60,6 +81,28 @@
             font-size: 32px;
             font-weight: 700;
             color: #667eea;
+        }
+
+        .stat-subtitle {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #52c41a, #73d13d);
+            border-radius: 4px;
+            transition: width 0.3s;
         }
 
         .section {
@@ -97,10 +140,25 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
         .input-group {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         input, select {
@@ -181,13 +239,212 @@
             padding: 40px;
             color: #999;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .close {
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .detail-row {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .detail-label {
+            width: 150px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .detail-value {
+            flex: 1;
+            color: #333;
+        }
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .score-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .score-item-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .score-item-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .auto-refresh-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 26px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #667eea;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        .completion-rate {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .completion-number {
+            font-family: monospace;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 医疗AI评测系统 - 管理面板</h1>
-            <p style="color: #666; margin-top: 5px;">完成码管理与数据统计</p>
+            <div>
+                <h1>📊 医疗AI评测系统 - 管理面板</h1>
+                <p style="color: #666; margin-top: 5px;">完成码管理与数据统计</p>
+            </div>
+            <div class="header-controls">
+                <div class="auto-refresh-controls">
+                    <span>自动刷新:</span>
+                    <label class="switch">
+                        <input type="checkbox" id="autoRefreshToggle" onchange="toggleAutoRefresh()">
+                        <span class="slider"></span>
+                    </label>
+                    <select id="refreshInterval" onchange="updateRefreshInterval()" style="width: 100px;">
+                        <option value="5">5秒</option>
+                        <option value="10" selected>10秒</option>
+                        <option value="30">30秒</option>
+                        <option value="60">1分钟</option>
+                        <option value="300">5分钟</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="refreshAll()">🔄 立即刷新</button>
+            </div>
         </div>
 
         <!-- 统计卡片 -->
@@ -195,18 +452,47 @@
             <div class="stat-card">
                 <div class="stat-label">总完成码数</div>
                 <div class="stat-value" id="totalCodes">-</div>
+                <div class="stat-subtitle">已生成的完成码总数</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">可用完成码</div>
                 <div class="stat-value" id="activeCodes" style="color: #52c41a;">-</div>
+                <div class="stat-subtitle">剩余可使用</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">已使用</div>
+                <div class="stat-label">已使用完成码</div>
                 <div class="stat-value" id="usedCodes" style="color: #faad14;">-</div>
+                <div class="completion-rate">
+                    <div class="progress-bar" style="flex: 1;">
+                        <div class="progress-fill" id="usedProgress" style="width: 0%;"></div>
+                    </div>
+                    <span class="completion-number" id="usedPercentage">0%</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">完成码使用率</div>
+                <div class="stat-value" id="completionRate" style="color: #1890ff;">-</div>
+                <div class="stat-subtitle">已使用/总数</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">总评测数</div>
                 <div class="stat-value" id="totalEvaluations">-</div>
+                <div class="stat-subtitle">累计提交的评测</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">平均分数</div>
+                <div class="stat-value" id="avgScore" style="color: #f5222d;">-</div>
+                <div class="stat-subtitle">所有评测的平均分</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">今日评测数</div>
+                <div class="stat-value" id="todayEvaluations" style="color: #722ed1;">-</div>
+                <div class="stat-subtitle">今天提交的评测</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">活跃模型数</div>
+                <div class="stat-value" id="activeModels" style="color: #13c2c2;">-</div>
+                <div class="stat-subtitle">参与评测的模型</div>
             </div>
         </div>
 
@@ -235,7 +521,7 @@
                     <option value="used">已使用</option>
                     <option value="expired">已过期</option>
                 </select>
-                <button class="btn btn-primary" onclick="loadCodes()">刷新</button>
+                <button class="btn btn-primary" onclick="loadCodes()">刷新列表</button>
             </div>
             <div style="overflow-x: auto;">
                 <table id="codesTable">
@@ -243,14 +529,16 @@
                         <tr>
                             <th>完成码</th>
                             <th>状态</th>
+                            <th>完成率</th>
                             <th>创建时间</th>
                             <th>使用时间</th>
                             <th>批次ID</th>
                             <th>说明</th>
+                            <th>操作</th>
                         </tr>
                     </thead>
                     <tbody id="codesTableBody">
-                        <tr><td colspan="6" class="loading">加载中...</td></tr>
+                        <tr><td colspan="8" class="loading">加载中...</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -264,6 +552,7 @@
                 <input type="text" id="searchPatient" placeholder="搜索患者" style="width: 150px;">
                 <input type="text" id="searchModel" placeholder="搜索模型" style="width: 200px;">
                 <button class="btn btn-primary" onclick="loadEvaluations()">搜索</button>
+                <button class="btn btn-secondary" onclick="clearSearch()">清除</button>
             </div>
             <div style="overflow-x: auto;">
                 <table id="evaluationsTable">
@@ -273,27 +562,93 @@
                             <th>患者</th>
                             <th>模型</th>
                             <th>总分</th>
+                            <th>完成进度</th>
                             <th>提交时间</th>
                             <th>操作</th>
                         </tr>
                     </thead>
                     <tbody id="evaluationsTableBody">
-                        <tr><td colspan="6" class="loading">加载中...</td></tr>
+                        <tr><td colspan="7" class="loading">加载中...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
+    <!-- 详情弹窗 -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📋 评测详情</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="loading">加载中...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 环境配置 -->
+    <script src="config.js"></script>
+
     <script>
-        const API_BASE = 'http://localhost:3001/api';
+        const API_BASE = window.API_CONFIG ? window.API_CONFIG.BASE_URL : 'http://localhost:5001/api';
+        let autoRefreshInterval = null;
+        let currentRefreshSeconds = 10;
 
         // 页面加载时获取统计数据
         document.addEventListener('DOMContentLoaded', function() {
+            refreshAll();
+        });
+
+        // 刷新所有数据
+        function refreshAll() {
             loadStats();
             loadCodes();
             loadEvaluations();
-        });
+        }
+
+        // 切换自动刷新
+        function toggleAutoRefresh() {
+            const enabled = document.getElementById('autoRefreshToggle').checked;
+
+            if (enabled) {
+                startAutoRefresh();
+            } else {
+                stopAutoRefresh();
+            }
+        }
+
+        // 开始自动刷新
+        function startAutoRefresh() {
+            stopAutoRefresh(); // 先清除已有的
+            const seconds = parseInt(document.getElementById('refreshInterval').value);
+            currentRefreshSeconds = seconds;
+
+            autoRefreshInterval = setInterval(() => {
+                refreshAll();
+                console.log(`自动刷新: ${new Date().toLocaleTimeString()}`);
+            }, seconds * 1000);
+
+            console.log(`自动刷新已启动，间隔 ${seconds} 秒`);
+        }
+
+        // 停止自动刷新
+        function stopAutoRefresh() {
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+                autoRefreshInterval = null;
+                console.log('自动刷新已停止');
+            }
+        }
+
+        // 更新刷新间隔
+        function updateRefreshInterval() {
+            const enabled = document.getElementById('autoRefreshToggle').checked;
+            if (enabled) {
+                startAutoRefresh();
+            }
+        }
 
         // 加载统计数据
         async function loadStats() {
@@ -302,14 +657,33 @@
                 const data = await response.json();
 
                 if (data.success) {
+                    // 基础统计
                     document.getElementById('totalCodes').textContent = data.codes.total;
                     document.getElementById('activeCodes').textContent = data.codes.active;
                     document.getElementById('usedCodes').textContent = data.codes.used;
                     document.getElementById('totalEvaluations').textContent = data.evaluations.total;
+
+                    // 计算使用率
+                    const usedPercentage = data.codes.total > 0
+                        ? ((data.codes.used / data.codes.total) * 100).toFixed(1)
+                        : 0;
+                    document.getElementById('usedPercentage').textContent = usedPercentage + '%';
+                    document.getElementById('usedProgress').style.width = usedPercentage + '%';
+                    document.getElementById('completionRate').textContent = usedPercentage + '%';
+
+                    // 扩展统计
+                    document.getElementById('avgScore').textContent =
+                        data.evaluations.avgScore ? data.evaluations.avgScore.toFixed(1) : '-';
+                    document.getElementById('todayEvaluations').textContent =
+                        data.evaluations.todayCount || 0;
+                    document.getElementById('activeModels').textContent =
+                        data.evaluations.activeModels || 0;
                 }
             } catch (error) {
                 console.error('加载统计数据失败:', error);
-                alert('无法连接到服务器，请确保后端服务已启动');
+                if (!autoRefreshInterval) {
+                    alert('无法连接到服务器，请确保后端服务已启动');
+                }
             }
         }
 
@@ -342,8 +716,7 @@
                     document.getElementById('generatedCodes').style.display = 'block';
 
                     // 刷新统计和列表
-                    loadStats();
-                    loadCodes();
+                    refreshAll();
 
                     alert(`✅ 成功生成 ${data.count} 个完成码`);
                 } else {
@@ -381,18 +754,46 @@
                 const tbody = document.getElementById('codesTableBody');
 
                 if (data.success && data.data.length > 0) {
-                    tbody.innerHTML = data.data.map(code => `
-                        <tr>
-                            <td><strong style="font-family: monospace; color: #667eea;">${code.code}</strong></td>
-                            <td><span class="badge badge-${code.status}">${getStatusText(code.status)}</span></td>
-                            <td>${new Date(code.createdAt).toLocaleString('zh-CN')}</td>
-                            <td>${code.usedAt ? new Date(code.usedAt).toLocaleString('zh-CN') : '-'}</td>
-                            <td>${code.batchId || '-'}</td>
-                            <td>${code.description || '-'}</td>
-                        </tr>
-                    `).join('');
+                    tbody.innerHTML = data.data.map(code => {
+                        // 使用后端计算的完成率（基于80份评测）
+                        const completionRate = code.completionRate || 0;
+                        const evaluationCount = code.evaluationCount || 0;
+                        const completionRateText = `${completionRate}%`;
+
+                        // 根据完成率设置颜色
+                        let completionColor = '#999';
+                        if (completionRate >= 100) {
+                            completionColor = '#52c41a'; // 绿色-已完成
+                        } else if (completionRate > 0) {
+                            completionColor = '#faad14'; // 橙色-进行中
+                        }
+
+                        return `
+                            <tr>
+                                <td><strong style="font-family: monospace; color: #667eea;">${code.code}</strong></td>
+                                <td><span class="badge badge-${code.status}">${getStatusText(code.status)}</span></td>
+                                <td>
+                                    <div class="completion-rate">
+                                        <div class="progress-bar" style="width: 60px;">
+                                            <div class="progress-fill" style="width: ${Math.min(completionRate, 100)}%; background: ${completionColor};"></div>
+                                        </div>
+                                        <span style="font-size: 12px; color: ${completionColor};" title="${evaluationCount}/80份">${completionRateText}</span>
+                                    </div>
+                                </td>
+                                <td>${new Date(code.createdAt).toLocaleString('zh-CN')}</td>
+                                <td>${code.usedAt ? new Date(code.usedAt).toLocaleString('zh-CN') : '-'}</td>
+                                <td>${code.batchId || '-'}</td>
+                                <td>${code.description || '-'}</td>
+                                <td>
+                                    ${evaluationCount > 0 ?
+                                        `<button class="btn btn-small btn-secondary" onclick="viewCodeDetails('${code.code}')">查看详情</button>`
+                                        : '-'}
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">暂无数据</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: #999;">暂无数据</td></tr>';
                 }
             } catch (error) {
                 console.error('加载完成码列表失败:', error);
@@ -417,24 +818,202 @@
                 const tbody = document.getElementById('evaluationsTableBody');
 
                 if (data.success && data.data.length > 0) {
-                    tbody.innerHTML = data.data.map(eval => `
-                        <tr>
-                            <td><strong style="font-family: monospace;">${eval.code}</strong></td>
-                            <td>${eval.patient || '-'}</td>
-                            <td>${eval.model || '-'}</td>
-                            <td><strong style="color: #667eea;">${eval.total_score?.toFixed(1) || '-'}</strong></td>
-                            <td>${new Date(eval.submittedAt).toLocaleString('zh-CN')}</td>
-                            <td><button class="btn" onclick="viewEvaluation('${eval._id}')">查看详情</button></td>
-                        </tr>
-                    `).join('');
+                    tbody.innerHTML = data.data.map(eval => {
+                        // 计算完成百分比（假设有5个维度评分）
+                        const completedDimensions = Object.keys(eval.scores || {}).length;
+                        const totalDimensions = 5;
+                        const completionPercentage = Math.round((completedDimensions / totalDimensions) * 100);
+
+                        return `
+                            <tr>
+                                <td><strong style="font-family: monospace;">${eval.code}</strong></td>
+                                <td>${eval.patient || '-'}</td>
+                                <td>${eval.model || '-'}</td>
+                                <td><strong style="color: #667eea; font-size: 18px;">${eval.total_score?.toFixed(1) || '-'}</strong></td>
+                                <td>
+                                    <div class="completion-rate">
+                                        <div class="progress-bar" style="width: 80px;">
+                                            <div class="progress-fill" style="width: ${completionPercentage}%;"></div>
+                                        </div>
+                                        <span style="font-size: 12px;">${completionPercentage}%</span>
+                                    </div>
+                                </td>
+                                <td>${new Date(eval.submittedAt).toLocaleString('zh-CN')}</td>
+                                <td><button class="btn btn-small btn-primary" onclick="viewEvaluation('${eval._id}')">查看详情</button></td>
+                            </tr>
+                        `;
+                    }).join('');
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">暂无数据</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #999;">暂无数据</td></tr>';
                 }
             } catch (error) {
                 console.error('加载评测数据失败:', error);
             }
         }
 
+        // 清除搜索
+        function clearSearch() {
+            document.getElementById('searchCode').value = '';
+            document.getElementById('searchPatient').value = '';
+            document.getElementById('searchModel').value = '';
+            loadEvaluations();
+        }
+
+        // 查看完成码详情
+        async function viewCodeDetails(code) {
+            const modal = document.getElementById('detailModal');
+            const modalBody = document.getElementById('modalBody');
+
+            modal.style.display = 'block';
+            modalBody.innerHTML = '<div class="loading">加载中...</div>';
+
+            try {
+                // 获取该完成码的所有评测
+                const url = new URL(`${API_BASE}/admin/evaluations`);
+                url.searchParams.append('code', code);
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.success && data.data.length > 0) {
+                    const evaluation = data.data[0];
+
+                    modalBody.innerHTML = `
+                        <div class="detail-row">
+                            <div class="detail-label">完成码:</div>
+                            <div class="detail-value"><strong style="font-family: monospace; color: #667eea;">${code}</strong></div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">患者:</div>
+                            <div class="detail-value">${evaluation.patient || '-'}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">模型:</div>
+                            <div class="detail-value">${evaluation.model || '-'}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">总分:</div>
+                            <div class="detail-value"><strong style="color: #667eea; font-size: 20px;">${evaluation.total_score?.toFixed(1) || '-'}</strong></div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">提交时间:</div>
+                            <div class="detail-value">${new Date(evaluation.submittedAt).toLocaleString('zh-CN')}</div>
+                        </div>
+                        ${evaluation.scores ? `
+                            <div style="margin-top: 20px;">
+                                <h3 style="margin-bottom: 15px;">📊 各维度评分</h3>
+                                <div class="score-grid">
+                                    ${Object.entries(evaluation.scores).map(([key, value]) => `
+                                        <div class="score-item">
+                                            <div class="score-item-label">${getDimensionName(key)}</div>
+                                            <div class="score-item-value">${value}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                    `;
+                } else {
+                    modalBody.innerHTML = '<div style="text-align: center; color: #999;">未找到相关评测数据</div>';
+                }
+            } catch (error) {
+                console.error('加载详情失败:', error);
+                modalBody.innerHTML = '<div style="text-align: center; color: #f5222d;">加载失败，请重试</div>';
+            }
+        }
+
+        // 查看评测详情
+        async function viewEvaluation(id) {
+            const modal = document.getElementById('detailModal');
+            const modalBody = document.getElementById('modalBody');
+
+            modal.style.display = 'block';
+            modalBody.innerHTML = '<div class="loading">加载中...</div>';
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/evaluation/${id}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const evaluation = data.data;
+
+                    modalBody.innerHTML = `
+                        <div class="detail-row">
+                            <div class="detail-label">评测ID:</div>
+                            <div class="detail-value"><code>${id}</code></div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">完成码:</div>
+                            <div class="detail-value"><strong style="font-family: monospace; color: #667eea;">${evaluation.code}</strong></div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">患者:</div>
+                            <div class="detail-value">${evaluation.patient || '-'}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">模型:</div>
+                            <div class="detail-value">${evaluation.model || '-'}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">总分:</div>
+                            <div class="detail-value"><strong style="color: #667eea; font-size: 24px;">${evaluation.total_score?.toFixed(1) || '-'}</strong></div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">提交时间:</div>
+                            <div class="detail-value">${new Date(evaluation.submittedAt).toLocaleString('zh-CN', {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                second: '2-digit'
+                            })}</div>
+                        </div>
+                        ${evaluation.scores ? `
+                            <div style="margin-top: 30px;">
+                                <h3 style="margin-bottom: 15px; color: #333;">📊 各维度评分详情</h3>
+                                <div class="score-grid">
+                                    ${Object.entries(evaluation.scores).map(([key, value]) => `
+                                        <div class="score-item">
+                                            <div class="score-item-label">${getDimensionName(key)}</div>
+                                            <div class="score-item-value">${value}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        ${evaluation.comments ? `
+                            <div style="margin-top: 30px;">
+                                <h3 style="margin-bottom: 15px; color: #333;">💬 评论</h3>
+                                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; line-height: 1.6;">
+                                    ${evaluation.comments}
+                                </div>
+                            </div>
+                        ` : ''}
+                    `;
+                } else {
+                    modalBody.innerHTML = '<div style="text-align: center; color: #999;">未找到评测数据</div>';
+                }
+            } catch (error) {
+                console.error('加载详情失败:', error);
+                modalBody.innerHTML = '<div style="text-align: center; color: #f5222d;">加载失败，请重试</div>';
+            }
+        }
+
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        // 点击弹窗外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // 获取状态文本
         function getStatusText(status) {
             const map = {
                 'active': '可用',
@@ -444,8 +1023,18 @@
             return map[status] || status;
         }
 
-        function viewEvaluation(id) {
-            alert('查看评测详情功能开发中...\nID: ' + id);
+        // 获取维度名称
+        function getDimensionName(key) {
+            const map = {
+                'accuracy': '准确性',
+                'completeness': '完整性',
+                'format': '格式规范',
+                'language': '语言表达',
+                'logic': '逻辑性',
+                'professionalism': '专业性',
+                'clarity': '清晰度'
+            };
+            return map[key] || key;
         }
     </script>
 </body>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户使用手册 - 医疗模型评测系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .nav-buttons {
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .content {
+            padding: 40px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .section h3 {
+            font-size: 18px;
+            color: #495057;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: #6c757d;
+        }
+
+        .section ul, .section ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            color: #6c757d;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .nav-buttons {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 医疗模型评测系统</h1>
+            <p>用户使用手册 v1.0</p>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="#overview" class="nav-btn">系统概述</a>
+            <a href="#quickstart" class="nav-btn">快速开始</a>
+            <a href="#process" class="nav-btn">评测流程</a>
+            <a href="#standards" class="nav-btn">评分标准</a>
+            <a href="#progress" class="nav-btn">查看进度</a>
+            <a href="#features" class="nav-btn">功能说明</a>
+            <a href="#tips" class="nav-btn">使用技巧</a>
+            <a href="#faq" class="nav-btn">常见问题</a>
+        </div>
+
+        <div class="content">
+            <!-- 系统概述 -->
+            <div class="section" id="overview">
+                <h2>📋 系统概述</h2>
+                <p>医疗模型评测系统用于评估不同AI模型对医疗病例的诊断质量，支持10个患者病例对8个AI模型的全面评测（共80份评测）。</p>
+                <div class="success-box">
+                    <strong>访问地址：</strong><code>http://ruan.etodo.top</code>
+                </div>
+            </div>
+
+            <!-- 快速开始 -->
+            <div class="section" id="quickstart">
+                <h2>🚀 快速开始</h2>
+
+                <h3>1. 获取访问权限</h3>
+                <p>访问系统需要<strong>完成码</strong>，获取方式：</p>
+                <ol>
+                    <li>访问主页 <code>http://ruan.etodo.top</code></li>
+                    <li>点击"申请完成码"按钮</li>
+                    <li>填写您的邮箱地址</li>
+                    <li>系统自动生成8位完成码（如：<code>EVAL1234</code>）</li>
+                    <li>保存好您的完成码，用于登录和查看进度</li>
+                </ol>
+
+                <div class="warning-box">
+                    <strong>⚠️ 重要提示：</strong>请妥善保管您的完成码，遗失后无法找回！
+                </div>
+
+                <h3>2. 开始评测</h3>
+                <ol>
+                    <li>在主页输入您的完成码</li>
+                    <li>点击"开始评测"进入评测界面</li>
+                    <li>选择患者（P001-P010）</li>
+                    <li>查看AI模型对话记录</li>
+                    <li>点击右下角📝按钮打开评测窗口</li>
+                </ol>
+            </div>
+
+            <!-- 评测流程 -->
+            <div class="section" id="process">
+                <h2>📝 评测流程</h2>
+
+                <div class="step">
+                    <div class="step-title">第一步：选择患者和模型</div>
+                    <ul>
+                        <li>页面顶部选择患者（如P001）</li>
+                        <li>使用"上一个模型"/"下一个模型"按钮切换AI模型</li>
+                        <li>当前模型名称显示在右上角</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-title">第二步：查看对话记录</div>
+                    <p>对话窗口展示：</p>
+                    <ul>
+                        <li>🟦 蓝色气泡：患者消息</li>
+                        <li>🟩 绿色气泡：AI模型回复</li>
+                    </ul>
+                    <p>仔细阅读完整对话，了解AI的诊断过程和结果。</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-title">第三步：打开评测窗口</div>
+                    <p>点击右下角的📝浮动按钮，打开评测窗口。</p>
+                    <p>评测窗口功能：</p>
+                    <ul>
+                        <li><strong>拖动：</strong>拖拽标题栏移动窗口位置</li>
+                        <li><strong>调整大小：</strong>拖拽右下角调整窗口大小</li>
+                        <li><strong>最小化：</strong>点击 <code>−</code> 按钮最小化窗口</li>
+                        <li><strong>关闭：</strong>点击 <code>×</code> 按钮关闭窗口</li>
+                        <li><strong>字体调整：</strong>使用 A⁺ A⁻ 按钮调整字体大小</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-title">第四步：评分</div>
+                    <p>对5个维度进行评分，每个维度1-5星。评分标准详见下一节。</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-title">第五步：填写评语</div>
+                    <ul>
+                        <li>每个维度可以添加评语（可选），说明评分理由</li>
+                        <li>在"总体评价"栏填写综合评语（可选）</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-title">第六步：保存提交</div>
+                    <p>点击"保存评测"按钮：</p>
+                    <ul>
+                        <li>✅ 自动保存到本地</li>
+                        <li>✅ 提交到服务器</li>
+                        <li>✅ 更新完成进度</li>
+                        <li>✅ 自动关闭评测窗口</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 评分标准 -->
+            <div class="section" id="standards">
+                <h2>📊 评分标准</h2>
+                <p>对5个维度进行评分，每个维度1-5星：</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>说明</th>
+                            <th>权重</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>准确性</strong></td>
+                            <td>诊断结果的准确性和正确性</td>
+                            <td>40%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>完整性</strong></td>
+                            <td>诊断信息的全面性和详细程度</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>临床价值</strong></td>
+                            <td>对临床决策的实际指导价值</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>结构性</strong></td>
+                            <td>诊断报告的逻辑性和组织性</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>语言表达</strong></td>
+                            <td>专业术语使用和表达清晰度</td>
+                            <td>10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>评分建议</h3>
+                <ul>
+                    <li>⭐ (1星)：非常差</li>
+                    <li>⭐⭐ (2星)：较差</li>
+                    <li>⭐⭐⭐ (3星)：一般</li>
+                    <li>⭐⭐⭐⭐ (4星)：良好</li>
+                    <li>⭐⭐⭐⭐⭐ (5星)：优秀</li>
+                </ul>
+            </div>
+
+            <!-- 查看进度 -->
+            <div class="section" id="progress">
+                <h2>📈 查看进度</h2>
+
+                <h3>方法1：评测页面右上角</h3>
+                <p>显示格式：<code>已完成/总数 (百分比%)</code></p>
+                <div class="info-box">
+                    示例：<code>25/80 (31.25%)</code>
+                </div>
+
+                <h3>方法2：主页查询</h3>
+                <ol>
+                    <li>返回主页 <code>http://ruan.etodo.top</code></li>
+                    <li>输入完成码</li>
+                    <li>点击"查看进度"</li>
+                    <li>查看详细完成情况</li>
+                </ol>
+            </div>
+
+            <!-- 功能说明 -->
+            <div class="section" id="features">
+                <h2>⚙️ 功能说明</h2>
+
+                <h3>自动保存</h3>
+                <p>评分过程中，系统每500ms自动保存到本地，防止数据丢失。</p>
+
+                <h3>进度跟踪</h3>
+                <ul>
+                    <li>总计80份评测：10个患者 × 8个模型</li>
+                    <li>实时显示完成进度</li>
+                    <li>支持断点续评（刷新页面后继续）</li>
+                </ul>
+
+                <h3>数据持久化</h3>
+                <ul>
+                    <li><strong>本地存储：</strong>使用localStorage保存评测数据</li>
+                    <li><strong>服务器同步：</strong>实时提交到MongoDB数据库</li>
+                    <li><strong>双重保障：</strong>即使网络中断，本地数据不丢失</li>
+                </ul>
+            </div>
+
+            <!-- 使用技巧 -->
+            <div class="section" id="tips">
+                <h2>💡 使用技巧</h2>
+                <ol>
+                    <li><strong>建议顺序评测：</strong>按患者编号P001→P010依次完成，避免遗漏</li>
+                    <li><strong>认真阅读对话：</strong>完整查看AI回复后再评分，确保评价准确</li>
+                    <li><strong>参考评分标准：</strong>根据权重合理分配分数</li>
+                    <li><strong>保存完成码：</strong>妥善保管完成码，用于查看进度和继续评测</li>
+                    <li><strong>定期查看进度：</strong>确认评测数据已成功提交</li>
+                </ol>
+            </div>
+
+            <!-- 常见问题 -->
+            <div class="section" id="faq">
+                <h2>❓ 常见问题</h2>
+
+                <h3>Q1: 忘记完成码怎么办？</h3>
+                <p><strong>A:</strong> 完成码无法找回，建议：</p>
+                <ul>
+                    <li>将完成码保存在邮箱中</li>
+                    <li>截图保存完成码</li>
+                    <li>记录在备忘录中</li>
+                </ul>
+
+                <h3>Q2: 评测数据会丢失吗？</h3>
+                <p><strong>A:</strong> 不会。系统采用双重保存机制：</p>
+                <ul>
+                    <li>本地localStorage存储</li>
+                    <li>服务器MongoDB存储</li>
+                    <li>自动保存功能</li>
+                </ul>
+
+                <h3>Q3: 可以修改已提交的评测吗？</h3>
+                <p><strong>A:</strong> 可以。重新打开相同的患者-模型组合，修改后点击保存即可覆盖。</p>
+
+                <h3>Q4: 右下角的📝按钮不见了？</h3>
+                <p><strong>A:</strong> 如果评测窗口已打开，浮动按钮会自动隐藏。关闭评测窗口后会重新显示。</p>
+
+                <h3>Q5: 必须一次性完成所有评测吗？</h3>
+                <p><strong>A:</strong> 不需要。支持分批评测，系统会自动记录进度，下次登录可继续。</p>
+            </div>
+
+            <!-- 技术支持 -->
+            <div class="section">
+                <h2>📞 技术支持</h2>
+                <p>如遇到问题或需要帮助，请联系系统管理员。</p>
+                <div class="info-box">
+                    <strong>系统版本：</strong>v1.0<br>
+                    <strong>最后更新：</strong>2025-11-19
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">← 返回主页</a>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

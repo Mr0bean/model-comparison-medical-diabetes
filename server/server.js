@@ -329,10 +329,20 @@ app.get('/api/admin/codes', async (req, res) => {
 
         const codes = await Code.find(query).sort({ createdAt: -1 });
 
+        // 为每个完成码统计评测数量
+        const codesWithStats = await Promise.all(codes.map(async (code) => {
+            const evaluationCount = await Evaluation.countDocuments({ code: code.code });
+            return {
+                ...code.toObject(),
+                evaluationCount,
+                completionRate: Math.round((evaluationCount / 80) * 100) // 80份评测
+            };
+        }));
+
         res.json({
             success: true,
-            count: codes.length,
-            data: codes
+            count: codesWithStats.length,
+            data: codesWithStats
         });
     } catch (error) {
         console.error('获取完成码列表失败:', error);
