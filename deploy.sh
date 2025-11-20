@@ -29,6 +29,7 @@ mkdir -p $DEPLOY_DIR
 echo "  - 复制前端文件..."
 cp *.html $DEPLOY_DIR/ 2>/dev/null || true
 cp *.js $DEPLOY_DIR/ 2>/dev/null || true
+cp *.json $DEPLOY_DIR/ 2>/dev/null || true
 cp -r output $DEPLOY_DIR/ 2>/dev/null || true
 
 # 复制后端文件

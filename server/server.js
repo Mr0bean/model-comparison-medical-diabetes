@@ -52,32 +52,31 @@ const EvaluationSchema = new mongoose.Schema({
         required: true,
         index: true
     },
-    patient: String,
-    model: String,
+    patient: {
+        type: String,
+        required: true
+    },
+    model: {
+        type: String,
+        required: true
+    },
     scores: {
         accuracy: {
             score: Number,
             max: Number,
+            weight: Number,
             comment: String
         },
         completeness: {
             score: Number,
             max: Number,
+            weight: Number,
             comment: String
         },
-        clinical: {
+        standard: {
             score: Number,
             max: Number,
-            comment: String
-        },
-        structure: {
-            score: Number,
-            max: Number,
-            comment: String
-        },
-        language: {
-            score: Number,
-            max: Number,
+            weight: Number,
             comment: String
         }
     },
@@ -92,6 +91,9 @@ const EvaluationSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+
+// 创建复合唯一索引：同一个 code + patient + model 只能有一条记录
+EvaluationSchema.index({ code: 1, patient: 1, model: 1 }, { unique: true });
 
 const Evaluation = mongoose.model('Evaluation', EvaluationSchema);
 
@@ -210,13 +212,24 @@ app.post('/api/submit-evaluation', async (req, res) => {
             });
         }
 
-        // 保存评测数据
-        const evaluation = new Evaluation({
-            code,
-            ...evaluationData
-        });
-
-        await evaluation.save();
+        // 保存或更新评测数据（覆盖模式）
+        // 使用 code + patient + model 作为唯一标识，存在则更新，不存在则创建
+        const evaluation = await Evaluation.findOneAndUpdate(
+            {
+                code: code,
+                patient: evaluationData.patient,
+                model: evaluationData.model
+            },
+            {
+                code,
+                ...evaluationData,
+                submittedAt: new Date()  // 更新提交时间
+            },
+            {
+                upsert: true,  // 不存在则创建
+                new: true       // 返回更新后的文档
+            }
+        );
 
         // 更新完成码状态
         if (codeDoc.status === 'active') {
@@ -363,6 +376,28 @@ app.get('/api/admin/stats', async (req, res) => {
 
         const totalEvaluations = await Evaluation.countDocuments();
 
+        // 计算平均分
+        const avgScoreResult = await Evaluation.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    avgScore: { $avg: '$total_score' }
+                }
+            }
+        ]);
+        const avgScore = avgScoreResult.length > 0 ? avgScoreResult[0].avgScore : 0;
+
+        // 计算今日评测数（从今天0点开始）
+        const todayStart = new Date();
+        todayStart.setHours(0, 0, 0, 0);
+        const todayCount = await Evaluation.countDocuments({
+            submittedAt: { $gte: todayStart }
+        });
+
+        // 计算活跃模型数（有评测记录的模型数量）
+        const activeModelsResult = await Evaluation.distinct('model');
+        const activeModels = activeModelsResult.length;
+
         // 按模型统计
         const modelStats = await Evaluation.aggregate([
             {
@@ -396,6 +431,9 @@ app.get('/api/admin/stats', async (req, res) => {
             },
             evaluations: {
                 total: totalEvaluations,
+                avgScore: avgScore,           // 新增：平均分
+                todayCount: todayCount,       // 新增：今日评测数
+                activeModels: activeModels,   // 新增：活跃模型数
                 byModel: modelStats,
                 byPatient: patientStats
             }
@@ -437,6 +475,131 @@ app.get('/api/admin/evaluations', async (req, res) => {
         res.status(500).json({
             success: false,
             message: '服务器错误'
+        });
+    }
+});
+
+// 8. 获取单个评测详情（根据ID）
+app.get('/api/admin/evaluation/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // 验证ID格式
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                success: false,
+                message: '无效的评测ID'
+            });
+        }
+
+        const evaluation = await Evaluation.findById(id);
+
+        if (!evaluation) {
+            return res.status(404).json({
+                success: false,
+                message: '未找到该评测记录'
+            });
+        }
+
+        res.json({
+            success: true,
+            data: evaluation
+        });
+    } catch (error) {
+        console.error('获取评测详情失败:', error);
+        res.status(500).json({
+            success: false,
+            message: '服务器错误: ' + error.message
+        });
+    }
+});
+
+// 9. 清空数据库（危险操作）
+app.post('/api/admin/clear-database', async (req, res) => {
+    try {
+        console.log('⚠️  执行清空数据库操作...');
+
+        // 删除所有完成码
+        const deletedCodes = await Code.deleteMany({});
+
+        // 删除所有评测记录
+        const deletedEvaluations = await Evaluation.deleteMany({});
+
+        console.log(`✅ 数据库已清空: 删除了 ${deletedCodes.deletedCount} 个完成码, ${deletedEvaluations.deletedCount} 条评测记录`);
+
+        res.json({
+            success: true,
+            message: '数据库已清空',
+            deletedCodes: deletedCodes.deletedCount,
+            deletedEvaluations: deletedEvaluations.deletedCount
+        });
+    } catch (error) {
+        console.error('清空数据库失败:', error);
+        res.status(500).json({
+            success: false,
+            message: '服务器错误: ' + error.message
+        });
+    }
+});
+
+// 10. 获取评测矩阵数据（每个模型在每个患者的平均分和标准差）
+app.get('/api/admin/evaluation-matrix', async (req, res) => {
+    try {
+        // 聚合统计：按模型和患者分组，计算平均分和标准差
+        const matrixData = await Evaluation.aggregate([
+            {
+                $group: {
+                    _id: {
+                        model: '$model',
+                        patient: '$patient'
+                    },
+                    avgScore: { $avg: '$total_score' },
+                    stdDev: { $stdDevPop: '$total_score' },
+                    count: { $sum: 1 },
+                    scores: { $push: '$total_score' }
+                }
+            },
+            {
+                $sort: {
+                    '_id.model': 1,
+                    '_id.patient': 1
+                }
+            }
+        ]);
+
+        // 获取所有唯一的模型和患者列表
+        const models = await Evaluation.distinct('model');
+        const patients = await Evaluation.distinct('patient');
+
+        // 转换为矩阵格式
+        const matrix = {};
+        matrixData.forEach(item => {
+            const modelName = item._id.model;
+            const patientName = item._id.patient;
+
+            if (!matrix[modelName]) {
+                matrix[modelName] = {};
+            }
+
+            matrix[modelName][patientName] = {
+                avg: item.avgScore || 0,
+                stdDev: item.stdDev || 0,
+                count: item.count,
+                scores: item.scores
+            };
+        });
+
+        res.json({
+            success: true,
+            models: models.sort(),
+            patients: patients.sort(),
+            matrix: matrix
+        });
+    } catch (error) {
+        console.error('获取评测矩阵数据失败:', error);
+        res.status(500).json({
+            success: false,
+            message: '服务器错误: ' + error.message
         });
     }
 });

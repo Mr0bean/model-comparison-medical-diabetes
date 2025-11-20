@@ -23,18 +23,22 @@
             color: white;
             padding: 18px 30px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            min-height: 80px;
+            min-height: 100px;
             position: relative;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .header-top-row {
+            display: flex;
+            justify-content: center;
             align-items: center;
+            width: 100%;
+            position: relative;
         }
 
         .header-progress {
-            position: absolute;
-            right: 180px;
-            top: 50%;
-            transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.2);
             padding: 12px 20px;
             border-radius: 10px;
@@ -43,18 +47,23 @@
             align-items: center;
             gap: 6px;
             backdrop-filter: blur(10px);
+            min-width: 180px;
         }
 
         .progress-label {
             font-size: 12px;
             opacity: 0.9;
             font-weight: 500;
+            white-space: nowrap;
+            text-align: center;
         }
 
         .progress-numbers {
             font-size: 20px;
             font-weight: 700;
             font-family: monospace;
+            white-space: nowrap;
+            text-align: center;
         }
 
         .progress-bar-container {
@@ -72,39 +81,13 @@
             transition: width 0.5s ease;
         }
 
-        .header-left-buttons {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            gap: 10px;
-        }
-
-        .home-button, .guide-button {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .home-button:hover, .guide-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateX(-2px);
-        }
 
         .patient-selector {
             display: flex;
             align-items: center;
             gap: 15px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .patient-selector-label {
@@ -145,7 +128,7 @@
 
         .main-container {
             display: flex;
-            height: calc(100vh - 80px);
+            height: calc(100vh - 120px);
             gap: 0;
         }
 
@@ -553,6 +536,43 @@
             display: none;
         }
 
+        /* 提交状态提示 */
+        .submit-status {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .submit-status.hidden {
+            display: none;
+        }
+
+        .submit-status.submitted {
+            color: #52c41a;
+            border: 2px solid #52c41a;
+        }
+
+        .submit-status.not-submitted {
+            color: #faad14;
+            border: 2px solid #faad14;
+        }
+
+        .submit-status-icon {
+            font-size: 14px;
+        }
+
         /* 评测窗口容器 */
         .eval-window {
             position: fixed;
@@ -827,6 +847,32 @@
             font-weight: normal;
         }
 
+        .eval-hint-box {
+            background: #f0f7ff;
+            border-left: 3px solid #667eea;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .eval-hint-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .eval-hint-list {
+            margin: 0;
+            padding-left: 20px;
+            color: #666;
+        }
+
+        .eval-hint-list li {
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+
         .eval-input-group {
             display: flex;
             gap: 8px;
@@ -1027,24 +1073,85 @@
             border-right: 6px solid transparent;
             border-bottom: 6px solid rgba(0, 0, 0, 0.85);
         }
+
+        /* Toast 提示样式 */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            font-size: 15px;
+            font-weight: 500;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.3s ease;
+            max-width: 500px;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast.success {
+            background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+        }
+
+        .toast.warning {
+            background: linear-gradient(135deg, #faad14 0%, #ffc53d 100%);
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+            to {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+        }
+
+        .toast.hiding {
+            animation: slideUp 0.3s ease;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="header-left-buttons">
-            <a href="index.html" class="home-button">← 返回主页</a>
-            <a href="user-guide.html" class="guide-button" target="_blank">📚 使用手册</a>
+        <div class="header-top-row">
+            <div class="header-progress">
+                <div class="progress-label">总体完成进度</div>
+                <div class="progress-numbers" id="progressNumbers">0/80</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
+                </div>
+            </div>
         </div>
         <div class="patient-selector">
             <span class="patient-selector-label">👤 选择患者：</span>
             <div class="patient-tabs" id="patientTabs"></div>
-        </div>
-        <div class="header-progress">
-            <div class="progress-label">总体完成进度</div>
-            <div class="progress-numbers" id="progressNumbers">0/80</div>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
-            </div>
         </div>
     </div>
 
@@ -1082,6 +1189,12 @@
     <button class="eval-float-btn" id="evalFloatBtn" onclick="toggleEvalWindow()">
         📝
     </button>
+
+    <!-- 提交状态提示 -->
+    <div class="submit-status hidden" id="submitStatus">
+        <span class="submit-status-icon" id="submitStatusIcon">✓</span>
+        <span id="submitStatusText">已提交</span>
+    </div>
 
     <!-- 评测窗口 -->
     <div class="eval-window" id="evalWindow">
@@ -1129,11 +1242,22 @@
                 </div>
             </div>
 
-            <!-- 1. 信息准确性 -->
+            <!-- 1. 准确性 (40分) -->
             <div class="eval-section">
                 <div class="eval-section-title">
-                    1. 信息准确性
+                    1. 准确性（40%）
                     <span class="eval-section-max">满分 5⭐</span>
+                </div>
+                <div class="eval-hint-box">
+                    <div class="eval-hint-title">评分要点：</div>
+                    <ul class="eval-hint-list">
+                        <li>是否与对话一致，没有添加或错误信息</li>
+                        <li>数值准确（血糖、糖化、体重等）</li>
+                        <li>药物准确（药名、剂量、用法）</li>
+                        <li>时间轴准确（发病时间、就诊时间、治疗变化）</li>
+                        <li>诊断和病程描述准确</li>
+                        <li><strong style="color: #f5222d;">固定扣分项：不能把糖尿病写入既往史</strong></li>
+                    </ul>
                 </div>
                 <div class="star-rating">
                     <span class="star" data-score="1" data-category="accuracy" onclick="setRating('accuracy', 1)">★</span>
@@ -1145,14 +1269,26 @@
                 </div>
                 <input type="hidden" id="score-accuracy" value="0">
                 <textarea class="eval-textarea" id="comment-accuracy"
-                          placeholder="评分说明：数值错误、药名错误、无中生有等..."></textarea>
+                          placeholder="具体说明：哪些信息有误、是否有无中生有、糖尿病是否误写入既往史等..."></textarea>
             </div>
 
-            <!-- 2. 信息完整性 (25分) -->
+            <!-- 2. 完整性 (35分) -->
             <div class="eval-section">
                 <div class="eval-section-title">
-                    2. 信息完整性
+                    2. 完整性（35%）
                     <span class="eval-section-max">满分 5⭐</span>
+                </div>
+                <div class="eval-hint-box">
+                    <div class="eval-hint-title">评分要点（糖尿病病历必要模块）：</div>
+                    <ul class="eval-hint-list">
+                        <li><strong>主诉：</strong>症状 + 时间（如"口干、多饮2年"）</li>
+                        <li><strong>现病史：</strong>诊断、治疗变化、近期情况、并发症</li>
+                        <li><strong>既往史：</strong>高血压/高血脂/冠心病等</li>
+                        <li><strong>家族史：</strong>糖尿病家族史</li>
+                    </ul>
+                    <div style="font-size: 12px; color: #999; margin-top: 8px;">
+                        💡 每缺少一个重要模块扣2-3分，不需要细拆成几十项
+                    </div>
                 </div>
                 <div class="star-rating">
                     <span class="star" data-score="1" data-category="completeness" onclick="setRating('completeness', 1)">★</span>
@@ -1164,64 +1300,38 @@
                 </div>
                 <input type="hidden" id="score-completeness" value="0">
                 <textarea class="eval-textarea" id="comment-completeness"
-                          placeholder="评分说明：缺失信息、主诉、用药方案、检查结果等..."></textarea>
+                          placeholder="具体说明：缺少哪些必要模块、哪些内容不够完整等..."></textarea>
             </div>
 
-            <!-- 3. 临床实用性 (20分) -->
+            <!-- 3. 规范性 (25分) -->
             <div class="eval-section">
                 <div class="eval-section-title">
-                    3. 临床实用性
+                    3. 规范性（25%）
                     <span class="eval-section-max">满分 5⭐</span>
                 </div>
-                <div class="star-rating">
-                    <span class="star" data-score="1" data-category="clinical" onclick="setRating('clinical', 1)">★</span>
-                    <span class="star" data-score="2" data-category="clinical" onclick="setRating('clinical', 2)">★</span>
-                    <span class="star" data-score="3" data-category="clinical" onclick="setRating('clinical', 3)">★</span>
-                    <span class="star" data-score="4" data-category="clinical" onclick="setRating('clinical', 4)">★</span>
-                    <span class="star" data-score="5" data-category="clinical" onclick="setRating('clinical', 5)">★</span>
-                    <span class="star-score" id="score-clinical-display">未评分</span>
-                </div>
-                <input type="hidden" id="score-clinical" value="0">
-                <textarea class="eval-textarea" id="comment-clinical"
-                          placeholder="评分说明：是否突出血糖控制、体重变化、用药方案、并发症线索等..."></textarea>
-            </div>
-
-            <!-- 4. 结构清晰度 (15分) -->
-            <div class="eval-section">
-                <div class="eval-section-title">
-                    4. 结构清晰度
-                    <span class="eval-section-max">满分 5⭐</span>
+                <div class="eval-hint-box">
+                    <div class="eval-hint-title">评分要点（是否像医生写的）：</div>
+                    <ul class="eval-hint-list">
+                        <li><strong>医学术语：</strong>避免口语化表达</li>
+                        <li><strong>结构清晰：</strong>模块齐全、顺序正确</li>
+                        <li><strong>药物规范：</strong>药名、剂量、用法写法规范</li>
+                        <li><strong>时间明确：</strong>时间描述清晰准确</li>
+                    </ul>
+                    <div style="font-size: 12px; color: #999; margin-top: 8px;">
+                        💡 四档评分：优秀(5星) / 良好(4星) / 一般(3星) / 较差(1-2星)
+                    </div>
                 </div>
                 <div class="star-rating">
-                    <span class="star" data-score="1" data-category="structure" onclick="setRating('structure', 1)">★</span>
-                    <span class="star" data-score="2" data-category="structure" onclick="setRating('structure', 2)">★</span>
-                    <span class="star" data-score="3" data-category="structure" onclick="setRating('structure', 3)">★</span>
-                    <span class="star" data-score="4" data-category="structure" onclick="setRating('structure', 4)">★</span>
-                    <span class="star" data-score="5" data-category="structure" onclick="setRating('structure', 5)">★</span>
-                    <span class="star-score" id="score-structure-display">未评分</span>
+                    <span class="star" data-score="1" data-category="standard" onclick="setRating('standard', 1)">★</span>
+                    <span class="star" data-score="2" data-category="standard" onclick="setRating('standard', 2)">★</span>
+                    <span class="star" data-score="3" data-category="standard" onclick="setRating('standard', 3)">★</span>
+                    <span class="star" data-score="4" data-category="standard" onclick="setRating('standard', 4)">★</span>
+                    <span class="star" data-score="5" data-category="standard" onclick="setRating('standard', 5)">★</span>
+                    <span class="star-score" id="score-standard-display">未评分</span>
                 </div>
-                <input type="hidden" id="score-structure" value="0">
-                <textarea class="eval-textarea" id="comment-structure"
-                          placeholder="评分说明：章节划分、标题层级、信息归类、时间线等..."></textarea>
-            </div>
-
-            <!-- 5. 语言专业性 (10分) -->
-            <div class="eval-section">
-                <div class="eval-section-title">
-                    5. 语言专业性
-                    <span class="eval-section-max">满分 5⭐</span>
-                </div>
-                <div class="star-rating">
-                    <span class="star" data-score="1" data-category="language" onclick="setRating('language', 1)">★</span>
-                    <span class="star" data-score="2" data-category="language" onclick="setRating('language', 2)">★</span>
-                    <span class="star" data-score="3" data-category="language" onclick="setRating('language', 3)">★</span>
-                    <span class="star" data-score="4" data-category="language" onclick="setRating('language', 4)">★</span>
-                    <span class="star" data-score="5" data-category="language" onclick="setRating('language', 5)">★</span>
-                    <span class="star-score" id="score-language-display">未评分</span>
-                </div>
-                <input type="hidden" id="score-language" value="0">
-                <textarea class="eval-textarea" id="comment-language"
-                          placeholder="评分说明：冗余表达、口语化、不专业表达等..."></textarea>
+                <input type="hidden" id="score-standard" value="0">
+                <textarea class="eval-textarea" id="comment-standard"
+                          placeholder="具体说明：哪些表达不够专业、结构是否合理、药物写法是否规范等..."></textarea>
             </div>
 
             <!-- 综合评价 -->
@@ -1239,16 +1349,30 @@
         </div>
     </div>
 
+    <!-- Toast 提示容器 -->
+    <div id="toast" class="toast"></div>
+
     <script>
         let comparisonData = null;
         let currentPatient = null;
         let currentModelIndex = 0;
         let availableModels = [];
         let debugMode = false;
+        let modelLabels = {}; // 模型编号映射
 
         // 检查debug模式
         const urlParams = new URLSearchParams(window.location.search);
         debugMode = urlParams.get('debug') === 'true';
+
+        // 生成模型编号映射（A, B, C, ...）
+        function generateModelLabels(models) {
+            const labels = {};
+            const shuffledModels = [...models].sort(() => Math.random() - 0.5); // 随机打乱
+            shuffledModels.forEach((model, index) => {
+                labels[model] = String.fromCharCode(65 + index); // A=65, B=66, ...
+            });
+            return labels;
+        }
 
         // 加载数据
         async function loadData() {
@@ -1279,9 +1403,58 @@
             }
         }
 
+        // 查找第一个未完成的评测任务
+        function findFirstIncompleteEvaluation() {
+            // 遍历所有患者
+            for (let patientIndex = 0; patientIndex < comparisonData.patients.length; patientIndex++) {
+                const patient = comparisonData.patients[patientIndex];
+
+                // 遍历所有模型
+                for (let modelIndex = 0; modelIndex < comparisonData.models.length; modelIndex++) {
+                    const model = comparisonData.models[modelIndex];
+                    const storageKey = `eval_${patient}_${model}`;
+                    const saved = localStorage.getItem(storageKey);
+
+                    // 如果没有保存数据，说明未完成
+                    if (!saved) {
+                        console.log(`📍 找到第一个未完成的评测: ${patient} - ${model}`);
+                        return { patient, modelIndex };
+                    }
+
+                    // 检查是否真的完成了所有评分
+                    try {
+                        const evalData = JSON.parse(saved);
+                        const isIncomplete = !evalData.scores ||
+                            evalData.scores.accuracy.score === 0 ||
+                            evalData.scores.completeness.score === 0 ||
+                            evalData.scores.standard.score === 0;
+
+                        if (isIncomplete) {
+                            console.log(`📍 找到未完成的评测（评分不完整）: ${patient} - ${model}`);
+                            return { patient, modelIndex };
+                        }
+                    } catch (e) {
+                        console.warn(`解析评测数据失败: ${storageKey}`, e);
+                        return { patient, modelIndex };
+                    }
+                }
+            }
+
+            // 所有评测都已完成，返回第一个患者的第一个模型
+            console.log('✅ 所有评测任务已完成！返回第一个患者');
+            return {
+                patient: comparisonData.patients[0],
+                modelIndex: 0
+            };
+        }
+
         // 初始化页面
         function initializePage() {
             availableModels = comparisonData.models;
+
+            // 生成模型编号映射
+            modelLabels = generateModelLabels(availableModels);
+            console.log('模型编号映射:', modelLabels);
 
             // 初始化患者选择器
             const patientTabs = document.getElementById('patientTabs');
@@ -1291,18 +1464,26 @@
                 tab.textContent = patient;
                 tab.onclick = () => selectPatient(patient);
 
-                // 第一个患者默认选中
-                if (index === 0) {
-                    tab.classList.add('active');
-                }
-
                 patientTabs.appendChild(tab);
             });
 
-            // 选择第一个患者
+            // 查找第一个未完成的评测任务
             if (comparisonData.patients.length > 0) {
-                currentPatient = comparisonData.patients[0];
-                currentModelIndex = 0;
+                const firstIncomplete = findFirstIncompleteEvaluation();
+                currentPatient = firstIncomplete.patient;
+                currentModelIndex = firstIncomplete.modelIndex;
+
+                // 更新患者选择器的激活状态
+                const tabs = document.querySelectorAll('.patient-tab');
+                tabs.forEach((tab, index) => {
+                    if (comparisonData.patients[index] === currentPatient) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+
+                console.log(`🎯 自动定位到: ${currentPatient} - 模型 ${currentModelIndex + 1}`);
                 updateView();
             }
 
@@ -1313,8 +1494,60 @@
             }
         }
 
+        // 显示Toast提示
+        function showToast(message, type = 'info', duration = 3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show';
+
+            // 根据类型添加样式
+            if (type === 'success') {
+                toast.classList.add('success');
+            } else if (type === 'warning') {
+                toast.classList.add('warning');
+            } else if (type === 'error') {
+                toast.classList.add('error');
+            }
+
+            // 自动隐藏
+            setTimeout(() => {
+                toast.classList.add('hiding');
+                setTimeout(() => {
+                    toast.classList.remove('show', 'hiding', 'success', 'warning', 'error');
+                }, 300);
+            }, duration);
+        }
+
         // 选择患者
-        function selectPatient(patient) {
+        function selectPatient(patient, fromAuto = false) {
+            // 如果不是自动切换，检查当前患者的所有模型是否已完成
+            if (!fromAuto && currentPatient && currentPatient !== patient) {
+                // 检查当前患者的所有模型是否都已评测
+                let allCompleted = true;
+                for (let i = 0; i < availableModels.length; i++) {
+                    const storageKey = `eval_${currentPatient}_${availableModels[i]}`;
+                    const saved = localStorage.getItem(storageKey);
+                    if (!saved) {
+                        allCompleted = false;
+                        break;
+                    }
+                    // 检查评分是否完成
+                    const evalData = JSON.parse(saved);
+                    if (!evalData.scores ||
+                        evalData.scores.accuracy.score === 0 ||
+                        evalData.scores.completeness.score === 0 ||
+                        evalData.scores.standard.score === 0) {
+                        allCompleted = false;
+                        break;
+                    }
+                }
+
+                if (!allCompleted) {
+                    alert('⚠️ 请先完成当前患者的所有报告评测！');
+                    return;
+                }
+            }
+
             currentPatient = patient;
             currentModelIndex = 0;
 
@@ -1328,13 +1561,18 @@
             });
 
             updateView();
+
+            // 如果是自动切换，显示提示
+            if (fromAuto) {
+                showToast(`✅ 当前患者已完成，已自动切换到 ${patient}`, 'success', 4000);
+            }
         }
 
         // 上一个模型
         function previousModel() {
             // 检查当前模型评测是否完成
             if (!checkCompletionStatus()) {
-                alert('⚠️ 请先完成当前模型的评测！\n\n未填写项会在上方显示，请点击修改分数后再切换模型。');
+                alert('⚠️ 请先完成当前医疗报告的评测！\n\n未填写项会在上方显示，请点击修改分数后再切换医疗报告。');
                 // 滚动到评测窗口
                 const evalWindow = document.getElementById('evalWindow');
                 if (evalWindow.classList.contains('active')) {
@@ -1354,7 +1592,7 @@
         function nextModel() {
             // 检查当前模型评测是否完成
             if (!checkCompletionStatus()) {
-                alert('⚠️ 请先完成当前模型的评测！\n\n未填写项会在上方显示，请点击修改分数后再切换模型。');
+                alert('⚠️ 请先完成当前医疗报告的评测！\n\n未填写项会在上方显示，请点击修改分数后再切换医疗报告。');
                 // 滚动到评测窗口
                 const evalWindow = document.getElementById('evalWindow');
                 if (evalWindow.classList.contains('active')) {
@@ -1377,6 +1615,7 @@
             updateNavigator();
             loadSavedEval(); // 加载已保存的评测
             checkCompletionStatus(); // 检查新模型的完成度
+            updateSubmitStatus(); // 更新提交状态显示
         }
 
         // 更新对话视图
@@ -1536,7 +1775,17 @@
             }
 
             const currentModel = availableModels[currentModelIndex];
-            modelNameElement.textContent = `模型: ${currentModel}`;
+            const modelLabel = modelLabels[currentModel] || 'X';
+
+            // 根据调试模式决定显示内容
+            if (debugMode) {
+                modelNameElement.textContent = `模型${modelLabel}: ${currentModel}`;
+            } else {
+                modelNameElement.textContent = `模型 ${modelLabel}`;
+            }
+
+            // 始终显示模型编号
+            modelNameElement.classList.remove('hidden');
 
             const patientData = comparisonData.data[currentPatient];
 
@@ -1797,11 +2046,9 @@
         // 计算填写完成度
         function checkCompletionStatus() {
             const scoreItems = [
-                { id: 'score-accuracy', max: 5, name: '信息准确性', sectionId: 'section-accuracy' },
-                { id: 'score-completeness', max: 5, name: '信息完整性', sectionId: 'section-completeness' },
-                { id: 'score-clinical', max: 5, name: '临床实用性', sectionId: 'section-clinical' },
-                { id: 'score-structure', max: 5, name: '结构清晰度', sectionId: 'section-structure' },
-                { id: 'score-language', max: 5, name: '语言专业性', sectionId: 'section-language' }
+                { id: 'score-accuracy', max: 5, name: '准确性', sectionId: 'section-accuracy' },
+                { id: 'score-completeness', max: 5, name: '完整性', sectionId: 'section-completeness' },
+                { id: 'score-standard', max: 5, name: '规范性', sectionId: 'section-standard' }
             ];
 
             let completedCount = 0;
@@ -1854,24 +2101,32 @@
 
         // 计算总分（平均星数）
         function calculateTotal() {
+            // 获取3个维度的星级评分（1-5星）
             const accuracy = parseInt(document.getElementById('score-accuracy').value) || 0;
             const completeness = parseInt(document.getElementById('score-completeness').value) || 0;
-            const clinical = parseInt(document.getElementById('score-clinical').value) || 0;
-            const structure = parseInt(document.getElementById('score-structure').value) || 0;
-            const language = parseInt(document.getElementById('score-language').value) || 0;
+            const standard = parseInt(document.getElementById('score-standard').value) || 0;
 
-            // 计算平均分
-            const scores = [accuracy, completeness, clinical, structure, language];
-            const validScores = scores.filter(s => s > 0);
-            const average = validScores.length > 0 ? validScores.reduce((a, b) => a + b, 0) / validScores.length : 0;
+            // 将星级转换为百分制分数（5星=满分）
+            // 准确性：40%（5星×8=40分）
+            // 完整性：35%（5星×7=35分）
+            // 规范性：25%（5星×5=25分）
+            const accuracyScore = accuracy * 8;      // 满分40
+            const completenessScore = completeness * 7;  // 满分35
+            const standardScore = standard * 5;      // 满分25
 
-            // 更新数字显示
-            document.getElementById('totalScore').textContent = average.toFixed(1);
+            // 计算总分（满分100）
+            const totalScore = accuracyScore + completenessScore + standardScore;
+
+            // 更新数字显示（显示百分制分数）
+            document.getElementById('totalScore').textContent = totalScore.toFixed(1);
+
+            // 转换回5星制显示（100分 = 5星）
+            const starsDisplay = totalScore / 20;  // 100分/20 = 5星
 
             // 更新星星显示
             const totalStars = document.getElementById('totalStars');
-            const fullStars = Math.floor(average);
-            const hasHalfStar = (average - fullStars) >= 0.5;
+            const fullStars = Math.floor(starsDisplay);
+            const hasHalfStar = (starsDisplay - fullStars) >= 0.5;
             let starsHTML = '';
             for (let i = 1; i <= 5; i++) {
                 if (i <= fullStars) {
@@ -1884,16 +2139,16 @@
             }
             totalStars.innerHTML = starsHTML;
 
-            // 根据分数改变颜色
+            // 根据分数改变颜色（基于100分制）
             const scoreElement = document.getElementById('totalScore');
-            if (average >= 4.5) {
-                scoreElement.style.color = '#52c41a'; // 绿色
-            } else if (average >= 3.5) {
-                scoreElement.style.color = '#ffc107'; // 黄色
-            } else if (average >= 2.5) {
-                scoreElement.style.color = '#ff9800'; // 橙色
-            } else if (average > 0) {
-                scoreElement.style.color = '#f5222d'; // 红色
+            if (totalScore >= 90) {
+                scoreElement.style.color = '#52c41a'; // 绿色 - 优秀
+            } else if (totalScore >= 70) {
+                scoreElement.style.color = '#ffc107'; // 黄色 - 良好
+            } else if (totalScore >= 50) {
+                scoreElement.style.color = '#ff9800'; // 橙色 - 一般
+            } else if (totalScore > 0) {
+                scoreElement.style.color = '#f5222d'; // 红色 - 较差
             } else {
                 scoreElement.style.color = '#999'; // 灰色（未评分）
             }
@@ -1910,7 +2165,7 @@
             if (!confirm('确定要重置所有评分吗？')) return;
 
             // 重置所有星星评分
-            ['accuracy', 'completeness', 'clinical', 'structure', 'language'].forEach(category => {
+            ['accuracy', 'completeness', 'standard'].forEach(category => {
                 document.getElementById(`score-${category}`).value = 0;
                 document.getElementById(`score-${category}-display`).textContent = '未评分';
                 document.querySelectorAll(`.star[data-category="${category}"]`).forEach(star => {
@@ -1920,9 +2175,7 @@
 
             document.getElementById('comment-accuracy').value = '';
             document.getElementById('comment-completeness').value = '';
-            document.getElementById('comment-clinical').value = '';
-            document.getElementById('comment-structure').value = '';
-            document.getElementById('comment-language').value = '';
+            document.getElementById('comment-standard').value = '';
             document.getElementById('overall-comment').value = '';
 
             calculateTotal();
@@ -1932,6 +2185,19 @@
         async function saveEval(silent = false) {
             if (!currentPatient || !availableModels[currentModelIndex]) return;
 
+            // 如果不是静默保存，检查完成度
+            if (!silent) {
+                const isComplete = checkCompletionStatus();
+                if (!isComplete) {
+                    alert('⚠️ 请先完成所有评分项！\n\n未填写的项目已在上方高亮显示，请填写后再保存。');
+                    // 显示进度条，让用户看到未填写项
+                    document.getElementById('evalProgressBar').classList.add('show');
+                    // 滚动到进度条位置
+                    document.getElementById('evalProgressBar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    return;
+                }
+            }
+
             const evalData = {
                 timestamp: new Date().toISOString(),
                 patient: currentPatient,
@@ -1940,27 +2206,20 @@
                     accuracy: {
                         score: parseInt(document.getElementById('score-accuracy').value) || 0,
                         max: 5,
+                        weight: 40,
                         comment: document.getElementById('comment-accuracy').value
                     },
                     completeness: {
                         score: parseInt(document.getElementById('score-completeness').value) || 0,
                         max: 5,
+                        weight: 35,
                         comment: document.getElementById('comment-completeness').value
                     },
-                    clinical: {
-                        score: parseInt(document.getElementById('score-clinical').value) || 0,
+                    standard: {
+                        score: parseInt(document.getElementById('score-standard').value) || 0,
                         max: 5,
-                        comment: document.getElementById('comment-clinical').value
-                    },
-                    structure: {
-                        score: parseInt(document.getElementById('score-structure').value) || 0,
-                        max: 5,
-                        comment: document.getElementById('comment-structure').value
-                    },
-                    language: {
-                        score: parseInt(document.getElementById('score-language').value) || 0,
-                        max: 5,
-                        comment: document.getElementById('comment-language').value
+                        weight: 25,
+                        comment: document.getElementById('comment-standard').value
                     }
                 },
                 total_score: parseFloat(document.getElementById('totalScore').textContent),
@@ -1983,19 +2242,87 @@
                 if (window.submitEvaluationToServer) {
                     const success = await window.submitEvaluationToServer(evalData);
                     if (success) {
-                        alert('✅ 评测已保存并提交到服务器！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
                         // 更新完成进度
                         updateProgress();
-                    } else {
-                        alert('⚠️ 评测已保存到本地，但提交服务器失败\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
                     }
-                } else {
-                    alert('评测已保存！\n\n患者: ' + currentPatient + '\n模型: ' + availableModels[currentModelIndex] + '\n总分: ' + evalData.total_score);
                 }
                 console.log('评测数据已保存:', evalData);
 
+                // 更新提交状态显示
+                updateSubmitStatus();
+
                 // 关闭评测弹窗并显示浮动按钮
                 closeEvalWindow();
+
+                // 自动切换到下一个任务
+                autoSwitchToNext();
+            }
+        }
+
+        // 自动切换到下一个任务（报告或病人）
+        function autoSwitchToNext() {
+            // 如果当前模型不是最后一个，切换到下一个模型
+            if (currentModelIndex < availableModels.length - 1) {
+                currentModelIndex++;
+                updateView();
+                return;
+            }
+
+            // 当前病人的所有模型都评测完了，切换到下一个病人
+            const currentPatientIndex = comparisonData.patients.indexOf(currentPatient);
+            if (currentPatientIndex < comparisonData.patients.length - 1) {
+                const nextPatient = comparisonData.patients[currentPatientIndex + 1];
+                selectPatient(nextPatient, true); // 传入 fromAuto=true
+                return;
+            }
+
+            // 所有病人都评测完了，显示提示
+            showToast('🎉 恭喜！所有评测任务已完成！', 'success', 5000);
+            console.log('所有评测任务已完成！');
+        }
+
+        // 更新提交状态显示
+        function updateSubmitStatus() {
+            const statusDiv = document.getElementById('submitStatus');
+            const statusIcon = document.getElementById('submitStatusIcon');
+            const statusText = document.getElementById('submitStatusText');
+
+            if (!currentPatient || !availableModels[currentModelIndex]) {
+                statusDiv.classList.add('hidden');
+                return;
+            }
+
+            const storageKey = `eval_${currentPatient}_${availableModels[currentModelIndex]}`;
+            const evalData = localStorage.getItem(storageKey);
+
+            if (!evalData) {
+                // 没有数据，显示"未提交"
+                statusDiv.classList.remove('hidden', 'submitted');
+                statusDiv.classList.add('not-submitted');
+                statusIcon.textContent = '⚠';
+                statusText.textContent = '未提交';
+                return;
+            }
+
+            // 检查是否在历史记录中（说明已手动保存/提交）
+            const history = JSON.parse(localStorage.getItem('eval_history') || '[]');
+            const isSubmitted = history.some(h =>
+                h.patient === currentPatient &&
+                h.model === availableModels[currentModelIndex]
+            );
+
+            if (isSubmitted) {
+                // 已提交
+                statusDiv.classList.remove('hidden', 'not-submitted');
+                statusDiv.classList.add('submitted');
+                statusIcon.textContent = '✓';
+                statusText.textContent = '已提交';
+            } else {
+                // 有数据但未提交（仅自动保存）
+                statusDiv.classList.remove('hidden', 'submitted');
+                statusDiv.classList.add('not-submitted');
+                statusIcon.textContent = '⚠';
+                statusText.textContent = '未提交';
             }
         }
 
@@ -2019,24 +2346,24 @@
                 const evalData = JSON.parse(saved);
 
                 // 加载星星评分
-                ['accuracy', 'completeness', 'clinical', 'structure', 'language'].forEach(category => {
-                    const score = evalData.scores[category].score;
-                    if (score > 0) {
-                        setRating(category, score);
+                ['accuracy', 'completeness', 'standard'].forEach(category => {
+                    if (evalData.scores[category]) {
+                        const score = evalData.scores[category].score;
+                        if (score > 0) {
+                            setRating(category, score);
+                        }
                     }
                 });
 
-                document.getElementById('comment-accuracy').value = evalData.scores.accuracy.comment || '';
-                document.getElementById('comment-completeness').value = evalData.scores.completeness.comment || '';
-                document.getElementById('comment-clinical').value = evalData.scores.clinical.comment || '';
-                document.getElementById('comment-structure').value = evalData.scores.structure.comment || '';
-                document.getElementById('comment-language').value = evalData.scores.language.comment || '';
+                document.getElementById('comment-accuracy').value = evalData.scores.accuracy?.comment || '';
+                document.getElementById('comment-completeness').value = evalData.scores.completeness?.comment || '';
+                document.getElementById('comment-standard').value = evalData.scores.standard?.comment || '';
                 document.getElementById('overall-comment').value = evalData.overall_comment || '';
 
                 calculateTotal();
             } else {
                 // 如果没有保存的数据，重置为默认值（0星）
-                ['accuracy', 'completeness', 'clinical', 'structure', 'language'].forEach(category => {
+                ['accuracy', 'completeness', 'standard'].forEach(category => {
                     document.getElementById(`score-${category}`).value = 0;
                     document.getElementById(`score-${category}-display`).textContent = '未评分';
                     document.querySelectorAll(`.star[data-category="${category}"]`).forEach(star => {
@@ -2046,9 +2373,7 @@
 
                 document.getElementById('comment-accuracy').value = '';
                 document.getElementById('comment-completeness').value = '';
-                document.getElementById('comment-clinical').value = '';
-                document.getElementById('comment-structure').value = '';
-                document.getElementById('comment-language').value = '';
+                document.getElementById('comment-standard').value = '';
                 document.getElementById('overall-comment').value = '';
 
                 calculateTotal();

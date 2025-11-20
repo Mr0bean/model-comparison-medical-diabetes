@@ -36,28 +36,6 @@
             position: relative;
         }
 
-        .home-button {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .home-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-50%) translateX(-2px);
-        }
 
         .header h1 {
             font-size: 32px;
@@ -343,314 +321,6 @@
             color: #667eea;
         }
 
-        /* 右上角对话按钮 */
-        .chat-viewer-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .chat-viewer-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-        }
-
-        .chat-viewer-button.disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        /* 侧边栏对话面板 */
-        .chat-sidebar {
-            position: fixed;
-            top: 0;
-            right: -500px;
-            width: 500px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
-            z-index: 2000;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-sidebar.open {
-            right: 0;
-        }
-
-        .chat-sidebar-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .chat-sidebar-title {
-            font-size: 18px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chat-close-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .chat-close-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .chat-sidebar-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .chat-type-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .chat-type-tab {
-            padding: 8px 16px;
-            background: #f0f4ff;
-            border: 2px solid #e0e0e0;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            color: #666;
-            transition: all 0.3s;
-        }
-
-        .chat-type-tab:hover {
-            border-color: #667eea;
-            background: #e8f0ff;
-        }
-
-        .chat-type-tab.active {
-            background: #667eea;
-            border-color: #667eea;
-            color: white;
-        }
-
-        .chat-display-area {
-            background: #f0f2f5;
-            border-radius: 12px;
-            padding: 20px;
-            min-height: 300px;
-            max-height: calc(100vh - 250px);
-            overflow-y: auto;
-        }
-
-        .chat-display-area::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .chat-display-area::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .chat-display-area::-webkit-scrollbar-thumb {
-            background: #ccc;
-            border-radius: 4px;
-        }
-
-        .chat-display-area::-webkit-scrollbar-thumb:hover {
-            background: #aaa;
-        }
-
-        .no-chat-message {
-            text-align: center;
-            color: #999;
-            padding: 50px 20px;
-            font-size: 14px;
-        }
-
-        /* 聊天气泡样式 */
-        .chat-message {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-message.patient {
-            align-items: flex-start;
-        }
-
-        .chat-message.doctor {
-            align-items: flex-end;
-        }
-
-        .chat-message-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-            font-size: 12px;
-            color: #666;
-        }
-
-        .chat-message.patient .chat-message-header {
-            flex-direction: row;
-        }
-
-        .chat-message.doctor .chat-message-header {
-            flex-direction: row-reverse;
-        }
-
-        .chat-avatar {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-        }
-
-        .chat-message.patient .chat-avatar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .chat-message.doctor .chat-avatar {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .chat-role {
-            font-weight: 600;
-        }
-
-        .chat-bubble {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            line-height: 1.6;
-            font-size: 14px;
-            word-wrap: break-word;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-        }
-
-        .chat-message.patient .chat-bubble {
-            background: white;
-            color: #333;
-            border-bottom-left-radius: 4px;
-        }
-
-        .chat-message.doctor .chat-bubble {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-
-        .chat-section-title {
-            text-align: center;
-            color: #999;
-            font-size: 12px;
-            margin: 30px 0 20px 0;
-            position: relative;
-        }
-
-        .chat-section-title::before,
-        .chat-section-title::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 35%;
-            height: 1px;
-            background: #e0e0e0;
-        }
-
-        .chat-section-title::before {
-            left: 0;
-        }
-
-        .chat-section-title::after {
-            right: 0;
-        }
-
-        .patient-info-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .patient-info-card h4 {
-            color: #667eea;
-            font-size: 14px;
-            margin: 0 0 12px 0;
-            font-weight: 600;
-        }
-
-        .patient-info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .patient-info-item {
-            font-size: 13px;
-            color: #666;
-        }
-
-        .patient-info-item strong {
-            color: #333;
-            font-weight: 600;
-        }
-
-        /* 遮罩层 */
-        .chat-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 1999;
-            display: none;
-            transition: opacity 0.3s;
-        }
-
-        .chat-overlay.show {
-            display: block;
-        }
 
         .model-card-body {
             padding: 20px;
@@ -768,38 +438,242 @@
                 grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
             }
         }
+
+        /* 对话展示样式 */
+        .conversation-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e8eaed;
+            width: 450px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            left: 0;
+            background: white;
+            z-index: 10;
+        }
+
+        /* 对话面板和模型卡片的容器 */
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .content-wrapper::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .content-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .content-wrapper::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 5px;
+        }
+
+        /* 模型卡片容器 */
+        .models-container {
+            display: flex;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        .models-container .model-card {
+            width: 450px;
+            flex-shrink: 0;
+        }
+
+        .conversation-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8eaed;
+        }
+
+        .conversation-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+            margin: 0;
+        }
+
+        .conversation-icon {
+            font-size: 24px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.patient {
+            flex-direction: row;
+        }
+
+        .chat-message.doctor {
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .chat-message.patient .chat-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .chat-message.doctor .chat-avatar {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .chat-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .chat-role {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .chat-message.patient .chat-role {
+            text-align: left;
+        }
+
+        .chat-message.doctor .chat-role {
+            text-align: right;
+        }
+
+        .chat-bubble {
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.6;
+            word-wrap: break-word;
+            max-width: 80%;
+        }
+
+        .chat-message.patient .chat-bubble {
+            background: #f0f4ff;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.doctor .chat-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+            margin-left: auto;
+        }
+
+        .patient-info-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .patient-info-card h4 {
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .patient-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+        }
+
+        .patient-info-item {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .patient-info-item strong {
+            color: #333;
+        }
+
+        .chat-section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            margin: 20px 0 15px 0;
+        }
+
+        .no-conversation {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <!-- 右上角查看对话按钮 -->
-    <button class="chat-viewer-button disabled" id="chatViewerBtn" onclick="openChatSidebar()">
-        <span>💬</span>
-        <span>查看患者对话</span>
-    </button>
-
-    <!-- 遮罩层 -->
-    <div class="chat-overlay" id="chatOverlay" onclick="closeChatSidebar()"></div>
-
-    <!-- 侧边栏对话面板 -->
-    <div class="chat-sidebar" id="chatSidebar">
-        <div class="chat-sidebar-header">
-            <div class="chat-sidebar-title">
-                <span>💬</span>
-                <span id="chatSidebarPatient">患者对话</span>
-            </div>
-            <button class="chat-close-btn" onclick="closeChatSidebar()">✕</button>
-        </div>
-        <div class="chat-sidebar-body">
-            <div class="chat-type-tabs" id="chatTypeTabs"></div>
-            <div class="chat-display-area" id="chatDisplayArea">
-                <div class="no-chat-message">请选择对话类型查看</div>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="header">
-            <a href="index.html" class="home-button">← 返回主页</a>
             <h1>🏥 医疗模型横评对比系统</h1>
             <p>对比不同AI模型在病历生成任务中的表现</p>
         </div>
@@ -823,12 +697,12 @@
             <div class="control-group">
                 <label class="control-label">🎨 布局方式:</label>
                 <div style="display: flex; gap: 15px;">
-                    <label class="layout-radio" style="display: flex; align-items: center; cursor: pointer; padding: 10px 20px; background: white; border: 2px solid #667eea; border-radius: 8px; font-weight: 500;">
-                        <input type="radio" name="layout" value="wrap" checked onchange="changeLayout(this.value)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                    <label class="layout-radio" style="display: flex; align-items: center; cursor: pointer; padding: 10px 20px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; font-weight: 500;">
+                        <input type="radio" name="layout" value="wrap" onchange="changeLayout(this.value)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
                         <span>自动换行</span>
                     </label>
-                    <label class="layout-radio" style="display: flex; align-items: center; cursor: pointer; padding: 10px 20px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; font-weight: 500;">
-                        <input type="radio" name="layout" value="horizontal" onchange="changeLayout(this.value)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                    <label class="layout-radio" style="display: flex; align-items: center; cursor: pointer; padding: 10px 20px; background: #f0f4ff; border: 2px solid #667eea; border-radius: 8px; font-weight: 500;">
+                        <input type="radio" name="layout" value="horizontal" checked onchange="changeLayout(this.value)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
                         <span>固定横向排列</span>
                     </label>
                 </div>
@@ -847,7 +721,7 @@
         let selectedPatients = new Set();
         let selectedModels = new Set();
         let selectedConvTypes = new Set();
-        let currentLayout = 'wrap'; // 默认自动换行
+        let currentLayout = 'horizontal'; // 默认固定横向排列
 
         // 为模型分配柔和的渐变色
         const modelColors = {
@@ -933,25 +807,48 @@
                 modelSelector.appendChild(label);
             });
 
-            // 默认选择第一个患者
+            // 默认全选所有患者
             if (comparisonData.patients.length > 0) {
-                const firstPatient = comparisonData.patients[0];
-                selectedPatients.add(firstPatient);
+                comparisonData.patients.forEach(patient => {
+                    selectedPatients.add(patient);
+                });
 
                 // 更新UI
                 document.querySelectorAll('.patient-checkbox').forEach(label => {
                     const checkbox = label.querySelector('input');
-                    if (checkbox.value === firstPatient) {
+                    if (checkbox) {
                         checkbox.checked = true;
                         label.classList.add('selected');
                     }
                 });
 
-                updateConvTypeSelector();
-                updateChatViewerButton();
-                updateComparison();
+                // 更新全选按钮文字
+                const patientBtn = document.querySelector('.select-all-patients-btn');
+                if (patientBtn) patientBtn.textContent = '✗ 取消全选';
             }
 
+            // 默认全选所有模型
+            if (comparisonData.models.length > 0) {
+                comparisonData.models.forEach(model => {
+                    selectedModels.add(model);
+                });
+
+                // 更新UI
+                document.querySelectorAll('.model-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input[type="checkbox"]');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        label.classList.add('selected');
+                    }
+                });
+
+                // 更新全选按钮文字
+                const modelBtn = document.querySelector('.model-checkbox span[onclick="selectAllModels()"]');
+                if (modelBtn) modelBtn.textContent = '✗ 取消全选';
+            }
+
+            updateConvTypeSelector();
+            updateComparison();
             updateStats();
         }
 
@@ -971,9 +868,6 @@
 
             // 更新对话类型选择器
             updateConvTypeSelector();
-
-            // 更新查看对话按钮状态
-            updateChatViewerButton();
 
             // 更新显示
             updateComparison();
@@ -1017,7 +911,6 @@
             }
 
             updateConvTypeSelector();
-            updateChatViewerButton();
             updateComparison();
         }
 
@@ -1028,7 +921,7 @@
 
             if (selectedPatients.size === 0) return;
 
-            // 收集所有选中患者的对话类型（取交集）
+            // 收集所有选中患者的对话类型（取交集）并过滤掉"医疗总结"
             const convTypes = {};
             let isFirst = true;
 
@@ -1040,7 +933,8 @@
                     // 第一个患者，初始化对话类型
                     Object.entries(patientData).forEach(([convId, models]) => {
                         Object.values(models).forEach(data => {
-                            if (data.title) {
+                            // 过滤掉包含"医疗总结"的对话类型
+                            if (data.title && !data.title.includes('医疗总结')) {
                                 convTypes[convId] = data.title;
                             }
                         });
@@ -1052,7 +946,9 @@
             // 添加全选按钮
             const selectAllBtn = document.createElement('button');
             selectAllBtn.className = 'select-all-btn';
-            selectAllBtn.textContent = '✓ 全选类型';
+            const allConvTypeIds = Object.keys(convTypes);
+            const allSelected = allConvTypeIds.every(convId => selectedConvTypes.has(convId));
+            selectAllBtn.textContent = allSelected ? '✗ 取消全选' : '✓ 全选类型';
             selectAllBtn.onclick = () => selectAllConvTypes(convTypes);
             convTypeSelector.appendChild(selectAllBtn);
 
@@ -1074,12 +970,24 @@
                 convTypeSelector.appendChild(label);
             });
 
-            // 如果没有选中的对话类型，默认选中第一个
-            if (selectedConvTypes.size === 0) {
-                const firstConvId = Object.keys(convTypes)[0];
-                if (firstConvId) {
-                    toggleConvType(firstConvId, true);
-                }
+            // 如果没有选中的对话类型，默认全选所有类型
+            if (selectedConvTypes.size === 0 && Object.keys(convTypes).length > 0) {
+                Object.keys(convTypes).forEach(convId => {
+                    selectedConvTypes.add(convId);
+                });
+
+                // 更新UI
+                document.querySelectorAll('.conv-type-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        label.classList.add('selected');
+                    }
+                });
+
+                // 更新按钮文字
+                const btn = document.querySelector('.select-all-btn');
+                if (btn) btn.textContent = '✗ 取消全选';
             }
         }
 
@@ -1203,11 +1111,211 @@
         }
 
         // 更新对比显示
+
+        // 创建对话展示面板
+        function createConversationPanel(patient, patientData) {
+            // 从任意一个对话类型中获取chat数据（因为对话内容是相同的）
+            let chatContent = null;
+            for (const convId in patientData) {
+                for (const model in patientData[convId]) {
+                    const modelData = patientData[convId][model];
+                    if (modelData && modelData.chat) {
+                        chatContent = modelData.chat;
+                        break;
+                    }
+                }
+                if (chatContent) break;
+            }
+
+            if (!chatContent) {
+                return null; // 没有对话数据，不显示
+            }
+
+            // 创建对话面板
+            const panel = document.createElement('div');
+            panel.className = 'conversation-panel';
+
+            // 创建标题
+            const header = document.createElement('div');
+            header.className = 'conversation-header';
+            const icon = document.createElement('span');
+            icon.className = 'conversation-icon';
+            icon.textContent = '💬';
+            const title = document.createElement('h3');
+            title.textContent = '预问诊对话记录';
+            header.appendChild(icon);
+            header.appendChild(title);
+
+            // 创建消息容器
+            const messagesContainer = document.createElement('div');
+            messagesContainer.className = 'chat-messages';
+
+            // 解析并渲染对话
+            const messages = parseChatContentForDisplay(chatContent);
+            messages.forEach(msg => {
+                if (msg.type === 'section') {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.className = 'chat-section-title';
+                    sectionDiv.textContent = msg.content;
+                    messagesContainer.appendChild(sectionDiv);
+                } else if (msg.type === 'patient-info') {
+                    const infoCard = document.createElement('div');
+                    infoCard.className = 'patient-info-card';
+                    const cardTitle = document.createElement('h4');
+                    cardTitle.textContent = '👤 患者基本信息';
+                    const grid = document.createElement('div');
+                    grid.className = 'patient-info-grid';
+                    for (const [key, value] of Object.entries(msg.data)) {
+                        const item = document.createElement('div');
+                        item.className = 'patient-info-item';
+                        const strong = document.createElement('strong');
+                        strong.textContent = key + ':';
+                        item.appendChild(strong);
+                        item.appendChild(document.createTextNode(' ' + value));
+                        grid.appendChild(item);
+                    }
+                    infoCard.appendChild(cardTitle);
+                    infoCard.appendChild(grid);
+                    messagesContainer.appendChild(infoCard);
+                } else if (msg.type === 'message') {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'chat-message ' + msg.role;
+
+                    const avatar = msg.role === 'patient' ? '👤' : '👨‍⚕️';
+                    const roleName = msg.role === 'patient' ? '患者' : '医助';
+
+                    const avatarDiv = document.createElement('div');
+                    avatarDiv.className = 'chat-avatar';
+                    avatarDiv.textContent = avatar;
+
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'chat-content';
+
+                    const roleDiv = document.createElement('div');
+                    roleDiv.className = 'chat-role';
+                    roleDiv.textContent = roleName;
+
+                    const bubbleDiv = document.createElement('div');
+                    bubbleDiv.className = 'chat-bubble';
+                    bubbleDiv.innerHTML = escapeHtmlContent(msg.content).replace(/\n/g, '<br>');
+
+                    contentDiv.appendChild(roleDiv);
+                    contentDiv.appendChild(bubbleDiv);
+                    messageDiv.appendChild(avatarDiv);
+                    messageDiv.appendChild(contentDiv);
+
+                    messagesContainer.appendChild(messageDiv);
+                }
+            });
+
+            panel.appendChild(header);
+            panel.appendChild(messagesContainer);
+
+            return panel;
+        }
+
+        // 解析对话内容
+        function parseChatContentForDisplay(content) {
+            const messages = [];
+            const lines = content.split('\n');
+
+            let inDialogSection = false;
+            let inBasicInfo = false;
+            let currentMessage = null;
+            let patientInfo = {};
+
+            for (let line of lines) {
+                line = line.trim();
+
+                // 跳过分隔线和空行
+                if (line.startsWith('====') || line.startsWith('----') || line === '') {
+                    continue;
+                }
+
+                // 检测章节标题
+                if (line.includes('患者基本信息')) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                        currentMessage = null;
+                    }
+                    inBasicInfo = true;
+                    inDialogSection = false;
+                    continue;
+                }
+
+                if (line.includes('预问诊对话记录')) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                        currentMessage = null;
+                    }
+                    // 添加患者信息卡片
+                    if (Object.keys(patientInfo).length > 0) {
+                        messages.push({ type: 'patient-info', data: patientInfo });
+                    }
+                    messages.push({ type: 'section', content: '预问诊对话记录' });
+                    inBasicInfo = false;
+                    inDialogSection = true;
+                    continue;
+                }
+
+                // 收集基本信息
+                if (inBasicInfo) {
+                    const infoMatch = line.match(/^(.+?)[:：]\s*(.+)$/);
+                    if (infoMatch) {
+                        const key = infoMatch[1].trim();
+                        const value = infoMatch[2].trim();
+                        patientInfo[key] = value;
+                    }
+                    continue;
+                }
+
+                // 解析对话行
+                const patientMatch = line.match(/^\d+\.\s*患者:\s*(.+)$/);
+                const doctorMatch = line.match(/^\d+\.\s*医助:\s*(.+)$/);
+
+                if (patientMatch) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                    }
+                    currentMessage = {
+                        type: 'message',
+                        role: 'patient',
+                        content: patientMatch[1].trim()
+                    };
+                } else if (doctorMatch) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                    }
+                    currentMessage = {
+                        type: 'message',
+                        role: 'doctor',
+                        content: doctorMatch[1].trim()
+                    };
+                } else if (currentMessage && line) {
+                    // 继续当前消息的内容（多行）
+                    currentMessage.content += '\n' + line;
+                }
+            }
+
+            // 添加最后一条消息
+            if (currentMessage) {
+                messages.push(currentMessage);
+            }
+
+            return messages;
+        }
+
+        // HTML转义函数
+        function escapeHtmlContent(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
         function updateComparison() {
             const comparisonArea = document.getElementById('comparisonArea');
 
-            if (selectedPatients.size === 0 || selectedConvTypes.size === 0 || selectedModels.size === 0) {
-                comparisonArea.innerHTML = '<div class="no-data">👆 请选择患者、模型和对话类型</div>';
+            if (selectedPatients.size === 0) {
+                comparisonArea.innerHTML = '<div class="no-data">👆 请选择患者</div>';
                 return;
             }
 
@@ -1224,12 +1332,29 @@
                 patientTitle.textContent = `📋 ${patient}`;
                 comparisonArea.appendChild(patientTitle);
 
-                // 创建模型卡片网格（所有对话类型合并在一起）
-                const grid = document.createElement('div');
-                grid.className = 'comparison-grid';
-                if (currentLayout === 'horizontal') {
-                    grid.classList.add('horizontal-layout');
+                // 如果没有选择对话类型或模型，只显示提示
+                if (selectedConvTypes.size === 0 || selectedModels.size === 0) {
+                    const hint = document.createElement('div');
+                    hint.className = 'no-data';
+                    hint.textContent = '👆 请选择模型和对话类型以查看模型输出对比';
+                    hint.style.marginTop = '20px';
+                    comparisonArea.appendChild(hint);
+                    return;
                 }
+
+                // 创建内容包装器（包含对话面板和模型卡片）
+                const contentWrapper = document.createElement('div');
+                contentWrapper.className = 'content-wrapper';
+
+                // 添加对话展示面板（固定在左侧）
+                const conversationPanel = createConversationPanel(patient, patientData);
+                if (conversationPanel) {
+                    contentWrapper.appendChild(conversationPanel);
+                }
+
+                // 创建模型卡片容器
+                const modelsContainer = document.createElement('div');
+                modelsContainer.className = 'models-container';
 
                 // 按照模型选择的顺序创建卡片
                 const sortedModels = Array.from(selectedModels).sort();
@@ -1249,11 +1374,28 @@
                     // 如果该模型在至少一个对话类型中有数据，创建合并的卡片
                     if (modelConvData.length > 0) {
                         const card = createMergedModelCard(model, modelConvData, patient);
-                        grid.appendChild(card);
+                        modelsContainer.appendChild(card);
                     }
                 });
 
-                comparisonArea.appendChild(grid);
+                contentWrapper.appendChild(modelsContainer);
+                comparisonArea.appendChild(contentWrapper);
+
+                // 动态调整对话面板高度与模型卡片最高高度一致
+                setTimeout(() => {
+                    if (conversationPanel && modelsContainer.children.length > 0) {
+                        let maxHeight = 0;
+                        Array.from(modelsContainer.children).forEach(card => {
+                            const cardHeight = card.offsetHeight;
+                            if (cardHeight > maxHeight) {
+                                maxHeight = cardHeight;
+                            }
+                        });
+                        if (maxHeight > 0) {
+                            conversationPanel.style.height = maxHeight + 'px';
+                        }
+                    }
+                }, 100);
             });
         }
 
@@ -1353,6 +1495,8 @@
 
         // 更新统计信息
         function updateStats() {
+            if (!comparisonData) return; // 如果数据未加载，直接返回
+            
             const stats = document.getElementById('stats');
             stats.innerHTML = `
                 <div class="stat-item">
@@ -1388,230 +1532,6 @@
 
             // 重新渲染对比区域
             updateComparison();
-        }
-
-        // 打开侧边栏对话面板
-        function openChatSidebar() {
-            if (selectedPatients.size === 0) {
-                alert('请先选择患者');
-                return;
-            }
-
-            // 只支持单个患者查看对话
-            const patient = Array.from(selectedPatients)[0];
-            const patientData = comparisonData.data[patient];
-
-            if (!patientData) return;
-
-            // 更新侧边栏标题
-            document.getElementById('chatSidebarPatient').textContent = `${patient} - 对话记录`;
-
-            // 创建对话类型标签
-            const tabsContainer = document.getElementById('chatTypeTabs');
-            tabsContainer.innerHTML = '';
-
-            const convTypes = {};
-            Object.entries(patientData).forEach(([convId, models]) => {
-                Object.values(models).forEach(data => {
-                    if (data.title && data.chat) {
-                        convTypes[convId] = {
-                            title: data.title,
-                            chat: data.chat
-                        };
-                    }
-                });
-            });
-
-            // 创建标签按钮
-            Object.entries(convTypes).forEach(([convId, data], index) => {
-                const tab = document.createElement('div');
-                tab.className = 'chat-type-tab' + (index === 0 ? ' active' : '');
-                tab.textContent = data.title;
-                tab.onclick = () => selectChatType(convTypes, convId);
-                tabsContainer.appendChild(tab);
-            });
-
-            // 默认显示第一个对话
-            const firstConvId = Object.keys(convTypes)[0];
-            if (firstConvId) {
-                displayChat(convTypes[firstConvId].chat);
-            }
-
-            // 显示侧边栏
-            document.getElementById('chatSidebar').classList.add('open');
-            document.getElementById('chatOverlay').classList.add('show');
-        }
-
-        // 关闭侧边栏对话面板
-        function closeChatSidebar() {
-            document.getElementById('chatSidebar').classList.remove('open');
-            document.getElementById('chatOverlay').classList.remove('show');
-        }
-
-        // 选择对话类型
-        function selectChatType(convTypes, convId) {
-            // 更新标签样式
-            document.querySelectorAll('.chat-type-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // 显示对话内容
-            displayChat(convTypes[convId].chat);
-        }
-
-        // 显示对话内容
-        function displayChat(chatContent) {
-            const displayArea = document.getElementById('chatDisplayArea');
-            if (!chatContent) {
-                displayArea.innerHTML = '<div class="no-chat-message">暂无对话记录</div>';
-                return;
-            }
-
-            // 解析对话内容
-            const messages = parseChatContent(chatContent);
-
-            // 渲染聊天气泡
-            let html = '';
-            messages.forEach(msg => {
-                if (msg.type === 'section') {
-                    html += `<div class="chat-section-title">${msg.content}</div>`;
-                } else if (msg.type === 'patient-info') {
-                    // 渲染患者信息卡片
-                    html += '<div class="patient-info-card"><h4>👤 患者基本信息</h4><div class="patient-info-grid">';
-                    for (const [key, value] of Object.entries(msg.data)) {
-                        html += `<div class="patient-info-item"><strong>${key}:</strong> ${value}</div>`;
-                    }
-                    html += '</div></div>';
-                } else {
-                    const role = msg.role === 'patient' ? 'patient' : 'doctor';
-                    const avatar = msg.role === 'patient' ? '👤' : '👨‍⚕️';
-                    const roleName = msg.role === 'patient' ? '患者' : '医助';
-
-                    html += `
-                        <div class="chat-message ${role}">
-                            <div class="chat-message-header">
-                                <div class="chat-avatar">${avatar}</div>
-                                <div class="chat-role">${roleName}</div>
-                            </div>
-                            <div class="chat-bubble">${escapeHtml(msg.content)}</div>
-                        </div>
-                    `;
-                }
-            });
-
-            displayArea.innerHTML = html;
-
-            // 滚动到顶部
-            displayArea.scrollTop = 0;
-        }
-
-        // 解析对话内容
-        function parseChatContent(content) {
-            const messages = [];
-            const lines = content.split('\n');
-
-            let inDialogSection = false;
-            let inBasicInfo = false;
-            let currentMessage = null;
-            let patientInfo = {};
-
-            for (let line of lines) {
-                line = line.trim();
-
-                // 跳过分隔线和空行
-                if (line.startsWith('====') || line.startsWith('----') || line === '') {
-                    continue;
-                }
-
-                // 检测章节标题
-                if (line.includes('患者基本信息')) {
-                    if (currentMessage) {
-                        messages.push(currentMessage);
-                        currentMessage = null;
-                    }
-                    inBasicInfo = true;
-                    inDialogSection = false;
-                    continue;
-                }
-
-                if (line.includes('预问诊对话记录')) {
-                    if (currentMessage) {
-                        messages.push(currentMessage);
-                        currentMessage = null;
-                    }
-                    // 添加患者信息卡片
-                    if (Object.keys(patientInfo).length > 0) {
-                        messages.push({ type: 'patient-info', data: patientInfo });
-                    }
-                    messages.push({ type: 'section', content: '预问诊对话记录' });
-                    inBasicInfo = false;
-                    inDialogSection = true;
-                    continue;
-                }
-
-                // 收集基本信息
-                if (inBasicInfo) {
-                    const infoMatch = line.match(/^(.+?)[:：]\s*(.+)$/);
-                    if (infoMatch) {
-                        const key = infoMatch[1].trim();
-                        const value = infoMatch[2].trim();
-                        patientInfo[key] = value;
-                    }
-                    continue;
-                }
-
-                // 解析对话行
-                const patientMatch = line.match(/^\d+\.\s*患者:\s*(.+)$/);
-                const doctorMatch = line.match(/^\d+\.\s*医助:\s*(.+)$/);
-
-                if (patientMatch) {
-                    if (currentMessage) {
-                        messages.push(currentMessage);
-                    }
-                    currentMessage = {
-                        type: 'message',
-                        role: 'patient',
-                        content: patientMatch[1].trim()
-                    };
-                } else if (doctorMatch) {
-                    if (currentMessage) {
-                        messages.push(currentMessage);
-                    }
-                    currentMessage = {
-                        type: 'message',
-                        role: 'doctor',
-                        content: doctorMatch[1].trim()
-                    };
-                } else if (currentMessage && line) {
-                    // 继续当前消息的内容（多行）
-                    currentMessage.content += '\n' + line;
-                }
-            }
-
-            // 添加最后一条消息
-            if (currentMessage) {
-                messages.push(currentMessage);
-            }
-
-            return messages;
-        }
-
-        // HTML转义函数
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML.replace(/\n/g, '<br>');
-        }
-
-        // 更新查看对话按钮状态
-        function updateChatViewerButton() {
-            const btn = document.getElementById('chatViewerBtn');
-            if (selectedPatients.size === 1) {
-                btn.classList.remove('disabled');
-            } else {
-                btn.classList.add('disabled');
-            }
         }
 
         // 页面加载时执行

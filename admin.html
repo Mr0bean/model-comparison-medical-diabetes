@@ -149,6 +149,17 @@
             background: #e0e0e0;
         }
 
+        .btn-danger {
+            background: #f5222d;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #cf1322;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 34, 45, 0.4);
+        }
+
         .btn-small {
             padding: 6px 12px;
             font-size: 12px;
@@ -419,6 +430,83 @@
             background: #f8f9fa;
             border-radius: 8px;
         }
+
+        /* 矩阵表格样式 */
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: white;
+        }
+
+        .matrix-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .matrix-table th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 20;
+        }
+
+        .matrix-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .matrix-table td:first-child {
+            background: #f8f9fa;
+            font-weight: 600;
+            text-align: left;
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            border-right: 2px solid #ddd;
+        }
+
+        .matrix-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .matrix-avg {
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .matrix-stddev {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .matrix-count {
+            font-size: 10px;
+            color: #bbb;
+        }
+
+        .matrix-empty {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .matrix-table tr:hover td {
+            background: #f8f9fa;
+        }
+
+        .matrix-table tr:hover td:first-child {
+            background: #eee;
+        }
     </style>
 </head>
 <body>
@@ -444,6 +532,7 @@
                     </select>
                 </div>
                 <button class="btn btn-primary" onclick="refreshAll()">🔄 立即刷新</button>
+                <button class="btn btn-danger" onclick="showClearDatabaseModal()">🗑️ 清空数据库</button>
             </div>
         </div>
 
@@ -544,6 +633,20 @@
             </div>
         </div>
 
+        <!-- 评测矩阵 -->
+        <div class="section">
+            <div class="section-title">📊 评测矩阵 - 模型×评测点统计</div>
+            <div style="margin-bottom: 15px; color: #666; font-size: 14px;">
+                显示每个模型在每个评测点的平均分和标准差（格式：平均分 ± 标准差）
+            </div>
+            <div class="input-group">
+                <button class="btn btn-primary" onclick="loadEvaluationMatrix()">刷新矩阵</button>
+            </div>
+            <div id="matrixContainer" style="overflow-x: auto; margin-top: 20px;">
+                <div class="loading">加载中...</div>
+            </div>
+        </div>
+
         <!-- 评测数据列表 -->
         <div class="section">
             <div class="section-title">📝 评测数据</div>
@@ -588,6 +691,48 @@
         </div>
     </div>
 
+    <!-- 清空数据库确认弹窗 -->
+    <div id="clearDatabaseModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 style="color: #f5222d;">⚠️ 危险操作</h2>
+                <span class="close" onclick="closeClearDatabaseModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div style="background: #fff3cd; border-left: 4px solid #faad14; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+                    <strong>警告：</strong>此操作将永久删除所有数据，包括：
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>所有完成码记录</li>
+                        <li>所有评测数据</li>
+                    </ul>
+                    <strong style="color: #f5222d;">此操作不可恢复！</strong>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">
+                        请输入 <code style="background: #f5f5f5; padding: 2px 8px; border-radius: 4px; color: #f5222d;">clear</code> 以确认删除：
+                    </label>
+                    <input
+                        type="text"
+                        id="clearConfirmInput"
+                        placeholder="输入 clear 确认"
+                        style="width: 100%; padding: 10px; border: 2px solid #f5222d; border-radius: 6px;"
+                        onkeyup="validateClearInput()"
+                    >
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-secondary" onclick="closeClearDatabaseModal()" style="flex: 1;">取消</button>
+                    <button
+                        class="btn btn-danger"
+                        id="confirmClearBtn"
+                        onclick="confirmClearDatabase()"
+                        style="flex: 1;"
+                        disabled
+                    >确认清空</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 环境配置 -->
     <script src="config.js"></script>
 
@@ -606,6 +751,7 @@
             loadStats();
             loadCodes();
             loadEvaluations();
+            loadEvaluationMatrix();
         }
 
         // 切换自动刷新
@@ -819,10 +965,21 @@
 
                 if (data.success && data.data.length > 0) {
                     tbody.innerHTML = data.data.map(eval => {
-                        // 计算完成百分比（假设有5个维度评分）
-                        const completedDimensions = Object.keys(eval.scores || {}).length;
-                        const totalDimensions = 5;
-                        const completionPercentage = Math.round((completedDimensions / totalDimensions) * 100);
+                        // 计算完成进度：检查3个核心维度的评分是否都不为0
+                        const scores = eval.scores || {};
+                        const coreScores = ['accuracy', 'completeness', 'standard'];
+                        let completedCount = 0;
+
+                        coreScores.forEach(dimension => {
+                            if (scores[dimension] && scores[dimension].score > 0) {
+                                completedCount++;
+                            }
+                        });
+
+                        const completionPercentage = Math.round((completedCount / coreScores.length) * 100);
+
+                        // 根据完成度设置颜色
+                        let progressColor = completionPercentage === 100 ? '#52c41a' : '#faad14';
 
                         return `
                             <tr>
@@ -833,9 +990,9 @@
                                 <td>
                                     <div class="completion-rate">
                                         <div class="progress-bar" style="width: 80px;">
-                                            <div class="progress-fill" style="width: ${completionPercentage}%;"></div>
+                                            <div class="progress-fill" style="width: ${completionPercentage}%; background: ${progressColor};"></div>
                                         </div>
-                                        <span style="font-size: 12px;">${completionPercentage}%</span>
+                                        <span style="font-size: 12px; color: ${progressColor};">${completionPercentage}%</span>
                                     </div>
                                 </td>
                                 <td>${new Date(eval.submittedAt).toLocaleString('zh-CN')}</td>
@@ -903,12 +1060,18 @@
                             <div style="margin-top: 20px;">
                                 <h3 style="margin-bottom: 15px;">📊 各维度评分</h3>
                                 <div class="score-grid">
-                                    ${Object.entries(evaluation.scores).map(([key, value]) => `
+                                    ${Object.entries(evaluation.scores).map(([key, value]) => {
+                                        const score = value.score || value;
+                                        const weight = value.weight || 0;
+                                        const comment = value.comment || '';
+                                        return `
                                         <div class="score-item">
                                             <div class="score-item-label">${getDimensionName(key)}</div>
-                                            <div class="score-item-value">${value}</div>
+                                            <div class="score-item-value">${typeof score === 'number' ? score + '⭐' : score}</div>
+                                            ${weight > 0 ? `<div style="font-size: 11px; color: #999; margin-top: 4px;">权重: ${weight}%</div>` : ''}
+                                            ${comment ? `<div style="font-size: 12px; color: #666; margin-top: 8px; padding: 8px; background: #f8f9fa; border-radius: 4px; text-align: left;">${comment}</div>` : ''}
                                         </div>
-                                    `).join('')}
+                                    `}).join('')}
                                 </div>
                             </div>
                         ` : ''}
@@ -973,20 +1136,26 @@
                             <div style="margin-top: 30px;">
                                 <h3 style="margin-bottom: 15px; color: #333;">📊 各维度评分详情</h3>
                                 <div class="score-grid">
-                                    ${Object.entries(evaluation.scores).map(([key, value]) => `
+                                    ${Object.entries(evaluation.scores).map(([key, value]) => {
+                                        const score = value.score || value;
+                                        const weight = value.weight || 0;
+                                        const comment = value.comment || '';
+                                        return `
                                         <div class="score-item">
                                             <div class="score-item-label">${getDimensionName(key)}</div>
-                                            <div class="score-item-value">${value}</div>
+                                            <div class="score-item-value">${typeof score === 'number' ? score + '⭐' : score}</div>
+                                            ${weight > 0 ? `<div style="font-size: 11px; color: #999; margin-top: 4px;">权重: ${weight}%</div>` : ''}
+                                            ${comment ? `<div style="font-size: 12px; color: #666; margin-top: 8px; padding: 8px; background: #f8f9fa; border-radius: 4px; text-align: left; max-height: 100px; overflow-y: auto;">${comment}</div>` : ''}
                                         </div>
-                                    `).join('')}
+                                    `}).join('')}
                                 </div>
                             </div>
                         ` : ''}
-                        ${evaluation.comments ? `
+                        ${evaluation.overall_comment ? `
                             <div style="margin-top: 30px;">
-                                <h3 style="margin-bottom: 15px; color: #333;">💬 评论</h3>
-                                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; line-height: 1.6;">
-                                    ${evaluation.comments}
+                                <h3 style="margin-bottom: 15px; color: #333;">💬 总体评价</h3>
+                                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; line-height: 1.6; white-space: pre-wrap;">
+                                    ${evaluation.overall_comment}
                                 </div>
                             </div>
                         ` : ''}
@@ -1028,13 +1197,147 @@
             const map = {
                 'accuracy': '准确性',
                 'completeness': '完整性',
+                'standard': '规范性',
+                'clinical': '临床实用性',
+                'structure': '结构清晰度',
+                'language': '语言专业性',
                 'format': '格式规范',
-                'language': '语言表达',
                 'logic': '逻辑性',
                 'professionalism': '专业性',
                 'clarity': '清晰度'
             };
             return map[key] || key;
+        }
+
+        // 显示清空数据库确认弹窗
+        function showClearDatabaseModal() {
+            document.getElementById('clearDatabaseModal').style.display = 'block';
+            document.getElementById('clearConfirmInput').value = '';
+            document.getElementById('confirmClearBtn').disabled = true;
+        }
+
+        // 关闭清空数据库弹窗
+        function closeClearDatabaseModal() {
+            document.getElementById('clearDatabaseModal').style.display = 'none';
+        }
+
+        // 验证清空确认输入
+        function validateClearInput() {
+            const input = document.getElementById('clearConfirmInput').value;
+            const confirmBtn = document.getElementById('confirmClearBtn');
+            confirmBtn.disabled = input !== 'clear';
+        }
+
+        // 确认清空数据库
+        async function confirmClearDatabase() {
+            const input = document.getElementById('clearConfirmInput').value;
+
+            if (input !== 'clear') {
+                alert('请输入 clear 以确认删除');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/clear-database`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(`✅ 数据库已清空\n删除了 ${data.deletedCodes} 个完成码\n删除了 ${data.deletedEvaluations} 条评测记录`);
+                    closeClearDatabaseModal();
+                    refreshAll();
+                } else {
+                    alert('清空失败: ' + data.message);
+                }
+            } catch (error) {
+                console.error('清空数据库失败:', error);
+                alert('清空失败，请检查服务器连接');
+            }
+        }
+
+        // 点击弹窗外部关闭清空数据库弹窗
+        window.addEventListener('click', function(event) {
+            const clearModal = document.getElementById('clearDatabaseModal');
+            if (event.target == clearModal) {
+                closeClearDatabaseModal();
+            }
+        });
+
+        // 加载评测矩阵数据
+        async function loadEvaluationMatrix() {
+            const container = document.getElementById('matrixContainer');
+            container.innerHTML = '<div class="loading">加载中...</div>';
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/evaluation-matrix`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const { models, patients, matrix } = data;
+
+                    if (models.length === 0 || patients.length === 0) {
+                        container.innerHTML = '<div style="text-align: center; color: #999; padding: 40px;">暂无评测数据</div>';
+                        return;
+                    }
+
+                    // 构建矩阵表格
+                    let tableHTML = '<table class="matrix-table">';
+
+                    // 表头
+                    tableHTML += '<thead><tr>';
+                    tableHTML += '<th>模型 / 评测点</th>';
+                    patients.forEach(patient => {
+                        tableHTML += `<th>${patient}</th>`;
+                    });
+                    tableHTML += '</tr></thead>';
+
+                    // 表体
+                    tableHTML += '<tbody>';
+                    models.forEach(model => {
+                        tableHTML += '<tr>';
+                        tableHTML += `<td>${model}</td>`;
+
+                        patients.forEach(patient => {
+                            const cellData = matrix[model] && matrix[model][patient];
+
+                            if (cellData && cellData.count > 0) {
+                                const avg = cellData.avg.toFixed(1);
+                                const stdDev = cellData.stdDev.toFixed(1);
+                                const count = cellData.count;
+
+                                tableHTML += `
+                                    <td>
+                                        <div class="matrix-cell">
+                                            <div class="matrix-avg">${avg}</div>
+                                            <div class="matrix-stddev">± ${stdDev}</div>
+                                            <div class="matrix-count">(n=${count})</div>
+                                        </div>
+                                    </td>
+                                `;
+                            } else {
+                                tableHTML += '<td><span class="matrix-empty">-</span></td>';
+                            }
+                        });
+
+                        tableHTML += '</tr>';
+                    });
+                    tableHTML += '</tbody>';
+
+                    tableHTML += '</table>';
+
+                    container.innerHTML = tableHTML;
+                } else {
+                    container.innerHTML = '<div style="text-align: center; color: #f5222d; padding: 40px;">加载失败: ' + data.message + '</div>';
+                }
+            } catch (error) {
+                console.error('加载评测矩阵失败:', error);
+                if (!autoRefreshInterval) {
+                    container.innerHTML = '<div style="text-align: center; color: #f5222d; padding: 40px;">无法连接到服务器</div>';
+                }
+            }
         }
     </script>
 </body>

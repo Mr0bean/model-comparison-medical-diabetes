@@ -12,19 +12,18 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
             min-height: 100vh;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            overflow: hidden;
         }
 
         .header {
@@ -32,72 +31,63 @@
             color: white;
             padding: 30px 40px;
             text-align: center;
+            position: relative;
         }
+
 
         .header h1 {
             font-size: 32px;
             margin-bottom: 10px;
         }
 
-        .header p {
+        .header .subtitle {
             font-size: 16px;
             opacity: 0.9;
         }
 
-        .controls {
-            padding: 20px 40px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
+        .patient-selector {
+            padding: 25px 40px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .selector-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .patient-buttons {
             display: flex;
-            gap: 20px;
+            gap: 12px;
             flex-wrap: wrap;
-            align-items: center;
         }
 
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .control-group label {
-            font-size: 12px;
-            color: #666;
-            font-weight: 600;
-        }
-
-        .control-group select {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            min-width: 150px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
+        .patient-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
         }
 
-        .btn-primary {
+        .patient-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateY(-2px);
+        }
+
+        .patient-btn.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
         .stats {
@@ -105,24 +95,26 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             padding: 30px 40px;
-            background: #f8f9fa;
+            background: white;
         }
 
         .stat-card {
-            background: white;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
         }
 
         .stat-label {
-            font-size: 12px;
+            font-size: 13px;
             color: #999;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: 500;
         }
 
         .stat-value {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             color: #667eea;
         }
@@ -133,65 +125,95 @@
 
         .section {
             margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
 
         .section-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
             margin-bottom: 20px;
             color: #333;
-            border-left: 4px solid #667eea;
-            padding-left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
         }
 
         .matrix-container {
             overflow-x: auto;
             background: white;
             border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin: 20px 0;
         }
 
         .matrix-table {
             border-collapse: collapse;
             width: 100%;
-            min-width: 600px;
+            min-width: 1000px;
         }
 
         .matrix-table th,
         .matrix-table td {
-            padding: 12px;
+            padding: 12px 8px;
             text-align: center;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
+            font-size: 13px;
         }
 
         .matrix-table th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             font-weight: 600;
-            font-size: 13px;
-        }
-
-        .matrix-table td {
-            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .matrix-table .model-name {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
             font-weight: 600;
             text-align: left;
-            color: #495057;
+            color: #667eea;
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            padding-left: 15px;
+        }
+
+        .matrix-table .summary-header {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            font-size: 12px;
+        }
+
+        .matrix-table .summary-cell {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #667eea;
+            font-size: 12px;
         }
 
         .score-cell {
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            font-size: 14px;
+            position: relative;
         }
 
         .score-cell:hover {
-            background: #f8f9fa;
-            transform: scale(1.05);
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
+            z-index: 3;
         }
 
         .score-high {
@@ -209,28 +231,41 @@
             color: #721c24;
         }
 
+        .score-highest {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
+            color: white !important;
+            font-weight: 800;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+
+        .score-lowest {
+            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%) !important;
+            color: white !important;
+            font-weight: 800;
+            box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+        }
+
         .self-eval {
             background: #e9ecef;
             color: #999;
+            font-style: italic;
         }
 
         .ranking-list {
             background: white;
             border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .ranking-item {
             display: flex;
             align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #e9ecef;
-            transition: all 0.2s;
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s;
         }
 
         .ranking-item:hover {
-            background: #f8f9fa;
+            background: #f8f9ff;
         }
 
         .ranking-item:last-child {
@@ -238,40 +273,59 @@
         }
 
         .rank-number {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            width: 50px;
-            color: #667eea;
+            width: 60px;
+            text-align: center;
         }
 
-        .rank-number.top3 {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        .rank-1 .rank-number {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
+        .rank-2 .rank-number {
+            background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rank-3 .rank-number {
+            background: linear-gradient(135deg, #CD7F32 0%, #B87333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rank-other .rank-number {
+            color: #667eea;
+        }
+
         .model-info {
             flex: 1;
+            margin-left: 20px;
         }
 
         .model-name-rank {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             color: #333;
             margin-bottom: 5px;
         }
 
         .model-stats {
-            font-size: 12px;
+            font-size: 13px;
             color: #999;
         }
 
         .score-bar {
             width: 200px;
-            height: 30px;
+            height: 35px;
             background: #e9ecef;
-            border-radius: 15px;
+            border-radius: 18px;
             overflow: hidden;
             position: relative;
             margin-left: 20px;
@@ -280,23 +334,15 @@
         .score-fill {
             height: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding-right: 10px;
+            padding-right: 12px;
             color: white;
-            font-size: 12px;
-            font-weight: 600;
-            transition: width 0.5s ease;
-        }
-
-        .chart-container {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            height: 400px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: width 0.8s ease;
         }
 
         .loading {
@@ -320,44 +366,24 @@
             100% { transform: rotate(360deg); }
         }
 
-        .error {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 15px 20px;
-            border-radius: 6px;
-            margin: 20px 0;
-            border: 1px solid #f5c6cb;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px;
-            color: #999;
-        }
-
-        .empty-state-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-
         .tabs {
             display: flex;
             gap: 10px;
-            border-bottom: 2px solid #e9ecef;
-            margin-bottom: 20px;
+            border-bottom: 3px solid #e9ecef;
+            margin-bottom: 30px;
         }
 
         .tab {
             padding: 12px 24px;
             border: none;
             background: none;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             color: #999;
             cursor: pointer;
             border-bottom: 3px solid transparent;
             transition: all 0.3s;
+            margin-bottom: -3px;
         }
 
         .tab.active {
@@ -377,90 +403,383 @@
             display: block;
         }
 
-        .dimension-comparison {
+        .info-box {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 3% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            line-height: 1;
+            padding: 0 8px;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .eval-section {
+            margin-bottom: 25px;
+        }
+
+        .eval-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .eval-info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .eval-info-item {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .eval-info-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .eval-info-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .dimension-scores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .dimension-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .dimension-name {
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .dimension-score {
+            font-size: 28px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .dimension-reasoning {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+            text-align: left;
+        }
+
+        .eval-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .eval-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .eval-list li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .eval-list li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            flex-wrap: wrap;
+            font-size: 13px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-box {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        /* 评估标准折叠面板 */
+        .scoring-standard {
+            background: white;
+            margin: 0 40px 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .scoring-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .scoring-header:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
+        }
+
+        .scoring-title {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scoring-toggle {
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+
+        .scoring-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .scoring-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .scoring-content.open {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .scoring-body {
+            padding: 25px 30px;
+        }
+
+        .scoring-summary {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+        }
+
+        .scoring-summary h4 {
+            color: #667eea;
+            font-size: 15px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .weight-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .weight-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .weight-dot {
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .dimension-details {
+            display: grid;
             gap: 20px;
         }
 
         .dimension-card {
-            background: white;
+            background: #f8f9fa;
+            padding: 18px 20px;
             border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 4px solid #667eea;
         }
 
-        .dimension-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .dimension-bar-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .dimension-model-name {
-            width: 120px;
-            font-size: 12px;
-            color: #666;
-        }
-
-        .dimension-bar {
-            flex: 1;
-            height: 20px;
-            background: #e9ecef;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            margin: 0 10px;
-        }
-
-        .dimension-bar-fill {
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            transition: width 0.5s ease;
-        }
-
-        .dimension-score {
-            font-size: 12px;
-            font-weight: 600;
+        .dimension-card h5 {
             color: #667eea;
-            min-width: 30px;
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .dimension-card p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #555;
+            margin: 0;
+        }
+
+        .score-scale {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .score-bar {
+                width: 150px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .scoring-standard {
+                margin: 0 20px 20px 20px;
+            }
+
+            .scoring-body {
+                padding: 20px;
+            }
+
+            .weight-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🤖 模型交叉评估结果查看器</h1>
-            <p>实时查看和分析交叉评估数据</p>
+            <h1>🤖 交叉评估结果查看器</h1>
+            <p class="subtitle">8×8模型交叉评估 · 100分制评分</p>
         </div>
 
-        <div class="controls">
-            <div class="control-group">
-                <label>患者</label>
-                <select id="patientSelect">
-                    <option value="">加载中...</option>
-                </select>
-            </div>
-
-            <div class="control-group">
-                <label>对话类型</label>
-                <select id="conversationSelect">
-                    <option value="">加载中...</option>
-                </select>
-            </div>
-
-            <button class="btn btn-primary" onclick="loadData()">🔄 刷新数据</button>
-            <button class="btn btn-secondary" onclick="exportData()">📥 导出数据</button>
-
-            <div style="margin-left: auto; font-size: 12px; color: #999;">
-                最后更新: <span id="lastUpdate">-</span>
+        <div class="patient-selector">
+            <span class="selector-label">📋 选择患者：</span>
+            <div class="patient-buttons" id="patientButtons">
+                <!-- 患者按钮将动态生成 -->
             </div>
         </div>
 
@@ -483,20 +802,115 @@
             </div>
         </div>
 
+        <!-- 评估标准折叠面板 -->
+        <div class="scoring-standard">
+            <div class="scoring-header" onclick="toggleScoringStandard()">
+                <div class="scoring-title">
+                    📋 评估标准详情
+                </div>
+                <div class="scoring-toggle" id="scoringToggle">▼</div>
+            </div>
+            <div class="scoring-content" id="scoringContent">
+                <div class="scoring-body">
+                    <div class="scoring-summary">
+                        <h4>💯 100分制评分方案</h4>
+                        <div class="weight-list">
+                            <div class="weight-item">
+                                <div class="weight-dot"></div>
+                                <span><strong>准确性</strong>：最高 30 分</span>
+                            </div>
+                            <div class="weight-item">
+                                <div class="weight-dot"></div>
+                                <span><strong>完整性</strong>：最高 25 分</span>
+                            </div>
+                            <div class="weight-item">
+                                <div class="weight-dot"></div>
+                                <span><strong>格式规范</strong>：最高 20 分</span>
+                            </div>
+                            <div class="weight-item">
+                                <div class="weight-dot"></div>
+                                <span><strong>语言表达</strong>：最高 15 分</span>
+                            </div>
+                            <div class="weight-item">
+                                <div class="weight-dot"></div>
+                                <span><strong>逻辑性</strong>：最高 10 分</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dimension-details">
+                        <div class="dimension-card">
+                            <h5>1️⃣ 准确性（满分30分）</h5>
+                            <p>评估医疗报告中的诊断、症状描述、检查结果等医学信息的准确性。包括：诊断准确性、症状描述准确性、医学术语使用正确性、与检查结果的一致性。</p>
+                            <p class="score-scale">30分=完全准确 | 24分=基本准确 | 18分=部分准确 | 12分=较多错误 | 6分=严重错误</p>
+                        </div>
+
+                        <div class="dimension-card">
+                            <h5>2️⃣ 完整性（满分25分）</h5>
+                            <p>评估报告是否包含所有必要的医疗信息。包括：主诉、现病史、既往史、体格检查、辅助检查、诊断、治疗方案等关键要素的完整性。</p>
+                            <p class="score-scale">25分=信息完整 | 20分=轻微遗漏 | 15分=部分缺失 | 10分=重要信息缺失 | 5分=严重不完整</p>
+                        </div>
+
+                        <div class="dimension-card">
+                            <h5>3️⃣ 格式规范（满分20分）</h5>
+                            <p>评估报告的结构和格式是否符合医疗文书规范。包括：章节结构合理性、信息组织清晰度、格式统一性、专业性呈现。</p>
+                            <p class="score-scale">20分=完全规范 | 16分=基本规范 | 12分=部分不规范 | 8分=格式混乱 | 4分=严重不规范</p>
+                        </div>
+
+                        <div class="dimension-card">
+                            <h5>4️⃣ 语言表达（满分15分）</h5>
+                            <p>评估报告的语言专业性和可读性。包括：医学术语使用规范性、表述清晰度、语句通顺度、专业性与可读性平衡。</p>
+                            <p class="score-scale">15分=表达优秀 | 12分=表达良好 | 9分=表达一般 | 6分=表达欠佳 | 3分=表达混乱</p>
+                        </div>
+
+                        <div class="dimension-card">
+                            <h5>5️⃣ 逻辑性（满分10分）</h5>
+                            <p>评估报告内容的逻辑关联性和推理合理性。包括：症状与诊断的逻辑关系、检查结果与诊断的支撑关系、治疗方案的合理性、前后内容一致性。</p>
+                            <p class="score-scale">10分=逻辑严密 | 8分=逻辑合理 | 6分=基本合理 | 4分=逻辑欠缺 | 2分=逻辑混乱</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="content">
             <div class="tabs">
                 <button class="tab active" onclick="switchTab('matrix')">📊 评分矩阵</button>
                 <button class="tab" onclick="switchTab('ranking')">🏆 模型排名</button>
-                <button class="tab" onclick="switchTab('dimensions')">📈 维度对比</button>
             </div>
 
             <div id="matrixTab" class="tab-content active">
                 <div class="section">
-                    <h2 class="section-title">评分矩阵（行评估列）</h2>
+                    <h2 class="section-title">评分矩阵热力图（含统计数据）</h2>
+                    <div class="info-box">
+                        📋 说明：采用<strong>100分制评分</strong>（准确性30分 + 完整性25分 + 格式20分 + 语言15分 + 逻辑10分）。行表示被评估模型，列表示评估者。<strong>绿色高亮</strong>为最高分，<strong>红色高亮</strong>为最低分。点击分数查看详细评估内容。
+                    </div>
                     <div class="matrix-container" id="matrixContainer">
                         <div class="loading">
                             <div class="loading-spinner"></div>
                             <p>加载评分矩阵中...</p>
+                        </div>
+                    </div>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-box score-highest"></div>
+                            <span>最高分</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box score-high"></div>
+                            <span>高分 (≥80)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box score-medium"></div>
+                            <span>中等 (60-80)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box score-low"></div>
+                            <span>低分 (<60)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box score-lowest"></div>
+                            <span>最低分</span>
                         </div>
                     </div>
                 </div>
@@ -505,6 +919,9 @@
             <div id="rankingTab" class="tab-content">
                 <div class="section">
                     <h2 class="section-title">模型综合排名</h2>
+                    <div class="info-box">
+                        🏆 说明：根据各模型被所有评估者评分的平均值进行排名（100分制评分），分数越高表示生成的医疗报告质量越好。
+                    </div>
                     <div class="ranking-list" id="rankingContainer">
                         <div class="loading">
                             <div class="loading-spinner"></div>
@@ -513,17 +930,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div id="dimensionsTab" class="tab-content">
-                <div class="section">
-                    <h2 class="section-title">各维度得分对比</h2>
-                    <div class="dimension-comparison" id="dimensionsContainer">
-                        <div class="loading">
-                            <div class="loading-spinner"></div>
-                            <p>加载维度数据中...</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- 评估详情模态框 -->
+    <div id="evalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">评估详情</div>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 详情内容将动态加载 -->
             </div>
         </div>
     </div>
@@ -531,8 +949,9 @@
     <script>
         // 全局数据
         let currentData = null;
-        let availablePatients = [];
-        let availableConversations = {};
+        let matrixData = null;
+        let currentPatient = 'global';
+        let allEvaluationData = {}; // 存储所有评估详情
 
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
@@ -542,20 +961,17 @@
 
         async function initializePage() {
             try {
-                // 加载可用的患者和对话列表
-                await loadAvailableData();
+                // 加载矩阵数据
+                matrixData = await loadMatrixData();
 
-                // 加载第一个可用的数据
-                if (availablePatients.length > 0) {
-                    const firstPatient = availablePatients[0];
-                    const firstConv = Object.keys(availableConversations[firstPatient])[0];
+                if (matrixData) {
+                    // 生成患者按钮
+                    renderPatientButtons();
 
-                    document.getElementById('patientSelect').value = firstPatient;
-                    document.getElementById('conversationSelect').value = firstConv;
-
-                    await loadData();
+                    // 加载全局数据
+                    await loadData('global');
                 } else {
-                    showEmptyState();
+                    showError('无法加载评估数据，请确保 cross_evaluation_matrix.json 文件存在');
                 }
             } catch (error) {
                 console.error('初始化失败:', error);
@@ -563,158 +979,158 @@
             }
         }
 
-        async function loadAvailableData() {
-            // 模拟数据（实际应从服务器或本地文件加载）
-            availablePatients = ['患者1', '患者2', '患者3', '患者4', '患者5', '患者6', '患者7', '患者8', '患者9', '患者10'];
+        function renderPatientButtons() {
+            const container = document.getElementById('patientButtons');
 
-            availableConversations = {
-                '患者1': { '1': '主诉', '2': '现病史', '3': '既往史', '4': '医疗总结', '5': '家族史' },
-                '患者2': { '1': '主诉', '2': '现病史', '3': '既往史', '4': '医疗总结', '5': '家族史' },
-                // ... 其他患者类似
-            };
+            // 全局按钮
+            let html = `<button class="patient-btn active" onclick="selectPatient('global')">全局平均</button>`;
 
-            // 填充患者选择器
-            const patientSelect = document.getElementById('patientSelect');
-            patientSelect.innerHTML = availablePatients.map(p =>
-                `<option value="${p}">${p}</option>`
-            ).join('');
-
-            // 患者变化时更新对话选择器
-            patientSelect.addEventListener('change', function() {
-                updateConversationSelect(this.value);
+            // 各患者按钮
+            matrixData.patients.forEach(patient => {
+                html += `<button class="patient-btn" onclick="selectPatient('${patient}')">${patient}</button>`;
             });
 
-            // 初始化对话选择器
-            updateConversationSelect(availablePatients[0]);
+            container.innerHTML = html;
         }
 
-        function updateConversationSelect(patient) {
-            const convSelect = document.getElementById('conversationSelect');
-            const conversations = availableConversations[patient] || {};
+        function selectPatient(patient) {
+            // 更新按钮状态
+            document.querySelectorAll('.patient-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
 
-            convSelect.innerHTML = Object.entries(conversations).map(([id, title]) =>
-                `<option value="${id}">${id}. ${title}</option>`
-            ).join('');
+            // 加载数据
+            currentPatient = patient;
+            loadData(patient);
         }
 
-        async function loadData() {
-            const patient = document.getElementById('patientSelect').value;
-            const convId = document.getElementById('conversationSelect').value;
-
-            if (!patient || !convId) {
-                showError('请选择患者和对话类型');
-                return;
-            }
-
-            console.log(`加载数据: ${patient}, 对话${convId}`);
-
-            // 显示加载状态
-            showLoading();
-
+        async function loadMatrixData() {
             try {
-                // 尝试加载真实数据
-                const matrixData = await loadMatrixData(patient, convId);
-
-                if (matrixData) {
-                    currentData = matrixData;
-                    renderAllViews();
-                    updateLastUpdate();
-                } else {
-                    // 如果没有真实数据，生成模拟数据
-                    currentData = generateMockData();
-                    renderAllViews();
-                    updateLastUpdate();
-                    showInfo('当前显示模拟数据（实际评估完成后会自动加载真实数据）');
-                }
-            } catch (error) {
-                console.error('加载数据失败:', error);
-                // 显示模拟数据
-                currentData = generateMockData();
-                renderAllViews();
-                showInfo('当前显示模拟数据');
-            }
-        }
-
-        async function loadMatrixData(patient, convId) {
-            try {
-                const response = await fetch(`output/cross_evaluation_results/${patient}/conv_${convId}/matrix.json`);
+                const response = await fetch('cross_evaluation_matrix.json');
                 if (response.ok) {
                     return await response.json();
                 }
                 return null;
             } catch (error) {
-                console.log('无法加载真实数据，使用模拟数据');
+                console.error('加载矩阵数据失败:', error);
                 return null;
             }
         }
 
-        function generateMockData() {
-            const models = [
-                'gpt-5.1',
-                'deepseek/deepseek-v3.1',
-                'gemini-2.5-pro',
-                'grok-4-0709',
-                'moonshotai/kimi-k2-0905',
-                'Baichuan-M2',
-                'doubao-seed-1-6-251015',
-                'qwen3-max'
-            ];
+        async function loadData(patient) {
+            console.log(`加载数据: ${patient}`);
 
-            const matrix = {};
-            const dimensions = ['accuracy', 'completeness', 'format', 'language', 'logic'];
+            try {
+                let matrix;
 
-            models.forEach(evaluator => {
-                matrix[evaluator] = {};
-                models.forEach(evaluated => {
-                    if (evaluator === evaluated) {
-                        matrix[evaluator][evaluated] = null; // 自我评估为null
+                if (patient === 'global') {
+                    matrix = matrixData.global_matrix;
+                } else {
+                    matrix = matrixData.matrices[patient];
+                }
+
+                if (!matrix) {
+                    showError('未找到该患者的数据');
+                    return;
+                }
+
+                // 转换数据格式
+                currentData = transformMatrixData(matrix, patient === 'global');
+
+                // 渲染所有视图
+                renderAllViews();
+
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                showError('加载数据失败: ' + error.message);
+            }
+        }
+
+        function transformMatrixData(matrix, isGlobal) {
+            const models = matrixData.models;
+            const transformedMatrix = {};
+
+            models.forEach(generated => {
+                transformedMatrix[generated] = {};
+                models.forEach(evaluator => {
+                    const cellData = matrix[generated]?.[evaluator];
+
+                    if (cellData) {
+                        if (isGlobal) {
+                            transformedMatrix[generated][evaluator] = {
+                                average_score: cellData.average,
+                                count: cellData.count,
+                                min: cellData.min,
+                                max: cellData.max
+                            };
+                        } else {
+                            transformedMatrix[generated][evaluator] = {
+                                average_score: cellData
+                            };
+                        }
                     } else {
-                        // 生成随机分数（3-5分）
-                        const scores = dimensions.map(() => Math.random() * 2 + 3);
-                        const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
-                        matrix[evaluator][evaluated] = {
-                            average_score: Number(avg.toFixed(2)),
-                            dimensions: {
-                                accuracy: scores[0].toFixed(1),
-                                completeness: scores[1].toFixed(1),
-                                format: scores[2].toFixed(1),
-                                language: scores[3].toFixed(1),
-                                logic: scores[4].toFixed(1)
-                            }
-                        };
+                        transformedMatrix[generated][evaluator] = null;
                     }
                 });
             });
 
+            // 计算统计数据
+            const statistics = calculateStatistics(transformedMatrix, models);
+
             return {
                 models: models,
-                matrix: matrix,
-                statistics: calculateStatistics(matrix, models)
+                matrix: transformedMatrix,
+                statistics: statistics
             };
         }
 
         function calculateStatistics(matrix, models) {
             const allScores = [];
-            models.forEach(evaluator => {
-                models.forEach(evaluated => {
-                    if (matrix[evaluator][evaluated]) {
-                        allScores.push(matrix[evaluator][evaluated].average_score);
+            models.forEach(generated => {
+                models.forEach(evaluator => {
+                    if (matrix[generated]?.[evaluator]?.average_score) {
+                        allScores.push(matrix[generated][evaluator].average_score);
                     }
                 });
             });
+
+            if (allScores.length === 0) {
+                return { total: 0, average: 0, max: 0, min: 0 };
+            }
 
             return {
                 total: allScores.length,
                 average: (allScores.reduce((a, b) => a + b, 0) / allScores.length).toFixed(2),
                 max: Math.max(...allScores).toFixed(2),
-                min: Math.min(...allScores).toFixed(2)
+                min: Math.min(...allScores).toFixed(2),
+                highest: Math.max(...allScores),
+                lowest: Math.min(...allScores)
             };
         }
+
+        function calculateRowStats(model) {
+            const scores = [];
+            currentData.models.forEach(evaluator => {
+                const score = currentData.matrix[model]?.[evaluator];
+                if (score?.average_score) {
+                    scores.push(score.average_score);
+                }
+            });
+
+            if (scores.length === 0) return { mean: 0, std: 0 };
+
+            const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+            const variance = scores.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / scores.length;
+            const std = Math.sqrt(variance);
+
+            return { mean: mean.toFixed(2), std: std.toFixed(2) };
+        }
+
 
         function renderAllViews() {
             renderMatrix();
             renderRanking();
-            renderDimensions();
             updateStats();
         }
 
@@ -722,38 +1138,53 @@
             const container = document.getElementById('matrixContainer');
             const models = currentData.models;
             const matrix = currentData.matrix;
+            const stats = currentData.statistics;
 
             let html = '<table class="matrix-table">';
 
             // 表头
-            html += '<tr><th>评估者 ↓ / 被评估者 →</th>';
+            html += '<tr><th>被评估者 ↓<br>评估者 →</th>';
             models.forEach(model => {
                 html += `<th>${getShortModelName(model)}</th>`;
             });
+            html += '<th class="summary-header">行平均</th>';
+            html += '<th class="summary-header">行标准差</th>';
             html += '</tr>';
 
             // 数据行
-            models.forEach(evaluator => {
+            models.forEach(generated => {
                 html += '<tr>';
-                html += `<td class="model-name">${getShortModelName(evaluator)}</td>`;
+                html += `<td class="model-name">${getShortModelName(generated)}</td>`;
 
-                models.forEach(evaluated => {
-                    const score = matrix[evaluator][evaluated];
+                models.forEach(evaluator => {
+                    const score = matrix[generated]?.[evaluator];
 
-                    if (score === null) {
+                    if (score === null || !score) {
                         html += '<td class="self-eval">-</td>';
                     } else {
                         const scoreValue = score.average_score;
-                        const colorClass = scoreValue >= 4.5 ? 'score-high' :
-                                         scoreValue >= 3.5 ? 'score-medium' : 'score-low';
+                        let colorClass = scoreValue >= 80 ? 'score-high' :
+                                         scoreValue >= 60 ? 'score-medium' : 'score-low';
+
+                        // 标记最高分和最低分
+                        if (scoreValue === stats.highest) {
+                            colorClass = 'score-highest';
+                        } else if (scoreValue === stats.lowest) {
+                            colorClass = 'score-lowest';
+                        }
+
                         html += `<td class="score-cell ${colorClass}"
-                                    onclick="showScoreDetail('${evaluator}', '${evaluated}')"
+                                    onclick="showEvalDetail('${generated}', '${evaluator}')"
                                     title="点击查看详情">
-                                    ${scoreValue}
+                                    ${scoreValue.toFixed(2)}
                                 </td>`;
                     }
                 });
 
+                // 行统计
+                const rowStats = calculateRowStats(generated);
+                html += `<td class="summary-cell">${rowStats.mean}</td>`;
+                html += `<td class="summary-cell">±${rowStats.std}</td>`;
                 html += '</tr>';
             });
 
@@ -770,8 +1201,8 @@
             const rankings = models.map(model => {
                 const scores = [];
                 models.forEach(evaluator => {
-                    if (matrix[evaluator][model]) {
-                        scores.push(matrix[evaluator][model].average_score);
+                    if (matrix[model]?.[evaluator]?.average_score) {
+                        scores.push(matrix[model][evaluator].average_score);
                     }
                 });
 
@@ -781,8 +1212,7 @@
                 return {
                     model: model,
                     average: avg,
-                    count: scores.length,
-                    std: calculateStd(scores)
+                    count: scores.length
                 };
             });
 
@@ -792,80 +1222,22 @@
             // 渲染
             let html = '';
             rankings.forEach((item, index) => {
-                const rankClass = index < 3 ? 'top3' : '';
-                const percentage = (item.average / 5) * 100;
+                const rank = index + 1;
+                const rankClass = rank <= 3 ? `rank-${rank}` : 'rank-other';
+                const percentage = item.average; // 100分制，直接使用分数作为百分比
 
                 html += `
-                    <div class="ranking-item">
-                        <div class="rank-number ${rankClass}">${index + 1}</div>
+                    <div class="ranking-item ${rankClass}">
+                        <div class="rank-number">${rank}</div>
                         <div class="model-info">
                             <div class="model-name-rank">${item.model}</div>
-                            <div class="model-stats">
-                                评估次数: ${item.count} | 标准差: ${item.std.toFixed(2)}
-                            </div>
+                            <div class="model-stats">被评估 ${item.count} 次</div>
                         </div>
                         <div class="score-bar">
                             <div class="score-fill" style="width: ${percentage}%">
                                 ${item.average.toFixed(2)}
                             </div>
                         </div>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-        }
-
-        function renderDimensions() {
-            const container = document.getElementById('dimensionsContainer');
-            const models = currentData.models;
-            const matrix = currentData.matrix;
-            const dimensions = ['accuracy', 'completeness', 'format', 'language', 'logic'];
-            const dimensionNames = {
-                accuracy: '准确性',
-                completeness: '完整性',
-                format: '格式规范',
-                language: '语言表达',
-                logic: '逻辑性'
-            };
-
-            let html = '';
-
-            dimensions.forEach(dim => {
-                // 计算每个模型在这个维度的平均分
-                const dimScores = models.map(model => {
-                    const scores = [];
-                    models.forEach(evaluator => {
-                        if (matrix[evaluator][model] && matrix[evaluator][model].dimensions) {
-                            scores.push(parseFloat(matrix[evaluator][model].dimensions[dim]));
-                        }
-                    });
-
-                    const avg = scores.length > 0 ?
-                        scores.reduce((a, b) => a + b, 0) / scores.length : 0;
-
-                    return {
-                        model: getShortModelName(model),
-                        score: avg
-                    };
-                });
-
-                // 排序
-                dimScores.sort((a, b) => b.score - a.score);
-
-                // 渲染
-                html += `
-                    <div class="dimension-card">
-                        <div class="dimension-title">${dimensionNames[dim]}</div>
-                        ${dimScores.map(item => `
-                            <div class="dimension-bar-item">
-                                <div class="dimension-model-name">${item.model}</div>
-                                <div class="dimension-bar">
-                                    <div class="dimension-bar-fill" style="width: ${(item.score / 5) * 100}%"></div>
-                                </div>
-                                <div class="dimension-score">${item.score.toFixed(2)}</div>
-                            </div>
-                        `).join('')}
                     </div>
                 `;
             });
@@ -882,109 +1254,232 @@
             document.getElementById('minScore').textContent = stats.min;
         }
 
-        function calculateStd(scores) {
-            if (scores.length === 0) return 0;
-            const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
-            const variance = scores.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / scores.length;
-            return Math.sqrt(variance);
+        async function showEvalDetail(generated, evaluator) {
+            const modal = document.getElementById('evalModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            // 设置标题
+            modalTitle.textContent = `${generated} 被 ${evaluator} 评估`;
+
+            // 显示加载状态
+            modalBody.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>加载评估详情...</p></div>';
+            modal.style.display = 'block';
+
+            try {
+                // 加载评估详情
+                const evalData = await loadEvaluationDetail(currentPatient, generated, evaluator);
+
+                if (evalData) {
+                    modalBody.innerHTML = renderEvalDetail(evalData);
+                } else {
+                    modalBody.innerHTML = '<p style="text-align:center; padding: 40px; color: #999;">暂无详细评估数据</p>';
+                }
+            } catch (error) {
+                console.error('加载评估详情失败:', error);
+                modalBody.innerHTML = '<p style="text-align:center; padding: 40px; color: #f44336;">加载失败: ' + error.message + '</p>';
+            }
         }
 
-        function getShortModelName(model) {
-            const shortNames = {
-                'gpt-5.1': 'GPT-5.1',
-                'deepseek/deepseek-v3.1': 'DeepSeek',
-                'gemini-2.5-pro': 'Gemini',
-                'grok-4-0709': 'Grok-4',
-                'moonshotai/kimi-k2-0905': 'Kimi',
-                'Baichuan-M2': 'Baichuan',
-                'doubao-seed-1-6-251015': 'Doubao',
-                'qwen3-max': 'Qwen'
+        async function loadEvaluationDetail(patient, generated, evaluator) {
+            // 如果是全局，随机选择一个患者的数据
+            if (patient === 'global') {
+                patient = '患者1'; // 默认显示患者1的数据
+            }
+
+            // 构建文件名
+            const generatedFileName = generated.replace('/', '_');
+            const evaluatorFileName = evaluator.replace('/', '_');
+            const filename = `${generatedFileName}_by_${evaluatorFileName}.json`;
+            const path = `output/cross_evaluation_results/${patient}/evaluations/${filename}`;
+
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    return await response.json();
+                }
+                return null;
+            } catch (error) {
+                console.error('加载评估文件失败:', path, error);
+                return null;
+            }
+        }
+
+        function renderEvalDetail(data) {
+            let html = '<div class="eval-section">';
+
+            // 计算100分制总分
+            let totalScore = 0;
+            const dimWeights = {
+                accuracy: 6,
+                completeness: 5,
+                format: 4,
+                language: 3,
+                logic: 2
             };
-            return shortNames[model] || model;
+
+            if (data.evaluation?.dimensions) {
+                Object.entries(data.evaluation.dimensions).forEach(([key, value]) => {
+                    const score = parseFloat(value.score) || 0;
+                    const weight = dimWeights[key] || 1;
+                    totalScore += score * weight;
+                });
+            } else if (data.average_score) {
+                // 回退到旧的平均分
+                totalScore = data.average_score * 20;
+            }
+
+            // 基本信息
+            html += '<div class="eval-section-title">📊 评分总览</div>';
+            html += '<div class="eval-info-grid">';
+            html += `<div class="eval-info-item">
+                        <div class="eval-info-label">总分（100分制）</div>
+                        <div class="eval-info-value">${totalScore.toFixed(2)}</div>
+                     </div>`;
+            html += `<div class="eval-info-item">
+                        <div class="eval-info-label">构成</div>
+                        <div class="eval-info-value" style="font-size: 12px;">准确性30 + 完整性25 + 格式20 + 语言15 + 逻辑10</div>
+                     </div>`;
+            html += '</div>';
+
+            // 各维度评分
+            if (data.evaluation?.dimensions) {
+                html += '<div class="eval-section-title">📈 各维度得分</div>';
+                html += '<div class="dimension-scores">';
+
+                const dimNames = {
+                    accuracy: '准确性',
+                    completeness: '完整性',
+                    format: '格式规范',
+                    language: '语言表达',
+                    logic: '逻辑性'
+                };
+
+                const dimWeights = {
+                    accuracy: 6,
+                    completeness: 5,
+                    format: 4,
+                    language: 3,
+                    logic: 2
+                };
+
+                const dimMaxScores = {
+                    accuracy: 30,
+                    completeness: 25,
+                    format: 20,
+                    language: 15,
+                    logic: 10
+                };
+
+                Object.entries(data.evaluation.dimensions).forEach(([key, value]) => {
+                    const rawScore = value.score || 0;
+                    const weight = dimWeights[key] || 1;
+                    const contribution = (rawScore * weight).toFixed(1);
+                    const maxScore = dimMaxScores[key] || 10;
+                    html += `
+                        <div class="dimension-item">
+                            <div class="dimension-name">${dimNames[key] || key}</div>
+                            <div class="dimension-score">${contribution}/${maxScore}</div>
+                            <div class="dimension-reasoning">${value.reasoning || ''}</div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+            }
+
+            // 总体评价
+            if (data.evaluation?.overall_comment) {
+                html += '<div class="eval-section-title">💬 总体评价</div>';
+                html += `<div class="eval-text">${data.evaluation.overall_comment}</div>`;
+            }
+
+            // 优点
+            if (data.evaluation?.strengths?.length) {
+                html += '<div class="eval-section-title">✅ 优点</div>';
+                html += '<ul class="eval-list">';
+                data.evaluation.strengths.forEach(item => {
+                    html += `<li>${item}</li>`;
+                });
+                html += '</ul>';
+            }
+
+            // 缺点
+            if (data.evaluation?.weaknesses?.length) {
+                html += '<div class="eval-section-title">⚠️ 需改进之处</div>';
+                html += '<ul class="eval-list">';
+                data.evaluation.weaknesses.forEach(item => {
+                    html += `<li>${item}</li>`;
+                });
+                html += '</ul>';
+            }
+
+            // 建议
+            if (data.evaluation?.suggestions?.length) {
+                html += '<div class="eval-section-title">💡 改进建议</div>';
+                html += '<ul class="eval-list">';
+                data.evaluation.suggestions.forEach(item => {
+                    html += `<li>${item}</li>`;
+                });
+                html += '</ul>';
+            }
+
+            html += '</div>';
+            return html;
+        }
+
+        function closeModal() {
+            document.getElementById('evalModal').style.display = 'none';
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('evalModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
         }
 
         function switchTab(tabName) {
-            // 更新标签状态
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // 更新内容
+            // 隐藏所有tab内容
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
-            document.getElementById(tabName + 'Tab').classList.add('active');
-        }
 
-        function showScoreDetail(evaluator, evaluated) {
-            const score = currentData.matrix[evaluator][evaluated];
-            if (!score) return;
-
-            alert(`
-评估者: ${evaluator}
-被评估者: ${evaluated}
-
-平均分: ${score.average_score}
-
-各维度得分:
-- 准确性: ${score.dimensions.accuracy}
-- 完整性: ${score.dimensions.completeness}
-- 格式规范: ${score.dimensions.format}
-- 语言表达: ${score.dimensions.language}
-- 逻辑性: ${score.dimensions.logic}
-            `.trim());
-        }
-
-        function showLoading() {
-            document.querySelectorAll('.loading').forEach(el => {
-                el.style.display = 'block';
+            // 移除所有tab的active类
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
             });
+
+            // 显示选中的tab
+            document.getElementById(tabName + 'Tab').classList.add('active');
+
+            // 激活对应的tab按钮
+            event.target.classList.add('active');
         }
 
-        function showEmptyState() {
-            const container = document.getElementById('matrixContainer');
-            container.innerHTML = `
-                <div class="empty-state">
-                    <div class="empty-state-icon">📭</div>
-                    <h3>暂无评估数据</h3>
-                    <p>请先运行交叉评估脚本生成数据</p>
-                </div>
-            `;
+        function getShortModelName(model) {
+            return model
+                .replace('moonshotai_', '')
+                .replace('deepseek_', '')
+                .replace('-seed-1-6-251015', '');
         }
 
         function showError(message) {
-            const container = document.getElementById('matrixContainer');
-            container.innerHTML = `
-                <div class="error">
-                    <strong>错误:</strong> ${message}
+            document.getElementById('matrixContainer').innerHTML = `
+                <div style="text-align: center; padding: 40px; color: #f44336;">
+                    <h3>❌ 错误</h3>
+                    <p>${message}</p>
                 </div>
             `;
         }
 
-        function showInfo(message) {
-            // 简单的信息提示（可以用更好的UI组件替代）
-            console.log('Info:', message);
-        }
+        function toggleScoringStandard() {
+            const content = document.getElementById('scoringContent');
+            const toggle = document.getElementById('scoringToggle');
 
-        function updateLastUpdate() {
-            document.getElementById('lastUpdate').textContent = new Date().toLocaleString('zh-CN');
-        }
-
-        function exportData() {
-            if (!currentData) {
-                alert('暂无数据可导出');
-                return;
-            }
-
-            const dataStr = JSON.stringify(currentData, null, 2);
-            const dataBlob = new Blob([dataStr], {type: 'application/json'});
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `cross_evaluation_${new Date().getTime()}.json`;
-            link.click();
-            URL.revokeObjectURL(url);
+            content.classList.toggle('open');
+            toggle.classList.toggle('open');
         }
     </script>
 </body>

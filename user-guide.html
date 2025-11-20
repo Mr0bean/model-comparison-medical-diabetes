@@ -182,25 +182,6 @@
             color: #e83e8c;
         }
 
-        .back-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
 
         @media (max-width: 768px) {
             .content {
@@ -341,53 +322,78 @@
             <!-- 评分标准 -->
             <div class="section" id="standards">
                 <h2>📊 评分标准</h2>
-                <p>对5个维度进行评分，每个维度1-5星：</p>
+                <p>对3个维度进行评分，每个维度1-5星，系统自动转换为百分制（满分100分）：</p>
 
                 <table>
                     <thead>
                         <tr>
                             <th>维度</th>
-                            <th>说明</th>
+                            <th>评分要点</th>
                             <th>权重</th>
+                            <th>满分</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>准确性</strong></td>
-                            <td>诊断结果的准确性和正确性</td>
+                            <td><strong>① 准确性</strong></td>
+                            <td>
+                                <ul style="margin: 5px 0; padding-left: 20px;">
+                                    <li>是否与对话一致，没有添加或错误信息</li>
+                                    <li>数值准确（血糖、糖化、体重等）</li>
+                                    <li>药物准确（药名、剂量、用法）</li>
+                                    <li>时间轴准确（发病时间、就诊时间）</li>
+                                    <li>诊断和病程描述准确</li>
+                                    <li><strong>固定扣分项：不能把糖尿病写入既往史</strong></li>
+                                </ul>
+                            </td>
                             <td>40%</td>
+                            <td>40分<br>(5星×8)</td>
                         </tr>
                         <tr>
-                            <td><strong>完整性</strong></td>
-                            <td>诊断信息的全面性和详细程度</td>
-                            <td>20%</td>
+                            <td><strong>② 完整性</strong></td>
+                            <td>
+                                <ul style="margin: 5px 0; padding-left: 20px;">
+                                    <li><strong>主诉：</strong>症状 + 时间</li>
+                                    <li><strong>现病史：</strong>诊断、治疗变化、近期情况、并发症</li>
+                                    <li><strong>既往史：</strong>高血压/高血脂/冠心病等</li>
+                                    <li><strong>家族史：</strong>糖尿病家族史</li>
+                                    <li>每缺少一个重要模块扣2-3分</li>
+                                </ul>
+                            </td>
+                            <td>35%</td>
+                            <td>35分<br>(5星×7)</td>
                         </tr>
                         <tr>
-                            <td><strong>临床价值</strong></td>
-                            <td>对临床决策的实际指导价值</td>
-                            <td>20%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>结构性</strong></td>
-                            <td>诊断报告的逻辑性和组织性</td>
-                            <td>10%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>语言表达</strong></td>
-                            <td>专业术语使用和表达清晰度</td>
-                            <td>10%</td>
+                            <td><strong>③ 规范性</strong></td>
+                            <td>
+                                <ul style="margin: 5px 0; padding-left: 20px;">
+                                    <li><strong>医学术语：</strong>避免口语化表达</li>
+                                    <li><strong>结构清晰：</strong>模块齐全、顺序正确</li>
+                                    <li><strong>药物规范：</strong>药名、剂量、用法写法规范</li>
+                                    <li><strong>时间明确：</strong>时间描述清晰准确</li>
+                                </ul>
+                            </td>
+                            <td>25%</td>
+                            <td>25分<br>(5星×5)</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h3>评分建议</h3>
                 <ul>
-                    <li>⭐ (1星)：非常差</li>
-                    <li>⭐⭐ (2星)：较差</li>
-                    <li>⭐⭐⭐ (3星)：一般</li>
-                    <li>⭐⭐⭐⭐ (4星)：良好</li>
-                    <li>⭐⭐⭐⭐⭐ (5星)：优秀</li>
+                    <li>⭐ (1星)：非常差 - 有严重问题</li>
+                    <li>⭐⭐ (2星)：较差 - 有较多问题</li>
+                    <li>⭐⭐⭐ (3星)：一般 - 基本满足要求</li>
+                    <li>⭐⭐⭐⭐ (4星)：良好 - 表现出色</li>
+                    <li>⭐⭐⭐⭐⭐ (5星)：优秀 - 几乎完美</li>
                 </ul>
+
+                <div class="info-box" style="margin-top: 20px;">
+                    <strong>💡 总分计算：</strong><br>
+                    总分 = 准确性分数 + 完整性分数 + 规范性分数<br>
+                    = (准确性星级×8) + (完整性星级×7) + (规范性星级×5)<br>
+                    <strong>满分100分</strong>
+                </div>
             </div>
 
             <!-- 查看进度 -->
@@ -484,8 +490,6 @@
             </div>
         </div>
     </div>
-
-    <a href="index.html" class="back-button">← 返回主页</a>
 
     <script>
         // 平滑滚动
