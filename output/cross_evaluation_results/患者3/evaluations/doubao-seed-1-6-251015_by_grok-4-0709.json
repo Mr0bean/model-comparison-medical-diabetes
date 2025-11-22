@@ -1,0 +1,51 @@
+{
+  "patient": "患者3",
+  "generated_by": "doubao-seed-1-6-251015",
+  "evaluated_by": "grok-4-0709",
+  "report_content": "# doubao-seed-1-6-251015 - 患者3\n\n**模型**: doubao-seed-1-6-251015  \n**患者**: 患者3\n\n---\n\n## 主诉 (对话 1)\n\n发现血糖升高10余年，小便泡沫多2-3年，体重减轻5个月\n\n---\n\n## 现病史 (对话 2)\n\n10余年前因母亲患糖尿病（家族史）体检发现糖尿病，当时无口干、多饮、多尿等症状。现服用二甲双胍1片每日晨起口服、2片每晚睡前口服，血糖控制不佳；近期体检示糖化血红蛋白9.7%，空腹血糖10.1mmol/L；5个月内体重减轻至少4kg；伴泡沫尿2-3年，泡沫较多。无手脚麻木、视物模糊等症状。\n\n---\n\n## 既往史 (对话 3)\n\n- 有高血压史近20年，目前口服氯沙坦钾氢氯噻嗪，血压控制可（130/75mmHg）\n- 有高血脂史，口服阿托伐他汀\n- 有甲状腺结节史（甲状腺功能正常）\n\n---\n\n## 医疗总结 (对话 4)\n\n## 患者预问诊情况总结\n\n### 一、基本信息\n- **性别：** 男\n- **年龄：** 60-65岁\n- **身高：** 176.0cm\n- **体重：** 71.5kg\n\n### 二、病史信息\n- **主诉：** 糖尿病病史10余年，近期血糖控制不佳，伴体重减轻及小便泡沫多\n- **现病史：** 患者糖尿病病史10余年，初始因母亲有糖尿病（家族史）体检发现。目前规律服用二甲双胍（早1粒，晚2粒）。近期体检示糖化血红蛋白9.7，空腹血糖10.1。小便泡沫多2-3年，量较多。近5个月（5月底至10月底）体重减轻约4kg。无手脚麻木、视物模糊、冠心病、脑血管疾病、肾脏疾病、胰腺炎等症状。合并高血压近20年，服用氯沙坦钾氢氯噻嗪，血压控制在75/130；合并高血脂，服用阿托伐他汀；有甲状腺结节，甲状腺功能正常。\n- **既往病史：** 高血压病史近20年，服用氯沙坦钾氢氯噻嗪，血压控制在75/130；高血脂病史，服用阿托伐他汀；甲状腺结节病史，甲状腺功能正常\n- **药物过敏史：** 未提及\n- **家族病史：** 母亲及3个姐妹患糖尿病\n- **烟酒史：** 未提及\n\n---\n\n## 家族史 (对话 5)\n\n有糖尿病家族史；两代；母系；同胞<3>人糖尿病\n\n---\n\n",
+  "evaluation": {
+    "dimensions": {
+      "accuracy": {
+        "score": 3,
+        "reasoning": "The report has notable inaccuracies, particularly in blood pressure notation listed as '75/130' in the summary and present history, which reverses the standard systolic/diastolic order (should be 130/75), potentially causing confusion in hypertension assessment. The chief complaint is rephrased in the summary to include '近期血糖控制不佳', adding interpretive elements not in the original. Family history includes an odd '<3>' notation, possibly a formatting error but affecting precision. Core details like HbA1c 9.7%, blood sugar 10.1mmol/L, weight loss 4kg, and treatments (e.g., 二甲双胍 early 1, late 2) are accurate, but these errors reduce overall reliability. Suggestion: Always use standard medical conventions for vital signs and avoid rephrasing without source support to prevent misinterpretation."
+      },
+      "completeness": {
+        "score": 5,
+        "reasoning": "The report comprehensively includes all key information, such as basic demographics (age 60-65, male, 176cm, 71.5kg), present illness with treatments, lab values (HbA1c 9.7, blood sugar 10.1mmol/L), symptoms (foam urine 2-3 years, weight loss 4kg over 5 months), and denials (no numbness, no visual blur, no coronary disease). Past history details hypertension, dyslipidemia, and thyroid nodule fully. Family history specifies mother and 3 sisters with diabetes, and unmentioned items like allergies and smoking are noted as '未提及'. No significant omissions; it integrates nuances like foam quantity. Suggestion: Maintain this level by explicitly sourcing additions like '量较多' if from dialogues, ensuring exhaustive yet faithful coverage."
+      },
+      "format": {
+        "score": 4,
+        "reasoning": "The format adheres well to medical record standards with clear headings (e.g., ## 主诉), bullet points in past history, and structured summary sections (e.g., '一、基本信息' with bullets). Units are consistent (e.g., 'mmol/L', 'cm', 'kg', 'mmHg'). However, the family history section contains an unprocessed '<3>' tag, disrupting professionalism and readability, resembling raw data. Blood pressure notation, while incorrect, is consistently formatted. Overall, professional but marred by this artifact. Suggestion: Proofread and clean up any coding remnants like '<3>' to achieve full compliance with clean, normative病历书写 formats like those in EHR systems."
+      },
+      "language": {
+        "score": 4,
+        "reasoning": "Professional terminology is mostly accurate, such as '糖化血红蛋白9.7', '空腹血糖10.1mmol/L', '泡沫尿' (foamy urine), and '血压控制在75/130' (though factually wrong). Expressions are normative and objective (e.g., '否认...症状' for denials), maintaining formal tone. However, the reversed blood pressure phrasing misuses standard convention, and '<3>' in family history is non-normative. No grammatical errors; clear and concise. Advantages include precise treatment descriptions (e.g., '早1粒，晚2粒'). Suggestion: Correct technical misuses like blood pressure order and replace odd notations with standard phrasing to ensure fully normative medical language."
+      },
+      "logic": {
+        "score": 4,
+        "reasoning": "The structure is logically organized, flowing from chief complaint to detailed histories and a synthesized summary that groups related info (e.g., comorbidities in present and past sections). Connections are reasonable, linking family history to discovery and symptoms to diabetes control. However, the reversed blood pressure creates logical inconsistency (implying poor control if misread), and the summary's rephrased chief complaint shifts focus slightly. Family history's fragmented format (e.g., '两代；母系') lacks smooth integration. Overall, coherent but with minor disruptions. Suggestion: Align all sections for factual consistency and use paragraphs or bullets for complex details like family history to enhance clear, rational organization."
+      }
+    },
+    "overall_comment": "This medical report from the doubao-seed-1-6-251015 model is of good quality overall, providing a comprehensive and structured document that effectively captures patient 3's diabetes history, comorbidities, and recent changes like weight loss and foamy urine. It excels in completeness by including detailed denials, family history, and lab values, with logical flow supporting clinical review. However, accuracy is undermined by errors like reversed blood pressure notation and interpretive rephrasing of the chief complaint, which could lead to misunderstandings. Format and language are professional but affected by artifacts like '<3>' and technical misuses. As a complete report, it's useful for pre-consultation but requires better verification to ensure reliability. Strengths include thorough coverage and clear organization, outweighing weaknesses such as factual inaccuracies. Targeted improvements in standardization would make it an excellent medical AI tool.",
+    "strengths": [
+      "Comprehensive completeness with detailed symptoms and denials",
+      "Well-structured format enhancing readability",
+      "Mostly normative and precise language for medical details"
+    ],
+    "weaknesses": [
+      "Inaccuracies in blood pressure notation and rephrasing",
+      "Formatting artifacts in family history section"
+    ],
+    "suggestions": [
+      "Verify vital signs and notations against medical standards for accuracy",
+      "Clean up and standardize all sections to eliminate inconsistencies"
+    ]
+  },
+  "average_score": 4.0,
+  "metadata": {
+    "evaluation_timestamp": "2025-11-18T23:15:10.765846",
+    "evaluator_model": "grok-4-0709",
+    "evaluation_type": "complete_report",
+    "response_time_seconds": 48.13095784187317
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "patient": "患者7",
+  "generated_by": "doubao-seed-1-6-251015",
+  "evaluated_by": "grok-4-0709",
+  "report_content": "# doubao-seed-1-6-251015 - 患者7\n\n**模型**: doubao-seed-1-6-251015  \n**患者**: 患者7\n\n---\n\n## 主诉 (对话 1)\n\n发现血糖升高1-2年，体重减轻半年，双手麻木伴刺痛1年\n\n---\n\n## 现病史 (对话 2)\n\n1-2年前因血压高行体检时发现血糖升高，诊断为糖尿病。现予二甲双胍 qd po治疗，血糖控制不佳，空腹血糖15mmol/L，餐后血糖二十余mmol/L。半年内体重减轻十余斤，伴身体无力、睡眠不佳；双手麻木伴刺痛1年；有泡沫尿，无视物模糊。\n\n---\n\n## 既往史 (对话 3)\n\n既往史：\n- 有高血压史（具体病程不详，目前口服降压药，药物名称不详，经常换药）\n- 有局部缺钙史（具体病程不详）\n\n---\n\n## 医疗总结 (对话 4)\n\n## 患者预问诊情况总结\n\n### 一、基本信息\n- **性别：** 女\n- **年龄：** 45-50岁\n- **身高：** 173.0cm\n- **体重：** 80.6kg\n\n### 二、病史信息\n- **主诉：** 半年内体重减轻（具体数值未明确），伴睡眠不佳、全身乏力、双手麻木伴刺痛1年、脚抽筋（查见局部缺钙）、小便泡沫多；确诊糖尿病1-2年，血糖控制不佳，拟住院调理。\n- **现病史：** 患者于2年前（前年或去年）因体检发现血压高时确诊糖尿病，目前服用二甲双胍每日早上1粒，未使用胰岛素。近期空腹血糖约15mmol/L，餐后血糖约20+mmol/L，血糖控制不佳。半年来体重减轻（具体数值未明确），伴睡眠不好、全身乏力；双手麻木伴刺痛症状持续1年；有脚抽筋表现，查见局部缺钙；小便泡沫多，无明显视物模糊。睡眠时有打呼噜现象。\n- **既往病史：** 有高血压病史（具体年限未提及），目前服用降压药但药物名称不固定（经常换药）；否认血脂异常、冠心病、脑血管疾病、肾脏病、甲亢、胰腺炎等病史。\n- **药物过敏史：** 未提及\n- **家族病史：** 母亲患糖尿病\n- **烟酒史：** 未提及\n\n---\n\n## 家族史 (对话 5)\n\n有糖尿病家族史；两代；母系\n\n---\n\n",
+  "evaluation": {
+    "dimensions": {
+      "accuracy": {
+        "score": 2,
+        "reasoning": "The report includes several inaccuracies through unsubstantiated additions and assumptions. For instance, the present history links diabetes discovery to high blood pressure ('因血压高行体检时发现'), which is not explicitly stated in the chief complaint or other sections, potentially misrepresenting causality. The summary and past history introduce '脚抽筋（查见局部缺钙）' (foot cramps with local calcium deficiency) and '睡眠时有打呼噜现象' (snoring during sleep), absent from the present illness details, risking fabrication. Blood sugar values (15mmol/L fasting, 20+mmol/L postprandial) and weight loss ('十余斤') are accurate, but these additions compromise overall reliability. Family history is consistent. Suggestion: Eliminate all inferred or added details by strictly adhering to dialogue content, using verification algorithms to flag unsupported information."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The report covers key elements comprehensively, including chief complaint with timelines for elevated blood sugar, weight loss, and hand numbness; present history detailing treatment (metformin), symptoms (foam urine, poor sleep, weakness), and blood sugar levels; past history of hypertension with medication notes; and family history specifying maternal lineage. Basic info and unmentioned aspects like allergies are included. However, over-completeness via additions like calcium deficiency and snoring introduces extraneous details, while specifics like exact weight loss remain '未明确' (unclear). Strengths: Thorough integration of core info. Suggestion: Balance by noting only confirmed details and using 'not reported' for gaps to avoid dilution from irrelevancies."
+      },
+      "format": {
+        "score": 5,
+        "reasoning": "Formatting is excellent, conforming to medical record standards with clear markdown sections, headers, and a structured summary using numbered headings and bullets for readability. Consistent units (e.g., mmol/L, kg, cm) and logical progression from dialogues to summary enhance professionalism. No inconsistencies in layout or spacing. Advantages: Easy to navigate, akin to clinical documentation. Suggestion: Maintain this high standard, perhaps adding color-coding or highlights for critical values like blood sugar to improve quick-reference utility in practice."
+      },
+      "language": {
+        "score": 5,
+        "reasoning": "Language is precise and normative, accurately using professional terms like '二甲双胍' (metformin), '空腹血糖' (fasting blood glucose), and '双手麻木伴刺痛' (bilateral hand numbness with tingling). Expressions are clear and formal, e.g., '血糖控制不佳' (poor blood sugar control), with no informal phrasing or errors. Consistent tone throughout sections. Strengths: Medically appropriate and concise. Suggestion: Continue this quality, incorporating standardized dosing notations (e.g., 500mg qd if specified) for even greater precision without altering the normative style."
+      },
+      "logic": {
+        "score": 3,
+        "reasoning": "The structure is generally logical, with sequential sections building from dialogues to a grouped summary under basic and history categories. Family history flows consistently. However, logic is undermined by additions like calcium deficiency in past history and snoring in present history summary, creating discontinuities and potential confusion as they lack prior foundation. The causal link between hypertension and diabetes discovery disrupts narrative coherence. Overall, it's reasonable but flawed. Suggestion: Ensure all elements logically derive from preceding content, using internal mapping to align sections and prevent disjointed expansions."
+      }
+    },
+    "overall_comment": "This medical report from doubao-seed-1-6-251015 for patient 7 demonstrates strong formatting and language, providing a well-structured and professionally worded document that covers essential details like blood sugar control issues and symptoms. Completeness is good in integrating core information, but the overall quality is compromised by low accuracy from added elements such as foot cramps, calcium deficiency, and snoring, which are not supported by the dialogues, and illogical causal links like diabetes due to hypertension. These issues disrupt logic and reduce trustworthiness, making it generally poor for clinical use. Strengths include readable format and precise terminology, positioning it as potentially useful with revisions. Weaknesses center on fidelity and coherence, highlighting a need for better source adherence. With targeted improvements, it could become a reliable AI tool, but currently, it falls short of high standards in medical reporting.",
+    "strengths": [
+      "Excellent formatting with clear, organized structure",
+      "Precise and professional language throughout",
+      "Good completeness in covering key histories and symptoms"
+    ],
+    "weaknesses": [
+      "Significant inaccuracies from unsubstantiated additions",
+      "Logical disruptions due to unsupported causal links"
+    ],
+    "suggestions": [
+      "Confine content to explicitly mentioned dialogue facts",
+      "Review and align all sections for consistent narrative flow"
+    ]
+  },
+  "average_score": 3.8,
+  "metadata": {
+    "evaluation_timestamp": "2025-11-19T00:04:39.815901",
+    "evaluator_model": "grok-4-0709",
+    "evaluation_type": "complete_report",
+    "response_time_seconds": 48.371126890182495
+  }
+}

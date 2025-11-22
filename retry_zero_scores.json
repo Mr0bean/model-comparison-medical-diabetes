@@ -1,0 +1,482 @@
+[
+  {
+    "patient": "患者1",
+    "model": "gpt-5.1",
+    "evaluator": "Baichuan-M2",
+    "file": "output/cross_evaluation_results/患者1/evaluations/gpt-5.1_by_Baichuan-M2.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "Baichuan-M2",
+    "file": "output/cross_evaluation_results/患者1/evaluations/deepseek_deepseek-v3.1_by_Baichuan-M2.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "doubao-seed-1-6-251015",
+    "evaluator": "Baichuan-M2",
+    "file": "output/cross_evaluation_results/患者1/evaluations/doubao-seed-1-6-251015_by_Baichuan-M2.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者1/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者1/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "Baichuan-M2",
+    "evaluator": "Baichuan-M2",
+    "file": "output/cross_evaluation_results/患者1/evaluations/Baichuan-M2_by_Baichuan-M2.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "gemini-2.5-pro",
+    "evaluator": "Baichuan-M2",
+    "file": "output/cross_evaluation_results/患者1/evaluations/gemini-2.5-pro_by_Baichuan-M2.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "gpt-5.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者1/evaluations/gpt-5.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "grok-4-0709",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者1/evaluations/grok-4-0709_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "doubao-seed-1-6-251015",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者1/evaluations/doubao-seed-1-6-251015_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "gemini-2.5-pro",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者1/evaluations/gemini-2.5-pro_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者1/evaluations/moonshotai_kimi-k2-0905_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者1",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者1/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者10",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者10/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者10",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者10/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者10",
+    "model": "gpt-5.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者10/evaluations/gpt-5.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者10",
+    "model": "grok-4-0709",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者10/evaluations/grok-4-0709_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者10",
+    "model": "doubao-seed-1-6-251015",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者10/evaluations/doubao-seed-1-6-251015_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者10",
+    "model": "gemini-2.5-pro",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者10/evaluations/gemini-2.5-pro_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者10",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者10/evaluations/moonshotai_kimi-k2-0905_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者10",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者10/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者2/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者2/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "Baichuan-M2",
+    "evaluator": "Baichuan-M2",
+    "file": "output/cross_evaluation_results/患者2/evaluations/Baichuan-M2_by_Baichuan-M2.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "gpt-5.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者2/evaluations/gpt-5.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "grok-4-0709",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者2/evaluations/grok-4-0709_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "doubao-seed-1-6-251015",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者2/evaluations/doubao-seed-1-6-251015_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "gemini-2.5-pro",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者2/evaluations/gemini-2.5-pro_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者2/evaluations/moonshotai_kimi-k2-0905_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者2",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者2/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者3",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者3/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者3",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者3/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者3",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者3/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者4",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者4/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者4",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者4/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "moonshotai_kimi-k2-0905",
+    "file": "output/cross_evaluation_results/患者5/evaluations/moonshotai_kimi-k2-0905_by_moonshotai_kimi-k2-0905.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者5/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者5/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "gpt-5.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者5/evaluations/gpt-5.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "grok-4-0709",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者5/evaluations/grok-4-0709_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "doubao-seed-1-6-251015",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者5/evaluations/doubao-seed-1-6-251015_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "gemini-2.5-pro",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者5/evaluations/gemini-2.5-pro_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者5/evaluations/moonshotai_kimi-k2-0905_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者5",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者5/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者6",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者6/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者6",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者6/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者6",
+    "model": "gpt-5.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者6/evaluations/gpt-5.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者6",
+    "model": "grok-4-0709",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者6/evaluations/grok-4-0709_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者6",
+    "model": "doubao-seed-1-6-251015",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者6/evaluations/doubao-seed-1-6-251015_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者6",
+    "model": "gemini-2.5-pro",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者6/evaluations/gemini-2.5-pro_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者6",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者6/evaluations/moonshotai_kimi-k2-0905_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者6",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者6/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者7/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者7/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "grok-4-0709",
+    "evaluator": "grok-4-0709",
+    "file": "output/cross_evaluation_results/患者7/evaluations/grok-4-0709_by_grok-4-0709.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "gpt-5.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者7/evaluations/gpt-5.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "grok-4-0709",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者7/evaluations/grok-4-0709_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "gemini-2.5-pro",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者7/evaluations/gemini-2.5-pro_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者7/evaluations/moonshotai_kimi-k2-0905_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者7/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "qwen3-max",
+    "evaluator": "grok-4-0709",
+    "file": "output/cross_evaluation_results/患者7/evaluations/qwen3-max_by_grok-4-0709.json"
+  },
+  {
+    "patient": "患者7",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "grok-4-0709",
+    "file": "output/cross_evaluation_results/患者7/evaluations/moonshotai_kimi-k2-0905_by_grok-4-0709.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者8/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者8/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "Baichuan-M2",
+    "evaluator": "Baichuan-M2",
+    "file": "output/cross_evaluation_results/患者8/evaluations/Baichuan-M2_by_Baichuan-M2.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "gpt-5.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者8/evaluations/gpt-5.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "grok-4-0709",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者8/evaluations/grok-4-0709_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "doubao-seed-1-6-251015",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者8/evaluations/doubao-seed-1-6-251015_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "gemini-2.5-pro",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者8/evaluations/gemini-2.5-pro_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者8/evaluations/moonshotai_kimi-k2-0905_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者8",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者8/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "Baichuan-M2",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者9/evaluations/Baichuan-M2_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "grok-4-0709",
+    "file": "output/cross_evaluation_results/患者9/evaluations/deepseek_deepseek-v3.1_by_grok-4-0709.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "deepseek_deepseek-v3.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者9/evaluations/deepseek_deepseek-v3.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "gpt-5.1",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者9/evaluations/gpt-5.1_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "grok-4-0709",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者9/evaluations/grok-4-0709_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "doubao-seed-1-6-251015",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者9/evaluations/doubao-seed-1-6-251015_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "gemini-2.5-pro",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者9/evaluations/gemini-2.5-pro_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "moonshotai_kimi-k2-0905",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者9/evaluations/moonshotai_kimi-k2-0905_by_gemini-2.5-pro.json"
+  },
+  {
+    "patient": "患者9",
+    "model": "qwen3-max",
+    "evaluator": "gemini-2.5-pro",
+    "file": "output/cross_evaluation_results/患者9/evaluations/qwen3-max_by_gemini-2.5-pro.json"
+  }
+]

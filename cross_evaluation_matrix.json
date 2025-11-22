@@ -1,0 +1,1266 @@
+{
+  "models": [
+    "Baichuan-M2",
+    "deepseek_deepseek-v3.1",
+    "doubao-seed-1-6-251015",
+    "gemini-2.5-pro",
+    "gpt-5.1",
+    "grok-4-0709",
+    "moonshotai_kimi-k2-0905",
+    "qwen3-max"
+  ],
+  "patients": [
+    "患者1",
+    "患者2",
+    "患者3",
+    "患者4",
+    "患者5",
+    "患者6",
+    "患者7",
+    "患者8",
+    "患者9",
+    "患者10"
+  ],
+  "matrices": {
+    "患者1": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 74,
+        "gpt-5.1": 83,
+        "deepseek_deepseek-v3.1": 79,
+        "Baichuan-M2": 50,
+        "doubao-seed-1-6-251015": 72,
+        "qwen3-max": 90,
+        "gemini-2.5-pro": 62,
+        "grok-4-0709": 77
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 50,
+        "gpt-5.1": 83,
+        "doubao-seed-1-6-251015": 72,
+        "grok-4-0709": 82,
+        "gemini-2.5-pro": 67,
+        "qwen3-max": 81,
+        "deepseek_deepseek-v3.1": 77,
+        "moonshotai_kimi-k2-0905": 74
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 80,
+        "deepseek_deepseek-v3.1": 69,
+        "gpt-5.1": 75,
+        "qwen3-max": 74,
+        "Baichuan-M2": 71,
+        "gemini-2.5-pro": 55,
+        "doubao-seed-1-6-251015": 67,
+        "grok-4-0709": 77
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 85,
+        "qwen3-max": 81,
+        "gpt-5.1": 83,
+        "grok-4-0709": 88,
+        "gemini-2.5-pro": 67,
+        "moonshotai_kimi-k2-0905": 71,
+        "doubao-seed-1-6-251015": 72,
+        "Baichuan-M2": 71
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 67,
+        "qwen3-max": 82,
+        "Baichuan-M2": 60,
+        "moonshotai_kimi-k2-0905": 80,
+        "deepseek_deepseek-v3.1": 77,
+        "gemini-2.5-pro": 53,
+        "grok-4-0709": 69,
+        "gpt-5.1": 83
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 67,
+        "gemini-2.5-pro": 52,
+        "deepseek_deepseek-v3.1": 65,
+        "Baichuan-M2": 57,
+        "moonshotai_kimi-k2-0905": 56,
+        "doubao-seed-1-6-251015": 60,
+        "qwen3-max": 72,
+        "gpt-5.1": 61
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 50,
+        "grok-4-0709": 69,
+        "moonshotai_kimi-k2-0905": 71,
+        "doubao-seed-1-6-251015": 67,
+        "gemini-2.5-pro": 65,
+        "deepseek_deepseek-v3.1": 73,
+        "qwen3-max": 74,
+        "gpt-5.1": 73
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 50,
+        "grok-4-0709": 96,
+        "doubao-seed-1-6-251015": 72,
+        "moonshotai_kimi-k2-0905": 71,
+        "deepseek_deepseek-v3.1": 85,
+        "gemini-2.5-pro": 66,
+        "qwen3-max": 74,
+        "gpt-5.1": 73
+      }
+    },
+    "患者2": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 84,
+        "gpt-5.1": 95,
+        "deepseek_deepseek-v3.1": 96,
+        "Baichuan-M2": 60,
+        "doubao-seed-1-6-251015": 94,
+        "qwen3-max": 92,
+        "gemini-2.5-pro": 63,
+        "grok-4-0709": 91
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 51,
+        "gpt-5.1": 87,
+        "doubao-seed-1-6-251015": 76,
+        "grok-4-0709": 81,
+        "gemini-2.5-pro": 63,
+        "qwen3-max": 84,
+        "deepseek_deepseek-v3.1": 73,
+        "moonshotai_kimi-k2-0905": 84
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 84,
+        "deepseek_deepseek-v3.1": 52,
+        "gpt-5.1": 75,
+        "qwen3-max": 87,
+        "Baichuan-M2": 71,
+        "gemini-2.5-pro": 43,
+        "doubao-seed-1-6-251015": 76,
+        "grok-4-0709": 61
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 52,
+        "qwen3-max": 74,
+        "gpt-5.1": 87,
+        "grok-4-0709": 81,
+        "gemini-2.5-pro": 55,
+        "moonshotai_kimi-k2-0905": 84,
+        "doubao-seed-1-6-251015": 76,
+        "Baichuan-M2": 71
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 76,
+        "qwen3-max": 87,
+        "Baichuan-M2": 71,
+        "moonshotai_kimi-k2-0905": 84,
+        "deepseek_deepseek-v3.1": 52,
+        "gemini-2.5-pro": 50,
+        "grok-4-0709": 81,
+        "gpt-5.1": 87
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 75,
+        "gemini-2.5-pro": 52,
+        "deepseek_deepseek-v3.1": 73,
+        "Baichuan-M2": 50,
+        "moonshotai_kimi-k2-0905": 69,
+        "doubao-seed-1-6-251015": 72,
+        "qwen3-max": 69,
+        "gpt-5.1": 67
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 51,
+        "grok-4-0709": 77,
+        "moonshotai_kimi-k2-0905": 69,
+        "doubao-seed-1-6-251015": 72,
+        "gemini-2.5-pro": 63,
+        "deepseek_deepseek-v3.1": 69,
+        "qwen3-max": 69,
+        "gpt-5.1": 73
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 60,
+        "grok-4-0709": 94,
+        "doubao-seed-1-6-251015": 72,
+        "moonshotai_kimi-k2-0905": 84,
+        "deepseek_deepseek-v3.1": 89,
+        "gemini-2.5-pro": 59,
+        "qwen3-max": 84,
+        "gpt-5.1": 91
+      }
+    },
+    "患者3": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 89,
+        "gpt-5.1": 95,
+        "deepseek_deepseek-v3.1": 96,
+        "Baichuan-M2": 60,
+        "doubao-seed-1-6-251015": 84,
+        "qwen3-max": 79,
+        "gemini-2.5-pro": 85,
+        "grok-4-0709": 90
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 51,
+        "gpt-5.1": 83,
+        "doubao-seed-1-6-251015": 81,
+        "grok-4-0709": 77,
+        "gemini-2.5-pro": 84,
+        "qwen3-max": 84,
+        "deepseek_deepseek-v3.1": 73,
+        "moonshotai_kimi-k2-0905": 77
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 77,
+        "deepseek_deepseek-v3.1": 85,
+        "gpt-5.1": 89,
+        "qwen3-max": 92,
+        "Baichuan-M2": 71,
+        "gemini-2.5-pro": 88,
+        "doubao-seed-1-6-251015": 95,
+        "grok-4-0709": 77
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 52,
+        "qwen3-max": 76,
+        "gpt-5.1": 80,
+        "grok-4-0709": 74,
+        "gemini-2.5-pro": 67,
+        "moonshotai_kimi-k2-0905": 71,
+        "doubao-seed-1-6-251015": 81,
+        "Baichuan-M2": 51
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 79,
+        "qwen3-max": 79,
+        "Baichuan-M2": 71,
+        "moonshotai_kimi-k2-0905": 77,
+        "deepseek_deepseek-v3.1": 70,
+        "gemini-2.5-pro": 55,
+        "grok-4-0709": 77,
+        "gpt-5.1": 83
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 62,
+        "gemini-2.5-pro": 52,
+        "deepseek_deepseek-v3.1": 81,
+        "Baichuan-M2": 66,
+        "moonshotai_kimi-k2-0905": 71,
+        "doubao-seed-1-6-251015": 72,
+        "qwen3-max": 81,
+        "gpt-5.1": 80
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 66,
+        "grok-4-0709": 88,
+        "moonshotai_kimi-k2-0905": 77,
+        "doubao-seed-1-6-251015": 72,
+        "gemini-2.5-pro": 55,
+        "deepseek_deepseek-v3.1": 68,
+        "qwen3-max": 76,
+        "gpt-5.1": 80
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 60,
+        "grok-4-0709": 79,
+        "doubao-seed-1-6-251015": 91,
+        "moonshotai_kimi-k2-0905": 71,
+        "deepseek_deepseek-v3.1": 70,
+        "gemini-2.5-pro": 83,
+        "qwen3-max": 81,
+        "gpt-5.1": 95
+      }
+    },
+    "患者4": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 77,
+        "gpt-5.1": 88,
+        "deepseek_deepseek-v3.1": 90,
+        "Baichuan-M2": 60,
+        "doubao-seed-1-6-251015": 100,
+        "qwen3-max": 92,
+        "gemini-2.5-pro": 79,
+        "grok-4-0709": 94
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 60,
+        "gpt-5.1": 90,
+        "doubao-seed-1-6-251015": 100,
+        "grok-4-0709": 81,
+        "gemini-2.5-pro": 82,
+        "qwen3-max": 92,
+        "deepseek_deepseek-v3.1": 77,
+        "moonshotai_kimi-k2-0905": 77
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 77,
+        "deepseek_deepseek-v3.1": 63,
+        "gpt-5.1": 83,
+        "qwen3-max": 79,
+        "Baichuan-M2": 51,
+        "gemini-2.5-pro": 54,
+        "doubao-seed-1-6-251015": 48,
+        "grok-4-0709": 76
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 54,
+        "qwen3-max": 76,
+        "gpt-5.1": 83,
+        "grok-4-0709": 81,
+        "gemini-2.5-pro": 54,
+        "moonshotai_kimi-k2-0905": 77,
+        "doubao-seed-1-6-251015": 84,
+        "Baichuan-M2": 60
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 64,
+        "qwen3-max": 87,
+        "Baichuan-M2": 51,
+        "moonshotai_kimi-k2-0905": 77,
+        "deepseek_deepseek-v3.1": 83,
+        "gemini-2.5-pro": 46,
+        "grok-4-0709": 76,
+        "gpt-5.1": 88
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 67,
+        "gemini-2.5-pro": 45,
+        "deepseek_deepseek-v3.1": 59,
+        "Baichuan-M2": 51,
+        "moonshotai_kimi-k2-0905": 66,
+        "doubao-seed-1-6-251015": 48,
+        "qwen3-max": 54,
+        "gpt-5.1": 63
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 62,
+        "moonshotai_kimi-k2-0905": 66,
+        "doubao-seed-1-6-251015": 56,
+        "gemini-2.5-pro": 55,
+        "deepseek_deepseek-v3.1": 50,
+        "qwen3-max": 61,
+        "gpt-5.1": 55
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 60,
+        "grok-4-0709": 100,
+        "doubao-seed-1-6-251015": 86,
+        "moonshotai_kimi-k2-0905": 77,
+        "deepseek_deepseek-v3.1": 90,
+        "gemini-2.5-pro": 96,
+        "qwen3-max": 92,
+        "gpt-5.1": 89
+      }
+    },
+    "患者5": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 82,
+        "gpt-5.1": 91,
+        "deepseek_deepseek-v3.1": 81,
+        "Baichuan-M2": 51,
+        "doubao-seed-1-6-251015": 71,
+        "qwen3-max": 81,
+        "gemini-2.5-pro": 55,
+        "grok-4-0709": 92
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 51,
+        "gpt-5.1": 92,
+        "doubao-seed-1-6-251015": 71,
+        "grok-4-0709": 92,
+        "gemini-2.5-pro": 63,
+        "qwen3-max": 84,
+        "deepseek_deepseek-v3.1": 88,
+        "moonshotai_kimi-k2-0905": 82
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 71,
+        "deepseek_deepseek-v3.1": 72,
+        "gpt-5.1": 67,
+        "qwen3-max": 69,
+        "Baichuan-M2": 51,
+        "gemini-2.5-pro": 40,
+        "doubao-seed-1-6-251015": 63,
+        "grok-4-0709": 61
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 67,
+        "qwen3-max": 74,
+        "gpt-5.1": 75,
+        "grok-4-0709": 61,
+        "gemini-2.5-pro": 60,
+        "moonshotai_kimi-k2-0905": 82,
+        "doubao-seed-1-6-251015": 63,
+        "Baichuan-M2": 51
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 63,
+        "qwen3-max": 74,
+        "Baichuan-M2": 51,
+        "moonshotai_kimi-k2-0905": 82,
+        "deepseek_deepseek-v3.1": 81,
+        "gemini-2.5-pro": 50,
+        "grok-4-0709": 61,
+        "gpt-5.1": 83
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 60,
+        "gemini-2.5-pro": 36,
+        "deepseek_deepseek-v3.1": 69,
+        "Baichuan-M2": 51,
+        "moonshotai_kimi-k2-0905": 54,
+        "doubao-seed-1-6-251015": 61,
+        "qwen3-max": 69,
+        "gpt-5.1": 69
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 51,
+        "grok-4-0709": 87,
+        "moonshotai_kimi-k2-0905": 62,
+        "doubao-seed-1-6-251015": 63,
+        "gemini-2.5-pro": 47,
+        "deepseek_deepseek-v3.1": 89,
+        "qwen3-max": 74,
+        "gpt-5.1": 75
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 51,
+        "grok-4-0709": 98,
+        "doubao-seed-1-6-251015": 71,
+        "moonshotai_kimi-k2-0905": 82,
+        "deepseek_deepseek-v3.1": 85,
+        "gemini-2.5-pro": 64,
+        "qwen3-max": 96,
+        "gpt-5.1": 91
+      }
+    },
+    "患者6": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 82,
+        "gpt-5.1": 91,
+        "deepseek_deepseek-v3.1": 75,
+        "Baichuan-M2": 43,
+        "doubao-seed-1-6-251015": 71,
+        "qwen3-max": 92,
+        "gemini-2.5-pro": 67,
+        "grok-4-0709": 92
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 43,
+        "gpt-5.1": 100,
+        "doubao-seed-1-6-251015": 71,
+        "grok-4-0709": 84,
+        "gemini-2.5-pro": 59,
+        "qwen3-max": 84,
+        "deepseek_deepseek-v3.1": 88,
+        "moonshotai_kimi-k2-0905": 82
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 82,
+        "deepseek_deepseek-v3.1": 80,
+        "gpt-5.1": 91,
+        "qwen3-max": 92,
+        "Baichuan-M2": 43,
+        "gemini-2.5-pro": 59,
+        "doubao-seed-1-6-251015": 71,
+        "grok-4-0709": 94
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 69,
+        "qwen3-max": 61,
+        "gpt-5.1": 89,
+        "grok-4-0709": 92,
+        "gemini-2.5-pro": 51,
+        "moonshotai_kimi-k2-0905": 82,
+        "doubao-seed-1-6-251015": 63,
+        "Baichuan-M2": 43
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 63,
+        "qwen3-max": 61,
+        "Baichuan-M2": 43,
+        "moonshotai_kimi-k2-0905": 82,
+        "deepseek_deepseek-v3.1": 67,
+        "gemini-2.5-pro": 52,
+        "grok-4-0709": 100,
+        "gpt-5.1": 83
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 72,
+        "gemini-2.5-pro": 52,
+        "deepseek_deepseek-v3.1": 74,
+        "Baichuan-M2": 51,
+        "moonshotai_kimi-k2-0905": 82,
+        "doubao-seed-1-6-251015": 63,
+        "qwen3-max": 61,
+        "gpt-5.1": 71
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 73,
+        "moonshotai_kimi-k2-0905": 82,
+        "doubao-seed-1-6-251015": 63,
+        "gemini-2.5-pro": 64,
+        "deepseek_deepseek-v3.1": 65,
+        "qwen3-max": 66,
+        "gpt-5.1": 59
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 92,
+        "doubao-seed-1-6-251015": 63,
+        "moonshotai_kimi-k2-0905": 82,
+        "deepseek_deepseek-v3.1": 69,
+        "gemini-2.5-pro": 64,
+        "qwen3-max": 81,
+        "gpt-5.1": 88
+      }
+    },
+    "患者7": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 82,
+        "gpt-5.1": 95,
+        "deepseek_deepseek-v3.1": 75,
+        "Baichuan-M2": 43,
+        "doubao-seed-1-6-251015": 48,
+        "qwen3-max": 81,
+        "gemini-2.5-pro": 51,
+        "grok-4-0709": 81
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 43,
+        "gpt-5.1": 80,
+        "doubao-seed-1-6-251015": 48,
+        "grok-4-0709": 86,
+        "gemini-2.5-pro": 59,
+        "qwen3-max": 84,
+        "deepseek_deepseek-v3.1": 80,
+        "moonshotai_kimi-k2-0905": 82
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 62,
+        "deepseek_deepseek-v3.1": 61,
+        "gpt-5.1": 74,
+        "qwen3-max": 63,
+        "Baichuan-M2": 43,
+        "gemini-2.5-pro": 40,
+        "doubao-seed-1-6-251015": 48,
+        "grok-4-0709": 61
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 69,
+        "qwen3-max": 61,
+        "gpt-5.1": 72,
+        "grok-4-0709": 72,
+        "gemini-2.5-pro": 40,
+        "moonshotai_kimi-k2-0905": 82,
+        "doubao-seed-1-6-251015": 48,
+        "Baichuan-M2": 43
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 48,
+        "qwen3-max": 61,
+        "Baichuan-M2": 43,
+        "moonshotai_kimi-k2-0905": 62,
+        "deepseek_deepseek-v3.1": 72,
+        "gemini-2.5-pro": 36,
+        "grok-4-0709": 61,
+        "gpt-5.1": 74
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 66,
+        "gemini-2.5-pro": 36,
+        "deepseek_deepseek-v3.1": 49,
+        "Baichuan-M2": 43,
+        "moonshotai_kimi-k2-0905": 62,
+        "doubao-seed-1-6-251015": 48,
+        "qwen3-max": 51,
+        "gpt-5.1": 59
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 68,
+        "moonshotai_kimi-k2-0905": 62,
+        "doubao-seed-1-6-251015": 48,
+        "gemini-2.5-pro": 55,
+        "deepseek_deepseek-v3.1": 56,
+        "qwen3-max": 63,
+        "gpt-5.1": 75
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 73,
+        "doubao-seed-1-6-251015": 48,
+        "moonshotai_kimi-k2-0905": 62,
+        "deepseek_deepseek-v3.1": 69,
+        "gemini-2.5-pro": 72,
+        "qwen3-max": 75,
+        "gpt-5.1": 72
+      }
+    },
+    "患者8": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 86,
+        "gpt-5.1": 83,
+        "deepseek_deepseek-v3.1": 82,
+        "Baichuan-M2": 43,
+        "doubao-seed-1-6-251015": 68,
+        "qwen3-max": 68,
+        "gemini-2.5-pro": 62,
+        "grok-4-0709": 89
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 43,
+        "gpt-5.1": 83,
+        "doubao-seed-1-6-251015": 55,
+        "grok-4-0709": 96,
+        "gemini-2.5-pro": 59,
+        "qwen3-max": 68,
+        "deepseek_deepseek-v3.1": 82,
+        "moonshotai_kimi-k2-0905": 78
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 86,
+        "deepseek_deepseek-v3.1": 88,
+        "gpt-5.1": 83,
+        "qwen3-max": 68,
+        "Baichuan-M2": 43,
+        "gemini-2.5-pro": 39,
+        "doubao-seed-1-6-251015": 55,
+        "grok-4-0709": 70
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 72,
+        "qwen3-max": 68,
+        "gpt-5.1": 83,
+        "grok-4-0709": 83,
+        "gemini-2.5-pro": 59,
+        "moonshotai_kimi-k2-0905": 78,
+        "doubao-seed-1-6-251015": 55,
+        "Baichuan-M2": 43
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 55,
+        "qwen3-max": 68,
+        "Baichuan-M2": 43,
+        "moonshotai_kimi-k2-0905": 84,
+        "deepseek_deepseek-v3.1": 72,
+        "gemini-2.5-pro": 39,
+        "grok-4-0709": 70,
+        "gpt-5.1": 83
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 71,
+        "gemini-2.5-pro": 36,
+        "deepseek_deepseek-v3.1": 69,
+        "Baichuan-M2": 50,
+        "moonshotai_kimi-k2-0905": 49,
+        "doubao-seed-1-6-251015": 63,
+        "qwen3-max": 54,
+        "gpt-5.1": 63
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 62,
+        "moonshotai_kimi-k2-0905": 57,
+        "doubao-seed-1-6-251015": 52,
+        "gemini-2.5-pro": 50,
+        "deepseek_deepseek-v3.1": 75,
+        "qwen3-max": 51,
+        "gpt-5.1": 55
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 87,
+        "doubao-seed-1-6-251015": 76,
+        "moonshotai_kimi-k2-0905": 81,
+        "deepseek_deepseek-v3.1": 85,
+        "gemini-2.5-pro": 60,
+        "qwen3-max": 76,
+        "gpt-5.1": 94
+      }
+    },
+    "患者9": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 84,
+        "gpt-5.1": 93,
+        "deepseek_deepseek-v3.1": 100,
+        "Baichuan-M2": 43,
+        "doubao-seed-1-6-251015": 63,
+        "qwen3-max": 83,
+        "gemini-2.5-pro": 63,
+        "grok-4-0709": 96
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 40,
+        "gpt-5.1": 100,
+        "doubao-seed-1-6-251015": 73,
+        "grok-4-0709": 88,
+        "gemini-2.5-pro": 71,
+        "qwen3-max": 70,
+        "deepseek_deepseek-v3.1": 75,
+        "moonshotai_kimi-k2-0905": 81
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 86,
+        "deepseek_deepseek-v3.1": 72,
+        "gpt-5.1": 83,
+        "qwen3-max": 90,
+        "Baichuan-M2": 40,
+        "gemini-2.5-pro": 68,
+        "doubao-seed-1-6-251015": 75,
+        "grok-4-0709": 72
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 85,
+        "qwen3-max": 83,
+        "gpt-5.1": 87,
+        "grok-4-0709": 90,
+        "gemini-2.5-pro": 78,
+        "moonshotai_kimi-k2-0905": 84,
+        "doubao-seed-1-6-251015": 73,
+        "Baichuan-M2": 40
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 63,
+        "qwen3-max": 90,
+        "Baichuan-M2": 40,
+        "moonshotai_kimi-k2-0905": 86,
+        "deepseek_deepseek-v3.1": 79,
+        "gemini-2.5-pro": 59,
+        "grok-4-0709": 72,
+        "gpt-5.1": 95
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 76,
+        "gemini-2.5-pro": 47,
+        "deepseek_deepseek-v3.1": 85,
+        "Baichuan-M2": 43,
+        "moonshotai_kimi-k2-0905": 75,
+        "doubao-seed-1-6-251015": 55,
+        "qwen3-max": 66,
+        "gpt-5.1": 75
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 89,
+        "moonshotai_kimi-k2-0905": 84,
+        "doubao-seed-1-6-251015": 80,
+        "gemini-2.5-pro": 68,
+        "deepseek_deepseek-v3.1": 100,
+        "qwen3-max": 90,
+        "gpt-5.1": 95
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 59,
+        "doubao-seed-1-6-251015": 52,
+        "moonshotai_kimi-k2-0905": 75,
+        "deepseek_deepseek-v3.1": 61,
+        "gemini-2.5-pro": 61,
+        "qwen3-max": 59,
+        "gpt-5.1": 61
+      }
+    },
+    "患者10": {
+      "gemini-2.5-pro": {
+        "moonshotai_kimi-k2-0905": 86,
+        "gpt-5.1": 61,
+        "deepseek_deepseek-v3.1": 91,
+        "Baichuan-M2": 43,
+        "doubao-seed-1-6-251015": 54,
+        "qwen3-max": 59,
+        "gemini-2.5-pro": 61,
+        "grok-4-0709": 94
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": 40,
+        "gpt-5.1": 61,
+        "doubao-seed-1-6-251015": 50,
+        "grok-4-0709": 77,
+        "gemini-2.5-pro": 63,
+        "qwen3-max": 63,
+        "deepseek_deepseek-v3.1": 76,
+        "moonshotai_kimi-k2-0905": 86
+      },
+      "moonshotai_kimi-k2-0905": {
+        "moonshotai_kimi-k2-0905": 86,
+        "deepseek_deepseek-v3.1": 80,
+        "gpt-5.1": 83,
+        "qwen3-max": 59,
+        "Baichuan-M2": 40,
+        "gemini-2.5-pro": 47,
+        "doubao-seed-1-6-251015": 50,
+        "grok-4-0709": 78
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": 71,
+        "qwen3-max": 49,
+        "gpt-5.1": 83,
+        "grok-4-0709": 83,
+        "gemini-2.5-pro": 47,
+        "moonshotai_kimi-k2-0905": 86,
+        "doubao-seed-1-6-251015": 50,
+        "Baichuan-M2": 40
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": 50,
+        "qwen3-max": 59,
+        "Baichuan-M2": 40,
+        "moonshotai_kimi-k2-0905": 86,
+        "deepseek_deepseek-v3.1": 71,
+        "gemini-2.5-pro": 50,
+        "grok-4-0709": 77,
+        "gpt-5.1": 67
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": 68,
+        "gemini-2.5-pro": 39,
+        "deepseek_deepseek-v3.1": 65,
+        "Baichuan-M2": 40,
+        "moonshotai_kimi-k2-0905": 75,
+        "doubao-seed-1-6-251015": 48,
+        "qwen3-max": 48,
+        "gpt-5.1": 67
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": 43,
+        "grok-4-0709": 83,
+        "moonshotai_kimi-k2-0905": 86,
+        "doubao-seed-1-6-251015": 48,
+        "gemini-2.5-pro": 53,
+        "deepseek_deepseek-v3.1": 69,
+        "qwen3-max": 52,
+        "gpt-5.1": 67
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": 40,
+        "grok-4-0709": 74,
+        "doubao-seed-1-6-251015": 40,
+        "moonshotai_kimi-k2-0905": 86,
+        "deepseek_deepseek-v3.1": 62,
+        "gemini-2.5-pro": 40,
+        "qwen3-max": 49,
+        "gpt-5.1": 58
+      }
+    }
+  },
+  "score_system": "100_point",
+  "dimension_max_scores": {
+    "accuracy": 30,
+    "completeness": 25,
+    "format": 20,
+    "language": 15,
+    "logic": 10
+  },
+  "global_matrix": {
+    "Baichuan-M2": {
+      "Baichuan-M2": {
+        "average": 50.2,
+        "count": 10,
+        "min": 40,
+        "max": 66
+      },
+      "deepseek_deepseek-v3.1": {
+        "average": 68.9,
+        "count": 10,
+        "min": 49,
+        "max": 85
+      },
+      "doubao-seed-1-6-251015": {
+        "average": 59.0,
+        "count": 10,
+        "min": 48,
+        "max": 72
+      },
+      "gemini-2.5-pro": {
+        "average": 44.7,
+        "count": 10,
+        "min": 36,
+        "max": 52
+      },
+      "gpt-5.1": {
+        "average": 67.5,
+        "count": 10,
+        "min": 59,
+        "max": 80
+      },
+      "grok-4-0709": {
+        "average": 68.4,
+        "count": 10,
+        "min": 60,
+        "max": 76
+      },
+      "moonshotai_kimi-k2-0905": {
+        "average": 65.9,
+        "count": 10,
+        "min": 49,
+        "max": 82
+      },
+      "qwen3-max": {
+        "average": 62.5,
+        "count": 10,
+        "min": 48,
+        "max": 81
+      }
+    },
+    "deepseek_deepseek-v3.1": {
+      "Baichuan-M2": {
+        "average": 47.6,
+        "count": 10,
+        "min": 43,
+        "max": 66
+      },
+      "deepseek_deepseek-v3.1": {
+        "average": 71.4,
+        "count": 10,
+        "min": 50,
+        "max": 100
+      },
+      "doubao-seed-1-6-251015": {
+        "average": 62.1,
+        "count": 10,
+        "min": 48,
+        "max": 80
+      },
+      "gemini-2.5-pro": {
+        "average": 57.5,
+        "count": 10,
+        "min": 47,
+        "max": 68
+      },
+      "gpt-5.1": {
+        "average": 70.7,
+        "count": 10,
+        "min": 55,
+        "max": 95
+      },
+      "grok-4-0709": {
+        "average": 75.8,
+        "count": 10,
+        "min": 62,
+        "max": 89
+      },
+      "moonshotai_kimi-k2-0905": {
+        "average": 71.6,
+        "count": 10,
+        "min": 57,
+        "max": 86
+      },
+      "qwen3-max": {
+        "average": 67.6,
+        "count": 10,
+        "min": 51,
+        "max": 90
+      }
+    },
+    "doubao-seed-1-6-251015": {
+      "Baichuan-M2": {
+        "average": 49.3,
+        "count": 10,
+        "min": 40,
+        "max": 60
+      },
+      "deepseek_deepseek-v3.1": {
+        "average": 76.5,
+        "count": 10,
+        "min": 61,
+        "max": 90
+      },
+      "doubao-seed-1-6-251015": {
+        "average": 67.1,
+        "count": 10,
+        "min": 40,
+        "max": 91
+      },
+      "gemini-2.5-pro": {
+        "average": 66.5,
+        "count": 10,
+        "min": 40,
+        "max": 96
+      },
+      "gpt-5.1": {
+        "average": 81.2,
+        "count": 10,
+        "min": 58,
+        "max": 95
+      },
+      "grok-4-0709": {
+        "average": 85.2,
+        "count": 10,
+        "min": 59,
+        "max": 100
+      },
+      "moonshotai_kimi-k2-0905": {
+        "average": 77.1,
+        "count": 10,
+        "min": 62,
+        "max": 86
+      },
+      "qwen3-max": {
+        "average": 76.7,
+        "count": 10,
+        "min": 49,
+        "max": 96
+      }
+    },
+    "gemini-2.5-pro": {
+      "Baichuan-M2": {
+        "average": 49.6,
+        "count": 10,
+        "min": 43,
+        "max": 60
+      },
+      "deepseek_deepseek-v3.1": {
+        "average": 86.5,
+        "count": 10,
+        "min": 75,
+        "max": 100
+      },
+      "doubao-seed-1-6-251015": {
+        "average": 72.5,
+        "count": 10,
+        "min": 48,
+        "max": 100
+      },
+      "gemini-2.5-pro": {
+        "average": 64.8,
+        "count": 10,
+        "min": 51,
+        "max": 85
+      },
+      "gpt-5.1": {
+        "average": 87.5,
+        "count": 10,
+        "min": 61,
+        "max": 95
+      },
+      "grok-4-0709": {
+        "average": 89.6,
+        "count": 10,
+        "min": 77,
+        "max": 96
+      },
+      "moonshotai_kimi-k2-0905": {
+        "average": 82.6,
+        "count": 10,
+        "min": 74,
+        "max": 89
+      },
+      "qwen3-max": {
+        "average": 81.7,
+        "count": 10,
+        "min": 59,
+        "max": 92
+      }
+    },
+    "gpt-5.1": {
+      "Baichuan-M2": {
+        "average": 47.2,
+        "count": 10,
+        "min": 40,
+        "max": 60
+      },
+      "deepseek_deepseek-v3.1": {
+        "average": 78.9,
+        "count": 10,
+        "min": 73,
+        "max": 88
+      },
+      "doubao-seed-1-6-251015": {
+        "average": 69.7,
+        "count": 10,
+        "min": 48,
+        "max": 100
+      },
+      "gemini-2.5-pro": {
+        "average": 67.0,
+        "count": 10,
+        "min": 59,
+        "max": 84
+      },
+      "gpt-5.1": {
+        "average": 85.9,
+        "count": 10,
+        "min": 61,
+        "max": 100
+      },
+      "grok-4-0709": {
+        "average": 84.4,
+        "count": 10,
+        "min": 77,
+        "max": 96
+      },
+      "moonshotai_kimi-k2-0905": {
+        "average": 80.3,
+        "count": 10,
+        "min": 74,
+        "max": 86
+      },
+      "qwen3-max": {
+        "average": 79.4,
+        "count": 10,
+        "min": 63,
+        "max": 92
+      }
+    },
+    "grok-4-0709": {
+      "Baichuan-M2": {
+        "average": 51.3,
+        "count": 10,
+        "min": 40,
+        "max": 71
+      },
+      "deepseek_deepseek-v3.1": {
+        "average": 67.6,
+        "count": 10,
+        "min": 52,
+        "max": 85
+      },
+      "doubao-seed-1-6-251015": {
+        "average": 66.5,
+        "count": 10,
+        "min": 48,
+        "max": 84
+      },
+      "gemini-2.5-pro": {
+        "average": 57.8,
+        "count": 10,
+        "min": 40,
+        "max": 78
+      },
+      "gpt-5.1": {
+        "average": 82.2,
+        "count": 10,
+        "min": 72,
+        "max": 89
+      },
+      "grok-4-0709": {
+        "average": 80.5,
+        "count": 10,
+        "min": 61,
+        "max": 92
+      },
+      "moonshotai_kimi-k2-0905": {
+        "average": 79.7,
+        "count": 10,
+        "min": 71,
+        "max": 86
+      },
+      "qwen3-max": {
+        "average": 70.3,
+        "count": 10,
+        "min": 49,
+        "max": 83
+      }
+    },
+    "moonshotai_kimi-k2-0905": {
+      "Baichuan-M2": {
+        "average": 52.4,
+        "count": 10,
+        "min": 40,
+        "max": 71
+      },
+      "deepseek_deepseek-v3.1": {
+        "average": 72.2,
+        "count": 10,
+        "min": 52,
+        "max": 88
+      },
+      "doubao-seed-1-6-251015": {
+        "average": 64.8,
+        "count": 10,
+        "min": 48,
+        "max": 95
+      },
+      "gemini-2.5-pro": {
+        "average": 53.3,
+        "count": 10,
+        "min": 39,
+        "max": 88
+      },
+      "gpt-5.1": {
+        "average": 80.3,
+        "count": 10,
+        "min": 67,
+        "max": 91
+      },
+      "grok-4-0709": {
+        "average": 72.7,
+        "count": 10,
+        "min": 61,
+        "max": 94
+      },
+      "moonshotai_kimi-k2-0905": {
+        "average": 79.1,
+        "count": 10,
+        "min": 62,
+        "max": 86
+      },
+      "qwen3-max": {
+        "average": 77.3,
+        "count": 10,
+        "min": 59,
+        "max": 92
+      }
+    },
+    "qwen3-max": {
+      "Baichuan-M2": {
+        "average": 51.3,
+        "count": 10,
+        "min": 40,
+        "max": 71
+      },
+      "deepseek_deepseek-v3.1": {
+        "average": 72.4,
+        "count": 10,
+        "min": 52,
+        "max": 83
+      },
+      "doubao-seed-1-6-251015": {
+        "average": 62.8,
+        "count": 10,
+        "min": 48,
+        "max": 79
+      },
+      "gemini-2.5-pro": {
+        "average": 49.0,
+        "count": 10,
+        "min": 36,
+        "max": 59
+      },
+      "gpt-5.1": {
+        "average": 82.6,
+        "count": 10,
+        "min": 67,
+        "max": 95
+      },
+      "grok-4-0709": {
+        "average": 74.4,
+        "count": 10,
+        "min": 61,
+        "max": 100
+      },
+      "moonshotai_kimi-k2-0905": {
+        "average": 80.0,
+        "count": 10,
+        "min": 62,
+        "max": 86
+      },
+      "qwen3-max": {
+        "average": 74.8,
+        "count": 10,
+        "min": 59,
+        "max": 90
+      }
+    }
+  },
+  "statistics": {
+    "total_cells": 64,
+    "filled_cells": 64,
+    "coverage": "100.0%",
+    "score_range": {
+      "min": 36,
+      "max": 100,
+      "average": 69.5921875
+    }
+  }
+}

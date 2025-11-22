@@ -1,0 +1,112 @@
+{
+  "completion_status": "100%",
+  "total_evaluations": 640,
+  "valid_evaluations": 640,
+  "zero_evaluations": 0,
+  "overall_statistics": {
+    "mean": 3.4943750000000002,
+    "std": 0.7606723716318388,
+    "max": 5.0,
+    "min": 1.8
+  },
+  "model_rankings": [
+    {
+      "model": "gemini-2.5-pro",
+      "average": 3.8675,
+      "std": 0.7929714985220807,
+      "count": 80
+    },
+    {
+      "model": "gpt-5.1",
+      "average": 3.725,
+      "std": 0.7287061535542623,
+      "count": 80
+    },
+    {
+      "model": "doubao-seed-1-6-251015",
+      "average": 3.61,
+      "std": 0.8068692426183713,
+      "count": 80
+    },
+    {
+      "model": "moonshotai_kimi-k2-0905",
+      "average": 3.4875,
+      "std": 0.7616396370389744,
+      "count": 80
+    },
+    {
+      "model": "grok-4-0709",
+      "average": 3.485,
+      "std": 0.7064082801240711,
+      "count": 80
+    },
+    {
+      "model": "qwen3-max",
+      "average": 3.45,
+      "std": 0.7446008190613514,
+      "count": 80
+    },
+    {
+      "model": "deepseek_deepseek-v3.1",
+      "average": 3.285,
+      "std": 0.6658201376469494,
+      "count": 80
+    },
+    {
+      "model": "Baichuan-M2",
+      "average": 3.045,
+      "std": 0.577182155394923,
+      "count": 80
+    }
+  ],
+  "evaluator_rankings": [
+    {
+      "evaluator": "gpt-5.1",
+      "average": 4.0225,
+      "std": 0.5611865819376256,
+      "count": 80
+    },
+    {
+      "evaluator": "grok-4-0709",
+      "average": 4.015,
+      "std": 0.5370100062712454,
+      "count": 80
+    },
+    {
+      "evaluator": "moonshotai_kimi-k2-0905",
+      "average": 3.7825,
+      "std": 0.4307118041426867,
+      "count": 80
+    },
+    {
+      "evaluator": "deepseek_deepseek-v3.1",
+      "average": 3.6975000000000002,
+      "std": 0.6046183020213998,
+      "count": 80
+    },
+    {
+      "evaluator": "qwen3-max",
+      "average": 3.665,
+      "std": 0.6535395351856175,
+      "count": 80
+    },
+    {
+      "evaluator": "doubao-seed-1-6-251015",
+      "average": 3.32,
+      "std": 0.6626376140809822,
+      "count": 80
+    },
+    {
+      "evaluator": "gemini-2.5-pro",
+      "average": 2.92,
+      "std": 0.654178390875614,
+      "count": 80
+    },
+    {
+      "evaluator": "Baichuan-M2",
+      "average": 2.5325,
+      "std": 0.46654534287893745,
+      "count": 80
+    }
+  ]
+}

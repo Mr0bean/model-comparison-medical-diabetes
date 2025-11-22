@@ -1,0 +1,96 @@
+{
+  "test_time": "2025-11-18T18:26:01.004584",
+  "total_models": 11,
+  "successful": 8,
+  "failed": 3,
+  "details": {
+    "deepseek/deepseek-v3.1": {
+      "provider": "JieKou API",
+      "base_url": "https://api.jiekou.ai/openai",
+      "has_api_key": true,
+      "test_success": true,
+      "response_time": 4.56,
+      "message": "✅ 成功 | 响应: 1+1等于2。"
+    },
+    "gemini-2.5-pro": {
+      "provider": "JieKou API",
+      "base_url": "https://api.jiekou.ai/openai",
+      "has_api_key": true,
+      "test_success": true,
+      "response_time": 4.83,
+      "message": "✅ 成功 | 响应: "
+    },
+    "gpt-5.1": {
+      "provider": "JieKou API",
+      "base_url": "https://api.jiekou.ai/openai",
+      "has_api_key": true,
+      "test_success": true,
+      "response_time": 2.63,
+      "message": "✅ 成功 | 响应: 1+1等于2。"
+    },
+    "grok-4-0709": {
+      "provider": "JieKou API",
+      "base_url": "https://api.jiekou.ai/openai",
+      "has_api_key": true,
+      "test_success": true,
+      "response_time": 8.31,
+      "message": "✅ 成功 | 响应: 1+1等于2。"
+    },
+    "moonshot-v1-128k": {
+      "provider": "Kimi (月之暗面)",
+      "base_url": "https://api.moonshot.cn/v1",
+      "has_api_key": false,
+      "test_success": false,
+      "response_time": 0.16,
+      "message": "❌ 失败 | 错误: Error code: 401 - {'error': {'message': 'Invalid Authentication', 'type': 'invalid_authentication_error'}}"
+    },
+    "moonshot-v1-32k": {
+      "provider": "Kimi (月之暗面)",
+      "base_url": "https://api.moonshot.cn/v1",
+      "has_api_key": false,
+      "test_success": false,
+      "response_time": 0.15,
+      "message": "❌ 失败 | 错误: Error code: 401 - {'error': {'message': 'Invalid Authentication', 'type': 'invalid_authentication_error'}}"
+    },
+    "moonshot-v1-8k": {
+      "provider": "Kimi (月之暗面)",
+      "base_url": "https://api.moonshot.cn/v1",
+      "has_api_key": false,
+      "test_success": false,
+      "response_time": 0.51,
+      "message": "❌ 失败 | 错误: Error code: 401 - {'error': {'message': 'Invalid Authentication', 'type': 'invalid_authentication_error'}}"
+    },
+    "moonshotai/kimi-k2-0905": {
+      "provider": "Kimi (月之暗面) via JieKou",
+      "base_url": "https://api.jiekou.ai/openai",
+      "has_api_key": false,
+      "test_success": true,
+      "response_time": 3.59,
+      "message": "✅ 成功 | 响应: 1+1等于2。"
+    },
+    "Baichuan-M2": {
+      "provider": "百川智能",
+      "base_url": "https://api.baichuan-ai.com/v1",
+      "has_api_key": true,
+      "test_success": true,
+      "response_time": 0.59,
+      "message": "✅ 成功 | 响应: 1+1等于2。"
+    },
+    "doubao-seed-1-6-251015": {
+      "provider": "豆包 (火山引擎)",
+      "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+      "has_api_key": true,
+      "test_success": true,
+      "response_time": 1.92,
+      "message": "✅ 成功 | 响应: 1+1等于2。"
+    },
+    "qwen3-max": {
+      "provider": "通义千问 (阿里云)",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "has_api_key": true,
+      "test_success": true,
+      "response_time": 0.6,
+      "message": "✅ 成功 | 响应: 1+1等于2。"
+    }
+  }
+}

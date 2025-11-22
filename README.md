@@ -1,192 +1,279 @@
-# 医疗模型横评对比系统 - 糖尿病病历生成
+# 医疗AI模型评测系统
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-14+-green.svg)](https://nodejs.org/)
 
-一个用于对比不同AI模型在糖尿病病历生成任务中表现的可视化系统。
+一个全栈评测平台，用于评估和对比多个大语言模型在医疗场景（病历生成、诊断建议等）下的表现。支持多模型对比、交叉评测、可视化展示和评分管理。
 
 ## ✨ 功能特点
 
-- 🔄 **多维度对比**：支持多患者、多模型、多对话类型的灵活对比
-- 🎨 **可视化界面**：现代化的渐变设计，模型颜色区分
-- 📊 **两种布局模式**：
-  - 自动换行布局 - 响应式网格，适合查看2-4个模型
-  - 固定横向排列 - 支持同步滚动，方便多患者对比
-- 🎯 **智能同步滚动**：横向布局下，相同对话类型自动同步滚动
-- 📝 **数据导出**：支持将对话数据导出为Markdown格式
+- 🔄 **多模型对比**：支持10+主流大语言模型同时对比
+- 💬 **对话可视化**：聊天气泡界面展示医患对话，左侧固定，高度自适应
+- 📊 **五维度评分**：专业性、完整性、逻辑性、实用性、格式规范
+- 🔁 **交叉评测**：模型互评机制，自动生成评分矩阵
+- 📈 **实时统计**：评测进度跟踪和数据分析
+- 🎨 **响应式设计**：支持多屏幕尺寸，横向滚动查看
+- 💾 **数据持久化**：MongoDB存储评测结果，支持导出
+- 🔧 **易扩展**：模块化设计，轻松添加新模型
 
 ## 🚀 快速开始
 
 ### 环境要求
 
 - Python 3.8+
-- Node.js (可选，用于启动HTTP服务器)
+- Node.js 14+
+- MongoDB 4.4+
 
-### 安装依赖
+### 1. 安装依赖
 
 ```bash
+# Python依赖
 pip install -r requirements.txt
+
+# Node.js依赖
+cd server && npm install
 ```
 
-### 配置API密钥
+### 2. 配置环境
 
-1. 复制环境变量模板：
+**Python配置** (根目录 `.env`):
 ```bash
 cp .env.example .env
+# 编辑.env，填入API密钥
 ```
 
-2. 编辑 `.env` 文件，填入您的API密钥：
+**Node.js配置** (`server/.env`):
 ```bash
-JIEKOU_API_KEY=your_actual_api_key_here
+cd server && cp .env.example .env
+# 编辑server/.env，配置MongoDB连接
 ```
 
-### 运行系统
-
-#### 1. 生成对话数据（可选）
-
-如果需要生成新的对话数据：
+### 3. 启动服务
 
 ```bash
-# 使用交互式脚本
-python simple_chat.py
+# 启动MongoDB
+mongod --dbpath /data/db
 
-# 或使用命令行脚本
-python chat_cli.py --system "你是一名经验丰富的内分泌科医生" --user "患者主诉"
+# 启动Express后端
+cd server && npm start
+
+# 打开前端页面
+open index.html
 ```
 
-#### 2. 转换数据为Markdown
+### 4. 运行评测
 
 ```bash
-python convert_to_markdown.py
+# 单次评测
+python run_cross_evaluation.py --models gpt-5.1 qwen3-max --patients 患者1
+
+# 批量评测
+python run_batch_evaluation.py
+
+# 交叉评测
+python run_report_cross_evaluation.py --yes
 ```
 
-#### 3. 准备对比数据
-
-```bash
-python prepare_comparison_data.py
-```
-
-#### 4. 启动Web界面
-
-使用Python内置服务器：
-```bash
-python -m http.server 8888
-```
-
-或使用Node.js的http-server：
-```bash
-npm install -g http-server
-http-server -p 8888
-```
-
-然后在浏览器访问：`http://localhost:8888/model_comparison.html`
+**详细教程**: 查看 [GETTING_STARTED.md](GETTING_STARTED.md)
 
 ## 📁 项目结构
 
 ```
 .
-├── chat_client.py              # AI对话客户端
-├── config.py                   # 配置管理
-├── simple_chat.py              # 交互式对话脚本
-├── chat_cli.py                 # 命令行对话脚本
-├── convert_to_markdown.py      # JSON转Markdown工具
-├── prepare_comparison_data.py  # 数据准备工具
-├── model_comparison.html       # Web对比界面
-├── output/
-│   ├── raw/                    # 原始JSON数据
-│   ├── markdown/               # Markdown格式数据
-│   └── comparison_data.json    # 前端对比数据
-├── .env.example                # 环境变量模板
-├── .gitignore                  # Git忽略配置
-├── requirements.txt            # Python依赖
-└── README.md                   # 项目文档
+├── cross_evaluation/               # 评测引擎核心代码
+│   ├── engine.py                  # 评测引擎
+│   ├── report_evaluation_engine.py # 报告评测引擎
+│   ├── model_registry.py          # 模型注册表
+│   ├── model_client_factory.py    # 模型客户端工厂
+│   ├── prompt_template.py         # 提示词模板
+│   └── conversation_indexer.py    # 对话索引器
+├── server/                         # Express后端服务
+│   ├── server.js                  # 主服务文件
+│   ├── package.json               # Node.js依赖
+│   └── .env                       # 数据库配置
+├── output/                         # 评测结果输出
+│   ├── cross_evaluation_results/  # 交叉评测结果JSON
+│   ├── raw/                       # 原始对话数据
+│   ├── markdown/                  # Markdown格式结果
+│   └── comparison_data.json       # 前端对比数据
+├── 测试输入问答记录/               # 患者对话数据
+├── *.html                          # 前端页面
+│   ├── index.html                 # 主导航页
+│   ├── model_comparison.html      # 模型横评对比
+│   ├── model_evaluation_chat.html # 评测界面
+│   ├── admin.html                 # 管理面板
+│   └── user-guide.html            # 用户手册
+├── config.py                       # Python配置管理
+├── requirements.txt                # Python依赖
+├── ARCHITECTURE.md                 # 架构文档
+├── GETTING_STARTED.md              # 快速开始指南
+└── README.md                       # 项目文档
 ```
+
+**详细架构**: 查看 [ARCHITECTURE.md](ARCHITECTURE.md)
 
 ## 🎯 支持的模型
 
-系统目前支持以下AI模型：
+| 厂商 | 模型 | 状态 |
+|------|------|------|
+| OpenAI | GPT-4o, GPT-4o-mini, GPT-5.1 | ✅ |
+| 阿里 | Qwen3-max, Qwen3-72b, Qwen3-14b | ✅ |
+| DeepSeek | DeepSeek-v3, DeepSeek-chat | ✅ |
+| 百川 | Baichuan2-13B, Baichuan-M2 | ✅ |
+| 字节 | Doubao系列 | ✅ |
+| 月之暗面 | Moonshot-v1 | ✅ |
+| 零一万物 | Yi-Lightning, Yi-Large | ✅ |
+| 智谱 | GLM-4-Plus | ✅ |
 
-- gpt-5.1
-- deepseek/deepseek-v3.1
-- gemini-2.5-pro
-- qwen3-max
-- grok-4-0709
-- moonshotai/kimi-k2-0905
-- doubao-seed-1-6-251015
-- Baichuan-M2
+每个模型都有独特的渐变色标识，方便快速识别。
 
-每个模型都有独特的颜色标识，方便快速识别。
+## 📖 核心功能
 
-## 📖 使用指南
+### 1. 模型横评对比 (`model_comparison.html`)
 
-### Web界面操作
+**特性**:
+- 对话面板固定在左侧第一列，宽450px
+- 对话面板高度自适应最高的模型卡片
+- 模型卡片横向滚动查看
+- 聊天气泡界面可视化对话
 
-1. **选择患者**：点击或勾选要对比的患者（支持多选）
-2. **选择模型**：勾选要对比的AI模型（支持多选）
-3. **选择对话类型**：勾选要查看的病历部分（主诉、现病史、既往史等）
-4. **切换布局**：选择"自动换行"或"固定横向排列"布局
-5. **查看对比**：在下方查看不同模型的输出结果
+**使用步骤**:
+1. 选择患者（支持多选）
+2. 选择模型和对话类型
+3. 查看对话记录和模型输出对比
 
-### 布局模式说明
+### 2. 人工评测 (`model_evaluation_chat.html`)
 
-- **自动换行布局**：
-  - 响应式网格，每行2-3个卡片
-  - 适合详细对比2-4个模型
-  - 超出自动换行
+**评分维度**:
+- 专业性和准确性 (30%)
+- 完整性和深度 (25%)
+- 逻辑性和条理性 (20%)
+- 实用性和可操作性 (15%)
+- 格式规范性 (10%)
 
-- **固定横向排列**：
-  - 所有卡片横向排列，支持横向滚动
-  - 相同对话类型自动同步滚动
-  - 适合多患者同类型对比观察
+**特性**:
+- 自动保存到MongoDB
+- 进度跟踪
+- 自动关闭评测窗口
+
+### 3. 交叉评测 (`cross_evaluation_viewer.html`)
+
+**功能**:
+- 模型互评矩阵
+- 热力图可视化
+- 统计分析
+
+### 4. 管理面板 (`admin.html`)
+
+**功能**:
+- 查看所有评测数据
+- 完成进度统计
+- 删除/编辑记录
+- 数据导出
 
 ## 🔧 配置说明
 
-### 环境变量
-
-编辑 `.env` 文件进行配置：
+### Python配置 (`.env`)
 
 ```bash
-# API配置
 JIEKOU_API_KEY=your_api_key_here
 JIEKOU_BASE_URL=https://api.jiekou.ai/openai
-
-# 模型配置
 DEFAULT_MODEL=gpt-5.1
-DEFAULT_TEMPERATURE=1.0
-DEFAULT_MAX_TOKENS=2048
-DEFAULT_STREAM=True
-
-# 日志配置
 LOG_LEVEL=INFO
 ```
 
-### 模型颜色自定义
+### Node.js配置 (`server/.env`)
 
-在 `model_comparison.html` 中的 `modelColors` 对象可以自定义模型颜色：
+```bash
+MONGODB_URI=mongodb://localhost:27017/medical-evaluation
+PORT=3000
+```
 
-```javascript
-const modelColors = {
-    'gpt-5.1': { start: '#667eea', end: '#764ba2' },
-    'your-model': { start: '#start-color', end: '#end-color' }
-};
+### 添加新模型
+
+在 `cross_evaluation/model_registry.py` 中注册：
+
+```python
+registry.register_model(
+    name="your-model",
+    api_endpoint="https://api.example.com/v1",
+    api_key="your-key",
+    model_id="model-id"
+)
+```
+
+## 📡 API接口
+
+### 获取评测数据
+```http
+GET /api/evaluations?patient=患者1&model=gpt-5.1
+```
+
+### 提交评测
+```http
+POST /api/evaluations
+Content-Type: application/json
+
+{
+  "patient": "患者1",
+  "conversationId": "1",
+  "model": "gpt-5.1",
+  "scores": {...}
+}
+```
+
+### 统计数据
+```http
+GET /api/stats
 ```
 
 ## 🤝 贡献
 
-欢迎提交Issue和Pull Request！
+欢迎贡献代码！
+
+1. Fork项目
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'feat: Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 提交Pull Request
 
 ## 📄 许可证
 
 本项目采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
 
-## 👨‍💻 作者
+## 📚 文档
 
-Mr0bean
+- [ARCHITECTURE.md](ARCHITECTURE.md) - 系统架构详解
+- [GETTING_STARTED.md](GETTING_STARTED.md) - 快速开始指南
+- [user-guide.html](user-guide.html) - 用户使用手册
+
+## ❓ 常见问题
+
+**Q: 如何添加新模型？**
+A: 在 `model_registry.py` 注册模型，系统自动识别。
+
+**Q: 评测结果保存在哪里？**
+A: `output/cross_evaluation_results/` 目录下的JSON文件和MongoDB数据库。
+
+**Q: 如何批量评测？**
+A: 使用 `run_batch_evaluation.py` 脚本。
+
+更多问题请查看 [GETTING_STARTED.md](GETTING_STARTED.md#常见问题)
 
 ## 🙏 致谢
 
-- JieKou AI 提供API支持
-- 所有贡献者和用户的支持
+- OpenAI 提供API接口标准
+- 各大模型厂商提供优质服务
+- 开源社区贡献的工具和库
+
+## 📧 联系方式
+
+- 问题反馈: [GitHub Issues](../../issues)
+- 项目讨论: [GitHub Discussions](../../discussions)
 
 ---
 
-如有问题或建议，欢迎提交Issue！
+**⭐ Star本项目如果对你有帮助！**
+
+**版本**: v1.0.0 | **最后更新**: 2024-11-21

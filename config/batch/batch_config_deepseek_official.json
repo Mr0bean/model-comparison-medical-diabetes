@@ -1,0 +1,51 @@
+{
+  "description": "DeepSeek官方API配置",
+  "api_type": "official",
+  "api_config": {
+    "api_key": "${DEEPSEEK_API_KEY}",
+    "base_url": "https://api.deepseek.com"
+  },
+  "models": [
+    {
+      "name": "deepseek-chat",
+      "display_name": "DeepSeek Chat",
+      "description": "通用对话模型",
+      "max_tokens": 4096,
+      "context_window": 32768,
+      "supports_streaming": true,
+      "provider": "DeepSeek官方",
+      "model_type": "chat"
+    },
+    {
+      "name": "deepseek-coder",
+      "display_name": "DeepSeek Coder",
+      "description": "代码专用模型",
+      "max_tokens": 4096,
+      "context_window": 16384,
+      "supports_streaming": true,
+      "provider": "DeepSeek官方",
+      "model_type": "code"
+    },
+    {
+      "name": "deepseek-reasoner",
+      "display_name": "DeepSeek Reasoner",
+      "description": "推理增强模型",
+      "max_tokens": 8192,
+      "context_window": 65536,
+      "supports_streaming": true,
+      "provider": "DeepSeek官方",
+      "model_type": "reasoning"
+    }
+  ],
+  "default_parameters": {
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "stream": false
+  },
+  "notes": [
+    "这是DeepSeek官方API配置",
+    "需要在.env中配置 DEEPSEEK_API_KEY",
+    "申请地址: https://platform.deepseek.com/",
+    "使用OpenAI SDK兼容接口"
+  ]
+}

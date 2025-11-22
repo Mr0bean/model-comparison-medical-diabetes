@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交叉评估矩阵 - 热力图展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            background: white;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 25px 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .control-label {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .patient-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .patient-btn {
+            padding: 10px 18px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .patient-btn:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .patient-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .content {
+            padding: 30px 40px;
+        }
+
+        .matrix-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .matrix-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-label {
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .matrix-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .evaluation-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+            background: white;
+        }
+
+        .evaluation-matrix th,
+        .evaluation-matrix td {
+            padding: 12px 10px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+
+        .evaluation-matrix thead th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .evaluation-matrix thead th.corner {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .evaluation-matrix tbody th {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            color: #667eea;
+            font-weight: 600;
+            text-align: left;
+            position: sticky;
+            left: 0;
+            z-index: 10;
+            min-width: 150px;
+        }
+
+        .matrix-cell {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .matrix-cell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(102, 126, 234, 0.4);
+            z-index: 5;
+        }
+
+        /* 分数颜色 - 从红到绿的渐变 */
+        .score-1 { background: #f44336; color: white; }  /* 1.0-1.5 红色 */
+        .score-2 { background: #FF6B6B; color: white; }  /* 1.5-2.0 */
+        .score-3 { background: #FF9800; color: white; }  /* 2.0-2.5 橙色 */
+        .score-4 { background: #FFC107; color: #333; }   /* 2.5-3.0 */
+        .score-5 { background: #FFEB3B; color: #333; }   /* 3.0-3.5 黄色 */
+        .score-6 { background: #CDDC39; color: #333; }   /* 3.5-4.0 */
+        .score-7 { background: #8BC34A; color: white; }  /* 4.0-4.5 绿色 */
+        .score-8 { background: #4CAF50; color: white; }  /* 4.5-5.0 */
+
+        .self-eval {
+            background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+            color: #666;
+            font-style: italic;
+        }
+
+        .legend {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .legend-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .legend-items {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: white;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .stat-card-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .stat-card-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .tooltip {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .tooltip-row {
+            margin: 4px 0;
+        }
+
+        .tooltip-label {
+            color: #aaa;
+            font-size: 11px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            font-size: 18px;
+            color: #999;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 交叉评估矩阵 - 热力图</h1>
+            <div class="subtitle">8×8 模型交叉评估完整视图</div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <span class="control-label">选择患者:</span>
+                <div class="patient-selector" id="patientSelector">
+                    <button class="patient-btn active" data-patient="global">全局平均</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" id="mainContent">
+            <div class="loading">正在加载矩阵数据</div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        let matrixData = null;
+        let currentPatient = 'global';
+
+        // 加载数据
+        async function loadMatrixData() {
+            try {
+                const response = await fetch('cross_evaluation_matrix.json');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Failed to load matrix data:', error);
+                return null;
+            }
+        }
+
+        // 获取分数对应的CSS类
+        function getScoreClass(score) {
+            if (score >= 4.5) return 'score-8';
+            if (score >= 4.0) return 'score-7';
+            if (score >= 3.5) return 'score-6';
+            if (score >= 3.0) return 'score-5';
+            if (score >= 2.5) return 'score-4';
+            if (score >= 2.0) return 'score-3';
+            if (score >= 1.5) return 'score-2';
+            return 'score-1';
+        }
+
+        // 渲染矩阵
+        function renderMatrix(patient) {
+            const models = matrixData.models;
+            let matrix;
+
+            if (patient === 'global') {
+                matrix = matrixData.global_matrix;
+            } else {
+                matrix = matrixData.matrices[patient] || {};
+            }
+
+            // 计算统计数据
+            let scores = [];
+            let totalCells = 0;
+            let filledCells = 0;
+
+            models.forEach(gen => {
+                models.forEach(ev => {
+                    totalCells++;
+                    const cellData = matrix[gen]?.[ev];
+                    if (cellData) {
+                        filledCells++;
+                        const score = patient === 'global' ? cellData.average : cellData;
+                        if (score > 0) scores.push(score);
+                    }
+                });
+            });
+
+            const avgScore = scores.length > 0 ? scores.reduce((a, b) => a + b) / scores.length : 0;
+            const maxScore = scores.length > 0 ? Math.max(...scores) : 0;
+            const minScore = scores.length > 0 ? Math.min(...scores) : 0;
+
+            let html = `
+                <div class="matrix-section">
+                    <h2 class="section-title">${patient === 'global' ? '全局平均矩阵' : patient + ' 评估矩阵'}</h2>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-card-label">平均分</div>
+                            <div class="stat-card-value">${avgScore.toFixed(2)}</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-label">最高分</div>
+                            <div class="stat-card-value">${maxScore.toFixed(2)}</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-label">最低分</div>
+                            <div class="stat-card-value">${minScore.toFixed(2)}</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-label">覆盖率</div>
+                            <div class="stat-card-value">${(filledCells/totalCells*100).toFixed(0)}%</div>
+                        </div>
+                    </div>
+
+                    <div class="matrix-info">
+                        <div class="info-item">
+                            <span class="info-label">📋 说明:</span>
+                            <span class="info-value">行 = 评估者，列 = 被评估者（报告生成模型）</span>
+                        </div>
+                    </div>
+
+                    <div class="matrix-container">
+                        <table class="evaluation-matrix">
+                            <thead>
+                                <tr>
+                                    <th class="corner">评估者 ↓<br>被评估者 →</th>
+            `;
+
+            // 表头 - 被评估的模型
+            models.forEach(model => {
+                const shortName = model.replace('moonshotai_', '').replace('deepseek_', '').replace('-seed-1-6-251015', '');
+                html += `<th title="${model}">${shortName}</th>`;
+            });
+
+            html += '</tr></thead><tbody>';
+
+            // 表格内容
+            models.forEach(evaluator => {
+                const shortEvalName = evaluator.replace('moonshotai_', '').replace('deepseek_', '').replace('-seed-1-6-251015', '');
+
+                html += `<tr><th title="${evaluator}">${shortEvalName}</th>`;
+
+                models.forEach(generated => {
+                    const cellData = matrix[generated]?.[evaluator];
+
+                    if (cellData) {
+                        const score = patient === 'global' ? cellData.average : cellData;
+                        const scoreClass = getScoreClass(score);
+                        const isSelf = generated === evaluator;
+
+                        let tooltipData = '';
+                        if (patient === 'global') {
+                            tooltipData = `data-tooltip="${generated} → ${evaluator}|平均分: ${cellData.average.toFixed(2)}|评估次数: ${cellData.count}|范围: ${cellData.min.toFixed(2)} - ${cellData.max.toFixed(2)}"`;
+                        } else {
+                            tooltipData = `data-tooltip="${generated} → ${evaluator}|评分: ${score.toFixed(2)}"`;
+                        }
+
+                        html += `<td class="matrix-cell ${isSelf ? 'self-eval' : scoreClass}" ${tooltipData}>${score.toFixed(2)}</td>`;
+                    } else {
+                        html += `<td class="matrix-cell" style="background: #f5f5f5; color: #999;">-</td>`;
+                    }
+                });
+
+                html += '</tr>';
+            });
+
+            html += `
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="legend">
+                        <span class="legend-title">分数图例:</span>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <div class="legend-color score-8"></div>
+                                <span>4.5-5.0 优秀</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color score-7"></div>
+                                <span>4.0-4.5 良好</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color score-6"></div>
+                                <span>3.5-4.0 中上</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color score-5"></div>
+                                <span>3.0-3.5 中等</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color score-4"></div>
+                                <span>2.5-3.0 中下</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color score-3"></div>
+                                <span>2.0-2.5 较差</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color score-2"></div>
+                                <span>1.5-2.0 很差</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color score-1"></div>
+                                <span>1.0-1.5 极差</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            return html;
+        }
+
+        // 初始化患者选择器
+        function initPatientSelector() {
+            const selector = document.getElementById('patientSelector');
+
+            // 添加各个患者按钮
+            matrixData.patients.forEach(patient => {
+                const btn = document.createElement('button');
+                btn.className = 'patient-btn';
+                btn.textContent = patient;
+                btn.dataset.patient = patient;
+
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.patient-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentPatient = patient;
+                    updateMatrix();
+                });
+
+                selector.appendChild(btn);
+            });
+        }
+
+        // 更新矩阵显示
+        function updateMatrix() {
+            const content = renderMatrix(currentPatient);
+            document.getElementById('mainContent').innerHTML = content;
+            attachTooltipEvents();
+        }
+
+        // 附加tooltip事件
+        function attachTooltipEvents() {
+            const tooltip = document.getElementById('tooltip');
+            const cells = document.querySelectorAll('.matrix-cell[data-tooltip]');
+
+            cells.forEach(cell => {
+                cell.addEventListener('mouseenter', (e) => {
+                    const tooltipText = cell.dataset.tooltip;
+                    if (!tooltipText) return;
+
+                    const lines = tooltipText.split('|');
+                    let html = '';
+                    lines.forEach(line => {
+                        const parts = line.split(': ');
+                        if (parts.length === 2) {
+                            html += `<div class="tooltip-row"><span class="tooltip-label">${parts[0]}:</span> ${parts[1]}</div>`;
+                        } else {
+                            html += `<div class="tooltip-row"><strong>${line}</strong></div>`;
+                        }
+                    });
+
+                    tooltip.innerHTML = html;
+                    tooltip.style.display = 'block';
+                });
+
+                cell.addEventListener('mousemove', (e) => {
+                    tooltip.style.left = (e.pageX + 15) + 'px';
+                    tooltip.style.top = (e.pageY + 15) + 'px';
+                });
+
+                cell.addEventListener('mouseleave', () => {
+                    tooltip.style.display = 'none';
+                });
+            });
+        }
+
+        // 初始化
+        async function init() {
+            matrixData = await loadMatrixData();
+
+            if (!matrixData) {
+                document.getElementById('mainContent').innerHTML = `
+                    <div class="matrix-section">
+                        <h3>❌ 数据加载失败</h3>
+                        <p>请确保 cross_evaluation_matrix.json 文件存在。</p>
+                    </div>
+                `;
+                return;
+            }
+
+            initPatientSelector();
+            updateMatrix();
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模型横评对比系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            background: white;
+            box-shadow: none;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        .control-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .patient-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .patient-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .patient-checkbox:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .patient-checkbox.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .patient-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .select-all-patients-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .select-all-patients-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .model-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .model-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .model-checkbox:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .model-checkbox.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .model-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .conv-type-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .conv-type-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .conv-type-checkbox:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .conv-type-checkbox.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .conv-type-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .select-all-btn {
+            padding: 10px 20px;
+            border: 2px solid #764ba2;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .select-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .comparison-area {
+            padding: 30px 40px;
+            min-height: 500px;
+            background: white;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 100px 20px;
+            color: #999;
+            font-size: 16px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+        }
+
+        /* 超宽屏优化 */
+        @media (min-width: 2560px) {
+            .comparison-grid {
+                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            }
+        }
+
+        @media (min-width: 3440px) {
+            .comparison-grid {
+                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            }
+        }
+
+        .comparison-grid.horizontal-layout {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .comparison-grid.horizontal-layout .model-card {
+            width: 450px;
+            flex-shrink: 0;
+        }
+
+        .comparison-grid.horizontal-layout::-webkit-scrollbar {
+            height: 12px;
+        }
+
+        .comparison-grid.horizontal-layout::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 6px;
+        }
+
+        .comparison-grid.horizontal-layout::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 6px;
+        }
+
+        .comparison-grid.horizontal-layout::-webkit-scrollbar-thumb:hover {
+            background: #764ba2;
+        }
+
+        .model-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .model-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .model-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .patient-info-bar {
+            background: #f0f4ff;
+            padding: 10px 20px;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .patient-info-bar .patient-icon {
+            font-size: 16px;
+        }
+
+        .patient-info-bar .patient-name {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+
+        .model-card-body {
+            padding: 20px;
+            max-height: 800px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .model-card-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .model-card-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .model-card-body::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .model-card-body::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .model-card-body p {
+            margin-bottom: 15px;
+        }
+
+        .model-card-body h3 {
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+            color: #667eea;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .model-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .controls {
+                padding: 15px 20px;
+            }
+
+            .comparison-area {
+                padding: 20px 15px;
+            }
+        }
+
+        /* 平板适配 */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .comparison-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        /* 普通桌面 */
+        @media (min-width: 1025px) and (max-width: 1920px) {
+            .comparison-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            }
+        }
+
+        /* 2K屏幕 */
+        @media (min-width: 1921px) and (max-width: 2559px) {
+            .comparison-grid {
+                grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 医疗模型横评对比系统</h1>
+            <p>对比不同AI模型在病历生成任务中的表现</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label class="control-label">📋 选择患者 (可多选):</label>
+                <div class="patient-selector" id="patientSelector"></div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">🤖 选择模型 (可多选):</label>
+                <div class="model-selector" id="modelSelector"></div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">📝 选择对话类型 (可多选):</label>
+                <div class="conv-type-selector" id="convTypeSelector"></div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">🎨 布局方式:</label>
+                <div style="display: flex; gap: 15px;">
+                    <label class="layout-radio" style="display: flex; align-items: center; cursor: pointer; padding: 10px 20px; background: white; border: 2px solid #667eea; border-radius: 8px; font-weight: 500;">
+                        <input type="radio" name="layout" value="wrap" checked onchange="changeLayout(this.value)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                        <span>自动换行</span>
+                    </label>
+                    <label class="layout-radio" style="display: flex; align-items: center; cursor: pointer; padding: 10px 20px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; font-weight: 500;">
+                        <input type="radio" name="layout" value="horizontal" onchange="changeLayout(this.value)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                        <span>固定横向排列</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="stats" id="stats"></div>
+        </div>
+
+        <div class="comparison-area" id="comparisonArea">
+            <div class="loading">正在加载数据...</div>
+        </div>
+    </div>
+
+    <script>
+        let comparisonData = null;
+        let selectedPatients = new Set();
+        let selectedModels = new Set();
+        let selectedConvTypes = new Set();
+        let currentLayout = 'wrap'; // 默认自动换行
+
+        // 为模型分配柔和的渐变色
+        const modelColors = {
+            'gpt-5.1': { start: '#667eea', end: '#764ba2' },
+            'deepseek/deepseek-v3.1': { start: '#f093fb', end: '#f5576c' },
+            'gemini-2.5-pro': { start: '#4facfe', end: '#00f2fe' },
+            'qwen3-max': { start: '#43e97b', end: '#38f9d7' },
+            'grok-4-0709': { start: '#fa709a', end: '#fee140' },
+            'moonshotai/kimi-k2-0905': { start: '#30cfd0', end: '#330867' },
+            'doubao-seed-1-6-251015': { start: '#a8edea', end: '#fed6e3' },
+            'Baichuan-M2': { start: '#ff9a9e', end: '#fecfef' }
+        };
+
+        // 获取模型颜色,如果没有预定义则生成柔和的颜色
+        function getModelColor(model) {
+            if (modelColors[model]) {
+                return modelColors[model];
+            }
+
+            // 为未知模型生成柔和的颜色
+            const hue = (model.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 360);
+            const start = `hsl(${hue}, 65%, 65%)`;
+            const end = `hsl(${(hue + 30) % 360}, 65%, 75%)`;
+
+            modelColors[model] = { start, end };
+            return modelColors[model];
+        }
+
+        // 加载数据
+        async function loadData() {
+            try {
+                const response = await fetch('output/comparison_data.json');
+                comparisonData = await response.json();
+                initializeUI();
+            } catch (error) {
+                document.getElementById('comparisonArea').innerHTML =
+                    '<div class="no-data">❌ 数据加载失败: ' + error.message + '</div>';
+            }
+        }
+
+        // 初始化UI
+        function initializeUI() {
+            // 初始化患者选择器
+            const patientSelector = document.getElementById('patientSelector');
+
+            // 添加全选按钮
+            const selectAllPatientsBtn = document.createElement('button');
+            selectAllPatientsBtn.className = 'select-all-patients-btn';
+            selectAllPatientsBtn.textContent = '✓ 全选患者';
+            selectAllPatientsBtn.onclick = selectAllPatients;
+            patientSelector.appendChild(selectAllPatientsBtn);
+
+            comparisonData.patients.forEach(patient => {
+                const label = document.createElement('label');
+                label.className = 'patient-checkbox';
+                label.innerHTML = `
+                    <input type="checkbox" value="${patient}" onchange="togglePatient('${patient}', this.checked)">
+                    <span>${patient}</span>
+                `;
+                patientSelector.appendChild(label);
+            });
+
+            // 初始化模型选择器
+            const modelSelector = document.getElementById('modelSelector');
+
+            // 添加全选模型按钮
+            const selectAllModelsBtn = document.createElement('label');
+            selectAllModelsBtn.className = 'model-checkbox';
+            selectAllModelsBtn.style.cssText = 'cursor: pointer; background: #667eea; color: white; border-color: #667eea; font-weight: 600;';
+            selectAllModelsBtn.innerHTML = `
+                <input type="button" value="全选" onclick="selectAllModels()" style="display: none;">
+                <span onclick="selectAllModels()">✓ 全选模型</span>
+            `;
+            modelSelector.appendChild(selectAllModelsBtn);
+
+            comparisonData.models.forEach(model => {
+                const label = document.createElement('label');
+                label.className = 'model-checkbox';
+                label.innerHTML = `
+                    <input type="checkbox" value="${model}" onchange="toggleModel('${model}', this.checked)">
+                    <span>${model}</span>
+                `;
+                modelSelector.appendChild(label);
+            });
+
+            // 默认全选所有患者
+            if (comparisonData.patients.length > 0) {
+                comparisonData.patients.forEach(patient => {
+                    selectedPatients.add(patient);
+                });
+
+                // 更新UI
+                document.querySelectorAll('.patient-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        label.classList.add('selected');
+                    }
+                });
+
+                // 更新全选按钮文字
+                const patientBtn = document.querySelector('.select-all-patients-btn');
+                if (patientBtn) patientBtn.textContent = '✗ 取消全选';
+            }
+
+            // 默认全选所有模型
+            if (comparisonData.models.length > 0) {
+                comparisonData.models.forEach(model => {
+                    selectedModels.add(model);
+                });
+
+                // 更新UI
+                document.querySelectorAll('.model-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input[type="checkbox"]');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        label.classList.add('selected');
+                    }
+                });
+
+                // 更新全选按钮文字
+                const modelBtn = document.querySelector('.model-checkbox span[onclick="selectAllModels()"]');
+                if (modelBtn) modelBtn.textContent = '✗ 取消全选';
+            }
+
+            updateConvTypeSelector();
+            updateComparison();
+            updateStats();
+        }
+
+        // 切换患者选择
+        function togglePatient(patient, checked) {
+            if (checked) {
+                selectedPatients.add(patient);
+            } else {
+                selectedPatients.delete(patient);
+            }
+
+            // 更新checkbox状态
+            document.querySelectorAll('.patient-checkbox').forEach(label => {
+                const checkbox = label.querySelector('input');
+                label.classList.toggle('selected', checkbox.checked);
+            });
+
+            // 更新对话类型选择器
+            updateConvTypeSelector();
+
+            // 更新显示
+            updateComparison();
+        }
+
+        // 全选/取消全选患者
+        function selectAllPatients() {
+            const allSelected = selectedPatients.size === comparisonData.patients.length;
+
+            if (allSelected) {
+                // 取消全选
+                selectedPatients.clear();
+
+                // 更新UI
+                document.querySelectorAll('.patient-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input');
+                    checkbox.checked = false;
+                    label.classList.remove('selected');
+                });
+
+                // 更新按钮文字
+                const btn = document.querySelector('.select-all-patients-btn');
+                btn.textContent = '✓ 全选患者';
+            } else {
+                // 全选
+                selectedPatients.clear();
+                comparisonData.patients.forEach(patient => {
+                    selectedPatients.add(patient);
+                });
+
+                // 更新UI
+                document.querySelectorAll('.patient-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input');
+                    checkbox.checked = true;
+                    label.classList.add('selected');
+                });
+
+                // 更新按钮文字
+                const btn = document.querySelector('.select-all-patients-btn');
+                btn.textContent = '✗ 取消全选';
+            }
+
+            updateConvTypeSelector();
+            updateComparison();
+        }
+
+        // 更新对话类型选择器
+        function updateConvTypeSelector() {
+            const convTypeSelector = document.getElementById('convTypeSelector');
+            convTypeSelector.innerHTML = '';
+
+            if (selectedPatients.size === 0) return;
+
+            // 收集所有选中患者的对话类型（取交集）并过滤掉"医疗总结"
+            const convTypes = {};
+            let isFirst = true;
+
+            selectedPatients.forEach(patient => {
+                const patientData = comparisonData.data[patient];
+                if (!patientData) return;
+
+                if (isFirst) {
+                    // 第一个患者，初始化对话类型
+                    Object.entries(patientData).forEach(([convId, models]) => {
+                        Object.values(models).forEach(data => {
+                            // 过滤掉包含"医疗总结"的对话类型
+                            if (data.title && !data.title.includes('医疗总结')) {
+                                convTypes[convId] = data.title;
+                            }
+                        });
+                    });
+                    isFirst = false;
+                }
+            });
+
+            // 添加全选按钮
+            const selectAllBtn = document.createElement('button');
+            selectAllBtn.className = 'select-all-btn';
+            const allConvTypeIds = Object.keys(convTypes);
+            const allSelected = allConvTypeIds.every(convId => selectedConvTypes.has(convId));
+            selectAllBtn.textContent = allSelected ? '✗ 取消全选' : '✓ 全选类型';
+            selectAllBtn.onclick = () => selectAllConvTypes(convTypes);
+            convTypeSelector.appendChild(selectAllBtn);
+
+            // 创建对话类型复选框
+            Object.entries(convTypes).forEach(([convId, title]) => {
+                const label = document.createElement('label');
+                label.className = 'conv-type-checkbox';
+
+                const isChecked = selectedConvTypes.has(convId);
+                label.innerHTML = `
+                    <input type="checkbox" value="${convId}" ${isChecked ? 'checked' : ''} onchange="toggleConvType('${convId}', this.checked)">
+                    <span>${title}</span>
+                `;
+
+                if (isChecked) {
+                    label.classList.add('selected');
+                }
+
+                convTypeSelector.appendChild(label);
+            });
+
+            // 如果没有选中的对话类型，默认全选所有类型
+            if (selectedConvTypes.size === 0 && Object.keys(convTypes).length > 0) {
+                Object.keys(convTypes).forEach(convId => {
+                    selectedConvTypes.add(convId);
+                });
+
+                // 更新UI
+                document.querySelectorAll('.conv-type-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        label.classList.add('selected');
+                    }
+                });
+
+                // 更新按钮文字
+                const btn = document.querySelector('.select-all-btn');
+                if (btn) btn.textContent = '✗ 取消全选';
+            }
+        }
+
+        // 切换对话类型
+        function toggleConvType(convId, checked) {
+            if (checked) {
+                selectedConvTypes.add(convId);
+            } else {
+                selectedConvTypes.delete(convId);
+            }
+
+            // 更新checkbox状态
+            document.querySelectorAll('.conv-type-checkbox').forEach(label => {
+                const checkbox = label.querySelector('input');
+                label.classList.toggle('selected', checkbox.checked);
+            });
+
+            updateComparison();
+        }
+
+        // 全选/取消全选对话类型
+        function selectAllConvTypes(convTypes) {
+            const allConvTypeIds = Object.keys(convTypes);
+            const allSelected = allConvTypeIds.every(convId => selectedConvTypes.has(convId));
+
+            if (allSelected) {
+                // 取消全选
+                selectedConvTypes.clear();
+
+                // 更新UI
+                document.querySelectorAll('.conv-type-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input');
+                    checkbox.checked = false;
+                    label.classList.remove('selected');
+                });
+
+                // 更新按钮文字
+                const btn = document.querySelector('.select-all-btn');
+                btn.textContent = '✓ 全选类型';
+            } else {
+                // 全选
+                selectedConvTypes.clear();
+                allConvTypeIds.forEach(convId => {
+                    selectedConvTypes.add(convId);
+                });
+
+                // 更新UI
+                document.querySelectorAll('.conv-type-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input');
+                    checkbox.checked = true;
+                    label.classList.add('selected');
+                });
+
+                // 更新按钮文字
+                const btn = document.querySelector('.select-all-btn');
+                btn.textContent = '✗ 取消全选';
+            }
+
+            updateComparison();
+        }
+
+        // 全选/取消全选模型
+        function selectAllModels() {
+            const allSelected = selectedModels.size === comparisonData.models.length;
+
+            if (allSelected) {
+                // 取消全选
+                selectedModels.clear();
+
+                // 更新UI
+                document.querySelectorAll('.model-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input[type="checkbox"]');
+                    if (checkbox) {
+                        checkbox.checked = false;
+                        label.classList.remove('selected');
+                    }
+                });
+
+                // 更新按钮文字
+                const btn = document.querySelector('.model-checkbox span[onclick="selectAllModels()"]');
+                if (btn) btn.textContent = '✓ 全选模型';
+            } else {
+                // 全选
+                selectedModels.clear();
+                comparisonData.models.forEach(model => {
+                    selectedModels.add(model);
+                });
+
+                // 更新UI
+                document.querySelectorAll('.model-checkbox').forEach(label => {
+                    const checkbox = label.querySelector('input[type="checkbox"]');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        label.classList.add('selected');
+                    }
+                });
+
+                // 更新按钮文字
+                const btn = document.querySelector('.model-checkbox span[onclick="selectAllModels()"]');
+                if (btn) btn.textContent = '✗ 取消全选';
+            }
+
+            updateComparison();
+        }
+
+        // 切换模型选择
+        function toggleModel(model, checked) {
+            if (checked) {
+                selectedModels.add(model);
+            } else {
+                selectedModels.delete(model);
+            }
+
+            // 更新checkbox状态
+            document.querySelectorAll('.model-checkbox').forEach(label => {
+                const checkbox = label.querySelector('input');
+                label.classList.toggle('selected', checkbox.checked);
+            });
+
+            updateComparison();
+        }
+
+        // 更新对比显示
+        function updateComparison() {
+            const comparisonArea = document.getElementById('comparisonArea');
+
+            if (selectedPatients.size === 0 || selectedConvTypes.size === 0 || selectedModels.size === 0) {
+                comparisonArea.innerHTML = '<div class="no-data">👆 请选择患者、模型和对话类型</div>';
+                return;
+            }
+
+            comparisonArea.innerHTML = '';
+
+            // 为每个选中的患者创建区块
+            selectedPatients.forEach(patient => {
+                const patientData = comparisonData.data[patient];
+                if (!patientData) return;
+
+                // 创建患者分组标题
+                const patientTitle = document.createElement('h1');
+                patientTitle.style.cssText = 'font-size: 24px; margin: 40px 0 25px 0; color: #667eea; border-bottom: 3px solid #667eea; padding-bottom: 10px; font-weight: 700;';
+                patientTitle.textContent = `📋 ${patient}`;
+                comparisonArea.appendChild(patientTitle);
+
+                // 创建模型卡片网格（所有对话类型合并在一起）
+                const grid = document.createElement('div');
+                grid.className = 'comparison-grid';
+                if (currentLayout === 'horizontal') {
+                    grid.classList.add('horizontal-layout');
+                }
+
+                // 按照模型选择的顺序创建卡片
+                const sortedModels = Array.from(selectedModels).sort();
+                sortedModels.forEach(model => {
+                    // 收集该模型在所有选中对话类型中的数据
+                    const modelConvData = [];
+                    selectedConvTypes.forEach(convId => {
+                        const convData = patientData[convId];
+                        if (convData && convData[model]) {
+                            modelConvData.push({
+                                convId: convId,
+                                data: convData[model]
+                            });
+                        }
+                    });
+
+                    // 如果该模型在至少一个对话类型中有数据，创建合并的卡片
+                    if (modelConvData.length > 0) {
+                        const card = createMergedModelCard(model, modelConvData, patient);
+                        grid.appendChild(card);
+                    }
+                });
+
+                comparisonArea.appendChild(grid);
+            });
+        }
+
+
+        // 创建合并多个对话类型的模型卡片
+        function createMergedModelCard(model, modelConvData, patient) {
+            const card = document.createElement('div');
+            card.className = 'model-card';
+
+            const header = document.createElement('div');
+            header.className = 'model-card-header';
+            header.textContent = model;
+
+            // 应用模型特定的颜色
+            const colors = getModelColor(model);
+            header.style.background = `linear-gradient(135deg, ${colors.start} 0%, ${colors.end} 100%)`;
+
+            // 创建患者信息条
+            const patientInfoBar = document.createElement('div');
+            patientInfoBar.className = 'patient-info-bar';
+            patientInfoBar.innerHTML = `
+                <span class="patient-icon">👤</span>
+                <span>患者：</span>
+                <span class="patient-name">${patient}</span>
+            `;
+
+            const body = document.createElement('div');
+            body.className = 'model-card-body';
+
+            // 合并所有对话类型的内容
+            let mergedContent = '';
+            modelConvData.forEach((convItem, index) => {
+                // 如果不是第一个对话类型，添加分隔线
+                if (index > 0) {
+                    mergedContent += '<div style="border-top: 2px solid #e0e0e0; margin: 20px 0;"></div>';
+                }
+
+                // 添加对话类型标题
+                const convTitle = convItem.data.title || `对话 ${convItem.convId}`;
+                mergedContent += `<h3 style="color: #667eea; font-size: 16px; margin: 15px 0 10px 0; font-weight: 600;">${convTitle}</h3>`;
+
+                // 格式化并添加输出内容
+                const formattedOutput = formatOutput(convItem.data.output);
+                mergedContent += formattedOutput;
+            });
+
+            body.innerHTML = mergedContent;
+
+            card.appendChild(header);
+            card.appendChild(patientInfoBar);
+            card.appendChild(body);
+
+            return card;
+        }
+
+        // 创建模型卡片（保留用于向后兼容）
+        function createModelCard(model, data, patient) {
+            const card = document.createElement('div');
+            card.className = 'model-card';
+
+            const header = document.createElement('div');
+            header.className = 'model-card-header';
+            header.textContent = model;
+
+            // 应用模型特定的颜色
+            const colors = getModelColor(model);
+            header.style.background = `linear-gradient(135deg, ${colors.start} 0%, ${colors.end} 100%)`;
+
+            const body = document.createElement('div');
+            body.className = 'model-card-body';
+
+            // 格式化输出内容
+            const formattedOutput = formatOutput(data.output);
+            body.innerHTML = formattedOutput;
+
+            card.appendChild(header);
+            card.appendChild(body);
+
+            return card;
+        }
+
+        // 格式化输出内容
+        function formatOutput(text) {
+            // 将换行符转换为 <br>
+            let formatted = text.replace(/\n/g, '<br>');
+
+            // 加粗标题
+            formatted = formatted.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            formatted = formatted.replace(/^\*\*(.+?)\*\*:/gm, '<strong>$1:</strong>');
+
+            // 列表项
+            formatted = formatted.replace(/^- (.+)$/gm, '• $1');
+            formatted = formatted.replace(/^\* (.+)$/gm, '• $1');
+
+            return formatted;
+        }
+
+        // 更新统计信息
+        function updateStats() {
+            const stats = document.getElementById('stats');
+            stats.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${comparisonData.models.length}</div>
+                    <div class="stat-label">模型总数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${comparisonData.patients.length}</div>
+                    <div class="stat-label">患者数量</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${selectedModels.size}</div>
+                    <div class="stat-label">已选模型</div>
+                </div>
+            `;
+        }
+
+        // 切换布局方式
+        function changeLayout(layout) {
+            currentLayout = layout;
+
+            // 更新单选框样式
+            document.querySelectorAll('.layout-radio').forEach(label => {
+                const radio = label.querySelector('input');
+                if (radio.checked) {
+                    label.style.borderColor = '#667eea';
+                    label.style.background = '#f0f4ff';
+                } else {
+                    label.style.borderColor = '#e0e0e0';
+                    label.style.background = 'white';
+                }
+            });
+
+            // 重新渲染对比区域
+            updateComparison();
+        }
+
+        // 打开侧边栏对话面板
+        function openChatSidebar() {
+            if (selectedPatients.size === 0) {
+                alert('请先选择患者');
+                return;
+            }
+
+            // 只支持单个患者查看对话
+            const patient = Array.from(selectedPatients)[0];
+            const patientData = comparisonData.data[patient];
+
+            if (!patientData) return;
+
+            // 更新侧边栏标题
+            document.getElementById('chatSidebarPatient').textContent = `${patient} - 对话记录`;
+
+            // 创建对话类型标签
+            const tabsContainer = document.getElementById('chatTypeTabs');
+            tabsContainer.innerHTML = '';
+
+            const convTypes = {};
+            Object.entries(patientData).forEach(([convId, models]) => {
+                Object.values(models).forEach(data => {
+                    // 过滤掉包含"医疗总结"的对话类型
+                    if (data.title && data.chat && !data.title.includes('医疗总结')) {
+                        convTypes[convId] = {
+                            title: data.title,
+                            chat: data.chat
+                        };
+                    }
+                });
+            });
+
+            // 创建标签按钮
+            Object.entries(convTypes).forEach(([convId, data], index) => {
+                const tab = document.createElement('div');
+                tab.className = 'chat-type-tab' + (index === 0 ? ' active' : '');
+                tab.textContent = data.title;
+                tab.onclick = () => selectChatType(convTypes, convId);
+                tabsContainer.appendChild(tab);
+            });
+
+            // 默认显示第一个对话
+            const firstConvId = Object.keys(convTypes)[0];
+            if (firstConvId) {
+                displayChat(convTypes[firstConvId].chat);
+            }
+
+            // 显示侧边栏
+            document.getElementById('chatSidebar').classList.add('open');
+            document.getElementById('chatOverlay').classList.add('show');
+        }
+
+        // 关闭侧边栏对话面板
+        function closeChatSidebar() {
+            document.getElementById('chatSidebar').classList.remove('open');
+            document.getElementById('chatOverlay').classList.remove('show');
+        }
+
+        // 选择对话类型
+        function selectChatType(convTypes, convId) {
+            // 更新标签样式
+            document.querySelectorAll('.chat-type-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 显示对话内容
+            displayChat(convTypes[convId].chat);
+        }
+
+        // 显示对话内容
+        function displayChat(chatContent) {
+            const displayArea = document.getElementById('chatDisplayArea');
+            if (!chatContent) {
+                displayArea.innerHTML = '<div class="no-chat-message">暂无对话记录</div>';
+                return;
+            }
+
+            // 解析对话内容
+            const messages = parseChatContent(chatContent);
+
+            // 渲染聊天气泡
+            let html = '';
+            messages.forEach(msg => {
+                if (msg.type === 'section') {
+                    html += `<div class="chat-section-title">${msg.content}</div>`;
+                } else if (msg.type === 'patient-info') {
+                    // 渲染患者信息卡片
+                    html += '<div class="patient-info-card"><h4>👤 患者基本信息</h4><div class="patient-info-grid">';
+                    for (const [key, value] of Object.entries(msg.data)) {
+                        html += `<div class="patient-info-item"><strong>${key}:</strong> ${value}</div>`;
+                    }
+                    html += '</div></div>';
+                } else {
+                    const role = msg.role === 'patient' ? 'patient' : 'doctor';
+                    const avatar = msg.role === 'patient' ? '👤' : '👨‍⚕️';
+                    const roleName = msg.role === 'patient' ? '患者' : '医助';
+
+                    html += `
+                        <div class="chat-message ${role}">
+                            <div class="chat-message-header">
+                                <div class="chat-avatar">${avatar}</div>
+                                <div class="chat-role">${roleName}</div>
+                            </div>
+                            <div class="chat-bubble">${escapeHtml(msg.content)}</div>
+                        </div>
+                    `;
+                }
+            });
+
+            displayArea.innerHTML = html;
+
+            // 滚动到顶部
+            displayArea.scrollTop = 0;
+        }
+
+        // 解析对话内容
+        function parseChatContent(content) {
+            const messages = [];
+            const lines = content.split('\n');
+
+            let inDialogSection = false;
+            let inBasicInfo = false;
+            let currentMessage = null;
+            let patientInfo = {};
+
+            for (let line of lines) {
+                line = line.trim();
+
+                // 跳过分隔线和空行
+                if (line.startsWith('====') || line.startsWith('----') || line === '') {
+                    continue;
+                }
+
+                // 检测章节标题
+                if (line.includes('患者基本信息')) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                        currentMessage = null;
+                    }
+                    inBasicInfo = true;
+                    inDialogSection = false;
+                    continue;
+                }
+
+                if (line.includes('预问诊对话记录')) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                        currentMessage = null;
+                    }
+                    // 添加患者信息卡片
+                    if (Object.keys(patientInfo).length > 0) {
+                        messages.push({ type: 'patient-info', data: patientInfo });
+                    }
+                    messages.push({ type: 'section', content: '预问诊对话记录' });
+                    inBasicInfo = false;
+                    inDialogSection = true;
+                    continue;
+                }
+
+                // 收集基本信息
+                if (inBasicInfo) {
+                    const infoMatch = line.match(/^(.+?)[:：]\s*(.+)$/);
+                    if (infoMatch) {
+                        const key = infoMatch[1].trim();
+                        const value = infoMatch[2].trim();
+                        patientInfo[key] = value;
+                    }
+                    continue;
+                }
+
+                // 解析对话行
+                const patientMatch = line.match(/^\d+\.\s*患者:\s*(.+)$/);
+                const doctorMatch = line.match(/^\d+\.\s*医助:\s*(.+)$/);
+
+                if (patientMatch) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                    }
+                    currentMessage = {
+                        type: 'message',
+                        role: 'patient',
+                        content: patientMatch[1].trim()
+                    };
+                } else if (doctorMatch) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                    }
+                    currentMessage = {
+                        type: 'message',
+                        role: 'doctor',
+                        content: doctorMatch[1].trim()
+                    };
+                } else if (currentMessage && line) {
+                    // 继续当前消息的内容（多行）
+                    currentMessage.content += '\n' + line;
+                }
+            }
+
+            // 添加最后一条消息
+            if (currentMessage) {
+                messages.push(currentMessage);
+            }
+
+            return messages;
+        }
+
+        // HTML转义函数
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\n/g, '<br>');
+        }
+
+        // 更新查看对话按钮状态
+        function updateChatViewerButton() {
+            const btn = document.getElementById('chatViewerBtn');
+            if (selectedPatients.size === 1) {
+                btn.classList.remove('disabled');
+            } else {
+                btn.classList.add('disabled');
+            }
+        }
+
+        // 页面加载时执行
+        loadData();
+
+        // 监听模型选择变化以更新统计
+        setInterval(updateStats, 100);
+    </script>
+</body>
+</html>
