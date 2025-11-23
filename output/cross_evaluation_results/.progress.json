@@ -1,0 +1,2564 @@
+{
+  "患者2_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:50.127569"
+  },
+  "患者2_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:59.053482"
+  },
+  "患者2_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:29.218269"
+  },
+  "患者1_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:46:06.648749"
+  },
+  "患者1_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:26:06.067812"
+  },
+  "患者1_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:48:42.053446"
+  },
+  "患者1_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:28:47.776738"
+  },
+  "患者1_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:29:43.959010"
+  },
+  "患者1_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:34:00.080412"
+  },
+  "患者1_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:37:45.781119"
+  },
+  "患者1_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:49:29.274438"
+  },
+  "患者1_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:51:03.987332"
+  },
+  "患者1_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:38:05.677120",
+    "note": "从现有文件恢复"
+  },
+  "患者1_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:53:35.233990"
+  },
+  "患者1_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:55:41.622636"
+  },
+  "患者1_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:55:41.623179",
+    "note": "从现有文件恢复"
+  },
+  "患者1_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T21:59:08.134594"
+  },
+  "患者1_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:01:21.436684"
+  },
+  "患者1_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:02:08.306486"
+  },
+  "患者1_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:03:59.734845"
+  },
+  "患者1_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:04:27.138784"
+  },
+  "患者1_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:06:21.904658"
+  },
+  "患者1_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:09:01.066074"
+  },
+  "患者1_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:09:31.644699"
+  },
+  "患者1_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:13:34.186674"
+  },
+  "患者1_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:15:06.354662"
+  },
+  "患者1_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:15:51.170069"
+  },
+  "患者1_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:17:37.699195"
+  },
+  "患者1_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:18:07.437405"
+  },
+  "患者1_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:20:34.093271"
+  },
+  "患者1_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:23:32.777877"
+  },
+  "患者1_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:24:03.251021"
+  },
+  "患者1_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:27:51.513701"
+  },
+  "患者1_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:27:51.513713"
+  },
+  "患者1_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:18.319716"
+  },
+  "患者1_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:19.055492"
+  },
+  "患者1_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:20.631161"
+  },
+  "患者1_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:22.386671"
+  },
+  "患者1_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:23.038061"
+  },
+  "患者1_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:24.738295"
+  },
+  "患者1_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:29.111951"
+  },
+  "患者1_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:35.681085"
+  },
+  "患者1_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:41.111532"
+  },
+  "患者1_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:41.118002"
+  },
+  "患者1_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:43.885940"
+  },
+  "患者1_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:54.288126"
+  },
+  "患者2_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:28:59.027580"
+  },
+  "患者1_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:25.446420"
+  },
+  "患者1_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:17.013700"
+  },
+  "患者2_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:18.077383"
+  },
+  "患者2_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:23.415951"
+  },
+  "患者1_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:24.248859"
+  },
+  "患者1_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:30.593555"
+  },
+  "患者2_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:31.303439"
+  },
+  "患者1_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:36.166156"
+  },
+  "患者1_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:40.823761"
+  },
+  "患者1_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:41.950887"
+  },
+  "患者1_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:42.294959"
+  },
+  "患者1_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:50.597198"
+  },
+  "患者1_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:54.055382"
+  },
+  "患者2_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:29:59.412895"
+  },
+  "患者2_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:02.009917"
+  },
+  "患者2_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:03.957396"
+  },
+  "患者2_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:08.028444"
+  },
+  "患者1_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:11.125403"
+  },
+  "患者2_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:15.969362"
+  },
+  "患者2_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:16.306655"
+  },
+  "患者1_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:22.886718"
+  },
+  "患者2_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:25.510769"
+  },
+  "患者2_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:31.819255"
+  },
+  "患者1_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:36.282195"
+  },
+  "患者1_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:38.234090"
+  },
+  "患者1_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:42.686090"
+  },
+  "患者2_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:42.703617"
+  },
+  "患者2_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:52.021378"
+  },
+  "患者2_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:53.095742"
+  },
+  "患者1_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:53.479663"
+  },
+  "患者2_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:54.508742"
+  },
+  "患者2_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:56.185803"
+  },
+  "患者2_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:30:59.762661"
+  },
+  "患者2_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:03.535393"
+  },
+  "患者2_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:06.028273"
+  },
+  "患者2_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:14.990287"
+  },
+  "患者2_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:17.012646"
+  },
+  "患者2_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:19.104942"
+  },
+  "患者2_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:25.577106"
+  },
+  "患者2_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:25.712432"
+  },
+  "患者2_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:30.514714"
+  },
+  "患者1_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:36.593716"
+  },
+  "患者2_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:39.002586"
+  },
+  "患者1_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:39.954267"
+  },
+  "患者2_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:44.476925"
+  },
+  "患者2_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:44.541944"
+  },
+  "患者2_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:45.966027"
+  },
+  "患者2_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:47.668600"
+  },
+  "患者2_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:31:54.056940"
+  },
+  "患者2_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:01.636055"
+  },
+  "患者2_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:12.104266"
+  },
+  "患者2_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:13.981795"
+  },
+  "患者2_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:14.546019"
+  },
+  "患者2_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:15.008063"
+  },
+  "患者1_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:16.167114"
+  },
+  "患者1_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:18.208776"
+  },
+  "患者2_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:18.407495"
+  },
+  "患者3_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:10.700830"
+  },
+  "患者3_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:32.861379"
+  },
+  "患者3_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:36.421499"
+  },
+  "患者2_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:28.685851"
+  },
+  "患者3_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:16.403745"
+  },
+  "患者3_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:35.514068"
+  },
+  "患者3_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:10.567253"
+  },
+  "患者3_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:07.740230"
+  },
+  "患者3_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:24.085508"
+  },
+  "患者2_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:41.470359"
+  },
+  "患者3_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:55.747965"
+  },
+  "患者2_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:47.688263"
+  },
+  "患者3_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:15.318720"
+  },
+  "患者2_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:51.114941"
+  },
+  "患者3_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:24.371410"
+  },
+  "患者3_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:17.088634"
+  },
+  "患者3_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:04.748599"
+  },
+  "患者2_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:54.008346"
+  },
+  "患者1_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:54.756543"
+  },
+  "患者3_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:16.269290"
+  },
+  "患者3_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:08.216032"
+  },
+  "患者2_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:32:58.868280"
+  },
+  "患者2_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:01.524617"
+  },
+  "患者3_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:36.756604"
+  },
+  "患者3_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:05.032123"
+  },
+  "患者3_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:21.029103"
+  },
+  "患者2_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:06.287543"
+  },
+  "患者3_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:09.646193"
+  },
+  "患者2_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:07.276780"
+  },
+  "患者3_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:11.628956"
+  },
+  "患者3_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:11.990630"
+  },
+  "患者3_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:12.786909"
+  },
+  "患者2_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:10.168383"
+  },
+  "患者2_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:11.896732"
+  },
+  "患者3_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:14.583778"
+  },
+  "患者3_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:14.612864"
+  },
+  "患者3_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:35:02.580369"
+  },
+  "患者3_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:08.576445"
+  },
+  "患者3_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:50.971427"
+  },
+  "患者3_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:11.845455"
+  },
+  "患者3_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:03.831628"
+  },
+  "患者2_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:21.035418"
+  },
+  "患者2_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:21.088764"
+  },
+  "患者2_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:22.540383"
+  },
+  "患者3_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:40.782534"
+  },
+  "患者3_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:12.938100"
+  },
+  "患者2_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:24.141755"
+  },
+  "患者3_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:16.161871"
+  },
+  "患者3_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:22.799182"
+  },
+  "患者3_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:29.885490"
+  },
+  "患者3_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:42.928804"
+  },
+  "患者3_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:31.796245"
+  },
+  "患者3_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:37.766531"
+  },
+  "患者3_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:57.046191"
+  },
+  "患者3_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:00.699439"
+  },
+  "患者3_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:43.661350"
+  },
+  "患者3_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:19.609607"
+  },
+  "患者3_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:05.190010"
+  },
+  "患者3_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:05.197400"
+  },
+  "患者3_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:44:23.451550"
+  },
+  "患者3_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:09.531694"
+  },
+  "患者3_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:42.583336"
+  },
+  "患者2_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:33:39.591287"
+  },
+  "患者3_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:00.069047"
+  },
+  "患者4_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:05.283221"
+  },
+  "患者3_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:01.465315"
+  },
+  "患者4_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:27.473527"
+  },
+  "患者3_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:25.760908"
+  },
+  "患者3_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:57.922355"
+  },
+  "患者3_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:06.193400"
+  },
+  "患者3_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:31.094211"
+  },
+  "患者3_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:41.003356"
+  },
+  "患者3_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:19.674312"
+  },
+  "患者4_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:51.665411"
+  },
+  "患者4_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:32.141058"
+  },
+  "患者3_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:03.249588"
+  },
+  "患者4_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:45:40.559704"
+  },
+  "患者4_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:02.977683"
+  },
+  "患者4_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:11.525539"
+  },
+  "患者3_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:15.785005"
+  },
+  "患者3_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:23.382362"
+  },
+  "患者3_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:44.943246"
+  },
+  "患者4_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:02.377267"
+  },
+  "患者4_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:52.450128"
+  },
+  "患者4_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:11.080194"
+  },
+  "患者4_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:09.305810"
+  },
+  "患者2_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:34:01.040465"
+  },
+  "患者3_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:11.670038"
+  },
+  "患者4_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:11.869168"
+  },
+  "患者2_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:34:05.643547"
+  },
+  "患者4_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:34.965284"
+  },
+  "患者4_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:12.378187"
+  },
+  "患者2_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:34:07.311243"
+  },
+  "患者3_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:59.856256"
+  },
+  "患者4_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:14.678359"
+  },
+  "患者4_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:37.369649"
+  },
+  "患者4_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:36.310286"
+  },
+  "患者4_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:56.695162"
+  },
+  "患者4_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:52.936824"
+  },
+  "患者4_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:36.101301"
+  },
+  "患者4_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:16.801244"
+  },
+  "患者3_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:38.831071"
+  },
+  "患者4_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:10.344282"
+  },
+  "患者4_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:12.832756"
+  },
+  "患者4_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:46.071943"
+  },
+  "患者4_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:41.402334"
+  },
+  "患者4_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:40.402834"
+  },
+  "患者4_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:46.228400"
+  },
+  "患者4_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:24.404693"
+  },
+  "患者4_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:13.221523"
+  },
+  "患者4_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:54.414126"
+  },
+  "患者4_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:32.600294"
+  },
+  "患者4_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:08.119898"
+  },
+  "患者4_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:08.722794"
+  },
+  "患者4_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:48.684044"
+  },
+  "患者3_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:20.428816"
+  },
+  "患者2_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:34:26.401085"
+  },
+  "患者4_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:08.336970"
+  },
+  "患者3_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:03.923079"
+  },
+  "患者4_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:35:07.745156"
+  },
+  "患者4_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:05.022238"
+  },
+  "患者4_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:52.977734"
+  },
+  "患者4_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:31.579350"
+  },
+  "患者4_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:35:18.668379"
+  },
+  "患者4_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:00.745083"
+  },
+  "患者4_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:35.154358"
+  },
+  "患者4_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:35.295042"
+  },
+  "患者4_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:11.194006"
+  },
+  "患者4_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:37.571516"
+  },
+  "患者4_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:45.962628"
+  },
+  "患者5_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:42.024443"
+  },
+  "患者4_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:46:08.989084"
+  },
+  "患者4_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:47:36.029282"
+  },
+  "患者5_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:36.697039"
+  },
+  "患者5_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:20.257327"
+  },
+  "患者3_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:39.679959"
+  },
+  "患者4_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:03.265502"
+  },
+  "患者4_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:27.375546"
+  },
+  "患者4_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:59.837467"
+  },
+  "患者5_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:10.317023"
+  },
+  "患者5_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:08.668200"
+  },
+  "患者4_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:28.692237"
+  },
+  "患者5_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:27.463799"
+  },
+  "患者2_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:34:49.444614"
+  },
+  "患者4_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:06.733460"
+  },
+  "患者5_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:23.818674"
+  },
+  "患者5_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:08.017910"
+  },
+  "患者5_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:36.441193"
+  },
+  "患者5_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:26.238627"
+  },
+  "患者5_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:22.485681"
+  },
+  "患者4_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:50.175569"
+  },
+  "患者2_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:34:57.425597"
+  },
+  "患者4_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:14.962771"
+  },
+  "患者5_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:44.749506"
+  },
+  "患者4_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:01.409317"
+  },
+  "患者5_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:31.991792"
+  },
+  "患者5_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:20.964802"
+  },
+  "患者5_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:53.288560"
+  },
+  "患者5_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:05.699280"
+  },
+  "患者4_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:20.728754"
+  },
+  "患者5_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:02.099965"
+  },
+  "患者4_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:34.648084"
+  },
+  "患者5_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:05.480733"
+  },
+  "患者4_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:57.946166"
+  },
+  "患者5_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:55.742842"
+  },
+  "患者5_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:36.562463"
+  },
+  "患者5_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:20.072439"
+  },
+  "患者5_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:46.093652"
+  },
+  "患者4_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:01.154375"
+  },
+  "患者5_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:14.991711"
+  },
+  "患者5_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:21.707613"
+  },
+  "患者5_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:52.528520"
+  },
+  "患者4_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:49.697899"
+  },
+  "患者4_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:31.491373"
+  },
+  "患者5_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:27.254766"
+  },
+  "患者5_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:01.416064"
+  },
+  "患者5_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:26.659919"
+  },
+  "患者5_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:01.276305"
+  },
+  "患者5_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:28.161266"
+  },
+  "患者5_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:36.392248"
+  },
+  "患者5_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:57.103348"
+  },
+  "患者5_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:39.703130"
+  },
+  "患者5_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:48:45.632442"
+  },
+  "患者5_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:12.198690"
+  },
+  "患者5_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:36.905113"
+  },
+  "患者5_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:17.279328"
+  },
+  "患者5_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:59.574073"
+  },
+  "患者4_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:29.623464"
+  },
+  "患者5_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:26.285860"
+  },
+  "患者5_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:09.992424"
+  },
+  "患者5_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:55.442024"
+  },
+  "患者5_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:54.755072"
+  },
+  "患者5_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:49:40.022284"
+  },
+  "患者5_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:32.490094"
+  },
+  "患者6_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:17.457064"
+  },
+  "患者6_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:09.273403"
+  },
+  "患者4_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:29.192118"
+  },
+  "患者5_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:49.747636"
+  },
+  "患者5_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:37.697979"
+  },
+  "患者5_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:53.335263"
+  },
+  "患者6_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:22.593333"
+  },
+  "患者5_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:33.911824"
+  },
+  "患者5_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:56.879637"
+  },
+  "患者5_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:15.514737"
+  },
+  "患者6_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:25.573715"
+  },
+  "患者5_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:39.063903"
+  },
+  "患者6_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:19.907205"
+  },
+  "患者6_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:29.629816"
+  },
+  "患者5_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:45.721078"
+  },
+  "患者6_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:36.147855"
+  },
+  "患者5_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:26.908210"
+  },
+  "患者6_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:35.377146"
+  },
+  "患者6_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:55.363665"
+  },
+  "患者6_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:00.218550"
+  },
+  "患者6_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:38.046413"
+  },
+  "患者5_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:50.276186"
+  },
+  "患者6_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:50:49.554426"
+  },
+  "患者6_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:19.147129"
+  },
+  "患者5_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:32.509598"
+  },
+  "患者6_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:05.478295"
+  },
+  "患者5_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:35:45.108911"
+  },
+  "患者6_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:11.468773"
+  },
+  "患者6_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:49.441156"
+  },
+  "患者6_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:34.032785"
+  },
+  "患者6_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:40.686620"
+  },
+  "患者5_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:02.705563"
+  },
+  "患者6_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:43.358169"
+  },
+  "患者5_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:25.478458"
+  },
+  "患者6_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:26.733717"
+  },
+  "患者6_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:23.553627"
+  },
+  "患者5_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:41.352419"
+  },
+  "患者6_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:19.718465"
+  },
+  "患者5_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:21.585819"
+  },
+  "患者6_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:27.893035"
+  },
+  "患者6_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:24.395955"
+  },
+  "患者6_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:19.113174"
+  },
+  "患者6_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:06.557011"
+  },
+  "患者6_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:49.457666"
+  },
+  "患者6_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:12.841801"
+  },
+  "患者6_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:20.893232"
+  },
+  "患者6_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:37.531570"
+  },
+  "患者6_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:59.472835"
+  },
+  "患者5_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:45.828155"
+  },
+  "患者6_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:52.077870"
+  },
+  "患者6_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:46.542191"
+  },
+  "患者6_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:03.059089"
+  },
+  "患者6_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:27.331428"
+  },
+  "患者6_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:37:56.540164"
+  },
+  "患者2_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:36:04.113424"
+  },
+  "患者6_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:50.044087"
+  },
+  "患者6_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:25.911750"
+  },
+  "患者6_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:40.673710"
+  },
+  "患者6_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:57.439586"
+  },
+  "患者6_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:19.525453"
+  },
+  "患者5_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:18.410362"
+  },
+  "患者6_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:14.535695"
+  },
+  "患者6_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:25.219612"
+  },
+  "患者7_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:29.061416"
+  },
+  "患者6_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:51:59.450322"
+  },
+  "患者5_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:39.218305"
+  },
+  "患者6_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:58.573208"
+  },
+  "患者7_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:08.925953"
+  },
+  "患者6_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:31.525813"
+  },
+  "患者5_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:51.624280"
+  },
+  "患者6_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:50.033783"
+  },
+  "患者6_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:18.875934"
+  },
+  "患者6_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:52.219578"
+  },
+  "患者6_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:16.872767"
+  },
+  "患者6_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:36.708196"
+  },
+  "患者7_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:49.422472"
+  },
+  "患者7_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:03.052025"
+  },
+  "患者7_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:07.427380"
+  },
+  "患者6_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:19.900560"
+  },
+  "患者7_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:57.757925"
+  },
+  "患者6_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:45.261559"
+  },
+  "患者7_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:52:56.461816"
+  },
+  "患者6_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:55.013814"
+  },
+  "患者7_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:18.168436"
+  },
+  "患者7_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:01.640073"
+  },
+  "患者7_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:40.003143"
+  },
+  "患者7_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:14.592233"
+  },
+  "患者6_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:13.791508"
+  },
+  "患者6_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:40.266974"
+  },
+  "患者6_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:22.275024"
+  },
+  "患者7_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:17.641815"
+  },
+  "患者7_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:42:44.422333"
+  },
+  "患者7_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:17.844139"
+  },
+  "患者7_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:20.031341"
+  },
+  "患者7_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:11.692079"
+  },
+  "患者7_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:55.225664"
+  },
+  "患者7_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:21.473045"
+  },
+  "患者7_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:32.923752"
+  },
+  "患者7_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:58.374247"
+  },
+  "患者6_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:00.815009"
+  },
+  "患者7_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:33.002694"
+  },
+  "患者7_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:33.807656"
+  },
+  "患者7_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:27.472263"
+  },
+  "患者7_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:56.160651"
+  },
+  "患者7_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:34.874478"
+  },
+  "患者7_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:40.205357"
+  },
+  "患者6_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:39:53.780893"
+  },
+  "患者7_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:53:47.605936"
+  },
+  "患者7_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:48.766495"
+  },
+  "患者7_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:48.039744"
+  },
+  "患者7_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:23.467772"
+  },
+  "患者7_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:52.669782"
+  },
+  "患者7_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:10.631564"
+  },
+  "患者7_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:17.234003"
+  },
+  "患者6_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:40:47.579094"
+  },
+  "患者7_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:41.439858"
+  },
+  "患者6_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:19.360319"
+  },
+  "患者7_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:14.622043"
+  },
+  "患者7_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:27.500046"
+  },
+  "患者7_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:29.766924"
+  },
+  "患者7_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:54.894865"
+  },
+  "患者7_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:49.049203"
+  },
+  "患者7_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:10.217742"
+  },
+  "患者7_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:05.191990"
+  },
+  "患者7_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:44.506264"
+  },
+  "患者7_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:14.530194"
+  },
+  "患者6_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:35.912905"
+  },
+  "患者8_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:39.479194"
+  },
+  "患者6_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:36.991580"
+  },
+  "患者7_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:36.796913"
+  },
+  "患者7_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:26.601111"
+  },
+  "患者7_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:00.402871"
+  },
+  "患者7_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:41.331101"
+  },
+  "患者7_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:26.510461"
+  },
+  "患者7_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:42:24.920599"
+  },
+  "患者6_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:06.558496"
+  },
+  "患者8_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:31.185012"
+  },
+  "患者7_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:48.771813"
+  },
+  "患者7_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:14.864516"
+  },
+  "患者8_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:54:45.713133"
+  },
+  "患者8_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:30.191871"
+  },
+  "患者8_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:09.519121"
+  },
+  "患者8_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:31.187517"
+  },
+  "患者8_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:04.180277"
+  },
+  "患者8_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:10.239080"
+  },
+  "患者7_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:29.542692"
+  },
+  "患者8_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:03.912984"
+  },
+  "患者7_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:39.911286"
+  },
+  "患者8_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:15.254370"
+  },
+  "患者8_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:06.824462"
+  },
+  "患者7_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:48.083338"
+  },
+  "患者7_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:49.145022"
+  },
+  "患者8_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:20.759879"
+  },
+  "患者8_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:12.185738"
+  },
+  "患者8_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:55.545281"
+  },
+  "患者7_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:45:03.953767"
+  },
+  "患者8_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:03.733516"
+  },
+  "患者8_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:58.602157"
+  },
+  "患者8_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:48.092024"
+  },
+  "患者7_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:35.224421"
+  },
+  "患者8_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:46.930036"
+  },
+  "患者8_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:54.940027"
+  },
+  "患者8_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:27.628613"
+  },
+  "患者8_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:20.785657"
+  },
+  "患者7_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:42:58.349285"
+  },
+  "患者8_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:50.869199"
+  },
+  "患者8_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:33.385642"
+  },
+  "患者8_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:21.404954"
+  },
+  "患者8_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:59.238955"
+  },
+  "患者8_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:14.750131"
+  },
+  "患者8_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:44.553207"
+  },
+  "患者8_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:56.281855"
+  },
+  "患者8_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:38.870356"
+  },
+  "患者8_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:06.035960"
+  },
+  "患者8_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:47:41.531350"
+  },
+  "患者8_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:45:31.295947"
+  },
+  "患者7_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:55:39.706674"
+  },
+  "患者8_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:25.813154"
+  },
+  "患者8_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:18.574723"
+  },
+  "患者8_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:37.435026"
+  },
+  "患者8_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:49.997798"
+  },
+  "患者7_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:25.079783"
+  },
+  "患者8_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:14.881652"
+  },
+  "患者7_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:39.015382"
+  },
+  "患者8_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:40.966610"
+  },
+  "患者8_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:40.261403"
+  },
+  "患者8_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:16.126016"
+  },
+  "患者8_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:28.844452"
+  },
+  "患者8_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:38.750342"
+  },
+  "患者8_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:50.323892"
+  },
+  "患者8_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:29.794263"
+  },
+  "患者7_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:37.357366"
+  },
+  "患者7_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:16.008438"
+  },
+  "患者8_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:48:58.568961"
+  },
+  "患者8_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:32.238418"
+  },
+  "患者8_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:48.356599"
+  },
+  "患者7_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:11.565649"
+  },
+  "患者9_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:53.910591"
+  },
+  "患者9_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:18.290494"
+  },
+  "患者8_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:40.906313"
+  },
+  "患者9_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:04.611553"
+  },
+  "患者8_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:58.549853"
+  },
+  "患者9_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:10.291682"
+  },
+  "患者9_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:25.181773"
+  },
+  "患者8_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:36.307849"
+  },
+  "患者8_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:07.652033"
+  },
+  "患者8_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:01.227144"
+  },
+  "患者9_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:48.722661"
+  },
+  "患者8_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:50.189310"
+  },
+  "患者9_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:56.398146"
+  },
+  "患者8_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:13.972442"
+  },
+  "患者9_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:22.758783"
+  },
+  "患者8_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:15.208924"
+  },
+  "患者8_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:24.574054"
+  },
+  "患者9_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:26.659648"
+  },
+  "患者9_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:52.984735"
+  },
+  "患者8_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:35.793207"
+  },
+  "患者8_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:56:27.378544"
+  },
+  "患者9_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:29.416877"
+  },
+  "患者8_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:58.105479"
+  },
+  "患者8_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:37.152117"
+  },
+  "患者9_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:15.324813"
+  },
+  "患者8_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:12.943529"
+  },
+  "患者9_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:47.250377"
+  },
+  "患者9_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:28.191087"
+  },
+  "患者9_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:02.594001"
+  },
+  "患者9_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:59.594660"
+  },
+  "患者9_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:26.379978"
+  },
+  "患者9_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:05.215013"
+  },
+  "患者9_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:26.866356"
+  },
+  "患者9_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:45.487082"
+  },
+  "患者9_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:01.089329"
+  },
+  "患者9_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:28.638308"
+  },
+  "患者9_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:48.673320"
+  },
+  "患者9_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:25.414236"
+  },
+  "患者9_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:32.217041"
+  },
+  "患者9_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:08.720214"
+  },
+  "患者9_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:38.670511"
+  },
+  "患者9_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:33.183721"
+  },
+  "患者9_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:50.441507"
+  },
+  "患者9_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:48.641925"
+  },
+  "患者9_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:21.957699"
+  },
+  "患者9_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:51:10.772613"
+  },
+  "患者9_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:58:13.649974"
+  },
+  "患者9_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:30.857318"
+  },
+  "患者9_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:07.504622"
+  },
+  "患者8_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:49.696896"
+  },
+  "患者8_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:59.409997"
+  },
+  "患者8_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:57:19.495643"
+  },
+  "患者9_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:50:36.726190"
+  },
+  "患者9_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:31.165266"
+  },
+  "患者9_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:51:34.749349"
+  },
+  "患者9_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:05.397107"
+  },
+  "患者9_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:36.159724"
+  },
+  "患者9_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:08.937731"
+  },
+  "患者9_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:14.249240"
+  },
+  "患者10_Baichuan-M2_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:19.237781"
+  },
+  "患者9_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:01.918189"
+  },
+  "患者9_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:43.976397"
+  },
+  "患者10_Baichuan-M2_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:51.621715"
+  },
+  "患者9_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:01.305751"
+  },
+  "患者9_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:08.009322"
+  },
+  "患者9_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:11.418883"
+  },
+  "患者10_deepseek_deepseek-v3.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:26.890934"
+  },
+  "患者9_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:30.821597"
+  },
+  "患者10_deepseek_deepseek-v3.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:39.426341"
+  },
+  "患者9_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:01.091944"
+  },
+  "患者10_Baichuan-M2_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:44.837537"
+  },
+  "患者9_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:21.546035"
+  },
+  "患者10_deepseek_deepseek-v3.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:51:46.079669"
+  },
+  "患者10_Baichuan-M2_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:25.050928"
+  },
+  "患者9_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:18.735259"
+  },
+  "患者10_doubao-seed-1-6-251015_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:00.257688"
+  },
+  "患者9_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:05.529955"
+  },
+  "患者9_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:44.086821"
+  },
+  "患者10_doubao-seed-1-6-251015_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:26.037201"
+  },
+  "患者10_deepseek_deepseek-v3.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:55.237041"
+  },
+  "患者10_doubao-seed-1-6-251015_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:25.248696"
+  },
+  "患者9_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:55.798983"
+  },
+  "患者10_Baichuan-M2_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:22.149937"
+  },
+  "患者10_deepseek_deepseek-v3.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:49.004216"
+  },
+  "患者10_gemini-3-pro-preview_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:16.637422"
+  },
+  "患者10_Baichuan-M2_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:14.908736"
+  },
+  "患者10_gemini-3-pro-preview_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:45.114920"
+  },
+  "患者10_gemini-3-pro-preview_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:05.641602"
+  },
+  "患者10_doubao-seed-1-6-251015_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:17.594552"
+  },
+  "患者9_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:37.316138"
+  },
+  "患者9_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:25.323592"
+  },
+  "患者9_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:44.140158"
+  },
+  "患者10_gemini-3-pro-preview_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:45.175528"
+  },
+  "患者10_gpt-5.1_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:36.444359"
+  },
+  "患者10_gpt-5.1_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:31.709133"
+  },
+  "患者10_doubao-seed-1-6-251015_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:08.567996"
+  },
+  "患者10_deepseek_deepseek-v3.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:49.001863"
+  },
+  "患者10_gpt-5.1_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:44.340172"
+  },
+  "患者10_gemini-3-pro-preview_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:50.063109"
+  },
+  "患者9_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:29.962167"
+  },
+  "患者10_grok-4-0709_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:54.709399"
+  },
+  "患者10_gpt-5.1_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:36.879286"
+  },
+  "患者9_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T22:59:37.090083"
+  },
+  "患者10_Baichuan-M2_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:12.030384"
+  },
+  "患者10_doubao-seed-1-6-251015_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:56.385393"
+  },
+  "患者10_grok-4-0709_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:12.795583"
+  },
+  "患者10_doubao-seed-1-6-251015_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:00:57.308476"
+  },
+  "患者10_gpt-5.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:32.925290"
+  },
+  "患者10_gpt-5.1_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:10.143074"
+  },
+  "患者10_grok-4-0709_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:46.511603"
+  },
+  "患者10_gemini-3-pro-preview_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:24.108051"
+  },
+  "患者10_deepseek_deepseek-v3.1_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:13.693029"
+  },
+  "患者10_grok-4-0709_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:16.049330"
+  },
+  "患者10_moonshotai_kimi-k2-0905_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:38.244551"
+  },
+  "患者10_gemini-3-pro-preview_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:01.918519"
+  },
+  "患者10_gpt-5.1_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:32.028040"
+  },
+  "患者10_grok-4-0709_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:57.165883"
+  },
+  "患者10_moonshotai_kimi-k2-0905_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:20.004301"
+  },
+  "患者10_qwen3-max_deepseek_deepseek-v3.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:40.084169"
+  },
+  "患者10_qwen3-max_gpt-5.1": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:45.139579"
+  },
+  "患者9_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:24.137421"
+  },
+  "患者10_qwen3-max_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:21.104005"
+  },
+  "患者10_grok-4-0709_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:31.589639"
+  },
+  "患者10_moonshotai_kimi-k2-0905_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:01:51.158120"
+  },
+  "患者10_moonshotai_kimi-k2-0905_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:31.755239"
+  },
+  "患者10_grok-4-0709_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:52:29.882717"
+  },
+  "患者10_qwen3-max_qwen3-max": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:00.208826"
+  },
+  "患者10_deepseek_deepseek-v3.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:37.300051"
+  },
+  "患者9_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:42.947437"
+  },
+  "患者10_Baichuan-M2_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:21.506685"
+  },
+  "患者10_qwen3-max_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:13.835365"
+  },
+  "患者10_doubao-seed-1-6-251015_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:04:01.128199"
+  },
+  "患者10_moonshotai_kimi-k2-0905_doubao-seed-1-6-251015": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:15.104598"
+  },
+  "患者10_qwen3-max_Baichuan-M2": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:02:59.815061"
+  },
+  "患者10_moonshotai_kimi-k2-0905_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:58.847553"
+  },
+  "患者9_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:44.852777"
+  },
+  "患者9_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:01.598702"
+  },
+  "患者10_gemini-3-pro-preview_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:50.164170"
+  },
+  "患者10_qwen3-max_gemini-3-pro-preview": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:54:45.426844"
+  },
+  "患者10_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:04:21.688106"
+  },
+  "患者10_moonshotai_kimi-k2-0905_moonshotai_kimi-k2-0905": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:03:28.583561"
+  },
+  "患者10_qwen3-max_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:05:16.624764"
+  },
+  "患者10_moonshotai_kimi-k2-0905_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:05:49.570243"
+  },
+  "患者10_grok-4-0709_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:04:46.285648"
+  },
+  "患者9_gpt-5.1_grok-4-0709": {
+    "completed": true,
+    "timestamp": "2025-11-23T23:07:00.853969"
+  }
+}

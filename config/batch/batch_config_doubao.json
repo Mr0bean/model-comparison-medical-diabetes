@@ -1,0 +1,19 @@
+{
+  "prompts_file": "多个Prompt.json",
+  "records_dir": "测试输入问答记录",
+  "output_dir": "./output/raw_doubao",
+  "api_config": {
+    "api_key": "769ffc88-43ca-4f2f-9275-05dd94392dff",
+    "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+    "endpoint_id": null
+  },
+  "models": [
+    "doubao-seed-1-6-251015"
+  ],
+  "max_retries": 5,
+  "max_tokens": 32768,
+  "log_file": "batch_process_doubao.log",
+  "log_level": "INFO",
+  "_comment": "豆包 (火山引擎) API 配置 - https://api.volcengine.com/api-docs/view?serviceCode=ark&version=2024-01-01&action=ChatCompletions",
+  "_note": "endpoint_id 是豆包模型的接入点ID，需要在火山引擎控制台获取"
+}

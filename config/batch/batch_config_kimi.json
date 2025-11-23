@@ -1,0 +1,19 @@
+{
+  "prompts_file": "多个Prompt.json",
+  "records_dir": "测试输入问答记录",
+  "output_dir": "./output/raw_kimi",
+  "api_config": {
+    "api_key": null,
+    "base_url": "https://api.moonshot.cn/v1"
+  },
+  "models": [
+    "moonshot-v1-8k",
+    "moonshot-v1-32k",
+    "moonshot-v1-128k"
+  ],
+  "max_retries": 5,
+  "max_tokens": 2000,
+  "log_file": "batch_process_kimi.log",
+  "log_level": "INFO",
+  "_comment": "Kimi (月之暗面) API 配置 - https://platform.moonshot.cn/docs"
+}

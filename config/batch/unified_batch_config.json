@@ -1,0 +1,14 @@
+{
+  "prompts_file": "多个Prompt.json",
+  "records_dir": "测试输入问答记录",
+  "output_dir": "./output/raw",
+  "models": [
+    "gemini-3-pro-preview"
+  ],
+  "max_retries": 50,
+  "max_tokens": 8000,
+  "temperature": 0.3,
+  "log_file": "unified_batch.log",
+  "log_level": "INFO",
+  "model_registry_file": "model_registry.json"
+}

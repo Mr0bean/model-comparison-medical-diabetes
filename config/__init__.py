@@ -1,0 +1,30 @@
+"""
+配置模块
+统一管理所有配置信息
+"""
+
+# AI评测Prompt配置
+from .ai_evaluation_prompt import (
+    EVALUATION_SYSTEM_MESSAGE,
+    FULL_EVALUATION_PROMPT,
+    QUICK_EVALUATION_PROMPT,
+    ACCURACY_EVALUATION_PROMPT,
+    COMPLETENESS_EVALUATION_PROMPT,
+    STANDARDIZATION_EVALUATION_PROMPT,
+    score_to_stars,
+    stars_to_score,
+    EVALUATION_RESULT_TEMPLATE
+)
+
+__all__ = [
+    # AI评测相关
+    'EVALUATION_SYSTEM_MESSAGE',
+    'FULL_EVALUATION_PROMPT',
+    'QUICK_EVALUATION_PROMPT',
+    'ACCURACY_EVALUATION_PROMPT',
+    'COMPLETENESS_EVALUATION_PROMPT',
+    'STANDARDIZATION_EVALUATION_PROMPT',
+    'score_to_stars',
+    'stars_to_score',
+    'EVALUATION_RESULT_TEMPLATE',
+]
