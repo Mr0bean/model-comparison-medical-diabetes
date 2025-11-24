@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模型评测对比（人工打分）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif; background: #f5f5f5; min-height: 100vh; }
+
+        .container { width: 100%; min-height: 100vh; background: white; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 24px 32px; text-align: center; }
+        .header h1 { font-size: 28px; margin-bottom: 6px; font-weight: 700; }
+        .header p { opacity: 0.9; }
+
+        .controls { padding: 16px 24px; background: #f8f9fa; border-bottom: 1px solid #e0e0e0; }
+        .control-group { margin-bottom: 16px; }
+        .control-label { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; display: block; }
+        .patient-selector, .conv-type-selector { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .patient-checkbox, .conv-type-checkbox, .model-checkbox { display: flex; align-items: center; padding: 10px 14px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 14px; font-weight: 500; }
+        .patient-checkbox:hover, .conv-type-checkbox:hover, .model-checkbox:hover { border-color: #667eea; background: #f0f4ff; }
+        .patient-checkbox.selected, .conv-type-checkbox.selected, .model-checkbox.selected { background: #667eea; color: white; border-color: #667eea; }
+        .patient-checkbox input, .conv-type-checkbox input, .model-checkbox input { margin-right: 8px; }
+        .select-all-btn, .select-all-patients-btn { padding: 10px 16px; border: 2px solid #667eea; background: #667eea; color: white; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 14px; font-weight: 600; }
+
+        .comparison-area { padding: 24px; }
+        .no-data { text-align: center; padding: 24px; color: #999; }
+
+        /* 固定横向排列：左侧对话，右侧模型横向滚动 */
+        .content-wrapper { display: flex; gap: 20px; align-items: flex-start; }
+        .conversation-panel { background: #fff; border: 2px solid #e0e0e0; border-radius: 12px; overflow: hidden; width: 420px; flex: 0 0 420px; }
+        .conversation-header { display: flex; align-items: center; gap: 8px; background: #f0f4ff; border-bottom: 2px solid #e0e0e0; padding: 12px 16px; }
+        .conversation-icon { font-size: 16px; }
+        .chat-messages { padding: 16px; max-height: 700px; overflow-y: auto; }
+        .chat-section-title { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; margin: 12px 0 10px; }
+        .patient-info-card { background: #f8f9fa; border-left: 4px solid #667eea; padding: 12px; border-radius: 8px; margin: 8px 0; }
+        .patient-info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+        .patient-info-item { font-size: 13px; color: #555; }
+
+        /* 对话气泡样式（与原对比页一致） */
+        .chat-message { margin-bottom: 14px; display: flex; flex-direction: column; }
+        .chat-message.patient { align-items: flex-start; }
+        .chat-message.doctor { align-items: flex-end; }
+        .chat-avatar { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .chat-content { max-width: 80%; }
+        .chat-role { font-size: 12px; color: #666; margin: 0 0 6px 0; }
+        .chat-message.patient .chat-role { text-align: left; }
+        .chat-message.doctor .chat-role { text-align: right; }
+        .chat-bubble { padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.6; display: inline-block; white-space: pre-wrap; word-break: keep-all; overflow-wrap: anywhere; max-width: 80%; }
+        .chat-bubble.short { white-space: nowrap !important; word-break: keep-all !important; overflow-wrap: normal !important; }
+        .chat-message.patient .chat-bubble { background: #f0f4ff; color: #333; border-bottom-left-radius: 4px; }
+        .chat-message.doctor .chat-bubble { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-bottom-right-radius: 4px; margin-left: auto; }
+
+        .criteria-panel { padding: 16px; border-top: 2px dashed #e0e0e0; background: #fafbff; border-radius: 8px; }
+        .criteria-title { font-weight: 700; color: #667eea; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+        .criteria-title .toggle { font-size: 12px; color: #667eea; opacity: 0.9; transition: transform 0.2s ease; }
+        .criteria-panel.collapsed .criteria-title .toggle { transform: rotate(-90deg); }
+        .criteria-content { margin-top: 6px; }
+        .criteria-panel.collapsed .criteria-content { display: none; }
+        .criteria-preview { margin-top: 6px; font-size: 12px; color: #666; background: #fff; border: 1px dashed #e0e0e0; border-radius: 8px; padding: 8px 10px; line-height: 1.6; }
+        /* 仅在折叠时显示预览 */
+        .criteria-panel:not(.collapsed) .criteria-preview { display: none; }
+        .expand-hint { margin-top: 6px; font-size: 12px; color: #999; }
+        .criteria-panel:not(.collapsed) .expand-hint { display: none; }
+        .criteria-item { margin-bottom: 12px; font-size: 13px; color: #555; }
+        .criteria-item strong { color: #333; }
+        .criteria-item ul { margin-top: 6px; margin-left: 18px; }
+        .criteria-item li { margin: 4px 0; line-height: 1.6; }
+
+        /* 右侧横向滚动模型卡片 */
+        .models-container { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 16px; align-items: flex-start; }
+        .models-container::-webkit-scrollbar { height: 10px; }
+        .models-container::-webkit-scrollbar-thumb { background: #667eea; border-radius: 6px; }
+        .model-card { background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 12px; overflow: hidden; width: 450px; flex: 0 0 450px; }
+        .model-card-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 16px; font-weight: 700; }
+        .patient-info-bar { background: #f0f4ff; padding: 8px 16px; border-bottom: 2px solid #e0e0e0; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
+        .patient-name { color: #667eea; font-weight: 700; }
+        .model-card-body { padding: 16px; max-height: 800px; overflow-y: auto; font-size: 14px; line-height: 1.8; color: #333; white-space: normal; }
+        .model-card-body h3 { margin: 16px 0 8px; font-size: 16px; color: #667eea; }
+        /* 报告分块对齐样式 */
+        .report-block + .report-block { border-top: 2px solid #e0e0e0; margin-top: 14px; padding-top: 14px; }
+        .report-block-title { margin: 0 0 8px 0; font-size: 16px; color: #667eea; font-weight: 700; }
+        .report-block-content { overflow-y: auto; }
+
+        .rating-panel { background: #fff; border-top: 2px solid #e0e0e0; padding: 12px 16px; }
+        .rating-title { font-weight: 700; color: #333; margin-bottom: 8px; }
+        .rating-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px dashed #eee; }
+        .rating-row:last-child { border-bottom: none; }
+        .rating-label { min-width: 140px; font-size: 13px; color: #555; }
+        .stars { display: inline-flex; gap: 6px; cursor: pointer; user-select: none; }
+        .star { font-size: 20px; color: #ddd; transition: transform 0.15s; }
+        .star.filled { color: #ffc107; text-shadow: 0 0 3px rgba(255,193,7,0.3); }
+        .star:hover { transform: scale(1.1); }
+        .score-num { font-weight: 700; color: #667eea; min-width: 60px; text-align: right; }
+        .total-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 8px; border-top: 2px solid #eee; }
+        .total-score { font-size: 18px; font-weight: 800; color: #667eea; }
+
+        @media (max-width: 1200px) { .content-wrapper { grid-template-columns: 1fr; } }
+
+        /* 顶部右侧悬浮 HUD */
+        .hud-floating { position: fixed; right: 20px; top: 20px; z-index: 9999; background: rgba(255,255,255,0.95); border: 2px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); padding: 12px 14px; min-width: 280px; backdrop-filter: blur(6px); }
+        .hud-title { font-weight: 700; font-size: 14px; color: #333; margin-bottom: 8px; }
+        .hud-progress { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .hud-bar { flex: 1; height: 8px; background: #f0f0f0; border-radius: 6px; overflow: hidden; }
+        .hud-bar-fill { height: 100%; background: linear-gradient(90deg, #52c41a, #73d13d); width: 0%; transition: width 0.3s; }
+        .hud-numbers { font-family: monospace; font-weight: 700; color: #667eea; min-width: 80px; text-align: right; }
+        .hud-buttons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+        .hud-btn { padding: 8px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer; font-size: 12px; font-weight: 600; color: #333; transition: all 0.2s; }
+        .hud-btn:hover { background: #f0f4ff; border-color: #667eea; color: #667eea; }
+        .hud-btn.primary { background: linear-gradient(135deg,#667eea,#764ba2); color: white; border: none; }
+        .hud-btn.primary:hover { filter: brightness(1.05); }
+        .hud-btn.disabled { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 模型评测对比（人工打分）</h1>
+            <p>基于人类评审的 5 星评分（自动换算至权重分）</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label class="control-label">📋 选择患者 (可多选):</label>
+                <div class="patient-selector" id="patientSelector"></div>
+            </div>
+
+            <!-- 模型与对话类型固定为全部展示，去除选择控件 -->
+        </div>
+
+        <div class="comparison-area" id="comparisonArea">
+            <div class="no-data">正在加载数据...</div>
+        </div>
+    </div>
+
+    <!-- 悬浮 HUD -->
+    <div class="hud-floating" id="hudBox" style="display:none;">
+        <div class="hud-title">评测进度</div>
+        <div class="hud-progress">
+            <div class="hud-bar"><div class="hud-bar-fill" id="hudBarFill" style="width:0%"></div></div>
+            <div class="hud-numbers" id="hudNumbers">0/0 (0%)</div>
+        </div>
+        <div class="hud-buttons">
+            <button class="hud-btn primary" id="hudSubmitBtn" title="提交评分">提交</button>
+            <button class="hud-btn" id="hudExportBtn" title="导出评分为CSV">导出</button>
+            <button class="hud-btn" id="hudRulesBtn" title="展开/收起评测规则">规则</button>
+            <button class="hud-btn" id="hudRefreshBtn" title="刷新进度">刷新</button>
+            <button class="hud-btn disabled" id="hudDemoBtn" title="演示页面（暂未实现）">演示</button>
+        </div>
+    </div>
+
+    <script>
+        let comparisonData = null;
+        let selectedPatients = new Set();
+        let selectedModels = new Set(); // 内部维护为“全部模型”，不渲染选择
+        let selectedConvTypes = new Set(['1','2','3','4']); // 固定四个小节
+        let evalCriteria = [];
+
+        // 颜色
+        const modelColors = {};
+        function getModelColor(model) {
+            if (modelColors[model]) return modelColors[model];
+            const hue = (model.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 360);
+            const start = `hsl(${hue}, 65%, 65%)`;
+            const end = `hsl(${(hue+30)%360}, 65%, 75%)`;
+            return modelColors[model] = { start, end };
+        }
+
+        // 读取 comparison 数据（用于患者/模型列表）
+        async function loadComparison() {
+            const res = await fetch('../../output/comparison_data.json');
+            if (!res.ok) throw new Error('comparison_data.json 加载失败');
+            comparisonData = await res.json();
+        }
+
+        // 读取人工评测指标
+        async function loadHumanPrompt() {
+            const res = await fetch('../../Prompts/PromptForReportTest/human_prompt');
+            if (!res.ok) throw new Error('human_prompt 加载失败');
+            const text = await res.text();
+            // 粗略解析: 提取每个“**X. 名称—— 权重 Y分**”及其后面的要点作为描述
+            const lines = text.split('\n');
+            const items = [];
+            let current = null;
+            const headerRe = /^\*\*\s*(\d+)\.\s*([^—\-]+)[—\-]+\s*权重\s*(\d+)分\s*\*\*/;
+            lines.forEach(line => {
+                const m = line.match(headerRe);
+                if (m) {
+                    if (current) items.push(current);
+                    current = { id: m[1], name: m[2].trim(), weight: parseFloat(m[3]), desc: [] };
+                } else if (current) {
+                    if (line.trim()) current.desc.push(line);
+                }
+            });
+            if (current) items.push(current);
+            evalCriteria = items.map(it => ({
+                id: it.id,
+                key: it.name,
+                name: it.name,
+                weight: it.weight,
+                description: it.desc.join('\n')
+            }));
+        }
+
+        // 原始输出（raw）加载缓存
+        const rawCache = {};
+        function getRaw(model, patient) {
+            if (!rawCache[model]) rawCache[model] = {};
+            if (rawCache[model][patient]) return Promise.resolve(rawCache[model][patient]);
+            const filename = encodeURIComponent(`${model}-${patient}.json`);
+            const url = `../../output/raw/${filename}`;
+            return fetch(url)
+                .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+                .then(j => (rawCache[model][patient] = j))
+                .catch(_ => (rawCache[model][patient] = null));
+        }
+
+        // 初始化UI
+        function initUI() {
+            const patientSelector = document.getElementById('patientSelector');
+            // 模型与对话类型不渲染选择控件
+
+            // 患者
+            const pBtn = document.createElement('button'); pBtn.className='select-all-patients-btn'; pBtn.id='selectAllPatientsBtn'; pBtn.textContent='✓ 全选患者'; pBtn.onclick=selectAllPatients; patientSelector.appendChild(pBtn);
+            comparisonData.patients.forEach(p => {
+                const l=document.createElement('label'); l.className='patient-checkbox';
+                l.innerHTML=`<input type="checkbox" value="${p}" onchange="togglePatient('${p}', this.checked)"><span>${p}</span>`;
+                patientSelector.appendChild(l);
+            });
+
+            // 模型内部固定为全部
+            comparisonData.models.forEach(m => selectedModels.add(m));
+
+            // 默认全选
+            comparisonData.patients.forEach(p => selectedPatients.add(p));
+            syncPatientCheckboxes();
+            // 对话类型固定四个，已默认设置
+
+            updateComparison();
+        }
+
+        // 选择函数
+        function togglePatient(p, checked){
+            if (checked) selectedPatients.add(p); else selectedPatients.delete(p);
+            syncPatientCheckboxes();
+            updateComparison();
+        }
+        function selectAllPatients(){
+            const all = selectedPatients.size === comparisonData.patients.length;
+            selectedPatients.clear();
+            if (!all) comparisonData.patients.forEach(p => selectedPatients.add(p));
+            syncPatientCheckboxes();
+            updateComparison();
+        }
+        function syncPatientCheckboxes(){
+            document.querySelectorAll('.patient-checkbox input').forEach(cb => {
+                cb.checked = selectedPatients.has(cb.value);
+                cb.parentElement.classList.toggle('selected', cb.checked);
+            });
+            updateSelectAllPatientsButton();
+        }
+        function updateSelectAllPatientsButton(){
+            const btn = document.getElementById('selectAllPatientsBtn');
+            if (!btn || !comparisonData) return;
+            const all = selectedPatients.size === comparisonData.patients.length;
+            btn.textContent = all ? '✗ 取消全选' : '✓ 全选患者';
+        }
+        // 移除模型/对话类型选择逻辑（固定全部）
+        function syncCheck(sel){ document.querySelectorAll(sel).forEach(l=>{ const cb=l.querySelector('input'); if(!cb) return; l.classList.toggle('selected', cb.checked); }); }
+
+        // 星级评分存储
+        function getRatingKey(patient, model){ return `human_eval_${patient}_${model}`; }
+        function getRatings(patient, model){ return JSON.parse(localStorage.getItem(getRatingKey(patient, model))||'{}'); }
+        function setRating(patient, model, dimKey, stars){ const key=getRatingKey(patient,model); const data=getRatings(patient,model); data[dimKey]=stars; localStorage.setItem(key, JSON.stringify(data)); try{ updateHUD(); }catch(e){} }
+
+        // 构建对比区域
+        async function updateComparison(){
+            const area = document.getElementById('comparisonArea');
+            if (selectedPatients.size===0 || selectedModels.size===0 || selectedConvTypes.size===0){ area.innerHTML='<div class="no-data">👆 请选择患者、模型和对话类型</div>'; return; }
+            area.innerHTML='';
+
+            for (const patient of Array.from(selectedPatients)){
+                // 标题
+                const h = document.createElement('h1'); h.style.cssText='font-size:22px;margin:24px 0 16px;color:#667eea;border-bottom:3px solid #667eea;padding-bottom:8px;font-weight:800;'; h.textContent = `📋 ${patient}`; area.appendChild(h);
+
+                const wrapper = document.createElement('div'); wrapper.className='content-wrapper';
+
+                // 对话面板
+                const convPanel = document.createElement('div'); convPanel.className='conversation-panel';
+                const chead = document.createElement('div'); chead.className='conversation-header'; chead.innerHTML='<span class="conversation-icon">💬</span><h3>预问诊对话记录</h3>';
+                const cmessages = document.createElement('div'); cmessages.className='chat-messages';
+
+                // 从任意模型获取 chat（raw），并解析成气泡样式
+                let chatText = null;
+                for (const model of Array.from(selectedModels)){
+                    const raw = await getRaw(model, patient);
+                    if (raw && raw.conversations){
+                        const ids = Object.keys(raw.conversations).sort((a,b)=>Number(a)-Number(b));
+                        for (const id of ids){ const c = raw.conversations[id]; if (c && c.chat){ chatText=c.chat; break; } }
+                        if (chatText) break;
+                    }
+                }
+                if (!chatText) {
+                    cmessages.innerHTML = '<div class="no-data">暂无对话数据</div>';
+                } else {
+                    const messages = parseChatContent(chatText);
+                    cmessages.innerHTML = messages.map(msg => {
+                        if (msg.type === 'section') {
+                            return `<div class="chat-section-title">${escapeHtml(msg.content)}</div>`;
+                        } else if (msg.type === 'patient-info') {
+                            const items = Object.entries(msg.data).map(([k,v]) => `<div class="patient-info-item"><strong>${escapeHtml(k)}:</strong> ${escapeHtml(v)}</div>`).join('');
+                            return `<div class="patient-info-card"><div class="patient-info-grid">${items}</div></div>`;
+                        } else {
+                            const roleClass = msg.role === 'patient' ? 'patient' : 'doctor';
+                            const roleName = msg.role === 'patient' ? '患者' : '医助';
+                            const avatar = msg.role === 'patient' ? '👤' : '👨‍⚕️';
+                            const normalized = normalizeShortLines(msg.content);
+                            const plain = normalized.replace(/\s+/g, '');
+                            const isShort = plain.length <= 6;
+                            const contentHtml = escapeHtml(normalized).replace(/\n/g,'<br>');
+                            return `<div class="chat-message ${roleClass}">
+                                <div class="chat-avatar">${avatar}</div>
+                                <div class="chat-content">
+                                    <div class="chat-role">${roleName}</div>
+                                    <div class="chat-bubble ${isShort ? 'short' : ''}">${contentHtml}</div>
+                                </div>
+                            </div>`;
+                        }
+                    }).join('');
+                }
+
+                // 指标说明
+                const criteriaDiv = document.createElement('div'); criteriaDiv.className='criteria-panel';
+                criteriaDiv.innerHTML = `
+                    <div class="criteria-title" id="criteriaToggle">📑 评测指标说明 <span class="toggle">▼</span></div>
+                    <div class="criteria-preview"></div>
+                    <div class="expand-hint">点击上方标题展开查看完整评测要求</div>
+                    <div class="criteria-content">${evalCriteria.map(c => `<div class=\"criteria-item\"><strong>${c.name}（权重${c.weight}）</strong>${renderCriteriaMarkdown(c.description)}</div>`).join('')}</div>
+                `;
+                // 默认展开：忽略历史折叠状态，强制展开
+                localStorage.setItem('criteria_collapsed', '0');
+                // 预览内容：展示“维度（权重）”一行
+                const previewEl = criteriaDiv.querySelector('.criteria-preview');
+                previewEl.innerHTML = generateCriteriaPreview(evalCriteria);
+                criteriaDiv.querySelector('#criteriaToggle').addEventListener('click', () => {
+                    // 同步所有面板：若任一展开则全部收起；若都收起则全部展开
+                    const panels = Array.from(document.querySelectorAll('.criteria-panel'));
+                    const anyExpanded = panels.some(p => !p.classList.contains('collapsed'));
+                    const targetCollapse = anyExpanded; // 展开→全收起；收起→全展开
+                    panels.forEach(p => p.classList.toggle('collapsed', targetCollapse));
+                    localStorage.setItem('criteria_collapsed', targetCollapse ? '1' : '0');
+                });
+
+                convPanel.appendChild(chead); convPanel.appendChild(cmessages); convPanel.appendChild(criteriaDiv);
+                wrapper.appendChild(convPanel);
+
+                // 模型容器
+                const modelsDiv = document.createElement('div'); modelsDiv.className='models-container';
+                const sortedModels = Array.from(selectedModels).sort();
+                for (const model of sortedModels){
+                    const raw = await getRaw(model, patient);
+                    const sectionTitles = { '1':'主诉','2':'现病史','3':'既往史','4':'家族史' };
+                    const modelConvData = [];
+                    if (raw && raw.conversations){
+                        Object.keys(sectionTitles).forEach(id => {
+                            if (!selectedConvTypes.has(id)) return;
+                            const conv = raw.conversations[id]; const out = conv && (conv.Output || conv.output);
+                            if (out) modelConvData.push({ id, title: sectionTitles[id], output: out });
+                        });
+                    }
+                    const card = buildModelCard(patient, model, modelConvData);
+                    modelsDiv.appendChild(card);
+                }
+                wrapper.appendChild(modelsDiv);
+                // 对齐本患者下各模型中相同分块的高度
+                setTimeout(() => alignReportBlocks(modelsDiv), 50);
+                area.appendChild(wrapper);
+            }
+        }
+
+        function buildModelCard(patient, model, modelConvData){
+            const card = document.createElement('div'); card.className='model-card';
+            const header = document.createElement('div'); header.className='model-card-header'; header.textContent=model; const colors=getModelColor(model); header.style.background=`linear-gradient(135deg, ${colors.start} 0%, ${colors.end} 100%)`;
+            const bar = document.createElement('div'); bar.className='patient-info-bar'; bar.innerHTML=`<span class="patient-icon">👤</span><span>患者：</span><span class="patient-name">${patient}</span>`;
+            const body = document.createElement('div'); body.className='model-card-body';
+            // 输出
+            let html='';
+            modelConvData.forEach((d, idx) => { if (idx>0) html+='<div style="border-top:2px solid #e0e0e0;margin:14px 0;"></div>'; html+=`<h3>${d.title}</h3>` + formatOutput(d.output); });
+            if (modelConvData.length===0) html='<div class="no-data">该模型暂无原始输出</div>';
+            body.innerHTML = html;
+            // 包裹每个 <h3> 作为一个报告分块，便于后续对齐高度
+            wrapReportSections(body);
+
+            // 评分
+            const rating = document.createElement('div'); rating.className='rating-panel';
+            rating.appendChild(Object.assign(document.createElement('div'),{className:'rating-title',textContent:'📝 评测打分（5星制，自动换算至权重）'}));
+            const rows = document.createElement('div');
+            const saved = getRatings(patient, model);
+            evalCriteria.forEach(c => {
+                const row = document.createElement('div'); row.className='rating-row';
+                const label = document.createElement('div'); label.className='rating-label'; label.textContent = `${c.name}（权重${c.weight}）`;
+                const stars = document.createElement('div'); stars.className='stars';
+                const display = document.createElement('div'); display.className='score-num';
+                const current = Number(saved[c.name] || 0);
+                for (let i=1;i<=5;i++){
+                    const s = document.createElement('span'); s.className='star' + (i<=current?' filled':''); s.textContent='★';
+                    s.onclick = () => { setRating(patient, model, c.name, i); updateTotals(); };
+                    stars.appendChild(s);
+                }
+                row.appendChild(label); row.appendChild(stars); row.appendChild(display); rows.appendChild(row);
+            });
+            rating.appendChild(rows);
+
+            const totalRow = document.createElement('div'); totalRow.className='total-row';
+            const totalLabel = document.createElement('div'); totalLabel.textContent='总分（自动换算）';
+            const totalValue = document.createElement('div'); totalValue.className='total-score'; totalRow.appendChild(totalLabel); totalRow.appendChild(totalValue);
+            rating.appendChild(totalRow);
+
+            function updateTotals(){
+                // 更新星星填充状态与单项分数显示
+                const myRatings = getRatings(patient, model);
+                const starRows = rating.querySelectorAll('.rating-row');
+                let total = 0;
+                starRows.forEach((row, idx) => {
+                    const c = evalCriteria[idx]; if (!c) return;
+                    const stars = Number(myRatings[c.name] || 0);
+                    const starsEls = row.querySelectorAll('.star');
+                    starsEls.forEach((el, i) => el.classList.toggle('filled', i < stars));
+                    const val = c.weight * (stars/5.0);
+                    total += val;
+                    const disp = row.querySelector('.score-num');
+                    disp.textContent = `${val.toFixed(1)}`;
+                });
+                totalValue.textContent = `${total.toFixed(1)} / 100`;
+            }
+            updateTotals();
+
+            card.appendChild(header); card.appendChild(bar); card.appendChild(body); card.appendChild(rating);
+            return card;
+        }
+
+        function formatOutput(text){ if (!text) return ''; let t=text.replace(/\n/g,'<br>'); t=t.replace(/^### (.+)$/gm,'<h3>$1</h3>'); t=t.replace(/^\*\*(.+?)\*\*:/gm,'<strong>$1:</strong>'); t=t.replace(/^- (.+)$/gm,'• $1'); t=t.replace(/^\* (.+)$/gm,'• $1'); return t; }
+        function renderCriteriaMarkdown(text){
+            if (!text) return '';
+            // 先转义
+            let src = escapeHtml(text);
+            const lines = src.split(/\n+/);
+            let html=''; let inList=false;
+            lines.forEach(line => {
+                const l = line.trim(); if (!l) return;
+                // 小标题：以“核心检查点：”等作为加粗
+                if (/^\*\*?.+?\*\*?:?$/.test(l) && !l.startsWith('-')){
+                    html += `<div style="margin-top:6px;color:#667eea;font-weight:700;">${l.replace(/^\*\*|\*\*$/g,'')}</div>`; return;
+                }
+                const m = l.match(/^[-•]\s+(.*)$/);
+                if (m){ if (!inList){ html += '<ul>'; inList=true; } html += `<li>${m[1]}</li>`; }
+                else { if (inList){ html += '</ul>'; inList=false; } html += `<div>${l}</div>`; }
+            });
+            if (inList) html += '</ul>';
+            // 加粗 **text**
+            html = html.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+            return html;
+        }
+        function generateCriteriaPreview(criteria){
+            try{
+                const weights = criteria.map(c => `${c.name}（${c.weight}）`).join(' · ');
+                return `<div>${weights}</div>`;
+            }catch(e){ return ''; }
+        }
+
+        // 将 model-card-body 中的每个 <h3> 到下一个 <h3> 的内容包装为 .report-block
+        function wrapReportSections(bodyEl){
+            try{
+                const h3s = Array.from(bodyEl.querySelectorAll('h3'));
+                if (h3s.length === 0) return;
+                h3s.forEach((h3, idx) => {
+                    const block = document.createElement('div');
+                    block.className = 'report-block';
+                    block.setAttribute('data-section', String(idx+1));
+                    const title = document.createElement('div');
+                    title.className = 'report-block-title';
+                    title.textContent = h3.textContent || '';
+                    const content = document.createElement('div');
+                    content.className = 'report-block-content';
+                    // 收集标题后的兄弟节点，直到下一个 h3 或结束
+                    let node = h3.nextSibling;
+                    const nodes = [];
+                    while (node && !(node.nodeType === 1 && node.tagName === 'H3')){
+                        const next = node.nextSibling; nodes.push(node); node = next;
+                    }
+                    // 将原始节点移动到 content 下
+                    nodes.forEach(n => content.appendChild(n));
+                    // 用 block 替换原 h3
+                    block.appendChild(title); block.appendChild(content);
+                    h3.replaceWith(block);
+                });
+            }catch(e){ console.warn('wrapReportSections failed:', e); }
+        }
+
+        // 对齐函数：将同一患者下各模型中相同分块高度设置为最小高度
+        function alignReportBlocks(modelsContainer){
+            const sectionIds = ['1','2','3','4'];
+            sectionIds.forEach(id => {
+                const contents = Array.from(modelsContainer.querySelectorAll(`.report-block[data-section="${id}"] .report-block-content`));
+                if (contents.length === 0) return;
+                contents.forEach(c => c.style.height = 'auto');
+                const heights = contents.map(c => c.offsetHeight || c.scrollHeight || 0).filter(h => h>0);
+                if (heights.length === 0) return;
+                const minH = Math.min.apply(null, heights);
+                contents.forEach(c => c.style.height = minH + 'px');
+            });
+        }
+        // 计算与更新 HUD 进度
+        function computeCompletion(){
+            if (!comparisonData) return {done:0,total:0,percent:0};
+            const patients = Array.from(selectedPatients);
+            const models = comparisonData.models || [];
+            let total = 0, done = 0;
+            patients.forEach(p => {
+                models.forEach(m => {
+                    total += 1;
+                    const r = getRatings(p, m) || {};
+                    const complete = evalCriteria.every(c => Number(r[c.name]||0) > 0);
+                    if (complete) done += 1;
+                });
+            });
+            const percent = total>0 ? Math.round(done*100/total) : 0;
+            return {done,total,percent};
+        }
+        function updateHUD(){
+            const hud = document.getElementById('hudBox'); if (!hud) return;
+            const {done,total,percent} = computeCompletion();
+            const fill = document.getElementById('hudBarFill');
+            const num = document.getElementById('hudNumbers');
+            if (fill) fill.style.width = `${percent}%`;
+            if (num) num.textContent = `${done}/${total} (${percent}%)`;
+        }
+        function initHUD(){
+            const hud = document.getElementById('hudBox'); if (!hud) return;
+            hud.style.display = 'block';
+            const expBtn = document.getElementById('hudExportBtn'); if (expBtn) expBtn.addEventListener('click', exportHumanRatingsCSV);
+            const refBtn = document.getElementById('hudRefreshBtn'); if (refBtn) refBtn.addEventListener('click', updateHUD);
+            const ruleBtn = document.getElementById('hudRulesBtn'); if (ruleBtn) ruleBtn.addEventListener('click', toggleAllCriteriaPanels);
+            const submitBtn = document.getElementById('hudSubmitBtn'); if (submitBtn) submitBtn.addEventListener('click', submitAllRatings);
+        }
+        function toggleAllCriteriaPanels(){
+            const panels = Array.from(document.querySelectorAll('.criteria-panel'));
+            const anyExpanded = panels.some(p => !p.classList.contains('collapsed'));
+            const targetCollapse = anyExpanded; // 若有展开则收起；若都收起则展开
+            panels.forEach(p => p.classList.toggle('collapsed', targetCollapse));
+            localStorage.setItem('criteria_collapsed', targetCollapse ? '1' : '0');
+        }
+        function exportHumanRatingsCSV(){
+            const rows = [];
+            const header = ['患者','模型', ...evalCriteria.map(c=>c.name+'(星)'), ...evalCriteria.map(c=>c.name+'(分)'), '总分'];
+            rows.push(header);
+            const patients = Array.from(selectedPatients);
+            const models = comparisonData.models || [];
+            patients.forEach(p => {
+                models.forEach(m => {
+                    const r = getRatings(p,m)||{};
+                    const stars = evalCriteria.map(c => Number(r[c.name]||0));
+                    const scores = evalCriteria.map((c,i)=> (c.weight * (stars[i]/5)).toFixed(1));
+                    const total = scores.reduce((a,b)=> a+Number(b), 0).toFixed(1);
+                    rows.push([p,m, ...stars, ...scores, total]);
+                });
+            });
+            const csv = rows.map(row => row.map(cell => {
+                const s = String(cell);
+                return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+            }).join(',')).join('\n');
+            const blob = new Blob(['\ufeff'+csv], {type:'text/csv;charset=utf-8;'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href=url; a.download=`人工评测_${new Date().toISOString().slice(0,10)}.csv`; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+        async function submitAllRatings(){
+            const patients = Array.from(selectedPatients);
+            const models = comparisonData.models || [];
+            let count = 0;
+            patients.forEach(p => { models.forEach(m => { const key=getRatingKey(p,m)+'_submitted'; localStorage.setItem(key,'1'); count++; }); });
+            alert(`✅ 已标记提交 ${count} 条评分（本地）`);
+            updateHUD();
+        }
+        function parseChatContent(content){
+            const messages=[]; const lines=content.split('\n'); let inDialog=false, inBasic=false; let current=null; let info={};
+            for (let raw of lines){ let line=raw.trim(); if (line.startsWith('====')||line.startsWith('----')||line==='') continue;
+                if (line.includes('患者基本信息')){ if (current) {messages.push(current); current=null;} inBasic=true; inDialog=false; continue; }
+                if (line.includes('预问诊对话记录')){ if (current) {messages.push(current); current=null;} if (Object.keys(info).length>0) messages.push({type:'patient-info', data:info}); messages.push({type:'section', content:'预问诊对话记录'}); inBasic=false; inDialog=true; continue; }
+                if (inBasic){ const m=line.match(/^(.+?)[:：]\s*(.+)$/); if (m){ info[m[1].trim()]=m[2].trim(); } continue; }
+                const pm=line.match(/^\d+\.\s*患者:\s*(.+)$/); const dm=line.match(/^\d+\.\s*医助:\s*(.+)$/);
+                if (pm){ if (current) messages.push(current); current={type:'message', role:'patient', content:pm[1].trim()}; }
+                else if (dm){ if (current) messages.push(current); current={type:'message', role:'doctor', content:dm[1].trim()}; }
+                else if (current && line){ current.content += '\n' + line; }
+            }
+            if (current) messages.push(current); return messages;
+        }
+        function escapeHtml(s){ const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+        function normalizeShortLines(text){
+            if(!text) return '';
+            const lines=text.split('\n').map(s=>s.trim()).filter(Boolean);
+            if(lines.length>=2 && lines.length<=6){
+                const total=lines.reduce((a,l)=>a+l.length,0);
+                const maxLen=Math.max.apply(null, lines.map(l=>l.length));
+                const manySingle=lines.filter(l=>l.length<=2).length>=Math.ceil(lines.length*0.6);
+                const allShort=maxLen<=8;
+                if((allShort && total<=24) || manySingle){ return lines.join(' ');} 
+            }
+            return text;
+        }
+
+        // 入口
+        (async function(){
+            try {
+                await loadComparison();
+                await loadHumanPrompt();
+                initUI();
+                initHUD();
+                updateHUD();
+            } catch (e) {
+                document.getElementById('comparisonArea').innerHTML = `<div class="no-data">❌ 加载失败: ${e.message}</div>`;
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-24T04:01:44.991962"
+  },
+  "overview": {
+    "total_models": 8,
+    "total_patients": 10,
+    "total_evaluations": 640,
+    "total_files": 3840,
+    "completion_rate": 100.0
+  },
+  "scores": {
+    "average": 80.42,
+    "median": 83.0,
+    "min": 30,
+    "max": 99,
+    "stddev": 11.49
+  },
+  "distribution": {
+    "0-20": 0,
+    "21-40": 6,
+    "41-60": 34,
+    "61-80": 225,
+    "81-100": 375
+  },
+  "model_rankings": [
+    {
+      "model": "doubao-seed-1-6-251015",
+      "avg_score": 86.22,
+      "min_score": 30,
+      "max_score": 98,
+      "stddev": 10.34,
+      "count": 80
+    },
+    {
+      "model": "gemini-3-pro-preview",
+      "avg_score": 84.56,
+      "min_score": 48,
+      "max_score": 99,
+      "stddev": 9.27,
+      "count": 80
+    },
+    {
+      "model": "gpt-5.1",
+      "avg_score": 83.21,
+      "min_score": 53,
+      "max_score": 97,
+      "stddev": 8.65,
+      "count": 80
+    },
+    {
+      "model": "grok-4-0709",
+      "avg_score": 80.61,
+      "min_score": 46,
+      "max_score": 96,
+      "stddev": 9.72,
+      "count": 80
+    },
+    {
+      "model": "deepseek_deepseek-v3.1",
+      "avg_score": 79.66,
+      "min_score": 44,
+      "max_score": 95,
+      "stddev": 10.56,
+      "count": 80
+    },
+    {
+      "model": "qwen3-max",
+      "avg_score": 78.74,
+      "min_score": 37,
+      "max_score": 97,
+      "stddev": 12.43,
+      "count": 80
+    },
+    {
+      "model": "Baichuan-M2",
+      "avg_score": 75.85,
+      "min_score": 30,
+      "max_score": 95,
+      "stddev": 11.77,
+      "count": 80
+    },
+    {
+      "model": "moonshotai_kimi-k2-0905",
+      "avg_score": 74.49,
+      "min_score": 30,
+      "max_score": 97,
+      "stddev": 13.5,
+      "count": 80
+    }
+  ],
+  "evaluator_features": [
+    {
+      "evaluator": "gpt-5.1",
+      "avg_given_score": 88.54,
+      "count": 80,
+      "min_score": 59,
+      "max_score": 97,
+      "stddev": 7.73
+    },
+    {
+      "evaluator": "deepseek_deepseek-v3.1",
+      "avg_given_score": 83.61,
+      "count": 80,
+      "min_score": 69,
+      "max_score": 95,
+      "stddev": 6.22
+    },
+    {
+      "evaluator": "moonshotai_kimi-k2-0905",
+      "avg_given_score": 83.59,
+      "count": 80,
+      "min_score": 57,
+      "max_score": 94,
+      "stddev": 7.63
+    },
+    {
+      "evaluator": "grok-4-0709",
+      "avg_given_score": 80.51,
+      "count": 80,
+      "min_score": 62,
+      "max_score": 94,
+      "stddev": 7.93
+    },
+    {
+      "evaluator": "Baichuan-M2",
+      "avg_given_score": 79.7,
+      "count": 80,
+      "min_score": 48,
+      "max_score": 97,
+      "stddev": 9.66
+    },
+    {
+      "evaluator": "qwen3-max",
+      "avg_given_score": 78.67,
+      "count": 80,
+      "min_score": 62,
+      "max_score": 91,
+      "stddev": 5.79
+    },
+    {
+      "evaluator": "doubao-seed-1-6-251015",
+      "avg_given_score": 77.14,
+      "count": 80,
+      "min_score": 47,
+      "max_score": 97,
+      "stddev": 13.14
+    },
+    {
+      "evaluator": "gemini-3-pro-preview",
+      "avg_given_score": 71.59,
+      "count": 80,
+      "min_score": 30,
+      "max_score": 99,
+      "stddev": 19.2
+    }
+  ]
+}

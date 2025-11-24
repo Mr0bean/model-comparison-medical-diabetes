@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交叉评估结果查看器</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            background: white;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .patient-selector {
+            padding: 25px 40px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .selector-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .patient-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .patient-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .patient-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateY(-2px);
+        }
+
+        .patient-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .matrix-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .matrix-table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 1000px;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            padding: 12px 8px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+
+        .matrix-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .matrix-table .model-name {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            font-weight: 600;
+            text-align: left;
+            color: #667eea;
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            padding-left: 15px;
+        }
+
+        .matrix-table .summary-header {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            font-size: 12px;
+        }
+
+        .matrix-table .summary-cell {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #667eea;
+            font-size: 12px;
+        }
+
+        .score-cell {
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .score-cell:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
+            z-index: 3;
+        }
+
+        .score-high {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .score-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .score-low {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* 增强版模态框 - 更大更宽 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 95%;
+            max-width: 1600px;
+            max-height: 90vh;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .modal-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            line-height: 1;
+            padding: 0 8px;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        /* 双栏布局 */
+        .modal-body {
+            display: flex;
+            gap: 20px;
+            padding: 30px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .report-column {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            overflow-y: auto;
+        }
+
+        .evaluation-column {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .column-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+            position: sticky;
+            top: 0;
+            background: #f8f9fa;
+            z-index: 10;
+        }
+
+        /* 报告展示样式 */
+        .report-section {
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .report-section-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .report-section-header:hover {
+            color: #764ba2;
+        }
+
+        .report-section-content {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+            margin-top: 12px;
+            white-space: pre-wrap;
+        }
+
+        .report-section.collapsed .report-section-content {
+            display: none;
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s;
+        }
+
+        .report-section.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        /* 雷达图容器 */
+        .radar-chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .radar-chart-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        #radarChart {
+            max-height: 300px;
+        }
+
+        /* 总分卡片 */
+        .total-score-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .total-score-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .total-score-value {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .total-score-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* 维度得分卡片 */
+        .dimensions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .dimension-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .dimension-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .dimension-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .dimension-score-display {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .dimension-max {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .dimension-issues {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* 关键问题反馈 */
+        .critical-feedback-section {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin-top: 20px;
+        }
+
+        .critical-feedback-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .critical-feedback-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .critical-feedback-list li {
+            padding: 10px 0 10px 25px;
+            position: relative;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #856404;
+            border-bottom: 1px solid #f0e5d5;
+        }
+
+        .critical-feedback-list li:last-child {
+            border-bottom: none;
+        }
+
+        .critical-feedback-list li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #999;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 交叉评估结果查看器</h1>
+            <p class="subtitle">8×8模型交叉评估 · 100分制评分 · 双栏对比视图</p>
+        </div>
+
+        <div class="patient-selector">
+            <span class="selector-label">📋 选择患者：</span>
+            <div class="patient-buttons" id="patientButtons">
+                <!-- 患者按钮将动态生成 -->
+            </div>
+        </div>
+
+        <div class="stats" id="statsContainer">
+            <div class="stat-card">
+                <div class="stat-label">评估总数</div>
+                <div class="stat-value" id="totalEvaluations">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">平均分</div>
+                <div class="stat-value" id="averageScore">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">最高分</div>
+                <div class="stat-value" id="maxScore">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">最低分</div>
+                <div class="stat-value" id="minScore">-</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">评分矩阵热力图</h2>
+                <div class="info-box">
+                    📋 说明：采用<strong>100分制评分</strong>（准确性40 + 逻辑性25 + 完整性15 + 格式规范性15 + 语言表达5）。行表示被评估模型，列表示评估者。点击分数查看<strong>双栏对比详情</strong>（左侧：原始报告，右侧：评分+雷达图）。
+                </div>
+                <div class="matrix-container" id="matrixContainer">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        <p>加载评分矩阵中...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 增强版评估详情模态框 -->
+    <div id="evalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">评估详情</div>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- 左栏：原始报告 -->
+                <div class="report-column">
+                    <div class="column-title">📄 被评估报告原文</div>
+                    <div id="reportContent">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <p>加载报告中...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右栏：评分详情 -->
+                <div class="evaluation-column">
+                    <div class="column-title">📊 评分详情</div>
+                    <div id="evaluationContent">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <p>加载评分中...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局数据
+        let currentData = null;
+        let matrixData = null;
+        let currentPatient = 'global';
+        let radarChartInstance = null;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('页面加载完成，开始初始化...');
+            initializePage();
+        });
+
+        async function initializePage() {
+            try {
+                matrixData = await loadMatrixData();
+                if (matrixData) {
+                    renderPatientButtons();
+                    await loadData('global');
+                } else {
+                    showError('无法加载评估数据，请确保 cross_evaluation_matrix.json 文件存在');
+                }
+            } catch (error) {
+                console.error('初始化失败:', error);
+                showError('初始化失败: ' + error.message);
+            }
+        }
+
+        function renderPatientButtons() {
+            const container = document.getElementById('patientButtons');
+            let html = `<button class="patient-btn active" onclick="selectPatient('global')">全局平均</button>`;
+            matrixData.patients.forEach(patient => {
+                html += `<button class="patient-btn" onclick="selectPatient('${patient}')">${patient}</button>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function selectPatient(patient) {
+            document.querySelectorAll('.patient-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            currentPatient = patient;
+            loadData(patient);
+        }
+
+        async function loadMatrixData() {
+            try {
+                const response = await fetch('../../output/cross_evaluation_matrix.json');
+                if (response.ok) {
+                    return await response.json();
+                }
+                return null;
+            } catch (error) {
+                console.error('加载矩阵数据失败:', error);
+                return null;
+            }
+        }
+
+        async function loadData(patient) {
+            try {
+                let matrix;
+                if (patient === 'global') {
+                    matrix = matrixData.global_matrix;
+                } else {
+                    matrix = matrixData.matrices[patient];
+                }
+
+                if (!matrix) {
+                    showError('未找到该患者的数据');
+                    return;
+                }
+
+                currentData = transformMatrixData(matrix);
+                renderMatrix();
+                updateStats();
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                showError('加载数据失败: ' + error.message);
+            }
+        }
+
+        function transformMatrixData(matrix) {
+            const models = matrixData.models;
+            const transformedMatrix = {};
+
+            models.forEach(generated => {
+                transformedMatrix[generated] = {};
+                models.forEach(evaluator => {
+                    const cellData = matrix[generated]?.[evaluator];
+                    if (cellData) {
+                        transformedMatrix[generated][evaluator] = {
+                            average_score: cellData.score || cellData.average || cellData
+                        };
+                    } else {
+                        transformedMatrix[generated][evaluator] = null;
+                    }
+                });
+            });
+
+            const statistics = calculateStatistics(transformedMatrix, models);
+
+            return {
+                models: models,
+                matrix: transformedMatrix,
+                statistics: statistics
+            };
+        }
+
+        function calculateStatistics(matrix, models) {
+            const allScores = [];
+            models.forEach(generated => {
+                models.forEach(evaluator => {
+                    if (matrix[generated]?.[evaluator]?.average_score) {
+                        allScores.push(matrix[generated][evaluator].average_score);
+                    }
+                });
+            });
+
+            if (allScores.length === 0) {
+                return { total: 0, average: 0, max: 0, min: 0 };
+            }
+
+            return {
+                total: allScores.length,
+                average: (allScores.reduce((a, b) => a + b, 0) / allScores.length).toFixed(2),
+                max: Math.max(...allScores).toFixed(2),
+                min: Math.min(...allScores).toFixed(2),
+                highest: Math.max(...allScores),
+                lowest: Math.min(...allScores)
+            };
+        }
+
+        function calculateRowStats(model) {
+            const scores = [];
+            currentData.models.forEach(evaluator => {
+                const score = currentData.matrix[model]?.[evaluator];
+                if (score?.average_score) {
+                    scores.push(score.average_score);
+                }
+            });
+
+            if (scores.length === 0) return { mean: 0, std: 0 };
+
+            const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+            const variance = scores.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / scores.length;
+            const std = Math.sqrt(variance);
+
+            return { mean: mean.toFixed(2), std: std.toFixed(2) };
+        }
+
+        function renderMatrix() {
+            const container = document.getElementById('matrixContainer');
+            const models = currentData.models;
+            const matrix = currentData.matrix;
+            const stats = currentData.statistics;
+
+            let html = '<table class="matrix-table">';
+            html += '<tr><th>被评估者 ↓<br>评估者 →</th>';
+            models.forEach(model => {
+                html += `<th>${getShortModelName(model)}</th>`;
+            });
+            html += '<th class="summary-header">行平均</th>';
+            html += '<th class="summary-header">行标准差</th>';
+            html += '</tr>';
+
+            models.forEach(generated => {
+                html += '<tr>';
+                html += `<td class="model-name">${getShortModelName(generated)}</td>`;
+
+                models.forEach(evaluator => {
+                    const score = matrix[generated]?.[evaluator];
+
+                    if (score === null || !score) {
+                        html += '<td style="background: #e9ecef; color: #999;">-</td>';
+                    } else {
+                        const scoreValue = score.average_score;
+                        let colorClass = scoreValue >= 80 ? 'score-high' :
+                                         scoreValue >= 60 ? 'score-medium' : 'score-low';
+
+                        html += `<td class="score-cell ${colorClass}"
+                                    onclick="showEvalDetail('${generated}', '${evaluator}')"
+                                    title="点击查看详情">
+                                    ${scoreValue.toFixed(1)}
+                                </td>`;
+                    }
+                });
+
+                // 添加行统计
+                const rowStats = calculateRowStats(generated);
+                html += `<td class="summary-cell">${rowStats.mean}</td>`;
+                html += `<td class="summary-cell">±${rowStats.std}</td>`;
+                html += '</tr>';
+            });
+
+            html += '</table>';
+            container.innerHTML = html;
+        }
+
+        function updateStats() {
+            const stats = currentData.statistics;
+            document.getElementById('totalEvaluations').textContent = stats.total;
+            document.getElementById('averageScore').textContent = stats.average;
+            document.getElementById('maxScore').textContent = stats.max;
+            document.getElementById('minScore').textContent = stats.min;
+        }
+
+        async function showEvalDetail(generated, evaluator) {
+            const modal = document.getElementById('evalModal');
+            const modalTitle = document.getElementById('modalTitle');
+
+            modalTitle.textContent = `${generated} 被 ${evaluator} 评估`;
+            modal.style.display = 'block';
+
+            // 同时加载报告和评分
+            const [report, evaluation] = await Promise.all([
+                loadOriginalReport(generated, currentPatient),
+                loadEvaluationDetail(currentPatient, generated, evaluator)
+            ]);
+
+            // 渲染报告
+            const reportContent = document.getElementById('reportContent');
+            if (report) {
+                reportContent.innerHTML = renderReport(report);
+            } else {
+                reportContent.innerHTML = '<p style="text-align:center; padding: 40px; color: #999;">暂无报告数据</p>';
+            }
+
+            // 渲染评分
+            const evaluationContent = document.getElementById('evaluationContent');
+            if (evaluation) {
+                evaluationContent.innerHTML = renderEvaluation(evaluation);
+                renderRadarChart(evaluation.dimensions);
+            } else {
+                evaluationContent.innerHTML = '<p style="text-align:center; padding: 40px; color: #999;">暂无评分数据</p>';
+            }
+        }
+
+        async function loadOriginalReport(model, patient) {
+            if (patient === 'global') {
+                patient = '患者1';
+            }
+
+            const filename = `${model}-${patient}.json`;
+            const path = `../../output/raw/${filename}`;
+
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    return await response.json();
+                }
+                return null;
+            } catch (error) {
+                console.error('加载报告失败:', path, error);
+                return null;
+            }
+        }
+
+        async function loadEvaluationDetail(patient, generated, evaluator) {
+            if (patient === 'global') {
+                patient = '患者1';
+            }
+
+            const filename = `${generated}_by_${evaluator}_${patient}_aggregated.json`;
+            const path = `../../output/cross_evaluation_results/${patient}/${filename}`;
+
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    return await response.json();
+                }
+                return null;
+            } catch (error) {
+                console.error('加载评分失败:', path, error);
+                return null;
+            }
+        }
+
+        function renderReport(reportData) {
+            // 解析result字段，按section拆分
+            const sections = parseReportSections(reportData.result);
+
+            let html = '';
+            sections.forEach((section, index) => {
+                html += `
+                    <div class="report-section" id="report-section-${index}">
+                        <div class="report-section-header" onclick="toggleSection(${index})">
+                            <span>${section.title}</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="report-section-content">${section.content}</div>
+                    </div>
+                `;
+            });
+
+            return html;
+        }
+
+        function parseReportSections(resultText) {
+            const sections = [];
+            const lines = resultText.split('\n');
+            let currentSection = null;
+
+            lines.forEach(line => {
+                if (line.startsWith('## ')) {
+                    if (currentSection) {
+                        sections.push(currentSection);
+                    }
+                    currentSection = {
+                        title: line.replace('## ', ''),
+                        content: ''
+                    };
+                } else if (currentSection && line.trim()) {
+                    currentSection.content += line + '\n';
+                }
+            });
+
+            if (currentSection) {
+                sections.push(currentSection);
+            }
+
+            return sections;
+        }
+
+        function toggleSection(index) {
+            const section = document.getElementById(`report-section-${index}`);
+            section.classList.toggle('collapsed');
+        }
+
+        function renderEvaluation(evalData) {
+            let html = '';
+
+            // 总分卡片
+            html += `
+                <div class="total-score-card">
+                    <div class="total-score-label">总分（100分制）</div>
+                    <div class="total-score-value">${evalData.total_score.toFixed(1)}</div>
+                    <div class="total-score-subtitle">准确性40 + 逻辑性25 + 完整性15 + 格式规范性15 + 语言表达5</div>
+                </div>
+            `;
+
+            // 雷达图容器
+            html += `
+                <div class="radar-chart-container">
+                    <div class="radar-chart-title">五维度评分雷达图</div>
+                    <canvas id="radarChart"></canvas>
+                </div>
+            `;
+
+            // 维度得分卡片
+            if (evalData.dimensions) {
+                html += '<div class="dimensions-grid">';
+
+                const dimensionOrder = ['准确性', '逻辑性', '完整性', '格式规范性', '语言表达'];
+                dimensionOrder.forEach(dimName => {
+                    if (evalData.dimensions[dimName]) {
+                        const dim = evalData.dimensions[dimName];
+                        html += `
+                            <div class="dimension-card">
+                                <div class="dimension-card-header">
+                                    <span class="dimension-name">${dimName}</span>
+                                    <span class="dimension-score-display">
+                                        ${dim.score}<span class="dimension-max">/${dim.max_score}</span>
+                                    </span>
+                                </div>
+                                ${dim.issues ? `<div class="dimension-issues">${dim.issues}</div>` : ''}
+                            </div>
+                        `;
+                    }
+                });
+
+                html += '</div>';
+            }
+
+            // 关键问题反馈
+            if (evalData.critical_feedbacks && evalData.critical_feedbacks.length > 0) {
+                html += `
+                    <div class="critical-feedback-section">
+                        <div class="critical-feedback-title">⚠️ 关键问题反馈</div>
+                        <ul class="critical-feedback-list">
+                `;
+                evalData.critical_feedbacks.forEach(feedback => {
+                    html += `<li>${feedback}</li>`;
+                });
+                html += `
+                        </ul>
+                    </div>
+                `;
+            }
+
+            return html;
+        }
+
+        function renderRadarChart(dimensions) {
+            // 销毁旧图表
+            if (radarChartInstance) {
+                radarChartInstance.destroy();
+            }
+
+            const ctx = document.getElementById('radarChart');
+            if (!ctx) return;
+
+            const dimensionOrder = ['准确性', '逻辑性', '完整性', '格式规范性', '语言表达'];
+            const scores = [];
+            const maxScores = [];
+
+            dimensionOrder.forEach(dimName => {
+                if (dimensions[dimName]) {
+                    scores.push(dimensions[dimName].score);
+                    maxScores.push(dimensions[dimName].max_score);
+                } else {
+                    scores.push(0);
+                    maxScores.push(0);
+                }
+            });
+
+            // 计算百分比用于雷达图
+            const percentages = scores.map((score, i) => (score / maxScores[i] * 100).toFixed(1));
+
+            radarChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: dimensionOrder,
+                    datasets: [{
+                        label: '实际得分',
+                        data: percentages,
+                        backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(102, 126, 234, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20,
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const index = context.dataIndex;
+                                    return `${scores[index]}/${maxScores[index]} (${percentages[index]}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function closeModal() {
+            document.getElementById('evalModal').style.display = 'none';
+            if (radarChartInstance) {
+                radarChartInstance.destroy();
+                radarChartInstance = null;
+            }
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('evalModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        function getShortModelName(model) {
+            return model
+                .replace('moonshotai_', '')
+                .replace('deepseek_', '')
+                .replace('-seed-1-6-251015', '');
+        }
+
+        function showError(message) {
+            document.getElementById('matrixContainer').innerHTML = `
+                <div style="text-align: center; padding: 40px; color: #f44336;">
+                    <h3>❌ 错误</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

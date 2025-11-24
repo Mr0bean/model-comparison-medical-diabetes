@@ -1,0 +1,7872 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-24T04:01:44.849248",
+    "total_evaluations": 640,
+    "evaluation_type": "100-point",
+    "dimensions": [
+      {
+        "name": "准确性",
+        "max_points": 40,
+        "weight": 0.4
+      },
+      {
+        "name": "逻辑性",
+        "max_points": 25,
+        "weight": 0.25
+      },
+      {
+        "name": "完整性",
+        "max_points": 15,
+        "weight": 0.15
+      },
+      {
+        "name": "格式规范性",
+        "max_points": 15,
+        "weight": 0.15
+      },
+      {
+        "name": "语言表达",
+        "max_points": 5,
+        "weight": 0.05
+      }
+    ]
+  },
+  "models": [
+    "Baichuan-M2",
+    "deepseek_deepseek-v3.1",
+    "doubao-seed-1-6-251015",
+    "gemini-3-pro-preview",
+    "gpt-5.1",
+    "grok-4-0709",
+    "moonshotai_kimi-k2-0905",
+    "qwen3-max"
+  ],
+  "patients": [
+    "患者1",
+    "患者2",
+    "患者3",
+    "患者4",
+    "患者5",
+    "患者6",
+    "患者7",
+    "患者8",
+    "患者9",
+    "患者10"
+  ],
+  "global_matrix": {
+    "qwen3-max": {
+      "gemini-3-pro-preview": {
+        "score": 81.1,
+        "count": 10,
+        "stddev": 4.98,
+        "min": 74,
+        "max": 89,
+        "details": [
+          76,
+          74,
+          83,
+          89,
+          81,
+          85,
+          81,
+          76,
+          87,
+          79
+        ]
+      },
+      "Baichuan-M2": {
+        "score": 75.8,
+        "count": 10,
+        "stddev": 5.92,
+        "min": 66,
+        "max": 85,
+        "details": [
+          66,
+          73,
+          85,
+          82,
+          75,
+          76,
+          82,
+          76,
+          69,
+          74
+        ]
+      },
+      "deepseek_deepseek-v3.1": {
+        "score": 78.9,
+        "count": 10,
+        "stddev": 3.11,
+        "min": 74,
+        "max": 86,
+        "details": [
+          78,
+          77,
+          79,
+          79,
+          79,
+          81,
+          79,
+          74,
+          86,
+          77
+        ]
+      },
+      "doubao-seed-1-6-251015": {
+        "score": 82.2,
+        "count": 10,
+        "stddev": 6.51,
+        "min": 71,
+        "max": 91,
+        "details": [
+          79,
+          71,
+          91,
+          88,
+          85,
+          82,
+          86,
+          80,
+          87,
+          73
+        ]
+      },
+      "moonshotai_kimi-k2-0905": {
+        "score": 75,
+        "count": 10,
+        "stddev": 5.16,
+        "min": 67,
+        "max": 83,
+        "details": [
+          71,
+          67,
+          74,
+          77,
+          79,
+          68,
+          83,
+          75,
+          76,
+          80
+        ]
+      },
+      "qwen3-max": {
+        "score": 80.7,
+        "count": 10,
+        "stddev": 5.33,
+        "min": 70,
+        "max": 87,
+        "details": [
+          70,
+          76,
+          83,
+          83,
+          87,
+          79,
+          86,
+          78,
+          86,
+          79
+        ]
+      },
+      "gpt-5.1": {
+        "score": 78.5,
+        "count": 10,
+        "stddev": 7.65,
+        "min": 62,
+        "max": 87,
+        "details": [
+          79,
+          72,
+          82,
+          86,
+          87,
+          85,
+          77,
+          81,
+          62,
+          74
+        ]
+      },
+      "grok-4-0709": {
+        "score": 77.2,
+        "count": 10,
+        "stddev": 4.16,
+        "min": 69,
+        "max": 81,
+        "details": [
+          76,
+          69,
+          77,
+          80,
+          81,
+          80,
+          78,
+          81,
+          71,
+          79
+        ]
+      }
+    },
+    "grok-4-0709": {
+      "grok-4-0709": {
+        "score": 79.8,
+        "count": 10,
+        "stddev": 6.71,
+        "min": 71,
+        "max": 88,
+        "details": [
+          71,
+          87,
+          77,
+          81,
+          88,
+          71,
+          82,
+          82,
+          72,
+          87
+        ]
+      },
+      "gpt-5.1": {
+        "score": 84.5,
+        "count": 10,
+        "stddev": 5.34,
+        "min": 72,
+        "max": 90,
+        "details": [
+          90,
+          83,
+          82,
+          82,
+          88,
+          87,
+          84,
+          90,
+          72,
+          87
+        ]
+      },
+      "doubao-seed-1-6-251015": {
+        "score": 88.1,
+        "count": 10,
+        "stddev": 3.96,
+        "min": 82,
+        "max": 94,
+        "details": [
+          90,
+          91,
+          92,
+          86,
+          90,
+          84,
+          94,
+          84,
+          88,
+          82
+        ]
+      },
+      "qwen3-max": {
+        "score": 77.9,
+        "count": 10,
+        "stddev": 7.03,
+        "min": 65,
+        "max": 86,
+        "details": [
+          65,
+          69,
+          72,
+          86,
+          83,
+          84,
+          81,
+          78,
+          83,
+          78
+        ]
+      },
+      "Baichuan-M2": {
+        "score": 74.4,
+        "count": 10,
+        "stddev": 6.69,
+        "min": 66,
+        "max": 87,
+        "details": [
+          71,
+          75,
+          84,
+          76,
+          72,
+          72,
+          87,
+          67,
+          66,
+          74
+        ]
+      },
+      "moonshotai_kimi-k2-0905": {
+        "score": 73.9,
+        "count": 10,
+        "stddev": 7.31,
+        "min": 63,
+        "max": 82,
+        "details": [
+          79,
+          82,
+          63,
+          77,
+          78,
+          75,
+          82,
+          65,
+          64,
+          74
+        ]
+      },
+      "deepseek_deepseek-v3.1": {
+        "score": 80.4,
+        "count": 10,
+        "stddev": 8.91,
+        "min": 62,
+        "max": 92,
+        "details": [
+          90,
+          84,
+          74,
+          85,
+          77,
+          74,
+          92,
+          62,
+          85,
+          81
+        ]
+      },
+      "gemini-3-pro-preview": {
+        "score": 85.1,
+        "count": 10,
+        "stddev": 5.76,
+        "min": 76,
+        "max": 92,
+        "details": [
+          76,
+          81,
+          91,
+          84,
+          88,
+          89,
+          88,
+          76,
+          92,
+          86
+        ]
+      }
+    },
+    "gemini-3-pro-preview": {
+      "deepseek_deepseek-v3.1": {
+        "score": 70.8,
+        "count": 10,
+        "stddev": 13.71,
+        "min": 44,
+        "max": 95,
+        "details": [
+          73,
+          73,
+          81,
+          44,
+          58,
+          73,
+          95,
+          62,
+          75,
+          74
+        ]
+      },
+      "doubao-seed-1-6-251015": {
+        "score": 79.1,
+        "count": 10,
+        "stddev": 24.65,
+        "min": 30,
+        "max": 98,
+        "details": [
+          67,
+          98,
+          96,
+          98,
+          98,
+          85,
+          96,
+          30,
+          79,
+          44
+        ]
+      },
+      "qwen3-max": {
+        "score": 60.4,
+        "count": 10,
+        "stddev": 15.36,
+        "min": 37,
+        "max": 90,
+        "details": [
+          51,
+          37,
+          60,
+          64,
+          90,
+          67,
+          58,
+          68,
+          69,
+          40
+        ]
+      },
+      "Baichuan-M2": {
+        "score": 63.5,
+        "count": 10,
+        "stddev": 16.66,
+        "min": 30,
+        "max": 87,
+        "details": [
+          30,
+          76,
+          87,
+          79,
+          74,
+          53,
+          66,
+          63,
+          53,
+          54
+        ]
+      },
+      "gpt-5.1": {
+        "score": 81.1,
+        "count": 10,
+        "stddev": 13.58,
+        "min": 53,
+        "max": 93,
+        "details": [
+          75,
+          62,
+          93,
+          92,
+          84,
+          90,
+          86,
+          87,
+          53,
+          89
+        ]
+      },
+      "grok-4-0709": {
+        "score": 75.9,
+        "count": 10,
+        "stddev": 16.54,
+        "min": 46,
+        "max": 93,
+        "details": [
+          80,
+          53,
+          80,
+          81,
+          88,
+          61,
+          87,
+          93,
+          46,
+          90
+        ]
+      },
+      "gemini-3-pro-preview": {
+        "score": 86.3,
+        "count": 10,
+        "stddev": 11.6,
+        "min": 68,
+        "max": 99,
+        "details": [
+          87,
+          93,
+          99,
+          68,
+          95,
+          80,
+          97,
+          81,
+          68,
+          95
+        ]
+      },
+      "moonshotai_kimi-k2-0905": {
+        "score": 55.6,
+        "count": 10,
+        "stddev": 20.38,
+        "min": 30,
+        "max": 94,
+        "details": [
+          49,
+          52,
+          45,
+          58,
+          88,
+          55,
+          94,
+          38,
+          30,
+          47
+        ]
+      }
+    },
+    "Baichuan-M2": {
+      "moonshotai_kimi-k2-0905": {
+        "score": 75.7,
+        "count": 10,
+        "stddev": 8.78,
+        "min": 64,
+        "max": 96,
+        "details": [
+          80,
+          64,
+          73,
+          72,
+          72,
+          67,
+          96,
+          78,
+          76,
+          79
+        ]
+      },
+      "Baichuan-M2": {
+        "score": 78.3,
+        "count": 10,
+        "stddev": 10.07,
+        "min": 60,
+        "max": 90,
+        "details": [
+          64,
+          89,
+          90,
+          77,
+          83,
+          60,
+          77,
+          85,
+          74,
+          84
+        ]
+      },
+      "deepseek_deepseek-v3.1": {
+        "score": 81.4,
+        "count": 10,
+        "stddev": 9.5,
+        "min": 62,
+        "max": 92,
+        "details": [
+          80,
+          80,
+          83,
+          89,
+          84,
+          62,
+          92,
+          69,
+          91,
+          84
+        ]
+      },
+      "gemini-3-pro-preview": {
+        "score": 78.2,
+        "count": 10,
+        "stddev": 13.81,
+        "min": 48,
+        "max": 94,
+        "details": [
+          72,
+          68,
+          90,
+          80,
+          79,
+          94,
+          91,
+          73,
+          87,
+          48
+        ]
+      },
+      "grok-4-0709": {
+        "score": 77.7,
+        "count": 10,
+        "stddev": 10.47,
+        "min": 56,
+        "max": 91,
+        "details": [
+          81,
+          68,
+          82,
+          68,
+          80,
+          91,
+          83,
+          56,
+          82,
+          86
+        ]
+      },
+      "gpt-5.1": {
+        "score": 82.6,
+        "count": 10,
+        "stddev": 6.88,
+        "min": 72,
+        "max": 91,
+        "details": [
+          75,
+          87,
+          88,
+          83,
+          91,
+          72,
+          89,
+          84,
+          73,
+          84
+        ]
+      },
+      "doubao-seed-1-6-251015": {
+        "score": 85,
+        "count": 10,
+        "stddev": 6.65,
+        "min": 74,
+        "max": 93,
+        "details": [
+          93,
+          79,
+          93,
+          89,
+          91,
+          78,
+          83,
+          74,
+          87,
+          83
+        ]
+      },
+      "qwen3-max": {
+        "score": 78.7,
+        "count": 10,
+        "stddev": 9.31,
+        "min": 63,
+        "max": 97,
+        "details": [
+          76,
+          84,
+          63,
+          80,
+          80,
+          69,
+          97,
+          73,
+          81,
+          84
+        ]
+      }
+    },
+    "gpt-5.1": {
+      "grok-4-0709": {
+        "score": 88.5,
+        "count": 10,
+        "stddev": 6.29,
+        "min": 78,
+        "max": 96,
+        "details": [
+          90,
+          86,
+          78,
+          96,
+          96,
+          79,
+          88,
+          93,
+          87,
+          92
+        ]
+      },
+      "moonshotai_kimi-k2-0905": {
+        "score": 87,
+        "count": 10,
+        "stddev": 7.13,
+        "min": 76,
+        "max": 97,
+        "details": [
+          90,
+          76,
+          86,
+          95,
+          92,
+          76,
+          97,
+          87,
+          83,
+          88
+        ]
+      },
+      "Baichuan-M2": {
+        "score": 80,
+        "count": 10,
+        "stddev": 13.37,
+        "min": 59,
+        "max": 95,
+        "details": [
+          63,
+          77,
+          88,
+          91,
+          95,
+          85,
+          92,
+          86,
+          59,
+          64
+        ]
+      },
+      "gemini-3-pro-preview": {
+        "score": 92.3,
+        "count": 10,
+        "stddev": 3.43,
+        "min": 86,
+        "max": 96,
+        "details": [
+          92,
+          88,
+          95,
+          96,
+          94,
+          94,
+          95,
+          86,
+          94,
+          89
+        ]
+      },
+      "deepseek_deepseek-v3.1": {
+        "score": 87.8,
+        "count": 10,
+        "stddev": 4.83,
+        "min": 80,
+        "max": 94,
+        "details": [
+          94,
+          80,
+          88,
+          88,
+          92,
+          83,
+          94,
+          83,
+          90,
+          86
+        ]
+      },
+      "doubao-seed-1-6-251015": {
+        "score": 93.1,
+        "count": 10,
+        "stddev": 4.56,
+        "min": 83,
+        "max": 96,
+        "details": [
+          96,
+          88,
+          96,
+          96,
+          96,
+          90,
+          95,
+          96,
+          95,
+          83
+        ]
+      },
+      "gpt-5.1": {
+        "score": 91.5,
+        "count": 10,
+        "stddev": 5.87,
+        "min": 79,
+        "max": 97,
+        "details": [
+          97,
+          87,
+          85,
+          94,
+          94,
+          93,
+          96,
+          96,
+          79,
+          94
+        ]
+      },
+      "qwen3-max": {
+        "score": 88.1,
+        "count": 10,
+        "stddev": 5.59,
+        "min": 81,
+        "max": 96,
+        "details": [
+          85,
+          86,
+          82,
+          95,
+          96,
+          81,
+          96,
+          87,
+          87,
+          86
+        ]
+      }
+    },
+    "deepseek_deepseek-v3.1": {
+      "doubao-seed-1-6-251015": {
+        "score": 86.2,
+        "count": 10,
+        "stddev": 5.9,
+        "min": 75,
+        "max": 95,
+        "details": [
+          84,
+          80,
+          93,
+          88,
+          87,
+          85,
+          95,
+          85,
+          90,
+          75
+        ]
+      },
+      "Baichuan-M2": {
+        "score": 82.2,
+        "count": 10,
+        "stddev": 6.39,
+        "min": 70,
+        "max": 88,
+        "details": [
+          73,
+          85,
+          88,
+          88,
+          70,
+          86,
+          88,
+          83,
+          79,
+          82
+        ]
+      },
+      "qwen3-max": {
+        "score": 84.5,
+        "count": 10,
+        "stddev": 7.21,
+        "min": 71,
+        "max": 92,
+        "details": [
+          71,
+          84,
+          92,
+          90,
+          92,
+          84,
+          87,
+          74,
+          89,
+          82
+        ]
+      },
+      "gemini-3-pro-preview": {
+        "score": 83.9,
+        "count": 10,
+        "stddev": 7.43,
+        "min": 73,
+        "max": 94,
+        "details": [
+          78,
+          83,
+          94,
+          93,
+          82,
+          88,
+          73,
+          79,
+          92,
+          77
+        ]
+      },
+      "gpt-5.1": {
+        "score": 81.7,
+        "count": 10,
+        "stddev": 7.32,
+        "min": 69,
+        "max": 91,
+        "details": [
+          83,
+          84,
+          91,
+          83,
+          69,
+          89,
+          84,
+          87,
+          75,
+          72
+        ]
+      },
+      "moonshotai_kimi-k2-0905": {
+        "score": 82.9,
+        "count": 10,
+        "stddev": 6.35,
+        "min": 75,
+        "max": 93,
+        "details": [
+          76,
+          81,
+          86,
+          89,
+          75,
+          75,
+          93,
+          82,
+          83,
+          89
+        ]
+      },
+      "deepseek_deepseek-v3.1": {
+        "score": 84.9,
+        "count": 10,
+        "stddev": 3.81,
+        "min": 80,
+        "max": 92,
+        "details": [
+          82,
+          87,
+          92,
+          85,
+          82,
+          81,
+          88,
+          84,
+          88,
+          80
+        ]
+      },
+      "grok-4-0709": {
+        "score": 82.6,
+        "count": 10,
+        "stddev": 5.44,
+        "min": 73,
+        "max": 92,
+        "details": [
+          78,
+          78,
+          87,
+          92,
+          73,
+          86,
+          84,
+          84,
+          84,
+          80
+        ]
+      }
+    },
+    "doubao-seed-1-6-251015": {
+      "doubao-seed-1-6-251015": {
+        "score": 89.2,
+        "count": 10,
+        "stddev": 2.97,
+        "min": 84,
+        "max": 94,
+        "details": [
+          89,
+          94,
+          91,
+          85,
+          90,
+          89,
+          92,
+          89,
+          89,
+          84
+        ]
+      },
+      "Baichuan-M2": {
+        "score": 71.2,
+        "count": 10,
+        "stddev": 11.32,
+        "min": 47,
+        "max": 89,
+        "details": [
+          47,
+          72,
+          81,
+          74,
+          78,
+          68,
+          89,
+          69,
+          62,
+          72
+        ]
+      },
+      "qwen3-max": {
+        "score": 74.9,
+        "count": 10,
+        "stddev": 15.16,
+        "min": 54,
+        "max": 97,
+        "details": [
+          54,
+          77,
+          62,
+          70,
+          97,
+          64,
+          91,
+          88,
+          87,
+          59
+        ]
+      },
+      "gemini-3-pro-preview": {
+        "score": 84.1,
+        "count": 10,
+        "stddev": 10.32,
+        "min": 61,
+        "max": 95,
+        "details": [
+          75,
+          95,
+          92,
+          85,
+          95,
+          80,
+          89,
+          61,
+          84,
+          85
+        ]
+      },
+      "gpt-5.1": {
+        "score": 80.7,
+        "count": 10,
+        "stddev": 8.92,
+        "min": 61,
+        "max": 90,
+        "details": [
+          84,
+          81,
+          88,
+          85,
+          85,
+          78,
+          85,
+          61,
+          70,
+          90
+        ]
+      },
+      "moonshotai_kimi-k2-0905": {
+        "score": 67.3,
+        "count": 10,
+        "stddev": 12.99,
+        "min": 50,
+        "max": 90,
+        "details": [
+          68,
+          68,
+          71,
+          82,
+          76,
+          55,
+          90,
+          50,
+          54,
+          59
+        ]
+      },
+      "deepseek_deepseek-v3.1": {
+        "score": 71.4,
+        "count": 10,
+        "stddev": 15.82,
+        "min": 48,
+        "max": 93,
+        "details": [
+          73,
+          56,
+          80,
+          64,
+          75,
+          48,
+          90,
+          52,
+          83,
+          93
+        ]
+      },
+      "grok-4-0709": {
+        "score": 78.3,
+        "count": 10,
+        "stddev": 11.15,
+        "min": 58,
+        "max": 93,
+        "details": [
+          87,
+          80,
+          71,
+          93,
+          92,
+          70,
+          78,
+          70,
+          58,
+          84
+        ]
+      }
+    },
+    "moonshotai_kimi-k2-0905": {
+      "deepseek_deepseek-v3.1": {
+        "score": 81.7,
+        "count": 10,
+        "stddev": 6.85,
+        "min": 70,
+        "max": 91,
+        "details": [
+          70,
+          78,
+          86,
+          82,
+          89,
+          81,
+          88,
+          74,
+          91,
+          78
+        ]
+      },
+      "doubao-seed-1-6-251015": {
+        "score": 86.9,
+        "count": 10,
+        "stddev": 4.61,
+        "min": 76,
+        "max": 94,
+        "details": [
+          85,
+          87,
+          87,
+          87,
+          87,
+          87,
+          91,
+          88,
+          94,
+          76
+        ]
+      },
+      "gpt-5.1": {
+        "score": 85.1,
+        "count": 10,
+        "stddev": 6.94,
+        "min": 67,
+        "max": 91,
+        "details": [
+          86,
+          84,
+          91,
+          91,
+          88,
+          88,
+          87,
+          87,
+          67,
+          82
+        ]
+      },
+      "qwen3-max": {
+        "score": 84.7,
+        "count": 10,
+        "stddev": 8.6,
+        "min": 64,
+        "max": 93,
+        "details": [
+          64,
+          87,
+          86,
+          87,
+          93,
+          86,
+          93,
+          79,
+          91,
+          81
+        ]
+      },
+      "moonshotai_kimi-k2-0905": {
+        "score": 78.5,
+        "count": 10,
+        "stddev": 6.4,
+        "min": 71,
+        "max": 90,
+        "details": [
+          73,
+          77,
+          72,
+          87,
+          82,
+          77,
+          90,
+          71,
+          75,
+          81
+        ]
+      },
+      "gemini-3-pro-preview": {
+        "score": 85.5,
+        "count": 10,
+        "stddev": 8.22,
+        "min": 71,
+        "max": 93,
+        "details": [
+          71,
+          85,
+          93,
+          92,
+          91,
+          89,
+          90,
+          71,
+          90,
+          83
+        ]
+      },
+      "Baichuan-M2": {
+        "score": 81.4,
+        "count": 10,
+        "stddev": 10.46,
+        "min": 57,
+        "max": 92,
+        "details": [
+          57,
+          83,
+          92,
+          86,
+          90,
+          83,
+          90,
+          84,
+          74,
+          75
+        ]
+      },
+      "grok-4-0709": {
+        "score": 84.9,
+        "count": 10,
+        "stddev": 6.52,
+        "min": 73,
+        "max": 92,
+        "details": [
+          75,
+          83,
+          91,
+          89,
+          90,
+          73,
+          92,
+          87,
+          83,
+          86
+        ]
+      }
+    }
+  },
+  "matrices": {
+    "患者1": {
+      "qwen3-max": {
+        "gemini-3-pro-preview": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 66,
+          "count": 1,
+          "stddev": 0,
+          "min": 66,
+          "max": 66,
+          "details": [
+            66
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "qwen3-max": {
+          "score": 70,
+          "count": 1,
+          "stddev": 0,
+          "min": 70,
+          "max": 70,
+          "details": [
+            70
+          ]
+        },
+        "gpt-5.1": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "grok-4-0709": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "grok-4-0709": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "gpt-5.1": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "qwen3-max": {
+          "score": 65,
+          "count": 1,
+          "stddev": 0,
+          "min": 65,
+          "max": 65,
+          "details": [
+            65
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        }
+      },
+      "gemini-3-pro-preview": {
+        "deepseek_deepseek-v3.1": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 67,
+          "count": 1,
+          "stddev": 0,
+          "min": 67,
+          "max": 67,
+          "details": [
+            67
+          ]
+        },
+        "qwen3-max": {
+          "score": 51,
+          "count": 1,
+          "stddev": 0,
+          "min": 51,
+          "max": 51,
+          "details": [
+            51
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 30,
+          "count": 1,
+          "stddev": 0,
+          "min": 30,
+          "max": 30,
+          "details": [
+            30
+          ]
+        },
+        "gpt-5.1": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "grok-4-0709": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 49,
+          "count": 1,
+          "stddev": 0,
+          "min": 49,
+          "max": 49,
+          "details": [
+            49
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "moonshotai_kimi-k2-0905": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 64,
+          "count": 1,
+          "stddev": 0,
+          "min": 64,
+          "max": 64,
+          "details": [
+            64
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "grok-4-0709": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "gpt-5.1": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "qwen3-max": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "grok-4-0709": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 63,
+          "count": 1,
+          "stddev": 0,
+          "min": 63,
+          "max": 63,
+          "details": [
+            63
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "gpt-5.1": {
+          "score": 97,
+          "count": 1,
+          "stddev": 0,
+          "min": 97,
+          "max": 97,
+          "details": [
+            97
+          ]
+        },
+        "qwen3-max": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        }
+      },
+      "deepseek_deepseek-v3.1": {
+        "doubao-seed-1-6-251015": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "qwen3-max": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "gpt-5.1": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "grok-4-0709": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "doubao-seed-1-6-251015": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 47,
+          "count": 1,
+          "stddev": 0,
+          "min": 47,
+          "max": 47,
+          "details": [
+            47
+          ]
+        },
+        "qwen3-max": {
+          "score": 54,
+          "count": 1,
+          "stddev": 0,
+          "min": 54,
+          "max": 54,
+          "details": [
+            54
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "gpt-5.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "grok-4-0709": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "deepseek_deepseek-v3.1": {
+          "score": 70,
+          "count": 1,
+          "stddev": 0,
+          "min": 70,
+          "max": 70,
+          "details": [
+            70
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "gpt-5.1": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "qwen3-max": {
+          "score": 64,
+          "count": 1,
+          "stddev": 0,
+          "min": 64,
+          "max": 64,
+          "details": [
+            64
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 57,
+          "count": 1,
+          "stddev": 0,
+          "min": 57,
+          "max": 57,
+          "details": [
+            57
+          ]
+        },
+        "grok-4-0709": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        }
+      }
+    },
+    "患者10": {
+      "doubao-seed-1-6-251015": {
+        "moonshotai_kimi-k2-0905": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "qwen3-max": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "gpt-5.1": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "grok-4-0709": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 56,
+          "count": 1,
+          "stddev": 0,
+          "min": 56,
+          "max": 56,
+          "details": [
+            56
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "doubao-seed-1-6-251015": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "grok-4-0709": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "gpt-5.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "qwen3-max": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        }
+      },
+      "qwen3-max": {
+        "grok-4-0709": {
+          "score": 69,
+          "count": 1,
+          "stddev": 0,
+          "min": 69,
+          "max": 69,
+          "details": [
+            69
+          ]
+        },
+        "qwen3-max": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 67,
+          "count": 1,
+          "stddev": 0,
+          "min": 67,
+          "max": 67,
+          "details": [
+            67
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "gpt-5.1": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "Baichuan-M2": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "gpt-5.1": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "qwen3-max": {
+          "score": 69,
+          "count": 1,
+          "stddev": 0,
+          "min": 69,
+          "max": 69,
+          "details": [
+            69
+          ]
+        },
+        "grok-4-0709": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "deepseek_deepseek-v3.1": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "qwen3-max": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "grok-4-0709": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 64,
+          "count": 1,
+          "stddev": 0,
+          "min": 64,
+          "max": 64,
+          "details": [
+            64
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        }
+      },
+      "deepseek_deepseek-v3.1": {
+        "doubao-seed-1-6-251015": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "grok-4-0709": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "qwen3-max": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "gpt-5.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "grok-4-0709": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "qwen3-max": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        }
+      },
+      "gemini-3-pro-preview": {
+        "gpt-5.1": {
+          "score": 62,
+          "count": 1,
+          "stddev": 0,
+          "min": 62,
+          "max": 62,
+          "details": [
+            62
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 52,
+          "count": 1,
+          "stddev": 0,
+          "min": 52,
+          "max": 52,
+          "details": [
+            52
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 98,
+          "count": 1,
+          "stddev": 0,
+          "min": 98,
+          "max": 98,
+          "details": [
+            98
+          ]
+        },
+        "qwen3-max": {
+          "score": 37,
+          "count": 1,
+          "stddev": 0,
+          "min": 37,
+          "max": 37,
+          "details": [
+            37
+          ]
+        },
+        "grok-4-0709": {
+          "score": 53,
+          "count": 1,
+          "stddev": 0,
+          "min": 53,
+          "max": 53,
+          "details": [
+            53
+          ]
+        }
+      }
+    },
+    "患者2": {
+      "gemini-3-pro-preview": {
+        "gemini-3-pro-preview": {
+          "score": 99,
+          "count": 1,
+          "stddev": 0,
+          "min": 99,
+          "max": 99,
+          "details": [
+            99
+          ]
+        },
+        "grok-4-0709": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 45,
+          "count": 1,
+          "stddev": 0,
+          "min": 45,
+          "max": 45,
+          "details": [
+            45
+          ]
+        },
+        "qwen3-max": {
+          "score": 60,
+          "count": 1,
+          "stddev": 0,
+          "min": 60,
+          "max": 60,
+          "details": [
+            60
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "gpt-5.1": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        }
+      },
+      "qwen3-max": {
+        "qwen3-max": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "gpt-5.1": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "grok-4-0709": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "deepseek_deepseek-v3.1": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 63,
+          "count": 1,
+          "stddev": 0,
+          "min": 63,
+          "max": 63,
+          "details": [
+            63
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "grok-4-0709": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "gpt-5.1": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "qwen3-max": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "gemini-3-pro-preview": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "gpt-5.1": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "qwen3-max": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "grok-4-0709": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "doubao-seed-1-6-251015": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "qwen3-max": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gpt-5.1": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "grok-4-0709": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "gpt-5.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "grok-4-0709": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "qwen3-max": {
+          "score": 62,
+          "count": 1,
+          "stddev": 0,
+          "min": 62,
+          "max": 62,
+          "details": [
+            62
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "grok-4-0709": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gpt-5.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "qwen3-max": {
+          "score": 63,
+          "count": 1,
+          "stddev": 0,
+          "min": 63,
+          "max": 63,
+          "details": [
+            63
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        }
+      },
+      "deepseek_deepseek-v3.1": {
+        "gpt-5.1": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "grok-4-0709": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "qwen3-max": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        }
+      }
+    },
+    "患者3": {
+      "Baichuan-M2": {
+        "doubao-seed-1-6-251015": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "qwen3-max": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "grok-4-0709": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "gpt-5.1": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "gpt-5.1": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "qwen3-max": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "grok-4-0709": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "gemini-3-pro-preview": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "qwen3-max": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "grok-4-0709": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "gpt-5.1": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "grok-4-0709": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "gpt-5.1": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "qwen3-max": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        }
+      },
+      "qwen3-max": {
+        "grok-4-0709": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "qwen3-max": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "gpt-5.1": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "deepseek_deepseek-v3.1": {
+          "score": 64,
+          "count": 1,
+          "stddev": 0,
+          "min": 64,
+          "max": 64,
+          "details": [
+            64
+          ]
+        },
+        "grok-4-0709": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "gpt-5.1": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "qwen3-max": {
+          "score": 70,
+          "count": 1,
+          "stddev": 0,
+          "min": 70,
+          "max": 70,
+          "details": [
+            70
+          ]
+        }
+      },
+      "deepseek_deepseek-v3.1": {
+        "deepseek_deepseek-v3.1": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "grok-4-0709": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "gpt-5.1": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "qwen3-max": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        }
+      },
+      "gemini-3-pro-preview": {
+        "gemini-3-pro-preview": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "grok-4-0709": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 58,
+          "count": 1,
+          "stddev": 0,
+          "min": 58,
+          "max": 58,
+          "details": [
+            58
+          ]
+        },
+        "gpt-5.1": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 44,
+          "count": 1,
+          "stddev": 0,
+          "min": 44,
+          "max": 44,
+          "details": [
+            44
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 98,
+          "count": 1,
+          "stddev": 0,
+          "min": 98,
+          "max": 98,
+          "details": [
+            98
+          ]
+        },
+        "qwen3-max": {
+          "score": 64,
+          "count": 1,
+          "stddev": 0,
+          "min": 64,
+          "max": 64,
+          "details": [
+            64
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        }
+      }
+    },
+    "患者4": {
+      "deepseek_deepseek-v3.1": {
+        "grok-4-0709": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "gpt-5.1": {
+          "score": 69,
+          "count": 1,
+          "stddev": 0,
+          "min": 69,
+          "max": 69,
+          "details": [
+            69
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "qwen3-max": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 70,
+          "count": 1,
+          "stddev": 0,
+          "min": 70,
+          "max": 70,
+          "details": [
+            70
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "grok-4-0709": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "gpt-5.1": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "qwen3-max": {
+          "score": 97,
+          "count": 1,
+          "stddev": 0,
+          "min": 97,
+          "max": 97,
+          "details": [
+            97
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "Baichuan-M2": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "grok-4-0709": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "qwen3-max": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gpt-5.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "qwen3-max": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "gpt-5.1": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "grok-4-0709": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        }
+      },
+      "qwen3-max": {
+        "grok-4-0709": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "qwen3-max": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "qwen3-max": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "gpt-5.1": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "grok-4-0709": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "gemini-3-pro-preview": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "qwen3-max": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "gpt-5.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "grok-4-0709": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        }
+      },
+      "gemini-3-pro-preview": {
+        "moonshotai_kimi-k2-0905": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "grok-4-0709": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "gpt-5.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "qwen3-max": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 98,
+          "count": 1,
+          "stddev": 0,
+          "min": 98,
+          "max": 98,
+          "details": [
+            98
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 58,
+          "count": 1,
+          "stddev": 0,
+          "min": 58,
+          "max": 58,
+          "details": [
+            58
+          ]
+        }
+      }
+    },
+    "患者5": {
+      "gpt-5.1": {
+        "deepseek_deepseek-v3.1": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "gpt-5.1": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "qwen3-max": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "grok-4-0709": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "moonshotai_kimi-k2-0905": {
+          "score": 55,
+          "count": 1,
+          "stddev": 0,
+          "min": 55,
+          "max": 55,
+          "details": [
+            55
+          ]
+        },
+        "gpt-5.1": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "grok-4-0709": {
+          "score": 70,
+          "count": 1,
+          "stddev": 0,
+          "min": 70,
+          "max": 70,
+          "details": [
+            70
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 48,
+          "count": 1,
+          "stddev": 0,
+          "min": 48,
+          "max": 48,
+          "details": [
+            48
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "qwen3-max": {
+          "score": 64,
+          "count": 1,
+          "stddev": 0,
+          "min": 64,
+          "max": 64,
+          "details": [
+            64
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "Baichuan-M2": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "grok-4-0709": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "qwen3-max": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "gpt-5.1": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "grok-4-0709": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "qwen3-max": {
+          "score": 69,
+          "count": 1,
+          "stddev": 0,
+          "min": 69,
+          "max": 69,
+          "details": [
+            69
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 67,
+          "count": 1,
+          "stddev": 0,
+          "min": 67,
+          "max": 67,
+          "details": [
+            67
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 60,
+          "count": 1,
+          "stddev": 0,
+          "min": 60,
+          "max": 60,
+          "details": [
+            60
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 62,
+          "count": 1,
+          "stddev": 0,
+          "min": 62,
+          "max": 62,
+          "details": [
+            62
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "qwen3-max": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "gpt-5.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "grok-4-0709": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        }
+      },
+      "deepseek_deepseek-v3.1": {
+        "moonshotai_kimi-k2-0905": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "gpt-5.1": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "grok-4-0709": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "qwen3-max": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        }
+      },
+      "qwen3-max": {
+        "moonshotai_kimi-k2-0905": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "gpt-5.1": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "qwen3-max": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "grok-4-0709": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        }
+      },
+      "gemini-3-pro-preview": {
+        "moonshotai_kimi-k2-0905": {
+          "score": 55,
+          "count": 1,
+          "stddev": 0,
+          "min": 55,
+          "max": 55,
+          "details": [
+            55
+          ]
+        },
+        "grok-4-0709": {
+          "score": 61,
+          "count": 1,
+          "stddev": 0,
+          "min": 61,
+          "max": 61,
+          "details": [
+            61
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 53,
+          "count": 1,
+          "stddev": 0,
+          "min": 53,
+          "max": 53,
+          "details": [
+            53
+          ]
+        },
+        "qwen3-max": {
+          "score": 67,
+          "count": 1,
+          "stddev": 0,
+          "min": 67,
+          "max": 67,
+          "details": [
+            67
+          ]
+        },
+        "gpt-5.1": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        }
+      }
+    },
+    "患者6": {
+      "deepseek_deepseek-v3.1": {
+        "qwen3-max": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "gpt-5.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "grok-4-0709": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "qwen3-max": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "gpt-5.1": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "grok-4-0709": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        }
+      },
+      "gemini-3-pro-preview": {
+        "Baichuan-M2": {
+          "score": 66,
+          "count": 1,
+          "stddev": 0,
+          "min": 66,
+          "max": 66,
+          "details": [
+            66
+          ]
+        },
+        "qwen3-max": {
+          "score": 58,
+          "count": 1,
+          "stddev": 0,
+          "min": 58,
+          "max": 58,
+          "details": [
+            58
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "gpt-5.1": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 97,
+          "count": 1,
+          "stddev": 0,
+          "min": 97,
+          "max": 97,
+          "details": [
+            97
+          ]
+        },
+        "grok-4-0709": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "deepseek_deepseek-v3.1": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "gpt-5.1": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "grok-4-0709": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "qwen3-max": {
+          "score": 97,
+          "count": 1,
+          "stddev": 0,
+          "min": 97,
+          "max": 97,
+          "details": [
+            97
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "gpt-5.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "grok-4-0709": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "qwen3-max": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "moonshotai_kimi-k2-0905": {
+          "score": 97,
+          "count": 1,
+          "stddev": 0,
+          "min": 97,
+          "max": 97,
+          "details": [
+            97
+          ]
+        },
+        "grok-4-0709": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "qwen3-max": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "gpt-5.1": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        }
+      },
+      "qwen3-max": {
+        "Baichuan-M2": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "gpt-5.1": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "qwen3-max": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "grok-4-0709": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "doubao-seed-1-6-251015": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "qwen3-max": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "grok-4-0709": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        }
+      }
+    },
+    "患者7": {
+      "deepseek_deepseek-v3.1": {
+        "gemini-3-pro-preview": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "qwen3-max": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "grok-4-0709": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        }
+      },
+      "qwen3-max": {
+        "doubao-seed-1-6-251015": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "grok-4-0709": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "gpt-5.1": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "qwen3-max": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "gemini-3-pro-preview": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 69,
+          "count": 1,
+          "stddev": 0,
+          "min": 69,
+          "max": 69,
+          "details": [
+            69
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "qwen3-max": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "gpt-5.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "grok-4-0709": {
+          "score": 56,
+          "count": 1,
+          "stddev": 0,
+          "min": 56,
+          "max": 56,
+          "details": [
+            56
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "gemini-3-pro-preview": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "grok-4-0709": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "gpt-5.1": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        },
+        "qwen3-max": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 96,
+          "count": 1,
+          "stddev": 0,
+          "min": 96,
+          "max": 96,
+          "details": [
+            96
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "doubao-seed-1-6-251015": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "qwen3-max": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "gpt-5.1": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "grok-4-0709": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 65,
+          "count": 1,
+          "stddev": 0,
+          "min": 65,
+          "max": 65,
+          "details": [
+            65
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 67,
+          "count": 1,
+          "stddev": 0,
+          "min": 67,
+          "max": 67,
+          "details": [
+            67
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 62,
+          "count": 1,
+          "stddev": 0,
+          "min": 62,
+          "max": 62,
+          "details": [
+            62
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "gemini-3-pro-preview": {
+          "score": 61,
+          "count": 1,
+          "stddev": 0,
+          "min": 61,
+          "max": 61,
+          "details": [
+            61
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "qwen3-max": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 69,
+          "count": 1,
+          "stddev": 0,
+          "min": 69,
+          "max": 69,
+          "details": [
+            69
+          ]
+        },
+        "grok-4-0709": {
+          "score": 70,
+          "count": 1,
+          "stddev": 0,
+          "min": 70,
+          "max": 70,
+          "details": [
+            70
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 52,
+          "count": 1,
+          "stddev": 0,
+          "min": 52,
+          "max": 52,
+          "details": [
+            52
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 50,
+          "count": 1,
+          "stddev": 0,
+          "min": 50,
+          "max": 50,
+          "details": [
+            50
+          ]
+        },
+        "gpt-5.1": {
+          "score": 61,
+          "count": 1,
+          "stddev": 0,
+          "min": 61,
+          "max": 61,
+          "details": [
+            61
+          ]
+        }
+      },
+      "gemini-3-pro-preview": {
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 30,
+          "count": 1,
+          "stddev": 0,
+          "min": 30,
+          "max": 30,
+          "details": [
+            30
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 62,
+          "count": 1,
+          "stddev": 0,
+          "min": 62,
+          "max": 62,
+          "details": [
+            62
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 63,
+          "count": 1,
+          "stddev": 0,
+          "min": 63,
+          "max": 63,
+          "details": [
+            63
+          ]
+        },
+        "qwen3-max": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 38,
+          "count": 1,
+          "stddev": 0,
+          "min": 38,
+          "max": 38,
+          "details": [
+            38
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "grok-4-0709": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "deepseek_deepseek-v3.1": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "grok-4-0709": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "qwen3-max": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        }
+      }
+    },
+    "患者8": {
+      "qwen3-max": {
+        "deepseek_deepseek-v3.1": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 69,
+          "count": 1,
+          "stddev": 0,
+          "min": 69,
+          "max": 69,
+          "details": [
+            69
+          ]
+        },
+        "grok-4-0709": {
+          "score": 71,
+          "count": 1,
+          "stddev": 0,
+          "min": 71,
+          "max": 71,
+          "details": [
+            71
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "qwen3-max": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "gpt-5.1": {
+          "score": 62,
+          "count": 1,
+          "stddev": 0,
+          "min": 62,
+          "max": 62,
+          "details": [
+            62
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "deepseek_deepseek-v3.1": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "grok-4-0709": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "gpt-5.1": {
+          "score": 67,
+          "count": 1,
+          "stddev": 0,
+          "min": 67,
+          "max": 67,
+          "details": [
+            67
+          ]
+        },
+        "qwen3-max": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "Baichuan-M2": {
+          "score": 59,
+          "count": 1,
+          "stddev": 0,
+          "min": 59,
+          "max": 59,
+          "details": [
+            59
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        },
+        "grok-4-0709": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "gpt-5.1": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "qwen3-max": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "doubao-seed-1-6-251015": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "qwen3-max": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "grok-4-0709": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "gpt-5.1": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 66,
+          "count": 1,
+          "stddev": 0,
+          "min": 66,
+          "max": 66,
+          "details": [
+            66
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 64,
+          "count": 1,
+          "stddev": 0,
+          "min": 64,
+          "max": 64,
+          "details": [
+            64
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        }
+      },
+      "gemini-3-pro-preview": {
+        "gpt-5.1": {
+          "score": 53,
+          "count": 1,
+          "stddev": 0,
+          "min": 53,
+          "max": 53,
+          "details": [
+            53
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "qwen3-max": {
+          "score": 69,
+          "count": 1,
+          "stddev": 0,
+          "min": 69,
+          "max": 69,
+          "details": [
+            69
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 53,
+          "count": 1,
+          "stddev": 0,
+          "min": 53,
+          "max": 53,
+          "details": [
+            53
+          ]
+        },
+        "grok-4-0709": {
+          "score": 46,
+          "count": 1,
+          "stddev": 0,
+          "min": 46,
+          "max": 46,
+          "details": [
+            46
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 68,
+          "count": 1,
+          "stddev": 0,
+          "min": 68,
+          "max": 68,
+          "details": [
+            68
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 30,
+          "count": 1,
+          "stddev": 0,
+          "min": 30,
+          "max": 30,
+          "details": [
+            30
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "gemini-3-pro-preview": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 62,
+          "count": 1,
+          "stddev": 0,
+          "min": 62,
+          "max": 62,
+          "details": [
+            62
+          ]
+        },
+        "qwen3-max": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "grok-4-0709": {
+          "score": 58,
+          "count": 1,
+          "stddev": 0,
+          "min": 58,
+          "max": 58,
+          "details": [
+            58
+          ]
+        },
+        "gpt-5.1": {
+          "score": 70,
+          "count": 1,
+          "stddev": 0,
+          "min": 70,
+          "max": 70,
+          "details": [
+            70
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 54,
+          "count": 1,
+          "stddev": 0,
+          "min": 54,
+          "max": 54,
+          "details": [
+            54
+          ]
+        }
+      },
+      "deepseek_deepseek-v3.1": {
+        "gemini-3-pro-preview": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "qwen3-max": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "grok-4-0709": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "gpt-5.1": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "gemini-3-pro-preview": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 91,
+          "count": 1,
+          "stddev": 0,
+          "min": 91,
+          "max": 91,
+          "details": [
+            91
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "qwen3-max": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "grok-4-0709": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "gpt-5.1": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        }
+      }
+    },
+    "患者9": {
+      "gemini-3-pro-preview": {
+        "qwen3-max": {
+          "score": 40,
+          "count": 1,
+          "stddev": 0,
+          "min": 40,
+          "max": 40,
+          "details": [
+            40
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 54,
+          "count": 1,
+          "stddev": 0,
+          "min": 54,
+          "max": 54,
+          "details": [
+            54
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 44,
+          "count": 1,
+          "stddev": 0,
+          "min": 44,
+          "max": 44,
+          "details": [
+            44
+          ]
+        },
+        "gpt-5.1": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "grok-4-0709": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 95,
+          "count": 1,
+          "stddev": 0,
+          "min": 95,
+          "max": 95,
+          "details": [
+            95
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 47,
+          "count": 1,
+          "stddev": 0,
+          "min": 47,
+          "max": 47,
+          "details": [
+            47
+          ]
+        }
+      },
+      "doubao-seed-1-6-251015": {
+        "Baichuan-M2": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "qwen3-max": {
+          "score": 59,
+          "count": 1,
+          "stddev": 0,
+          "min": 59,
+          "max": 59,
+          "details": [
+            59
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 85,
+          "count": 1,
+          "stddev": 0,
+          "min": 85,
+          "max": 85,
+          "details": [
+            85
+          ]
+        },
+        "gpt-5.1": {
+          "score": 90,
+          "count": 1,
+          "stddev": 0,
+          "min": 90,
+          "max": 90,
+          "details": [
+            90
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 59,
+          "count": 1,
+          "stddev": 0,
+          "min": 59,
+          "max": 59,
+          "details": [
+            59
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 93,
+          "count": 1,
+          "stddev": 0,
+          "min": 93,
+          "max": 93,
+          "details": [
+            93
+          ]
+        },
+        "grok-4-0709": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        }
+      },
+      "Baichuan-M2": {
+        "deepseek_deepseek-v3.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 48,
+          "count": 1,
+          "stddev": 0,
+          "min": 48,
+          "max": 48,
+          "details": [
+            48
+          ]
+        },
+        "grok-4-0709": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "gpt-5.1": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "qwen3-max": {
+          "score": 84,
+          "count": 1,
+          "stddev": 0,
+          "min": 84,
+          "max": 84,
+          "details": [
+            84
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        }
+      },
+      "deepseek_deepseek-v3.1": {
+        "Baichuan-M2": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "qwen3-max": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "gpt-5.1": {
+          "score": 72,
+          "count": 1,
+          "stddev": 0,
+          "min": 72,
+          "max": 72,
+          "details": [
+            72
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "grok-4-0709": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        }
+      },
+      "qwen3-max": {
+        "gemini-3-pro-preview": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 77,
+          "count": 1,
+          "stddev": 0,
+          "min": 77,
+          "max": 77,
+          "details": [
+            77
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 73,
+          "count": 1,
+          "stddev": 0,
+          "min": 73,
+          "max": 73,
+          "details": [
+            73
+          ]
+        },
+        "qwen3-max": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        },
+        "gpt-5.1": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 80,
+          "count": 1,
+          "stddev": 0,
+          "min": 80,
+          "max": 80,
+          "details": [
+            80
+          ]
+        },
+        "grok-4-0709": {
+          "score": 79,
+          "count": 1,
+          "stddev": 0,
+          "min": 79,
+          "max": 79,
+          "details": [
+            79
+          ]
+        }
+      },
+      "grok-4-0709": {
+        "grok-4-0709": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "gpt-5.1": {
+          "score": 87,
+          "count": 1,
+          "stddev": 0,
+          "min": 87,
+          "max": 87,
+          "details": [
+            87
+          ]
+        },
+        "qwen3-max": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 74,
+          "count": 1,
+          "stddev": 0,
+          "min": 74,
+          "max": 74,
+          "details": [
+            74
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        }
+      },
+      "gpt-5.1": {
+        "grok-4-0709": {
+          "score": 92,
+          "count": 1,
+          "stddev": 0,
+          "min": 92,
+          "max": 92,
+          "details": [
+            92
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 88,
+          "count": 1,
+          "stddev": 0,
+          "min": 88,
+          "max": 88,
+          "details": [
+            88
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 64,
+          "count": 1,
+          "stddev": 0,
+          "min": 64,
+          "max": 64,
+          "details": [
+            64
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 89,
+          "count": 1,
+          "stddev": 0,
+          "min": 89,
+          "max": 89,
+          "details": [
+            89
+          ]
+        },
+        "doubao-seed-1-6-251015": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "qwen3-max": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        },
+        "gpt-5.1": {
+          "score": 94,
+          "count": 1,
+          "stddev": 0,
+          "min": 94,
+          "max": 94,
+          "details": [
+            94
+          ]
+        }
+      },
+      "moonshotai_kimi-k2-0905": {
+        "doubao-seed-1-6-251015": {
+          "score": 76,
+          "count": 1,
+          "stddev": 0,
+          "min": 76,
+          "max": 76,
+          "details": [
+            76
+          ]
+        },
+        "deepseek_deepseek-v3.1": {
+          "score": 78,
+          "count": 1,
+          "stddev": 0,
+          "min": 78,
+          "max": 78,
+          "details": [
+            78
+          ]
+        },
+        "gemini-3-pro-preview": {
+          "score": 83,
+          "count": 1,
+          "stddev": 0,
+          "min": 83,
+          "max": 83,
+          "details": [
+            83
+          ]
+        },
+        "gpt-5.1": {
+          "score": 82,
+          "count": 1,
+          "stddev": 0,
+          "min": 82,
+          "max": 82,
+          "details": [
+            82
+          ]
+        },
+        "qwen3-max": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "moonshotai_kimi-k2-0905": {
+          "score": 81,
+          "count": 1,
+          "stddev": 0,
+          "min": 81,
+          "max": 81,
+          "details": [
+            81
+          ]
+        },
+        "Baichuan-M2": {
+          "score": 75,
+          "count": 1,
+          "stddev": 0,
+          "min": 75,
+          "max": 75,
+          "details": [
+            75
+          ]
+        },
+        "grok-4-0709": {
+          "score": 86,
+          "count": 1,
+          "stddev": 0,
+          "min": 86,
+          "max": 86,
+          "details": [
+            86
+          ]
+        }
+      }
+    }
+  }
+}

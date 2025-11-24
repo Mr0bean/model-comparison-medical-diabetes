@@ -1,0 +1,80 @@
+{
+  "gpt-5.1": {
+    "provider": "jiekou",
+    "api_key_env": "JIEKOU_API_KEY",
+    "base_url": "https://api.jiekou.ai/openai",
+    "description": "JieKou AI GPT-5.1"
+  },
+  "gemini-3.0-pro": {
+    "provider": "jiekou",
+    "api_key_env": "JIEKOU_API_KEY",
+    "base_url": "https://api.jiekou.ai/openai",
+    "description": "Google Gemini 3.0 Pro"
+  },
+  "gemini-3-pro-preview": {
+    "provider": "jiekou",
+    "api_key_env": "JIEKOU_API_KEY",
+    "base_url": "https://api.jiekou.ai/openai",
+    "description": "Google Gemini 3 Pro Preview"
+  },
+  "deepseek/deepseek-v3.1": {
+    "provider": "jiekou",
+    "api_key_env": "JIEKOU_API_KEY",
+    "base_url": "https://api.jiekou.ai/openai",
+    "description": "DeepSeek V3.1 via JieKou"
+  },
+  "moonshotai/kimi-k2-0905": {
+    "provider": "jiekou",
+    "api_key_env": "JIEKOU_API_KEY",
+    "base_url": "https://api.jiekou.ai/openai",
+    "description": "Kimi K2 via JieKou"
+  },
+  "grok-4-0709": {
+    "provider": "jiekou",
+    "api_key_env": "JIEKOU_API_KEY",
+    "base_url": "https://api.jiekou.ai/openai",
+    "description": "Grok 4 via JieKou"
+  },
+  "Baichuan2-Turbo": {
+    "provider": "baichuan",
+    "api_key_env": "BAICHUAN_API_KEY",
+    "base_url": "https://api.baichuan-ai.com/v1",
+    "description": "百川2 Turbo"
+  },
+  "Baichuan2-Turbo-192k": {
+    "provider": "baichuan",
+    "api_key_env": "BAICHUAN_API_KEY",
+    "base_url": "https://api.baichuan-ai.com/v1",
+    "description": "百川2 Turbo 192K"
+  },
+  "Baichuan3-Turbo": {
+    "provider": "baichuan",
+    "api_key_env": "BAICHUAN_API_KEY",
+    "base_url": "https://api.baichuan-ai.com/v1",
+    "description": "百川3 Turbo"
+  },
+  "Baichuan3-Turbo-128k": {
+    "provider": "baichuan",
+    "api_key_env": "BAICHUAN_API_KEY",
+    "base_url": "https://api.baichuan-ai.com/v1",
+    "description": "百川3 Turbo 128K"
+  },
+  "Baichuan4": {
+    "provider": "baichuan",
+    "api_key_env": "BAICHUAN_API_KEY",
+    "base_url": "https://api.baichuan-ai.com/v1",
+    "description": "百川4"
+  },
+  "deepseek-reasoner": {
+    "provider": "deepseek",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "base_url": "https://api.deepseek.com",
+    "description": "DeepSeek Reasoner (官方)"
+  },
+  "deepseek-chat": {
+    "provider": "deepseek",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "base_url": "https://api.deepseek.com",
+    "description": "DeepSeek Chat (官方)"
+  }
+}

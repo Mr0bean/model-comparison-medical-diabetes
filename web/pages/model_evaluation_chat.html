@@ -1,0 +1,2631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗模型评测 - 对话视图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f7fa;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            min-height: 100px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .header-top-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .header-progress {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+            min-width: 180px;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 500;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .progress-numbers {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: monospace;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            width: 120px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: white;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+
+        .patient-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .patient-selector-label {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .patient-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .patient-tab {
+            padding: 8px 20px;
+            font-size: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .patient-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .patient-tab.active {
+            background: white;
+            color: #667eea;
+            border-color: white;
+            font-weight: 600;
+        }
+
+        .main-container {
+            display: flex;
+            height: calc(100vh - 120px);
+            gap: 0;
+        }
+
+        /* 左侧对话区域 */
+        .chat-panel {
+            flex: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .chat-header {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .chat-header h2 {
+            color: #667eea;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .chat-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+
+        .chat-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-content::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .chat-content::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+
+        /* 聊天气泡样式 */
+        .chat-message {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-message.patient {
+            align-items: flex-start;
+        }
+
+        .chat-message.doctor {
+            align-items: flex-end;
+        }
+
+        .chat-message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .chat-message.patient .chat-message-header {
+            flex-direction: row;
+        }
+
+        .chat-message.doctor .chat-message-header {
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .chat-message.patient .chat-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .chat-message.doctor .chat-avatar {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .chat-role {
+            font-weight: 600;
+        }
+
+        .chat-bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            line-height: 1.6;
+            font-size: 14px;
+            display: inline-block;
+            white-space: pre-wrap;      /* 保留必要换行 */
+            word-break: keep-all;       /* 非必要不在中文处断行 */
+            overflow-wrap: anywhere;    /* 防止超长英文溢出时再断行 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+        .chat-bubble.short { white-space: nowrap !important; word-break: keep-all !important; overflow-wrap: normal !important; }
+
+        .chat-message.patient .chat-bubble {
+            background: white;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.doctor .chat-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .patient-info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .patient-info-card h4 {
+            color: #667eea;
+            font-size: 14px;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .patient-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .patient-info-item {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .patient-info-item strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .chat-section-title {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin: 30px 0 20px 0;
+            position: relative;
+        }
+
+        .chat-section-title::before,
+        .chat-section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .chat-section-title::before {
+            left: 0;
+        }
+
+        .chat-section-title::after {
+            right: 0;
+        }
+
+        /* 右侧报告区域 */
+        .report-panel {
+            flex: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .report-header {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .report-title {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .report-title h2 {
+            color: #667eea;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .model-name {
+            font-size: 13px;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .model-name.hidden {
+            display: none;
+        }
+
+        .model-navigator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .nav-button:hover {
+            background: #764ba2;
+            transform: scale(1.1);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .model-indicator {
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .report-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .report-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .report-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .report-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .report-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .report-section {
+            margin-bottom: 30px;
+        }
+
+        .report-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .report-section-content {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        .report-section-content p {
+            margin-bottom: 12px;
+        }
+
+        .report-section-content strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .report-section-content ul,
+        .report-section-content ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .report-section-content li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .report-section-content h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #764ba2;
+            margin: 18px 0 10px 0;
+            padding-left: 12px;
+            border-left: 3px solid #764ba2;
+        }
+
+        .report-section-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            margin: 15px 0 8px 0;
+        }
+
+        .report-section-content code {
+            background: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #e83e8c;
+        }
+
+        .report-section-content .info-row {
+            display: flex;
+            margin-bottom: 8px;
+            align-items: baseline;
+        }
+
+        .report-section-content .info-label {
+            font-weight: 600;
+            color: #667eea;
+            min-width: 100px;
+            margin-right: 10px;
+        }
+
+        .report-section-content .info-value {
+            color: #333;
+            flex: 1;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #999;
+            padding: 50px 20px;
+            font-size: 15px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            padding: 50px 20px;
+            font-size: 16px;
+        }
+
+        /* 评测窗口浮动按钮 */
+        .eval-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .eval-float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .eval-float-btn.hidden {
+            display: none;
+        }
+
+        /* 提交状态提示 */
+        .submit-status {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .submit-status.hidden {
+            display: none;
+        }
+
+        .submit-status.submitted {
+            color: #52c41a;
+            border: 2px solid #52c41a;
+        }
+
+        .submit-status.not-submitted {
+            color: #faad14;
+            border: 2px solid #faad14;
+        }
+
+        .submit-status-icon {
+            font-size: 14px;
+        }
+
+        /* 评测窗口容器 */
+        .eval-window {
+            position: fixed;
+            /* 居中显示，上下留10% */
+            top: 10vh;
+            left: 50%;
+            transform: translateX(-50%);
+            /* 高度80vh，宽度保持0.7的宽高比 */
+            width: 56vh;
+            height: 80vh;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            resize: both;
+            overflow: hidden;
+            min-width: 350px;
+            min-height: 400px;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .eval-window.active {
+            display: flex;
+        }
+
+        .eval-window.minimized {
+            height: 50px !important;
+            min-height: 50px !important;
+            max-height: 50px !important;
+            resize: none !important;
+        }
+
+        .eval-window.dragging {
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        /* 窗口标题栏 */
+        .eval-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+        }
+
+        /* 填写进度提示区域 */
+        .eval-progress-bar {
+            background: #f8f9fa;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e9ecef;
+            display: none;
+        }
+
+        .eval-progress-bar.show {
+            display: block;
+        }
+
+        .progress-title {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-percentage {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .progress-track {
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .incomplete-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .incomplete-tag {
+            font-size: 11px;
+            padding: 3px 8px;
+            background: #fff3cd;
+            color: #856404;
+            border-radius: 10px;
+            border: 1px solid #ffc107;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .incomplete-tag:hover {
+            background: #ffc107;
+            color: white;
+        }
+
+        /* 未填写的评分项高亮 */
+        .eval-section.incomplete {
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            background: #fff9e6;
+        }
+
+        .eval-section.incomplete .eval-section-title {
+            color: #856404;
+            user-select: none;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+        }
+
+        .eval-header::before {
+            content: '⋮⋮';
+            position: absolute;
+            left: 8px;
+            font-size: 18px;
+            opacity: 0.6;
+            letter-spacing: -2px;
+        }
+
+        .eval-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .eval-completion {
+            font-size: 13px;
+            font-weight: 500;
+            padding: 2px 8px;
+            background: rgba(76, 175, 80, 0.15);
+            color: #4caf50;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .eval-completion.incomplete {
+            background: rgba(255, 152, 0, 0.15);
+            color: #ff9800;
+        }
+
+        .eval-completion.complete {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+
+        .eval-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .eval-font-controls {
+            display: flex;
+            gap: 4px;
+            margin-right: 12px;
+            padding-right: 12px;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .eval-control-btn {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .eval-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .eval-font-btn {
+            width: 28px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .eval-font-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 窗口内容区 */
+        .eval-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .eval-window.minimized .eval-content {
+            display: none;
+        }
+
+        /* 调整大小图标 */
+        .eval-window::after {
+            content: '⇲';
+            position: absolute;
+            right: 4px;
+            bottom: 4px;
+            font-size: 16px;
+            color: #999;
+            pointer-events: none;
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        .eval-window.minimized::after {
+            display: none;
+        }
+
+        .eval-window:hover::after {
+            opacity: 0.8;
+            color: #667eea;
+        }
+
+        /* 评分项 */
+        .eval-section {
+            margin-bottom: 20px;
+        }
+
+        .eval-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .eval-section-max {
+            font-size: 12px;
+            color: #999;
+            font-weight: normal;
+        }
+
+        .eval-hint-box {
+            background: #f0f7ff;
+            border-left: 3px solid #667eea;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .eval-hint-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .eval-hint-list {
+            margin: 0;
+            padding-left: 20px;
+            color: #666;
+        }
+
+        .eval-hint-list li {
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+
+        .eval-input-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .eval-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            transition: border-color 0.2s;
+        }
+
+        /* 星星评分 */
+        .star-rating {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .star {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ddd;
+            transition: all 0.15s;
+            user-select: none;
+        }
+
+        .star.filled {
+            color: #ffc107;
+            text-shadow: 0 0 3px rgba(255, 193, 7, 0.3);
+        }
+
+        .star:hover {
+            transform: scale(1.15);
+        }
+
+        .star-score {
+            margin-left: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #667eea;
+            min-width: 70px;
+        }
+
+        .eval-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .eval-input.score-input {
+            width: 70px;
+            text-align: center;
+            flex: none;
+        }
+
+        .eval-textarea {
+            width: 100%;
+            min-height: 60px;
+            padding: 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .eval-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* 总分显示 */
+        .eval-total {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .eval-total-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .eval-total-score {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffc107;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .eval-total-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .eval-total-number {
+            font-size: 20px;
+            color: #667eea;
+        }
+
+        /* 按钮组 */
+        .eval-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .eval-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .eval-btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .eval-btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .eval-btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .eval-btn-secondary:hover {
+            background: #e5e5e5;
+        }
+
+        /* 滚动条样式 */
+        .eval-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .eval-content::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .eval-content::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        .eval-content::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+        /* 使用提示 */
+        .eval-hint {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .eval-hint.show {
+            opacity: 1;
+        }
+
+        .eval-hint::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid rgba(0, 0, 0, 0.85);
+        }
+
+        /* Toast 提示样式 */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            font-size: 15px;
+            font-weight: 500;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.3s ease;
+            max-width: 500px;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast.success {
+            background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+        }
+
+        .toast.warning {
+            background: linear-gradient(135deg, #faad14 0%, #ffc53d 100%);
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+            to {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+        }
+
+        .toast.hiding {
+            animation: slideUp 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-top-row">
+            <div class="header-progress">
+                <div class="progress-label">总体完成进度</div>
+                <div class="progress-numbers" id="progressNumbers">0/80</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="patient-selector">
+            <span class="patient-selector-label">👤 选择患者：</span>
+            <div class="patient-tabs" id="patientTabs"></div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- 左侧对话区域 -->
+        <div class="chat-panel">
+            <div class="chat-header">
+                <h2>💬 患者对话记录</h2>
+            </div>
+            <div class="chat-content" id="chatContent">
+                <div class="loading">正在加载对话...</div>
+            </div>
+        </div>
+
+        <!-- 右侧报告区域 -->
+        <div class="report-panel">
+            <div class="report-header">
+                <div class="report-title">
+                    <h2>📋 医疗报告</h2>
+                    <div class="model-name" id="modelName">模型: 加载中...</div>
+                </div>
+                <div class="model-navigator">
+                    <button class="nav-button" id="prevModel" onclick="previousModel()" disabled>◀</button>
+                    <span class="model-indicator" id="modelIndicator">-/-</span>
+                    <button class="nav-button" id="nextModel" onclick="nextModel()" disabled>▶</button>
+                </div>
+            </div>
+            <div class="report-content" id="reportContent">
+                <div class="loading">正在加载报告...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 评测浮动按钮 -->
+    <button class="eval-float-btn" id="evalFloatBtn" onclick="toggleEvalWindow()">
+        📝
+    </button>
+
+    <!-- 提交状态提示 -->
+    <div class="submit-status hidden" id="submitStatus">
+        <span class="submit-status-icon" id="submitStatusIcon">✓</span>
+        <span id="submitStatusText">已提交</span>
+    </div>
+
+    <!-- 评测窗口 -->
+    <div class="eval-window" id="evalWindow">
+        <div class="eval-hint" id="evalHint">💡 拖动标题栏移动 | 右下角调整大小</div>
+        <div class="eval-header" id="evalHeader">
+            <div class="eval-title">
+                <span>模型输出评测</span>
+                <span class="eval-completion" id="evalCompletion">0%</span>
+            </div>
+            <div class="eval-controls">
+                <div class="eval-font-controls">
+                    <button class="eval-font-btn" onclick="decreaseFontSize()" title="缩小字体">A−</button>
+                    <button class="eval-font-btn" onclick="increaseFontSize()" title="放大字体">A+</button>
+                </div>
+                <button class="eval-control-btn" onclick="toggleMinimize()" title="最小化">
+                    <span id="minimizeIcon">−</span>
+                </button>
+                <button class="eval-control-btn" onclick="closeEvalWindow()" title="关闭">×</button>
+            </div>
+        </div>
+
+        <!-- 填写进度条 -->
+        <div class="eval-progress-bar" id="evalProgressBar">
+            <div class="progress-title">
+                <span>📝 评测进度</span>
+                <span class="progress-percentage" id="progressPercentage">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+            <div class="incomplete-items" id="incompleteItems">
+                <!-- 未填项标签将动态生成 -->
+            </div>
+        </div>
+
+        <div class="eval-content">
+            <!-- 总分显示 -->
+            <div class="eval-total">
+                <div class="eval-total-label">平均评分</div>
+                <div class="eval-total-score">
+                    <div class="eval-total-stars" id="totalStars">
+                        ★★★★★
+                    </div>
+                    <span class="eval-total-number" id="totalScore">0.0</span>
+                </div>
+            </div>
+
+            <!-- 1. 准确性 (40分) -->
+            <div class="eval-section">
+                <div class="eval-section-title">
+                    1. 准确性（40%）
+                    <span class="eval-section-max">满分 5⭐</span>
+                </div>
+                <div class="eval-hint-box">
+                    <div class="eval-hint-title">评分要点：</div>
+                    <ul class="eval-hint-list">
+                        <li>是否与对话一致，没有添加或错误信息</li>
+                        <li>数值准确（血糖、糖化、体重等）</li>
+                        <li>药物准确（药名、剂量、用法）</li>
+                        <li>时间轴准确（发病时间、就诊时间、治疗变化）</li>
+                        <li>诊断和病程描述准确</li>
+                        <li><strong style="color: #f5222d;">固定扣分项：不能把糖尿病写入既往史</strong></li>
+                    </ul>
+                </div>
+                <div class="star-rating">
+                    <span class="star" data-score="1" data-category="accuracy" onclick="setRating('accuracy', 1)">★</span>
+                    <span class="star" data-score="2" data-category="accuracy" onclick="setRating('accuracy', 2)">★</span>
+                    <span class="star" data-score="3" data-category="accuracy" onclick="setRating('accuracy', 3)">★</span>
+                    <span class="star" data-score="4" data-category="accuracy" onclick="setRating('accuracy', 4)">★</span>
+                    <span class="star" data-score="5" data-category="accuracy" onclick="setRating('accuracy', 5)">★</span>
+                    <span class="star-score" id="score-accuracy-display">未评分</span>
+                </div>
+                <input type="hidden" id="score-accuracy" value="0">
+                <textarea class="eval-textarea" id="comment-accuracy"
+                          placeholder="具体说明：哪些信息有误、是否有无中生有、糖尿病是否误写入既往史等..."></textarea>
+            </div>
+
+            <!-- 2. 完整性 (35分) -->
+            <div class="eval-section">
+                <div class="eval-section-title">
+                    2. 完整性（35%）
+                    <span class="eval-section-max">满分 5⭐</span>
+                </div>
+                <div class="eval-hint-box">
+                    <div class="eval-hint-title">评分要点（糖尿病病历必要模块）：</div>
+                    <ul class="eval-hint-list">
+                        <li><strong>主诉：</strong>症状 + 时间（如"口干、多饮2年"）</li>
+                        <li><strong>现病史：</strong>诊断、治疗变化、近期情况、并发症</li>
+                        <li><strong>既往史：</strong>高血压/高血脂/冠心病等</li>
+                        <li><strong>家族史：</strong>糖尿病家族史</li>
+                    </ul>
+                    <div style="font-size: 12px; color: #999; margin-top: 8px;">
+                        💡 每缺少一个重要模块扣2-3分，不需要细拆成几十项
+                    </div>
+                </div>
+                <div class="star-rating">
+                    <span class="star" data-score="1" data-category="completeness" onclick="setRating('completeness', 1)">★</span>
+                    <span class="star" data-score="2" data-category="completeness" onclick="setRating('completeness', 2)">★</span>
+                    <span class="star" data-score="3" data-category="completeness" onclick="setRating('completeness', 3)">★</span>
+                    <span class="star" data-score="4" data-category="completeness" onclick="setRating('completeness', 4)">★</span>
+                    <span class="star" data-score="5" data-category="completeness" onclick="setRating('completeness', 5)">★</span>
+                    <span class="star-score" id="score-completeness-display">未评分</span>
+                </div>
+                <input type="hidden" id="score-completeness" value="0">
+                <textarea class="eval-textarea" id="comment-completeness"
+                          placeholder="具体说明：缺少哪些必要模块、哪些内容不够完整等..."></textarea>
+            </div>
+
+            <!-- 3. 规范性 (25分) -->
+            <div class="eval-section">
+                <div class="eval-section-title">
+                    3. 规范性（25%）
+                    <span class="eval-section-max">满分 5⭐</span>
+                </div>
+                <div class="eval-hint-box">
+                    <div class="eval-hint-title">评分要点（是否像医生写的）：</div>
+                    <ul class="eval-hint-list">
+                        <li><strong>医学术语：</strong>避免口语化表达</li>
+                        <li><strong>结构清晰：</strong>模块齐全、顺序正确</li>
+                        <li><strong>药物规范：</strong>药名、剂量、用法写法规范</li>
+                        <li><strong>时间明确：</strong>时间描述清晰准确</li>
+                    </ul>
+                    <div style="font-size: 12px; color: #999; margin-top: 8px;">
+                        💡 四档评分：优秀(5星) / 良好(4星) / 一般(3星) / 较差(1-2星)
+                    </div>
+                </div>
+                <div class="star-rating">
+                    <span class="star" data-score="1" data-category="standard" onclick="setRating('standard', 1)">★</span>
+                    <span class="star" data-score="2" data-category="standard" onclick="setRating('standard', 2)">★</span>
+                    <span class="star" data-score="3" data-category="standard" onclick="setRating('standard', 3)">★</span>
+                    <span class="star" data-score="4" data-category="standard" onclick="setRating('standard', 4)">★</span>
+                    <span class="star" data-score="5" data-category="standard" onclick="setRating('standard', 5)">★</span>
+                    <span class="star-score" id="score-standard-display">未评分</span>
+                </div>
+                <input type="hidden" id="score-standard" value="0">
+                <textarea class="eval-textarea" id="comment-standard"
+                          placeholder="具体说明：哪些表达不够专业、结构是否合理、药物写法是否规范等..."></textarea>
+            </div>
+
+            <!-- 综合评价 -->
+            <div class="eval-section">
+                <div class="eval-section-title">综合评价</div>
+                <textarea class="eval-textarea" id="overall-comment"
+                          placeholder="整体优缺点、改进建议..." style="min-height: 80px;"></textarea>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="eval-actions">
+                <button class="eval-btn eval-btn-secondary" onclick="resetEval()">重置</button>
+                <button class="eval-btn eval-btn-primary" onclick="saveEval()">保存评测</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 提示容器 -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        let comparisonData = null;
+        let currentPatient = null;
+        let currentModelIndex = 0;
+        let availableModels = [];
+        let debugMode = false;
+        let modelLabels = {}; // 模型编号映射
+
+        // 检查debug模式
+        const urlParams = new URLSearchParams(window.location.search);
+        debugMode = urlParams.get('debug') === 'true';
+
+        // 生成模型编号映射（A, B, C, ...）
+        function generateModelLabels(models) {
+            const labels = {};
+            const shuffledModels = [...models].sort(() => Math.random() - 0.5); // 随机打乱
+            shuffledModels.forEach((model, index) => {
+                labels[model] = String.fromCharCode(65 + index); // A=65, B=66, ...
+            });
+            return labels;
+        }
+
+        // 加载配置（患者/模型列表），右侧报告与左侧对话均从 output/raw 读取
+        async function loadData() {
+            try {
+                console.log('开始加载数据...');
+                const response = await fetch('../../output/comparison_data.json');
+                console.log('响应状态:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                comparisonData = await response.json();
+                console.log('数据加载成功:', comparisonData);
+
+                if (!comparisonData || !comparisonData.patients || !comparisonData.models) {
+                    throw new Error('数据格式不正确');
+                }
+
+                initializePage();
+            } catch (error) {
+                console.error('数据加载失败:', error);
+                const errorMsg = `❌ 数据加载失败: ${error.message}`;
+                document.getElementById('chatContent').innerHTML =
+                    `<div class="no-data">${errorMsg}</div>`;
+                document.getElementById('reportContent').innerHTML =
+                    `<div class="no-data">${errorMsg}</div>`;
+            }
+        }
+
+        // ===== 原始数据缓存与加载 =====
+        const rawCache = {};
+        function getRawData(model, patient) {
+            if (!rawCache[model]) rawCache[model] = {};
+            if (rawCache[model][patient]) return Promise.resolve(rawCache[model][patient]);
+            const filename = encodeURIComponent(`${model}-${patient}.json`);
+            const url = `../../output/raw/${filename}`;
+            return fetch(url)
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                    return r.json();
+                })
+                .then(data => {
+                    rawCache[model][patient] = data;
+                    return data;
+                })
+                .catch(err => {
+                    console.warn('加载原始输出失败:', url, err.message);
+                    rawCache[model][patient] = null;
+                    return null;
+                });
+        }
+
+        // 查找第一个未完成的评测任务
+        function findFirstIncompleteEvaluation() {
+            // 遍历所有患者
+            for (let patientIndex = 0; patientIndex < comparisonData.patients.length; patientIndex++) {
+                const patient = comparisonData.patients[patientIndex];
+
+                // 遍历所有模型
+                for (let modelIndex = 0; modelIndex < comparisonData.models.length; modelIndex++) {
+                    const model = comparisonData.models[modelIndex];
+                    const storageKey = `eval_${patient}_${model}`;
+                    const saved = localStorage.getItem(storageKey);
+
+                    // 如果没有保存数据，说明未完成
+                    if (!saved) {
+                        console.log(`📍 找到第一个未完成的评测: ${patient} - ${model}`);
+                        return { patient, modelIndex };
+                    }
+
+                    // 检查是否真的完成了所有评分
+                    try {
+                        const evalData = JSON.parse(saved);
+                        const isIncomplete = !evalData.scores ||
+                            evalData.scores.accuracy.score === 0 ||
+                            evalData.scores.completeness.score === 0 ||
+                            evalData.scores.standard.score === 0;
+
+                        if (isIncomplete) {
+                            console.log(`📍 找到未完成的评测（评分不完整）: ${patient} - ${model}`);
+                            return { patient, modelIndex };
+                        }
+                    } catch (e) {
+                        console.warn(`解析评测数据失败: ${storageKey}`, e);
+                        return { patient, modelIndex };
+                    }
+                }
+            }
+
+            // 所有评测都已完成，返回第一个患者的第一个模型
+            console.log('✅ 所有评测任务已完成！返回第一个患者');
+            return {
+                patient: comparisonData.patients[0],
+                modelIndex: 0
+            };
+        }
+
+        // 初始化页面
+        function initializePage() {
+            availableModels = comparisonData.models;
+
+            // 生成模型编号映射
+            modelLabels = generateModelLabels(availableModels);
+            console.log('模型编号映射:', modelLabels);
+
+            // 初始化患者选择器
+            const patientTabs = document.getElementById('patientTabs');
+            comparisonData.patients.forEach((patient, index) => {
+                const tab = document.createElement('div');
+                tab.className = 'patient-tab';
+                tab.textContent = patient;
+                tab.onclick = () => selectPatient(patient);
+
+                patientTabs.appendChild(tab);
+            });
+
+            // 查找第一个未完成的评测任务
+            if (comparisonData.patients.length > 0) {
+                const firstIncomplete = findFirstIncompleteEvaluation();
+                currentPatient = firstIncomplete.patient;
+                currentModelIndex = firstIncomplete.modelIndex;
+
+                // 更新患者选择器的激活状态
+                const tabs = document.querySelectorAll('.patient-tab');
+                tabs.forEach((tab, index) => {
+                    if (comparisonData.patients[index] === currentPatient) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+
+                console.log(`🎯 自动定位到: ${currentPatient} - 模型 ${currentModelIndex + 1}`);
+                updateView();
+            }
+
+            // 设置模型名称显示/隐藏
+            const modelNameElement = document.getElementById('modelName');
+            if (!debugMode) {
+                modelNameElement.classList.add('hidden');
+            }
+        }
+
+        // 显示Toast提示
+        function showToast(message, type = 'info', duration = 3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show';
+
+            // 根据类型添加样式
+            if (type === 'success') {
+                toast.classList.add('success');
+            } else if (type === 'warning') {
+                toast.classList.add('warning');
+            } else if (type === 'error') {
+                toast.classList.add('error');
+            }
+
+            // 自动隐藏
+            setTimeout(() => {
+                toast.classList.add('hiding');
+                setTimeout(() => {
+                    toast.classList.remove('show', 'hiding', 'success', 'warning', 'error');
+                }, 300);
+            }, duration);
+        }
+
+        // 选择患者
+        function selectPatient(patient, fromAuto = false) {
+            // 如果不是自动切换，检查当前患者的所有模型是否已完成
+            if (!fromAuto && currentPatient && currentPatient !== patient) {
+                // 检查当前患者的所有模型是否都已评测
+                let allCompleted = true;
+                for (let i = 0; i < availableModels.length; i++) {
+                    const storageKey = `eval_${currentPatient}_${availableModels[i]}`;
+                    const saved = localStorage.getItem(storageKey);
+                    if (!saved) {
+                        allCompleted = false;
+                        break;
+                    }
+                    // 检查评分是否完成
+                    const evalData = JSON.parse(saved);
+                    if (!evalData.scores ||
+                        evalData.scores.accuracy.score === 0 ||
+                        evalData.scores.completeness.score === 0 ||
+                        evalData.scores.standard.score === 0) {
+                        allCompleted = false;
+                        break;
+                    }
+                }
+
+                if (!allCompleted) {
+                    alert('⚠️ 请先完成当前患者的所有报告评测！');
+                    return;
+                }
+            }
+
+            currentPatient = patient;
+            currentModelIndex = 0;
+
+            // 更新标签样式
+            document.querySelectorAll('.patient-tab').forEach(tab => {
+                if (tab.textContent === patient) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            updateView();
+
+            // 如果是自动切换，显示提示
+            if (fromAuto) {
+                showToast(`✅ 当前患者已完成，已自动切换到 ${patient}`, 'success', 4000);
+            }
+        }
+
+        // 上一个模型
+        function previousModel() {
+            // 检查当前模型评测是否完成
+            if (!checkCompletionStatus()) {
+                alert('⚠️ 请先完成当前医疗报告的评测！\n\n未填写项会在上方显示，请点击修改分数后再切换医疗报告。');
+                // 滚动到评测窗口
+                const evalWindow = document.getElementById('evalWindow');
+                if (evalWindow.classList.contains('active')) {
+                    document.getElementById('evalProgressBar').classList.add('show');
+                    document.getElementById('evalProgressBar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                return;
+            }
+
+            if (currentModelIndex > 0) {
+                currentModelIndex--;
+                updateView();
+            }
+        }
+
+        // 下一个模型
+        function nextModel() {
+            // 检查当前模型评测是否完成
+            if (!checkCompletionStatus()) {
+                alert('⚠️ 请先完成当前医疗报告的评测！\n\n未填写项会在上方显示，请点击修改分数后再切换医疗报告。');
+                // 滚动到评测窗口
+                const evalWindow = document.getElementById('evalWindow');
+                if (evalWindow.classList.contains('active')) {
+                    document.getElementById('evalProgressBar').classList.add('show');
+                    document.getElementById('evalProgressBar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                return;
+            }
+
+            if (currentModelIndex < availableModels.length - 1) {
+                currentModelIndex++;
+                updateView();
+            }
+        }
+
+        // 更新视图
+        async function updateView() {
+            await updateChatView();
+            await updateReportView();
+            updateNavigator();
+            loadSavedEval(); // 加载已保存的评测
+            checkCompletionStatus(); // 检查新模型的完成度
+            updateSubmitStatus(); // 更新提交状态显示
+        }
+
+        // 更新对话视图
+        async function updateChatView() {
+            const chatContent = document.getElementById('chatContent');
+
+            if (!currentPatient || !availableModels || availableModels.length === 0) {
+                chatContent.innerHTML = '<div class="no-data">暂无对话数据</div>';
+                return;
+            }
+
+            // 使用当前模型或第一个模型的 raw 中的 chat 文本
+            const modelForChat = availableModels[currentModelIndex] || availableModels[0];
+            const raw = await getRawData(modelForChat, currentPatient);
+            if (!raw || !raw.conversations) {
+                chatContent.innerHTML = '<div class="no-data">暂无对话记录</div>';
+                return;
+            }
+            // 从 conversations 中挑一个包含 chat 的字段
+            let chatData = null;
+            const convIds = Object.keys(raw.conversations).sort((a,b)=>Number(a)-Number(b));
+            for (const cid of convIds) {
+                const conv = raw.conversations[cid];
+                if (conv && conv.chat) { chatData = conv.chat; break; }
+            }
+            if (!chatData) {
+                chatContent.innerHTML = '<div class="no-data">暂无对话记录</div>';
+                return;
+            }
+            // 解析并渲染对话
+            const messages = parseChatContent(chatData);
+            let html = '';
+            messages.forEach(msg => {
+                if (msg.type === 'patient-info') {
+                    // 渲染患者信息卡片
+                    html += '<div class="patient-info-card"><h4>👤 患者基本信息</h4><div class="patient-info-grid">';
+                    for (const [key, value] of Object.entries(msg.data)) {
+                        html += `<div class="patient-info-item"><strong>${key}:</strong> ${value}</div>`;
+                    }
+                    html += '</div></div>';
+                } else if (msg.type === 'section') {
+                    html += `<div class="chat-section-title">${msg.content}</div>`;
+                } else {
+                    const role = msg.role === 'patient' ? 'patient' : 'doctor';
+                    const avatar = msg.role === 'patient' ? '👤' : '👨‍⚕️';
+                    const roleName = msg.role === 'patient' ? '患者' : '医助';
+
+                    // 合理化短文本中的无意义换行
+                    const normalized = normalizeShortLines(msg.content);
+                    const plain = normalized.replace(/\s+/g, '');
+                    const isShort = plain.length <= 6; // 极短文本强制单行
+                    const contentHtml = escapeHtml(normalized).replace(/\n/g,'<br>');
+                    html += `
+                        <div class="chat-message ${role}">
+                            <div class="chat-message-header">
+                                <div class="chat-avatar">${avatar}</div>
+                                <div class="chat-role">${roleName}</div>
+                            </div>
+                            <div class="chat-bubble ${isShort ? 'short' : ''}">${contentHtml}</div>
+                        </div>
+                    `;
+                }
+            });
+
+            chatContent.innerHTML = html;
+            chatContent.scrollTop = 0;
+        }
+
+        // 解析对话内容
+        function parseChatContent(content) {
+            const messages = [];
+            const lines = content.split('\n');
+
+            let inDialogSection = false;
+            let inBasicInfo = false;
+            let currentMessage = null;
+            let patientInfo = {};
+
+            for (let line of lines) {
+                line = line.trim();
+
+                if (line.startsWith('====') || line.startsWith('----') || line === '') {
+                    continue;
+                }
+
+                if (line.includes('患者基本信息')) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                        currentMessage = null;
+                    }
+                    inBasicInfo = true;
+                    inDialogSection = false;
+                    continue;
+                }
+
+                if (line.includes('预问诊对话记录')) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                        currentMessage = null;
+                    }
+                    if (Object.keys(patientInfo).length > 0) {
+                        messages.push({ type: 'patient-info', data: patientInfo });
+                    }
+                    messages.push({ type: 'section', content: '预问诊对话记录' });
+                    inBasicInfo = false;
+                    inDialogSection = true;
+                    continue;
+                }
+
+                if (inBasicInfo) {
+                    const infoMatch = line.match(/^(.+?)[:：]\s*(.+)$/);
+                    if (infoMatch) {
+                        const key = infoMatch[1].trim();
+                        const value = infoMatch[2].trim();
+                        patientInfo[key] = value;
+                    }
+                    continue;
+                }
+
+                const patientMatch = line.match(/^\d+\.\s*患者:\s*(.+)$/);
+                const doctorMatch = line.match(/^\d+\.\s*医助:\s*(.+)$/);
+
+                if (patientMatch) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                    }
+                    currentMessage = {
+                        type: 'message',
+                        role: 'patient',
+                        content: patientMatch[1].trim()
+                    };
+                } else if (doctorMatch) {
+                    if (currentMessage) {
+                        messages.push(currentMessage);
+                    }
+                    currentMessage = {
+                        type: 'message',
+                        role: 'doctor',
+                        content: doctorMatch[1].trim()
+                    };
+                } else if (currentMessage && line) {
+                    currentMessage.content += '\n' + line;
+                }
+            }
+
+            if (currentMessage) {
+                messages.push(currentMessage);
+            }
+
+            return messages;
+        }
+
+        // 更新报告视图
+        async function updateReportView() {
+            const reportContent = document.getElementById('reportContent');
+            const modelNameElement = document.getElementById('modelName');
+
+            if (!currentPatient || !availableModels || availableModels.length === 0) {
+                reportContent.innerHTML = '<div class="no-data">暂无报告数据</div>';
+                return;
+            }
+            const currentModel = availableModels[currentModelIndex];
+            const modelLabel = modelLabels[currentModel] || 'X';
+
+            // 根据调试模式决定显示内容
+            if (debugMode) {
+                modelNameElement.textContent = `模型${modelLabel}: ${currentModel}`;
+            } else {
+                modelNameElement.textContent = `模型 ${modelLabel}`;
+            }
+
+            // 始终显示模型编号
+            modelNameElement.classList.remove('hidden');
+
+            let html = '';
+            let hasData = false;
+
+            // 固定小节标题映射（按对话顺序）
+            const sectionOrder = ['1', '2', '3', '4'];
+            const sectionTitles = {
+                '1': '主诉',
+                '2': '现病史',
+                '3': '既往史',
+                '4': '家族史'
+            };
+
+            const raw = await getRawData(currentModel, currentPatient);
+            if (raw && raw.conversations) {
+                sectionOrder.forEach(convId => {
+                    const conv = raw.conversations[convId];
+                    const out = conv && (conv.Output || conv.output);
+                    if (out) {
+                        hasData = true;
+                        const title = sectionTitles[convId] || `对话 ${convId}`;
+                        const content = renderMarkdown(out || '');
+                        html += `
+                            <div class="report-section">
+                                <div class="report-section-title">${title}</div>
+                                <div class="report-section-content">${content}</div>
+                            </div>
+                        `;
+                    }
+                });
+            }
+
+            if (!hasData) {
+                reportContent.innerHTML = '<div class="no-data">该模型暂无报告数据</div>';
+            } else {
+                reportContent.innerHTML = html;
+                reportContent.scrollTop = 0;
+            }
+        }
+
+        // 更新导航器
+        function updateNavigator() {
+            const prevButton = document.getElementById('prevModel');
+            const nextButton = document.getElementById('nextModel');
+            const indicator = document.getElementById('modelIndicator');
+
+            prevButton.disabled = currentModelIndex === 0;
+            nextButton.disabled = currentModelIndex === availableModels.length - 1;
+            indicator.textContent = `${currentModelIndex + 1}/${availableModels.length}`;
+        }
+
+        // HTML转义函数
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\n/g, '<br>');
+        }
+        // 将极短的多行文本合并为一行，避免“每字一行”
+        function normalizeShortLines(text) {
+            if (!text) return '';
+            const lines = text.split('\n').map(s => s.trim()).filter(Boolean);
+            if (lines.length >= 2 && lines.length <= 6) {
+                const totalLen = lines.reduce((a, l) => a + l.length, 0);
+                const maxLen = Math.max.apply(null, lines.map(l => l.length));
+                const manySingle = lines.filter(l => l.length <= 2).length >= Math.ceil(lines.length * 0.6);
+                const allShort = maxLen <= 8;
+                if ((allShort && totalLen <= 24) || manySingle) {
+                    return lines.join(' ');
+                }
+            }
+            return text;
+        }
+
+        // Markdown渲染函数
+        function renderMarkdown(text) {
+            if (!text) return '';
+
+            let html = text;
+
+            // 转义HTML标签
+            html = html.replace(/&/g, '&amp;')
+                      .replace(/</g, '&lt;')
+                      .replace(/>/g, '&gt;');
+
+            // 处理三级标题 ### Title
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+
+            // 处理四级标题 #### Title
+            html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
+
+            // 处理加粗 **text** 或 __text__
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+            // 处理行内代码 `code`
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+            // 处理键值对格式（如："性别：** 男"）
+            html = html.replace(/^- \*\*(.+?)[：:]\*\*\s*(.+)$/gm, function(match, label, value) {
+                return `<div class="info-row"><span class="info-label">${label}:</span><span class="info-value">${value}</span></div>`;
+            });
+
+            // 处理列表项 - item 或 * item
+            const lines = html.split('\n');
+            let inList = false;
+            let processedLines = [];
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i];
+
+                // 检测列表项
+                if (/^[-*•]\s+/.test(line)) {
+                    if (!inList) {
+                        processedLines.push('<ul>');
+                        inList = true;
+                    }
+                    // 移除列表标记并创建列表项
+                    line = '<li>' + line.replace(/^[-*•]\s+/, '') + '</li>';
+                    processedLines.push(line);
+                } else {
+                    if (inList && line.trim() === '') {
+                        processedLines.push('</ul>');
+                        inList = false;
+                    }
+                    if (line.trim() !== '' || !inList) {
+                        processedLines.push(line);
+                    }
+                }
+            }
+
+            // 关闭可能未关闭的列表
+            if (inList) {
+                processedLines.push('</ul>');
+            }
+
+            html = processedLines.join('\n');
+
+            // 处理段落：连续的非标签行合并为段落
+            html = html.replace(/^(?!<[hul]|<div|<li)(.+)$/gm, function(match) {
+                if (match.trim() === '') return '';
+                return '<p>' + match + '</p>';
+            });
+
+            // 清理多余的空段落
+            html = html.replace(/<p>\s*<\/p>/g, '');
+            html = html.replace(/<p>(<[hul])/g, '$1');
+            html = html.replace(/(<\/[hul][^>]*>)<\/p>/g, '$1');
+
+            return html;
+        }
+
+        // ==================== 评测窗口相关功能 ====================
+
+        // 字体大小控制
+        let currentFontSize = parseInt(localStorage.getItem('eval_font_size')) || 13;
+
+        function applyFontSize() {
+            const evalContent = document.getElementById('evalWindow');
+            if (evalContent) {
+                evalContent.style.fontSize = currentFontSize + 'px';
+            }
+        }
+
+        function increaseFontSize() {
+            if (currentFontSize < 18) {
+                currentFontSize++;
+                applyFontSize();
+                localStorage.setItem('eval_font_size', currentFontSize);
+            }
+        }
+
+        function decreaseFontSize() {
+            if (currentFontSize > 10) {
+                currentFontSize--;
+                applyFontSize();
+                localStorage.setItem('eval_font_size', currentFontSize);
+            }
+        }
+
+        // 切换评测窗口显示/隐藏
+        function toggleEvalWindow() {
+            const evalWindow = document.getElementById('evalWindow');
+            const evalBtn = document.getElementById('evalFloatBtn');
+            const evalHint = document.getElementById('evalHint');
+
+            if (evalWindow.classList.contains('active')) {
+                evalWindow.classList.remove('active');
+                if (evalBtn) {
+                    evalBtn.classList.remove('hidden');
+                    // 强制显示，确保可见性
+                    evalBtn.style.display = 'flex';
+                }
+            } else {
+                evalWindow.classList.add('active');
+                if (evalBtn) {
+                    evalBtn.classList.add('hidden');
+                    evalBtn.style.display = 'none';
+                }
+                calculateTotal(); // 打开时计算一次总分
+                checkCompletionStatus(); // 检查完成度
+
+                // 首次打开时显示使用提示
+                const hasShownHint = localStorage.getItem('eval_hint_shown');
+                if (!hasShownHint) {
+                    setTimeout(() => {
+                        evalHint.classList.add('show');
+                        setTimeout(() => {
+                            evalHint.classList.remove('show');
+                        }, 3000); // 3秒后隐藏
+                    }, 500); // 延迟0.5秒显示
+                    localStorage.setItem('eval_hint_shown', 'true');
+                }
+            }
+        }
+
+        // 关闭评测窗口
+        function closeEvalWindow() {
+            const evalWindow = document.getElementById('evalWindow');
+            const evalBtn = document.getElementById('evalFloatBtn');
+
+            evalWindow.classList.remove('active');
+            evalWindow.classList.remove('minimized');
+
+            // 确保浮动按钮显示
+            if (evalBtn) {
+                evalBtn.classList.remove('hidden');
+                // 强制显示，确保可见性
+                evalBtn.style.display = 'flex';
+            }
+
+            document.getElementById('minimizeIcon').textContent = '−';
+        }
+
+        // 最小化/恢复窗口
+        function toggleMinimize() {
+            const evalWindow = document.getElementById('evalWindow');
+            const minimizeIcon = document.getElementById('minimizeIcon');
+
+            if (evalWindow.classList.contains('minimized')) {
+                evalWindow.classList.remove('minimized');
+                minimizeIcon.textContent = '−';
+            } else {
+                evalWindow.classList.add('minimized');
+                minimizeIcon.textContent = '□';
+            }
+        }
+
+        // 设置星星评分
+        function setRating(category, score) {
+            // 更新隐藏的输入框
+            document.getElementById(`score-${category}`).value = score;
+
+            // 更新星星显示
+            const stars = document.querySelectorAll(`.star[data-category="${category}"]`);
+            stars.forEach(star => {
+                const starScore = parseInt(star.getAttribute('data-score'));
+                if (starScore <= score) {
+                    star.classList.add('filled');
+                } else {
+                    star.classList.remove('filled');
+                }
+            });
+
+            // 更新分数显示
+            const ratingLabels = ['', '很差 (1⭐)', '较差 (2⭐)', '一般 (3⭐)', '良好 (4⭐)', '优秀 (5⭐)'];
+            document.getElementById(`score-${category}-display`).textContent = ratingLabels[score] || '未评分';
+
+            // 计算总分
+            calculateTotal();
+        }
+
+        // 检查某个评分项是否已填写（评分>0）
+        function isScoreCompleted(scoreId, maxScore) {
+            const value = parseInt(document.getElementById(scoreId).value) || 0;
+            return value > 0; // 只要评分>0就算已填写
+        }
+
+        // 计算填写完成度
+        function checkCompletionStatus() {
+            const scoreItems = [
+                { id: 'score-accuracy', max: 5, name: '准确性', sectionId: 'section-accuracy' },
+                { id: 'score-completeness', max: 5, name: '完整性', sectionId: 'section-completeness' },
+                { id: 'score-standard', max: 5, name: '规范性', sectionId: 'section-standard' }
+            ];
+
+            let completedCount = 0;
+            const incompleteItems = [];
+
+            scoreItems.forEach(item => {
+                const section = document.querySelector(`#${item.id}`).closest('.eval-section');
+                if (isScoreCompleted(item.id, item.max)) {
+                    completedCount++;
+                    section.classList.remove('incomplete');
+                } else {
+                    section.classList.add('incomplete');
+                    incompleteItems.push(item.name);
+                }
+            });
+
+            const percentage = Math.round((completedCount / scoreItems.length) * 100);
+            const isComplete = completedCount === scoreItems.length;
+
+            // 更新标题栏完成度
+            const evalCompletion = document.getElementById('evalCompletion');
+            evalCompletion.textContent = percentage + '%';
+            evalCompletion.classList.remove('incomplete', 'complete');
+            if (isComplete) {
+                evalCompletion.classList.add('complete');
+            } else if (percentage > 0) {
+                evalCompletion.classList.add('incomplete');
+            }
+
+            // 更新进度条
+            document.getElementById('progressPercentage').textContent = percentage + '%';
+            document.getElementById('progressFill').style.width = percentage + '%';
+
+            // 更新未填项标签
+            const incompleteItemsContainer = document.getElementById('incompleteItems');
+            if (incompleteItems.length > 0) {
+                incompleteItemsContainer.innerHTML = incompleteItems.map(name =>
+                    `<span class="incomplete-tag">⚠️ ${name}</span>`
+                ).join('');
+                document.getElementById('evalProgressBar').classList.add('show');
+            } else {
+                incompleteItemsContainer.innerHTML = '<span style="color: #52c41a; font-size: 12px;">✅ 所有项已填写完成</span>';
+                setTimeout(() => {
+                    document.getElementById('evalProgressBar').classList.remove('show');
+                }, 2000); // 2秒后隐藏进度条
+            }
+
+            return isComplete;
+        }
+
+        // 计算总分（平均星数）
+        function calculateTotal() {
+            // 获取3个维度的星级评分（1-5星）
+            const accuracy = parseInt(document.getElementById('score-accuracy').value) || 0;
+            const completeness = parseInt(document.getElementById('score-completeness').value) || 0;
+            const standard = parseInt(document.getElementById('score-standard').value) || 0;
+
+            // 将星级转换为百分制分数（5星=满分）
+            // 准确性：40%（5星×8=40分）
+            // 完整性：35%（5星×7=35分）
+            // 规范性：25%（5星×5=25分）
+            const accuracyScore = accuracy * 8;      // 满分40
+            const completenessScore = completeness * 7;  // 满分35
+            const standardScore = standard * 5;      // 满分25
+
+            // 计算总分（满分100）
+            const totalScore = accuracyScore + completenessScore + standardScore;
+
+            // 更新数字显示（显示百分制分数）
+            document.getElementById('totalScore').textContent = totalScore.toFixed(1);
+
+            // 转换回5星制显示（100分 = 5星）
+            const starsDisplay = totalScore / 20;  // 100分/20 = 5星
+
+            // 更新星星显示
+            const totalStars = document.getElementById('totalStars');
+            const fullStars = Math.floor(starsDisplay);
+            const hasHalfStar = (starsDisplay - fullStars) >= 0.5;
+            let starsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    starsHTML += '★';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    starsHTML += '⭐';
+                } else {
+                    starsHTML += '☆';
+                }
+            }
+            totalStars.innerHTML = starsHTML;
+
+            // 根据分数改变颜色（基于100分制）
+            const scoreElement = document.getElementById('totalScore');
+            if (totalScore >= 90) {
+                scoreElement.style.color = '#52c41a'; // 绿色 - 优秀
+            } else if (totalScore >= 70) {
+                scoreElement.style.color = '#ffc107'; // 黄色 - 良好
+            } else if (totalScore >= 50) {
+                scoreElement.style.color = '#ff9800'; // 橙色 - 一般
+            } else if (totalScore > 0) {
+                scoreElement.style.color = '#f5222d'; // 红色 - 较差
+            } else {
+                scoreElement.style.color = '#999'; // 灰色（未评分）
+            }
+
+            // 检查完成度
+            checkCompletionStatus();
+
+            // 触发自动保存
+            autoSaveEval();
+        }
+
+        // 重置评测表单
+        function resetEval() {
+            if (!confirm('确定要重置所有评分吗？')) return;
+
+            // 重置所有星星评分
+            ['accuracy', 'completeness', 'standard'].forEach(category => {
+                document.getElementById(`score-${category}`).value = 0;
+                document.getElementById(`score-${category}-display`).textContent = '未评分';
+                document.querySelectorAll(`.star[data-category="${category}"]`).forEach(star => {
+                    star.classList.remove('filled');
+                });
+            });
+
+            document.getElementById('comment-accuracy').value = '';
+            document.getElementById('comment-completeness').value = '';
+            document.getElementById('comment-standard').value = '';
+            document.getElementById('overall-comment').value = '';
+
+            calculateTotal();
+        }
+
+        // 保存评测结果
+        async function saveEval(silent = false) {
+            if (!currentPatient || !availableModels[currentModelIndex]) return;
+
+            // 如果不是静默保存，检查完成度
+            if (!silent) {
+                const isComplete = checkCompletionStatus();
+                if (!isComplete) {
+                    alert('⚠️ 请先完成所有评分项！\n\n未填写的项目已在上方高亮显示，请填写后再保存。');
+                    // 显示进度条，让用户看到未填写项
+                    document.getElementById('evalProgressBar').classList.add('show');
+                    // 滚动到进度条位置
+                    document.getElementById('evalProgressBar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    return;
+                }
+            }
+
+            const evalData = {
+                timestamp: new Date().toISOString(),
+                patient: currentPatient,
+                model: availableModels[currentModelIndex],
+                scores: {
+                    accuracy: {
+                        score: parseInt(document.getElementById('score-accuracy').value) || 0,
+                        max: 5,
+                        weight: 40,
+                        comment: document.getElementById('comment-accuracy').value
+                    },
+                    completeness: {
+                        score: parseInt(document.getElementById('score-completeness').value) || 0,
+                        max: 5,
+                        weight: 35,
+                        comment: document.getElementById('comment-completeness').value
+                    },
+                    standard: {
+                        score: parseInt(document.getElementById('score-standard').value) || 0,
+                        max: 5,
+                        weight: 25,
+                        comment: document.getElementById('comment-standard').value
+                    }
+                },
+                total_score: parseFloat(document.getElementById('totalScore').textContent),
+                overall_comment: document.getElementById('overall-comment').value
+            };
+
+            // 保存到localStorage
+            const storageKey = `eval_${currentPatient}_${availableModels[currentModelIndex]}`;
+            localStorage.setItem(storageKey, JSON.stringify(evalData));
+
+            // 同时保存到历史记录（仅在手动保存时）
+            if (!silent) {
+                let history = JSON.parse(localStorage.getItem('eval_history') || '[]');
+                // 移除同一患者-模型的旧记录
+                history = history.filter(h => !(h.patient === currentPatient && h.model === availableModels[currentModelIndex]));
+                history.push(evalData);
+                localStorage.setItem('eval_history', JSON.stringify(history));
+
+                // 提交到服务器（如果已验证身份）
+                if (window.submitEvaluationToServer) {
+                    const success = await window.submitEvaluationToServer(evalData);
+                    if (success) {
+                        // 更新完成进度
+                        updateProgress();
+                    }
+                }
+                console.log('评测数据已保存:', evalData);
+
+                // 更新提交状态显示
+                updateSubmitStatus();
+
+                // 关闭评测弹窗并显示浮动按钮
+                closeEvalWindow();
+
+                // 自动切换到下一个任务
+                autoSwitchToNext();
+            }
+        }
+
+        // 自动切换到下一个任务（报告或病人）
+        function autoSwitchToNext() {
+            // 如果当前模型不是最后一个，切换到下一个模型
+            if (currentModelIndex < availableModels.length - 1) {
+                currentModelIndex++;
+                updateView();
+                return;
+            }
+
+            // 当前病人的所有模型都评测完了，切换到下一个病人
+            const currentPatientIndex = comparisonData.patients.indexOf(currentPatient);
+            if (currentPatientIndex < comparisonData.patients.length - 1) {
+                const nextPatient = comparisonData.patients[currentPatientIndex + 1];
+                selectPatient(nextPatient, true); // 传入 fromAuto=true
+                return;
+            }
+
+            // 所有病人都评测完了，显示提示
+            showToast('🎉 恭喜！所有评测任务已完成！', 'success', 5000);
+            console.log('所有评测任务已完成！');
+        }
+
+        // 更新提交状态显示
+        function updateSubmitStatus() {
+            const statusDiv = document.getElementById('submitStatus');
+            const statusIcon = document.getElementById('submitStatusIcon');
+            const statusText = document.getElementById('submitStatusText');
+
+            if (!currentPatient || !availableModels[currentModelIndex]) {
+                statusDiv.classList.add('hidden');
+                return;
+            }
+
+            const storageKey = `eval_${currentPatient}_${availableModels[currentModelIndex]}`;
+            const evalData = localStorage.getItem(storageKey);
+
+            if (!evalData) {
+                // 没有数据，显示"未提交"
+                statusDiv.classList.remove('hidden', 'submitted');
+                statusDiv.classList.add('not-submitted');
+                statusIcon.textContent = '⚠';
+                statusText.textContent = '未提交';
+                return;
+            }
+
+            // 检查是否在历史记录中（说明已手动保存/提交）
+            const history = JSON.parse(localStorage.getItem('eval_history') || '[]');
+            const isSubmitted = history.some(h =>
+                h.patient === currentPatient &&
+                h.model === availableModels[currentModelIndex]
+            );
+
+            if (isSubmitted) {
+                // 已提交
+                statusDiv.classList.remove('hidden', 'not-submitted');
+                statusDiv.classList.add('submitted');
+                statusIcon.textContent = '✓';
+                statusText.textContent = '已提交';
+            } else {
+                // 有数据但未提交（仅自动保存）
+                statusDiv.classList.remove('hidden', 'submitted');
+                statusDiv.classList.add('not-submitted');
+                statusIcon.textContent = '⚠';
+                statusText.textContent = '未提交';
+            }
+        }
+
+        // 自动保存（防抖）
+        let autoSaveTimer = null;
+        function autoSaveEval() {
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                saveEval(true); // 静默保存
+            }, 500); // 500ms后自动保存
+        }
+
+        // 加载已保存的评测（如果存在）
+        function loadSavedEval() {
+            if (!currentPatient || !availableModels[currentModelIndex]) return;
+
+            const storageKey = `eval_${currentPatient}_${availableModels[currentModelIndex]}`;
+            const saved = localStorage.getItem(storageKey);
+
+            if (saved) {
+                const evalData = JSON.parse(saved);
+
+                // 加载星星评分
+                ['accuracy', 'completeness', 'standard'].forEach(category => {
+                    if (evalData.scores[category]) {
+                        const score = evalData.scores[category].score;
+                        if (score > 0) {
+                            setRating(category, score);
+                        }
+                    }
+                });
+
+                document.getElementById('comment-accuracy').value = evalData.scores.accuracy?.comment || '';
+                document.getElementById('comment-completeness').value = evalData.scores.completeness?.comment || '';
+                document.getElementById('comment-standard').value = evalData.scores.standard?.comment || '';
+                document.getElementById('overall-comment').value = evalData.overall_comment || '';
+
+                calculateTotal();
+            } else {
+                // 如果没有保存的数据，重置为默认值（0星）
+                ['accuracy', 'completeness', 'standard'].forEach(category => {
+                    document.getElementById(`score-${category}`).value = 0;
+                    document.getElementById(`score-${category}-display`).textContent = '未评分';
+                    document.querySelectorAll(`.star[data-category="${category}"]`).forEach(star => {
+                        star.classList.remove('filled');
+                    });
+                });
+
+                document.getElementById('comment-accuracy').value = '';
+                document.getElementById('comment-completeness').value = '';
+                document.getElementById('comment-standard').value = '';
+                document.getElementById('overall-comment').value = '';
+
+                calculateTotal();
+            }
+        }
+
+        // 窗口拖拽功能
+        let isDragging = false;
+        let currentX, currentY, initialX, initialY;
+
+        document.getElementById('evalHeader').addEventListener('mousedown', function(e) {
+            if (e.target.classList.contains('eval-control-btn') || e.target.closest('.eval-control-btn') ||
+                e.target.classList.contains('eval-font-btn') || e.target.closest('.eval-font-btn')) {
+                return; // 不在控制按钮上拖拽
+            }
+
+            isDragging = true;
+            const evalWindow = document.getElementById('evalWindow');
+            const rect = evalWindow.getBoundingClientRect();
+
+            initialX = rect.left;
+            initialY = rect.top;
+            currentX = e.clientX;
+            currentY = e.clientY;
+
+            // 移除transform，改用left/top定位
+            evalWindow.style.transform = 'none';
+            evalWindow.style.left = initialX + 'px';
+            evalWindow.style.top = initialY + 'px';
+
+            // 添加拖动状态类（透明效果）
+            evalWindow.classList.add('dragging');
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+
+            e.preventDefault();
+            const evalWindow = document.getElementById('evalWindow');
+            const rect = evalWindow.getBoundingClientRect();
+
+            const dx = e.clientX - currentX;
+            const dy = e.clientY - currentY;
+
+            // 计算新位置
+            let newLeft = initialX + dx;
+            let newTop = initialY + dy;
+
+            // 边界限制 - 确保窗口标题栏始终可见
+            const minTop = 0;
+            const maxTop = window.innerHeight - 50; // 至少保留50px标题栏高度
+            const minLeft = -rect.width + 100; // 至少保留100px宽度可见
+            const maxLeft = window.innerWidth - 100;
+
+            newTop = Math.max(minTop, Math.min(newTop, maxTop));
+            newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
+
+            evalWindow.style.left = newLeft + 'px';
+            evalWindow.style.top = newTop + 'px';
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                const evalWindow = document.getElementById('evalWindow');
+                const rect = evalWindow.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+
+                // 移除拖动状态类（恢复不透明）
+                evalWindow.classList.remove('dragging');
+            }
+        });
+
+        // ==================== 原有键盘事件监听 ====================
+
+        // 键盘事件监听 - 方向键导航
+        document.addEventListener('keydown', function(event) {
+            const reportContent = document.getElementById('reportContent');
+            const scrollAmount = 100; // 每次滚动的像素数
+
+            // 左箭头键 - 上一个模型
+            if (event.key === 'ArrowLeft' || event.keyCode === 37) {
+                event.preventDefault();
+                previousModel();
+            }
+            // 右箭头键 - 下一个模型
+            else if (event.key === 'ArrowRight' || event.keyCode === 39) {
+                event.preventDefault();
+                nextModel();
+            }
+            // 上箭头键 - 向上滚动报告
+            else if (event.key === 'ArrowUp' || event.keyCode === 38) {
+                event.preventDefault();
+                if (reportContent) {
+                    reportContent.scrollBy({
+                        top: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            // 下箭头键 - 向下滚动报告
+            else if (event.key === 'ArrowDown' || event.keyCode === 40) {
+                event.preventDefault();
+                if (reportContent) {
+                    reportContent.scrollBy({
+                        top: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+
+        // 初始化评测表单自动保存
+        function initAutoSave() {
+            // 为所有分数输入框添加自动保存
+            const scoreInputs = [
+                'score-accuracy',
+                'score-completeness',
+                'score-clinical',
+                'score-structure',
+                'score-language'
+            ];
+
+            scoreInputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', autoSaveEval);
+                    input.addEventListener('change', autoSaveEval);
+                }
+            });
+
+            // 为所有评论文本框添加自动保存
+            const commentInputs = [
+                'comment-accuracy',
+                'comment-completeness',
+                'comment-clinical',
+                'comment-structure',
+                'comment-language',
+                'overall-comment'
+            ];
+
+            commentInputs.forEach(id => {
+                const textarea = document.getElementById(id);
+                if (textarea) {
+                    textarea.addEventListener('input', autoSaveEval);
+                }
+            });
+
+            console.log('评测表单自动保存已启用');
+        }
+
+        // 更新完成进度显示
+        async function updateProgress() {
+            try {
+                // 从 evaluation-auth.js 获取当前完成码
+                const completionCode = window.currentUserId || localStorage.getItem('completion_code');
+
+                if (!completionCode) {
+                    console.log('未找到完成码，无法更新进度');
+                    return;
+                }
+
+                // 从服务器获取该完成码的评测数量
+                const apiBase = window.API_CONFIG ? window.API_CONFIG.BASE_URL : 'http://localhost:5001/api';
+                const response = await fetch(`${apiBase}/evaluations/${completionCode}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const completedCount = data.count || 0;
+                    const totalCount = 80; // 10个患者 × 8个模型 = 80份
+                    const percentage = Math.round((completedCount / totalCount) * 100);
+
+                    // 更新显示
+                    document.getElementById('progressNumbers').textContent = `${completedCount}/${totalCount}`;
+                    document.getElementById('progressBarFill').style.width = `${percentage}%`;
+
+                    console.log(`📊 完成进度已更新: ${completedCount}/${totalCount} (${percentage}%)`);
+                } else {
+                    console.warn('获取进度失败:', data.message);
+                }
+            } catch (error) {
+                console.error('更新进度失败:', error);
+            }
+        }
+
+        // 定期刷新进度（每30秒）
+        setInterval(updateProgress, 30000);
+
+        // 页面加载时执行
+        loadData();
+        initAutoSave(); // 初始化自动保存
+        applyFontSize(); // 应用保存的字体大小
+
+        // 延迟更新进度，等待 evaluation-auth.js 初始化
+        setTimeout(updateProgress, 1000);
+    </script>
+
+    <!-- 环境配置 -->
+    <script src="../static/js/config.js"></script>
+
+    <!-- 身份验证模块 -->
+    <script src="../static/js/evaluation-auth.js"></script>
+</body>
+</html>

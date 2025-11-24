@@ -68,3 +68,13 @@ coverage.xml
 *.tmp
 *.bak
 *.swp
+.http_server_pid
+.node_server_pid
+
+# Large archives
+*.zip
+legacy.zip
+legacy/
+
+# Legacy batch processors
+legacy_batch_processors/

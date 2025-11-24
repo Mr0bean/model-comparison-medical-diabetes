@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模型评分表格系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .control-group select {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            min-width: 150px;
+            cursor: pointer;
+        }
+
+        .load-btn {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .load-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        .scoring-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .scoring-table thead {
+            background: #f8f9fa;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .scoring-table th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #dee2e6;
+            white-space: nowrap;
+        }
+
+        .scoring-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+
+        .scoring-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .model-name {
+            font-weight: 600;
+            color: #667eea;
+            min-width: 150px;
+        }
+
+        .output-cell {
+            max-width: 400px;
+            line-height: 1.6;
+            font-size: 12px;
+        }
+
+        .score-input {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .score-input input {
+            width: 50px;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .score-input input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .score-label {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .comment-input {
+            width: 100%;
+            min-height: 60px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 12px;
+            resize: vertical;
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .export-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .avg-score {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 14px;
+        }
+
+        .dimension-header {
+            text-align: center;
+            background: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 模型评分表格系统</h1>
+            <p>批量对比评分 - 表格视图</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>选择患者:</label>
+                <select id="patientSelect" onchange="loadTable()">
+                    <option value="">-- 请选择 --</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>选择对话类型:</label>
+                <select id="convTypeSelect" onchange="loadTable()">
+                    <option value="">-- 请选择 --</option>
+                </select>
+            </div>
+
+            <button class="load-btn" onclick="loadTable()">🔄 加载数据</button>
+        </div>
+
+        <div class="table-container">
+            <div id="tableArea" class="no-data">
+                👆 请选择患者和对话类型
+            </div>
+        </div>
+    </div>
+
+    <button class="export-btn" onclick="exportScores()">💾 导出评分</button>
+
+    <script>
+        let comparisonData = null;
+        let scoresData = {};
+
+        // 加载数据
+        async function loadData() {
+            try {
+                const response = await fetch('../../output/comparison_data.json');
+                comparisonData = await response.json();
+                initializeSelectors();
+            } catch (error) {
+                document.getElementById('tableArea').innerHTML = 
+                    '<div class="no-data">❌ 数据加载失败: ' + error.message + '</div>';
+            }
+        }
+
+        // 初始化选择器
+        function initializeSelectors() {
+            const patientSelect = document.getElementById('patientSelect');
+            comparisonData.patients.forEach(patient => {
+                const option = document.createElement('option');
+                option.value = patient;
+                option.textContent = patient;
+                patientSelect.appendChild(option);
+            });
+        }
+
+        // 更新对话类型选择器
+        function updateConvTypeSelector(patient) {
+            const convTypeSelect = document.getElementById('convTypeSelect');
+            convTypeSelect.innerHTML = '<option value="">-- 请选择 --</option>';
+
+            if (!patient) return;
+
+            const patientData = comparisonData.data[patient];
+            if (!patientData) return;
+
+            Object.keys(patientData).forEach(convId => {
+                const convData = patientData[convId];
+                let title = '未知';
+                Object.values(convData).forEach(data => {
+                    if (data.title) title = data.title;
+                });
+
+                const option = document.createElement('option');
+                option.value = convId;
+                option.textContent = `${title} (对话 ${convId})`;
+                convTypeSelect.appendChild(option);
+            });
+        }
+
+        // 监听患者选择变化
+        document.getElementById('patientSelect').addEventListener('change', function() {
+            updateConvTypeSelector(this.value);
+        });
+
+        // 加载表格
+        function loadTable() {
+            const patient = document.getElementById('patientSelect').value;
+            const convId = document.getElementById('convTypeSelect').value;
+            const tableArea = document.getElementById('tableArea');
+
+            if (!patient || !convId) {
+                tableArea.innerHTML = '<div class="no-data">👆 请选择患者和对话类型</div>';
+                return;
+            }
+
+            const patientData = comparisonData.data[patient];
+            if (!patientData || !patientData[convId]) {
+                tableArea.innerHTML = '<div class="no-data">⚠️ 没有找到相关数据</div>';
+                return;
+            }
+
+            const convData = patientData[convId];
+            let convTitle = '未知';
+            Object.values(convData).forEach(data => {
+                if (data.title) convTitle = data.title;
+            });
+
+            // 创建表格
+            let tableHTML = `
+                <table class="scoring-table">
+                    <thead>
+                        <tr>
+                            <th>模型</th>
+                            <th style="min-width: 350px;">输出内容</th>
+                            <th class="dimension-header">准确性<br>(1-5)</th>
+                            <th class="dimension-header">完整性<br>(1-5)</th>
+                            <th class="dimension-header">格式规范<br>(1-5)</th>
+                            <th class="dimension-header">语言表达<br>(1-5)</th>
+                            <th class="dimension-header">逻辑性<br>(1-5)</th>
+                            <th class="dimension-header">平均分</th>
+                            <th style="min-width: 200px;">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            // 按模型名称排序
+            const models = Object.keys(convData).sort();
+
+            models.forEach(model => {
+                const data = convData[model];
+                const scoreKey = `${patient}_${convId}_${model}`;
+
+                tableHTML += `
+                    <tr>
+                        <td class="model-name">${model}</td>
+                        <td class="output-cell">${formatOutput(data.output)}</td>
+                        <td><input type="number" min="1" max="5" class="score-input" 
+                            data-key="${scoreKey}" data-dim="accuracy" 
+                            onchange="updateScore(this)" placeholder="-"></td>
+                        <td><input type="number" min="1" max="5" class="score-input"
+                            data-key="${scoreKey}" data-dim="completeness"
+                            onchange="updateScore(this)" placeholder="-"></td>
+                        <td><input type="number" min="1" max="5" class="score-input"
+                            data-key="${scoreKey}" data-dim="format"
+                            onchange="updateScore(this)" placeholder="-"></td>
+                        <td><input type="number" min="1" max="5" class="score-input"
+                            data-key="${scoreKey}" data-dim="language"
+                            onchange="updateScore(this)" placeholder="-"></td>
+                        <td><input type="number" min="1" max="5" class="score-input"
+                            data-key="${scoreKey}" data-dim="logic"
+                            onchange="updateScore(this)" placeholder="-"></td>
+                        <td class="avg-score" id="avg_${scoreKey}">-</td>
+                        <td><textarea class="comment-input" 
+                            data-key="${scoreKey}" 
+                            onchange="updateComment(this)" 
+                            placeholder="请输入评分备注..."></textarea></td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            tableArea.innerHTML = tableHTML;
+        }
+
+        // 格式化输出
+        function formatOutput(text) {
+            return text.substring(0, 200) + (text.length > 200 ? '...' : '');
+        }
+
+        // 更新评分
+        function updateScore(input) {
+            const key = input.dataset.key;
+            const dim = input.dataset.dim;
+            const value = parseInt(input.value);
+
+            if (!scoresData[key]) {
+                scoresData[key] = { dimensions: {}, comment: '' };
+            }
+
+            if (value >= 1 && value <= 5) {
+                scoresData[key].dimensions[dim] = value;
+            } else {
+                delete scoresData[key].dimensions[dim];
+            }
+
+            updateAvgScore(key);
+        }
+
+        // 更新平均分
+        function updateAvgScore(key) {
+            const avgCell = document.getElementById(`avg_${key}`);
+            if (!scoresData[key] || !scoresData[key].dimensions) {
+                avgCell.textContent = '-';
+                return;
+            }
+
+            const scores = Object.values(scoresData[key].dimensions);
+            if (scores.length === 0) {
+                avgCell.textContent = '-';
+                return;
+            }
+
+            const avg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2);
+            avgCell.textContent = avg;
+        }
+
+        // 更新评论
+        function updateComment(textarea) {
+            const key = textarea.dataset.key;
+            if (!scoresData[key]) {
+                scoresData[key] = { dimensions: {}, comment: '' };
+            }
+            scoresData[key].comment = textarea.value;
+        }
+
+        // 导出评分
+        function exportScores() {
+            if (Object.keys(scoresData).length === 0) {
+                alert('⚠️ 还没有任何评分数据！请先进行评分。');
+                return;
+            }
+
+            const exportData = [];
+
+            Object.keys(scoresData).forEach(key => {
+                const [patient, convId, model] = key.split('_');
+                const score = scoresData[key];
+
+                const scores = Object.values(score.dimensions);
+                const avgScore = scores.length > 0 ? 
+                    (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2) : 0;
+
+                exportData.push({
+                    '患者': patient,
+                    '对话ID': convId,
+                    '模型': model,
+                    '准确性': score.dimensions.accuracy || '',
+                    '完整性': score.dimensions.completeness || '',
+                    '格式规范': score.dimensions.format || '',
+                    '语言表达': score.dimensions.language || '',
+                    '逻辑性': score.dimensions.logic || '',
+                    '平均分': avgScore,
+                    '备注': score.comment || ''
+                });
+            });
+
+            const csv = convertToCSV(exportData);
+            downloadCSV(csv, `模型评分表格_${new Date().toISOString().split('T')[0]}.csv`);
+
+            alert(`✅ 评分数据导出成功！\n共导出 ${exportData.length} 条评分记录。`);
+        }
+
+        // 转换为CSV
+        function convertToCSV(data) {
+            if (data.length === 0) return '';
+
+            const headers = Object.keys(data[0]);
+            const csvRows = [];
+
+            csvRows.push('\ufeff' + headers.join(','));
+
+            data.forEach(row => {
+                const values = headers.map(header => {
+                    const value = row[header];
+                    if (typeof value === 'string' && (value.includes(',') || value.includes('\n') || value.includes('"'))) {
+                        return `"${value.replace(/"/g, '""')}"`;
+                    }
+                    return value;
+                });
+                csvRows.push(values.join(','));
+            });
+
+            return csvRows.join('\n');
+        }
+
+        // 下载CSV
+        function downloadCSV(csv, filename) {
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+        // 页面加载时执行
+        loadData();
+    </script>
+</body>
+</html>
